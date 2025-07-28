@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introdução ao Hadoop - Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Introdução completa ao Apache Hadoop - conceitos básicos, arquitetura e primeiros passos no mundo do Big Data.">
+    <meta name="keywords" content="hadoop introdução, apache hadoop, big data conceitos, hdfs, mapreduce">
+</head>
+<body class="matrix-theme">
+    <!-- Navigation for "Entrar no Hadoop" area -->
+    <nav class="navbar navbar-expand-lg navbar-matrix-green">
+        <div class="container">
+            <a class="navbar-brand" href="../">🟢 Entrar no Hadoop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./">Introdução</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../distribuicoes/">Distribuições</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../primeiros-passos/">Primeiros Passos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../casos-uso/">Casos de Uso</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../roadmap/">Roadmap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Voltar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="container mt-3">
+        <div class="breadcrumb-matrix">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../../">Portal Big Data</a></li>
+                    <li class="breadcrumb-item"><a href="../">Entrar no Hadoop</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Introdução</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <!-- Hero Section -->
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-4 text-center mb-4">Introdução ao Apache Hadoop</h1>
+                <p class="lead text-center">Descubra os fundamentos do ecossistema Hadoop e como ele revolucionou o processamento de Big Data</p>
+            </div>
+        </div>
+
+        <!-- What is Hadoop Section -->
+        <div class="row mt-5">
+            <div class="col-lg-8 mx-auto">
+                <div class="card matrix-card">
+                    <div class="card-header">
+                        <h2 class="h3 mb-0">O que é Apache Hadoop?</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Apache Hadoop é um framework open-source que permite o processamento distribuído de grandes conjuntos de dados através de clusters de computadores usando modelos de programação simples. Desenvolvido para escalar de servidores únicos até milhares de máquinas, cada uma oferecendo computação e armazenamento local.</p>
+                        
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h4>Principais Características:</h4>
+                                <ul class="list-unstyled">
+                                    <li><i class="text-success">✓</i> Processamento distribuído</li>
+                                    <li><i class="text-success">✓</i> Tolerância a falhas</li>
+                                    <li><i class="text-success">✓</i> Escalabilidade horizontal</li>
+                                    <li><i class="text-success">✓</i> Código aberto</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Componentes Principais:</h4>
+                                <ul class="list-unstyled">
+                                    <li><i class="text-info">•</i> HDFS (Sistema de Arquivos)</li>
+                                    <li><i class="text-info">•</i> MapReduce (Processamento)</li>
+                                    <li><i class="text-info">•</i> YARN (Gerenciamento de Recursos)</li>
+                                    <li><i class="text-info">•</i> Hadoop Common (Utilitários)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Section -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="text-center mb-4">História do Hadoop</h2>
+                <div class="timeline-container">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4>2003-2004</h4>
+                                <h5>Origens no Google</h5>
+                                <p>Google publica papers sobre GFS (Google File System) e MapReduce, inspirando o desenvolvimento do Hadoop.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4>2005</h4>
+                                <h5>Nascimento do Hadoop</h5>
+                                <p>Doug Cutting e Mike Cafarella criam o Hadoop como parte do projeto Nutch, nomeado em homenagem ao elefante de brinquedo do filho de Doug.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4>2006</h4>
+                                <h5>Yahoo! adota Hadoop</h5>
+                                <p>Yahoo! contrata Doug Cutting e investe pesadamente no desenvolvimento do Hadoop, criando o primeiro cluster de produção.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4>2008</h4>
+                                <h5>Projeto Apache</h5>
+                                <p>Hadoop torna-se um projeto top-level da Apache Software Foundation, ganhando maior credibilidade e adoção.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4>2011-2013</h4>
+                                <h5>Era das Distribuições</h5>
+                                <p>Surgem as principais distribuições comerciais: Cloudera, Hortonworks e MapR, facilitando a adoção empresarial.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4>2014</h4>
+                                <h5>Hadoop 2.0 e YARN</h5>
+                                <p>Lançamento do Hadoop 2.0 com YARN, permitindo múltiplos frameworks além do MapReduce no mesmo cluster.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4>2017-2020</h4>
+                                <h5>Maturidade e Cloud</h5>
+                                <p>Hadoop amadurece com versões 3.x, melhor integração com cloud e foco em performance e segurança.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h4>2021-2025</h4>
+                                <h5>Era Moderna</h5>
+                                <p>Hadoop evolui para coexistir com tecnologias modernas como Spark, Delta Lake e soluções cloud-native.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Core Concepts Section -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="text-center mb-4">Conceitos Fundamentais</h2>
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card matrix-card h-100">
+                            <div class="card-header">
+                                <h4>HDFS - Hadoop Distributed File System</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>Sistema de arquivos distribuído que armazena dados em múltiplas máquinas com alta tolerância a falhas.</p>
+                                <ul>
+                                    <li><strong>NameNode:</strong> Gerencia metadados do sistema</li>
+                                    <li><strong>DataNode:</strong> Armazena os dados reais</li>
+                                    <li><strong>Replicação:</strong> Dados replicados em 3 nós por padrão</li>
+                                    <li><strong>Blocos:</strong> Arquivos divididos em blocos de 128MB</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 mb-4">
+                        <div class="card matrix-card h-100">
+                            <div class="card-header">
+                                <h4>MapReduce</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>Modelo de programação para processamento paralelo de grandes datasets.</p>
+                                <ul>
+                                    <li><strong>Map:</strong> Processa dados em paralelo</li>
+                                    <li><strong>Shuffle:</strong> Reorganiza dados intermediários</li>
+                                    <li><strong>Reduce:</strong> Agrega resultados finais</li>
+                                    <li><strong>JobTracker/TaskTracker:</strong> Coordenação de jobs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 mb-4">
+                        <div class="card matrix-card h-100">
+                            <div class="card-header">
+                                <h4>YARN - Yet Another Resource Negotiator</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>Sistema de gerenciamento de recursos que permite múltiplos frameworks no mesmo cluster.</p>
+                                <ul>
+                                    <li><strong>ResourceManager:</strong> Gerencia recursos globais</li>
+                                    <li><strong>NodeManager:</strong> Gerencia recursos por nó</li>
+                                    <li><strong>ApplicationMaster:</strong> Coordena aplicações</li>
+                                    <li><strong>Container:</strong> Unidade de alocação de recursos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 mb-4">
+                        <div class="card matrix-card h-100">
+                            <div class="card-header">
+                                <h4>Ecossistema Hadoop</h4>
+                            </div>
+                            <div class="card-body">
+                                <p>Conjunto de ferramentas que complementam o Hadoop core.</p>
+                                <ul>
+                                    <li><strong>Hive:</strong> Data warehouse e SQL</li>
+                                    <li><strong>HBase:</strong> Banco NoSQL distribuído</li>
+                                    <li><strong>Pig:</strong> Linguagem de script para análise</li>
+                                    <li><strong>Spark:</strong> Engine de processamento rápido</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Practical Use Cases Section -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="text-center mb-4">Casos de Uso Práticos para Iniciantes</h2>
+                <div class="row">
+                    <div class="col-lg-4 mb-4">
+                        <div class="card matrix-card h-100">
+                            <div class="card-header">
+                                <h4>Análise de Logs</h4>
+                                <span class="badge bg-success">Iniciante</span>
+                            </div>
+                            <div class="card-body">
+                                <p>Processe terabytes de logs de servidores web para identificar padrões de acesso e problemas.</p>
+                                <h6>Exemplo Prático:</h6>
+                                <ul class="small">
+                                    <li>Coleta de logs do Apache/Nginx</li>
+                                    <li>Análise de IPs mais frequentes</li>
+                                    <li>Identificação de erros 404</li>
+                                    <li>Relatórios de tráfego por hora</li>
+                                </ul>
+                                <div class="mt-3">
+                                    <small class="text-muted">Tecnologias: HDFS + MapReduce + Hive</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 mb-4">
+                        <div class="card matrix-card h-100">
+                            <div class="card-header">
+                                <h4>ETL de Dados</h4>
+                                <span class="badge bg-warning">Intermediário</span>
+                            </div>
+                            <div class="card-body">
+                                <p>Extraia, transforme e carregue dados de múltiplas fontes para análise.</p>
+                                <h6>Exemplo Prático:</h6>
+                                <ul class="small">
+                                    <li>Importação de dados de bancos relacionais</li>
+                                    <li>Limpeza e normalização de dados</li>
+                                    <li>Agregações e cálculos</li>
+                                    <li>Export para data warehouse</li>
+                                </ul>
+                                <div class="mt-3">
+                                    <small class="text-muted">Tecnologias: Sqoop + Hive + Pig</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 mb-4">
+                        <div class="card matrix-card h-100">
+                            <div class="card-header">
+                                <h4>Análise de Sentimentos</h4>
+                                <span class="badge bg-info">Intermediário</span>
+                            </div>
+                            <div class="card-body">
+                                <p>Analise milhões de posts de redes sociais para entender opinião pública.</p>
+                                <h6>Exemplo Prático:</h6>
+                                <ul class="small">
+                                    <li>Coleta de dados do Twitter/Facebook</li>
+                                    <li>Processamento de texto com NLP</li>
+                                    <li>Classificação de sentimentos</li>
+                                    <li>Visualização de tendências</li>
+                                </ul>
+                                <div class="mt-3">
+                                    <small class="text-muted">Tecnologias: Flume + Spark + MLlib</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 mb-4">
+                        <div class="card matrix-card h-100">
+                            <div class="card-header">
+                                <h4>Recomendações</h4>
+                                <span class="badge bg-danger">Avançado</span>
+                            </div>
+                            <div class="card-body">
+                                <p>Construa sistemas de recomendação baseados em comportamento do usuário.</p>
+                                <h6>Exemplo Prático:</h6>
+                                <ul class="small">
+                                    <li>Análise de histórico de compras</li>
+                                    <li>Algoritmos de filtragem colaborativa</li>
+                                    <li>Machine learning para predições</li>
+                                    <li>API de recomendações em tempo real</li>
+                                </ul>
+                                <div class="mt-3">
+                                    <small class="text-muted">Tecnologias: Spark + MLlib + HBase</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 mb-4">
+                        <div class="card matrix-card h-100">
+                            <div class="card-header">
+                                <h4>IoT Data Processing</h4>
+                                <span class="badge bg-warning">Intermediário</span>
+                            </div>
+                            <div class="card-body">
+                                <p>Processe dados de sensores IoT para monitoramento e alertas.</p>
+                                <h6>Exemplo Prático:</h6>
+                                <ul class="small">
+                                    <li>Ingestão de dados de sensores</li>
+                                    <li>Processamento em tempo real</li>
+                                    <li>Detecção de anomalias</li>
+                                    <li>Dashboards de monitoramento</li>
+                                </ul>
+                                <div class="mt-3">
+                                    <small class="text-muted">Tecnologias: Kafka + Storm + HBase</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 mb-4">
+                        <div class="card matrix-card h-100">
+                            <div class="card-header">
+                                <h4>Backup e Arquivamento</h4>
+                                <span class="badge bg-success">Iniciante</span>
+                            </div>
+                            <div class="card-body">
+                                <p>Use HDFS como solução de backup e arquivamento de longo prazo.</p>
+                                <h6>Exemplo Prático:</h6>
+                                <ul class="small">
+                                    <li>Backup de bancos de dados</li>
+                                    <li>Arquivamento de documentos</li>
+                                    <li>Retenção de dados históricos</li>
+                                    <li>Recuperação de desastres</li>
+                                </ul>
+                                <div class="mt-3">
+                                    <small class="text-muted">Tecnologias: HDFS + DistCp + Sqoop</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Glossary Section -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="text-center mb-4">Glossário de Termos Técnicos</h2>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="accordion" id="glossaryAccordion1">
+                            <div class="accordion-item matrix-accordion">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                                        Big Data
+                                    </button>
+                                </h3>
+                                <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#glossaryAccordion1">
+                                    <div class="accordion-body">
+                                        Conjuntos de dados extremamente grandes e complexos que requerem ferramentas especializadas para captura, armazenamento, análise e visualização. Caracterizado pelos 5 V's: Volume, Velocidade, Variedade, Veracidade e Valor.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item matrix-accordion">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                                        Cluster
+                                    </button>
+                                </h3>
+                                <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#glossaryAccordion1">
+                                    <div class="accordion-body">
+                                        Grupo de computadores interconectados que trabalham juntos como um sistema único. No Hadoop, um cluster consiste em um nó master (NameNode) e múltiplos nós worker (DataNodes).
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item matrix-accordion">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                                        DataNode
+                                    </button>
+                                </h3>
+                                <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#glossaryAccordion1">
+                                    <div class="accordion-body">
+                                        Nós worker no HDFS responsáveis por armazenar os blocos de dados reais. Cada DataNode reporta regularmente ao NameNode sobre o status dos blocos que armazena.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item matrix-accordion">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                                        Distribuição Hadoop
+                                    </button>
+                                </h3>
+                                <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#glossaryAccordion1">
+                                    <div class="accordion-body">
+                                        Versão empacotada do Hadoop que inclui o core do Apache Hadoop mais ferramentas adicionais, suporte e facilidades de instalação. Exemplos: Cloudera, Hortonworks, MapR.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item matrix-accordion">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">
+                                        ETL
+                                    </button>
+                                </h3>
+                                <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#glossaryAccordion1">
+                                    <div class="accordion-body">
+                                        Extract, Transform, Load - processo de extrair dados de fontes diversas, transformá-los em formato adequado e carregá-los em um sistema de destino para análise.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="accordion" id="glossaryAccordion2">
+                            <div class="accordion-item matrix-accordion">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6">
+                                        Fault Tolerance
+                                    </button>
+                                </h3>
+                                <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#glossaryAccordion2">
+                                    <div class="accordion-body">
+                                        Capacidade do sistema de continuar operando mesmo quando alguns componentes falham. O Hadoop implementa isso através de replicação de dados e redistribuição automática de tarefas.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item matrix-accordion">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7">
+                                        Job
+                                    </button>
+                                </h3>
+                                <div id="collapse7" class="accordion-collapse collapse" data-bs-parent="#glossaryAccordion2">
+                                    <div class="accordion-body">
+                                        Unidade de trabalho submetida ao Hadoop para processamento. Um job MapReduce consiste em tarefas Map e Reduce que são executadas em paralelo no cluster.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item matrix-accordion">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8">
+                                        NameNode
+                                    </button>
+                                </h3>
+                                <div id="collapse8" class="accordion-collapse collapse" data-bs-parent="#glossaryAccordion2">
+                                    <div class="accordion-body">
+                                        Nó master do HDFS que gerencia os metadados do sistema de arquivos, incluindo a estrutura de diretórios e a localização dos blocos de dados nos DataNodes.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item matrix-accordion">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9">
+                                        Replicação
+                                    </button>
+                                </h3>
+                                <div id="collapse9" class="accordion-collapse collapse" data-bs-parent="#glossaryAccordion2">
+                                    <div class="accordion-body">
+                                        Processo de criar múltiplas cópias dos dados em diferentes nós do cluster para garantir disponibilidade e tolerância a falhas. O padrão do HDFS é 3 réplicas.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item matrix-accordion">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10">
+                                        Schema-on-Read
+                                    </button>
+                                </h3>
+                                <div id="collapse10" class="accordion-collapse collapse" data-bs-parent="#glossaryAccordion2">
+                                    <div class="accordion-body">
+                                        Abordagem onde a estrutura dos dados é definida no momento da leitura, não da escrita. Permite armazenar dados em formato bruto e aplicar esquemas diferentes conforme necessário.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next Steps Section -->
+        <div class="row mt-5 mb-5">
+            <div class="col-12">
+                <div class="card matrix-card">
+                    <div class="card-header">
+                        <h2 class="h3 mb-0">Próximos Passos</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Agora que você entende os conceitos básicos do Hadoop, é hora de dar os próximos passos:</p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="d-grid">
+                                    <a href="../distribuicoes/" class="btn btn-success btn-lg">
+                                        Explorar Distribuições
+                                    </a>
+                                </div>
+                                <p class="text-center mt-2 small">Descubra qual distribuição Hadoop é ideal para você</p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="d-grid">
+                                    <a href="../primeiros-passos/" class="btn btn-info btn-lg">
+                                        Primeiros Passos
+                                    </a>
+                                </div>
+                                <p class="text-center mt-2 small">Guias práticos para instalação e configuração</p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="d-grid">
+                                    <a href="../roadmap/" class="btn btn-warning btn-lg">
+                                        Roadmap de Aprendizado
+                                    </a>
+                                </div>
+                                <p class="text-center mt-2 small">Plano estruturado para dominar o Hadoop</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyTorch - Deep Learning Framework | Portal Big Data</title>
+    <meta name="description" content="PyTorch: framework de deep learning com execução dinâmica. Aprenda sobre redes neurais, pesquisa em IA e deployment.">
+    <meta name="keywords" content="pytorch, deep learning, neural networks, facebook, meta, ai, python, dynamic graphs">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="PyTorch - Deep Learning Framework | Portal Big Data">
+    <meta property="og:description" content="Framework de deep learning com execução dinâmica desenvolvido pela Meta">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/machine-learning/pytorch/">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/matrix-theme.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "PyTorch",
+        "description": "Open-source deep learning framework",
+        "url": "https://pytorch.org",
+        "applicationCategory": "Deep Learning Framework",
+        "operatingSystem": "Linux, Windows, macOS",
+        "programmingLanguage": ["Python", "C++"],
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Meta"
+        }
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand text-success" href="../../../index.html">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../../index.html" class="text-success">Home</a></li>
+                <li class="breadcrumb-item"><a href="../../" class="text-success">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../" class="text-success">Machine Learning</a></li>
+                <li class="breadcrumb-item active text-light">PyTorch</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Technology Header -->
+                <div class="tech-header mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://pytorch.org/assets/images/pytorch-logo.png" alt="PyTorch Logo" class="tech-logo me-3" style="height: 80px;">
+                        <div>
+                            <h1 class="text-success mb-2">PyTorch</h1>
+                            <div class="tech-badges">
+                                <span class="badge bg-primary">Open Source</span>
+                                <span class="badge bg-success">Meta</span>
+                                <span class="badge bg-warning text-dark">Deep Learning</span>
+                                <span class="badge bg-info">Dynamic Graphs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Overview -->
+                <section class="mb-5">
+                    <h2 class="text-success">Visão Geral</h2>
+                    <p class="text-light">
+                        PyTorch é um framework de deep learning open-source desenvolvido pela Meta (Facebook) que 
+                        oferece execução dinâmica de grafos computacionais. É amplamente utilizado na comunidade 
+                        de pesquisa em IA devido à sua flexibilidade e facilidade de uso.
+                    </p>
+                    <p class="text-light">
+                        Com uma API Pythônica intuitiva e suporte nativo para GPU, PyTorch permite prototipagem 
+                        rápida e experimentação eficiente, sendo ideal tanto para pesquisa quanto para produção.
+                    </p>
+                </section>
+
+                <!-- Key Features -->
+                <section class="mb-5">
+                    <h2 class="text-success">Principais Características</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="text-light">
+                                <li><strong>Dynamic Graphs:</strong> Grafos computacionais dinâmicos</li>
+                                <li><strong>Autograd:</strong> Diferenciação automática</li>
+                                <li><strong>TorchScript:</strong> Compilação para produção</li>
+                                <li><strong>Distributed Training:</strong> Treinamento distribuído</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="text-light">
+                                <li><strong>TorchServe:</strong> Serving de modelos</li>
+                                <li><strong>PyTorch Mobile:</strong> Deploy em mobile</li>
+                                <li><strong>ONNX Support:</strong> Interoperabilidade</li>
+                                <li><strong>Rich Ecosystem:</strong> Bibliotecas especializadas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Use Cases -->
+                <section class="mb-5">
+                    <h2 class="text-success">Casos de Uso</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Research</h5>
+                                    <p class="text-light small">Pesquisa em IA, prototipagem de novos modelos</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Computer Vision</h5>
+                                    <p class="text-light small">CNNs, detecção de objetos, segmentação</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">NLP</h5>
+                                    <p class="text-light small">Transformers, BERT, GPT, processamento de texto</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Reinforcement Learning</h5>
+                                    <p class="text-light small">Aprendizado por reforço, jogos, robótica</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Code Example -->
+                <section class="mb-5">
+                    <h2 class="text-success">Exemplo Prático</h2>
+                    <p class="text-light">Exemplo de rede neural simples com PyTorch:</p>
+                    <pre class="bg-dark p-3 rounded border border-success"><code class="text-success">import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.utils.data import DataLoader, TensorDataset
+
+# Definir modelo
+class SimpleNet(nn.Module):
+    def __init__(self, input_size, hidden_size, num_classes):
+        super(SimpleNet, self).__init__()
+        self.fc1 = nn.Linear(input_size, hidden_size)
+        self.relu = nn.ReLU()
+        self.fc2 = nn.Linear(hidden_size, num_classes)
+        
+    def forward(self, x):
+        x = self.fc1(x)
+        x = self.relu(x)
+        x = self.fc2(x)
+        return x
+
+# Criar modelo
+model = SimpleNet(input_size=784, hidden_size=128, num_classes=10)
+
+# Definir loss e optimizer
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+# Loop de treinamento
+for epoch in range(num_epochs):
+    for batch_idx, (data, targets) in enumerate(train_loader):
+        # Forward pass
+        outputs = model(data)
+        loss = criterion(outputs, targets)
+        
+        # Backward pass
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+        
+    print(f'Epoch [{epoch+1}/{num_epochs}], Loss: {loss.item():.4f}')
+</code></pre>
+                </section>
+
+                <!-- Tutorial Links -->
+                <section class="mb-5">
+                    <h2 class="text-success">Tutoriais e Recursos</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="text-success">Tutoriais Oficiais</h5>
+                            <ul class="text-light">
+                                <li><a href="https://pytorch.org/tutorials/" class="text-success" target="_blank">PyTorch Tutorials</a></li>
+                                <li><a href="https://pytorch.org/docs/stable/index.html" class="text-success" target="_blank">Documentation</a></li>
+                                <li><a href="https://pytorch.org/get-started/locally/" class="text-success" target="_blank">Get Started</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-success">Recursos da Comunidade</h5>
+                            <ul class="text-light">
+                                <li><a href="https://github.com/pytorch/pytorch" class="text-success" target="_blank">GitHub Repository</a></li>
+                                <li><a href="https://discuss.pytorch.org/" class="text-success" target="_blank">Community Forum</a></li>
+                                <li><a href="https://pytorch.org/blog/" class="text-success" target="_blank">PyTorch Blog</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-md-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Informações Rápidas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled text-light">
+                                <li><strong>Desenvolvedor:</strong> Meta (Facebook)</li>
+                                <li><strong>Primeira Versão:</strong> 2016</li>
+                                <li><strong>Linguagem:</strong> Python, C++</li>
+                                <li><strong>Licença:</strong> BSD</li>
+                                <li><strong>Versão Atual:</strong> 2.1+</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="../tensorflow/" class="text-success">TensorFlow</a></li>
+                                <li><a href="../scikit-learn/" class="text-success">Scikit-learn</a></li>
+                                <li><a href="../mlflow/" class="text-success">MLflow</a></li>
+                                <li><a href="../kubeflow/" class="text-success">Kubeflow</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card bg-dark border-success">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="https://pytorch.org" class="text-success" target="_blank">Site Oficial</a></li>
+                                <li><a href="https://github.com/pytorch/pytorch" class="text-success" target="_blank">GitHub</a></li>
+                                <li><a href="https://pytorch.org/get-started/locally/" class="text-success" target="_blank">Instalação</a></li>
+                                <li><a href="https://discuss.pytorch.org/" class="text-success" target="_blank">Fórum</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2024 Portal Big Data. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="../../../contato/" class="text-success">Contato</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

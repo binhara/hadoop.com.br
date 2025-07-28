@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Mesos - Cluster Resource Manager | Portal Big Data</title>
+    <meta name="description" content="Guia completo do Apache Mesos: gerenciamento de recursos distribuídos, frameworks, Marathon e integração com Big Data.">
+    <meta name="keywords" content="apache mesos, cluster manager, resource management, marathon, distributed systems, big data">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Apache Mesos - Cluster Resource Manager | Portal Big Data">
+    <meta property="og:description" content="Guia completo do Apache Mesos: gerenciamento de recursos distribuídos, frameworks, Marathon e integração com Big Data.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/orquestracao/apache-mesos/">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/orquestracao/apache-mesos/">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Apache Mesos",
+        "description": "Distributed systems kernel for resource management and scheduling",
+        "url": "https://mesos.apache.org",
+        "applicationCategory": "Cluster Resource Manager",
+        "operatingSystem": "Linux, macOS",
+        "programmingLanguage": "C++",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand matrix-brand" href="../../../index.html">
+                <span class="matrix-text">Portal Big Data</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Orquestração</a></li>
+                <li class="breadcrumb-item active">Apache Mesos</li>
+            </ol>
+        </nav>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="tech-header mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="../../../assets/images/logos/mesos-logo.png" alt="Apache Mesos" class="tech-logo me-3" style="width: 64px; height: 64px;">
+                        <div>
+                            <h1 class="mb-2">Apache Mesos</h1>
+                            <div class="tech-badges">
+                                <span class="badge bg-primary">Open Source</span>
+                                <span class="badge bg-secondary">Legacy</span>
+                                <span class="badge bg-info">C++</span>
+                                <span class="badge bg-warning">Cluster Manager</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="lead">Kernel de sistemas distribuídos para gerenciamento e agendamento de recursos</p>
+                </div>
+
+                <div class="content-section">
+                    <h2>Visão Geral</h2>
+                    <p>Apache Mesos é um kernel de sistemas distribuídos que abstrai recursos de CPU, memória, armazenamento e outros recursos computacionais de máquinas (físicas ou virtuais), permitindo que sistemas distribuídos tolerantes a falhas e elásticos sejam construídos e executados de forma eficiente.</p>
+
+                    <div class="alert alert-warning">
+                        <strong>Status do Projeto:</strong> O Apache Mesos está em modo de manutenção desde 2021, com desenvolvimento limitado. Para novos projetos, considere Kubernetes como alternativa moderna.
+                    </div>
+
+                    <h3>Principais Características</h3>
+                    <ul>
+                        <li><strong>Abstração de Recursos:</strong> Unifica recursos de múltiplas máquinas</li>
+                        <li><strong>Isolamento:</strong> Containers e controle de recursos</li>
+                        <li><strong>Escalabilidade:</strong> Suporte a milhares de nós</li>
+                        <li><strong>Tolerância a Falhas:</strong> Master e slave fault-tolerant</li>
+                        <li><strong>Multi-Framework:</strong> Executa múltiplos frameworks simultaneamente</li>
+                        <li><strong>API Nativa:</strong> APIs em C++, Java, Python</li>
+                    </ul>
+
+                    <h3>Arquitetura Mesos</h3>
+                    <p>O Mesos utiliza uma arquitetura master-slave com dois níveis de agendamento:</p>
+                    <ul>
+                        <li><strong>Mesos Master:</strong> Gerencia slaves e oferece recursos aos frameworks</li>
+                        <li><strong>Mesos Slave:</strong> Executa tarefas e reporta recursos disponíveis</li>
+                        <li><strong>Framework Scheduler:</strong> Recebe ofertas de recursos e agenda tarefas</li>
+                        <li><strong>Framework Executor:</strong> Executa tarefas nos slaves</li>
+                        <li><strong>ZooKeeper:</strong> Coordenação e eleição de leader</li>
+                    </ul>
+
+                    <h3>Exemplo de Framework Simples</h3>
+                    <div class="code-example">
+                        <pre><code class="language-python"># Exemplo de Framework Scheduler em Python
+import mesos.interface
+from mesos.interface import mesos_pb2
+import mesos.native
+
+class ExampleScheduler(mesos.interface.Scheduler):
+    def __init__(self):
+        self.tasksLaunched = 0
+        self.tasksFinished = 0
+        self.totalTasks = 5
+
+    def registered(self, driver, frameworkId, masterInfo):
+        print("Registered with framework ID %s" % frameworkId.value)
+
+    def resourceOffers(self, driver, offers):
+        for offer in offers:
+            tasks = []
+            
+            # Verifica recursos disponíveis
+            cpus = self.getResource(offer.resources, "cpus")
+            mem = self.getResource(offer.resources, "mem")
+            
+            if cpus >= 1 and mem >= 128 and self.tasksLaunched < self.totalTasks:
+                # Cria uma nova tarefa
+                task = mesos_pb2.TaskInfo()
+                task.task_id.value = str(self.tasksLaunched)
+                task.slave_id.value = offer.slave_id.value
+                task.name = "task %d" % self.tasksLaunched
+                
+                # Define comando a ser executado
+                task.command.value = "echo 'Hello from Mesos task %d'" % self.tasksLaunched
+                
+                # Define recursos necessários
+                cpuResource = task.resources.add()
+                cpuResource.name = "cpus"
+                cpuResource.type = mesos_pb2.Value.SCALAR
+                cpuResource.scalar.value = 1
+                
+                memResource = task.resources.add()
+                memResource.name = "mem"
+                memResource.type = mesos_pb2.Value.SCALAR
+                memResource.scalar.value = 128
+                
+                tasks.append(task)
+                self.tasksLaunched += 1
+            
+            # Lança tarefas
+            driver.launchTasks(offer.id, tasks)
+
+    def statusUpdate(self, driver, update):
+        print("Task %s is in state %s" % (update.task_id.value, 
+                                         mesos_pb2.TaskState.Name(update.state)))
+        
+        if update.state == mesos_pb2.TASK_FINISHED:
+            self.tasksFinished += 1
+            
+        if self.tasksFinished == self.totalTasks:
+            print("All tasks completed, stopping framework")
+            driver.stop()
+
+    def getResource(self, resources, name):
+        for resource in resources:
+            if resource.name == name:
+                return resource.scalar.value
+        return 0
+
+if __name__ == "__main__":
+    # Configuração do framework
+    framework = mesos_pb2.FrameworkInfo()
+    framework.user = ""  # Usuário atual
+    framework.name = "Example Framework"
+    
+    # Cria driver
+    driver = mesos.native.MesosSchedulerDriver(
+        ExampleScheduler(),
+        framework,
+        "zk://localhost:2181/mesos"  # Master endpoint
+    )
+    
+    # Executa framework
+    status = driver.run()
+    print("Framework finished with status:", status)</code></pre>
+                    </div>
+
+                    <h3>Marathon - Framework para Aplicações</h3>
+                    <p>Marathon é um framework popular para Mesos que gerencia aplicações de longa duração:</p>
+                    <div class="code-example">
+                        <pre><code class="language-json">{
+  "id": "/web-app",
+  "cmd": "python app.py",
+  "cpus": 1.0,
+  "mem": 512,
+  "instances": 3,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "myapp:latest",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "hostPort": 0,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  },
+  "healthChecks": [
+    {
+      "protocol": "HTTP",
+      "path": "/health",
+      "portIndex": 0,
+      "timeoutSeconds": 10,
+      "gracePeriodSeconds": 10,
+      "intervalSeconds": 2,
+      "maxConsecutiveFailures": 10
+    }
+  ],
+  "upgradeStrategy": {
+    "minimumHealthCapacity": 0.5,
+    "maximumOverCapacity": 0.2
+  }
+}</code></pre>
+                    </div>
+
+                    <h3>Configuração de Cluster Mesos</h3>
+                    <div class="code-example">
+                        <pre><code class="language-bash"># Configuração do Mesos Master
+# /etc/mesos-master/quorum
+2
+
+# /etc/mesos-master/ip
+192.168.1.10
+
+# /etc/mesos-master/hostname
+mesos-master-1
+
+# /etc/mesos-master/cluster
+production-cluster
+
+# Configuração do ZooKeeper
+# /etc/mesos/zk
+zk://192.168.1.10:2181,192.168.1.11:2181,192.168.1.12:2181/mesos
+
+# Iniciar Mesos Master
+sudo service mesos-master start
+
+# Configuração do Mesos Slave
+# /etc/mesos-slave/ip
+192.168.1.20
+
+# /etc/mesos-slave/hostname
+mesos-slave-1
+
+# /etc/mesos-slave/resources
+cpus:4;mem:8192;disk:100000;ports:[8000-9000]
+
+# /etc/mesos-slave/attributes
+rack:rack1;datacenter:dc1
+
+# Iniciar Mesos Slave
+sudo service mesos-slave start</code></pre>
+                    </div>
+
+                    <h3>Frameworks Populares para Mesos</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Processamento de Dados</h4>
+                            <ul>
+                                <li><strong>Spark on Mesos:</strong> Processamento distribuído</li>
+                                <li><strong>Storm on Mesos:</strong> Stream processing</li>
+                                <li><strong>Hadoop on Mesos:</strong> MapReduce jobs</li>
+                                <li><strong>Cassandra on Mesos:</strong> Database distribuído</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Orquestração</h4>
+                            <ul>
+                                <li><strong>Marathon:</strong> Aplicações de longa duração</li>
+                                <li><strong>Chronos:</strong> Job scheduler distribuído</li>
+                                <li><strong>Aurora:</strong> Job scheduler do Twitter</li>
+                                <li><strong>Kubernetes on Mesos:</strong> Container orchestration</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Exemplo: Spark no Mesos</h3>
+                    <div class="code-example">
+                        <pre><code class="language-bash"># Configuração do Spark para usar Mesos
+export MESOS_NATIVE_JAVA_LIBRARY=/usr/local/lib/libmesos.so
+
+# Submeter job Spark no Mesos
+spark-submit \
+  --master mesos://zk://localhost:2181/mesos \
+  --deploy-mode cluster \
+  --class org.apache.spark.examples.SparkPi \
+  --conf spark.mesos.executor.docker.image=mesosphere/spark:2.4.0 \
+  --conf spark.mesos.executor.home=/opt/spark \
+  --conf spark.mesos.coarse=true \
+  --conf spark.cores.max=4 \
+  --conf spark.executor.memory=2g \
+  examples/jars/spark-examples_2.12-2.4.0.jar 100</code></pre>
+                    </div>
+
+                    <h3>Monitoramento e Observabilidade</h3>
+                    <div class="code-example">
+                        <pre><code class="language-python"># Script para monitorar métricas do Mesos
+import requests
+import json
+
+def get_mesos_metrics():
+    """Coleta métricas do Mesos Master"""
+    try:
+        response = requests.get('http://mesos-master:5050/metrics/snapshot')
+        metrics = response.json()
+        
+        # Métricas importantes
+        important_metrics = {
+            'master/slaves_active': metrics.get('master/slaves_active', 0),
+            'master/slaves_inactive': metrics.get('master/slaves_inactive', 0),
+            'master/frameworks_active': metrics.get('master/frameworks_active', 0),
+            'master/tasks_running': metrics.get('master/tasks_running', 0),
+            'master/tasks_failed': metrics.get('master/tasks_failed', 0),
+            'master/cpus_total': metrics.get('master/cpus_total', 0),
+            'master/cpus_used': metrics.get('master/cpus_used', 0),
+            'master/mem_total': metrics.get('master/mem_total', 0),
+            'master/mem_used': metrics.get('master/mem_used', 0)
+        }
+        
+        return important_metrics
+        
+    except Exception as e:
+        print(f"Erro ao coletar métricas: {e}")
+        return None
+
+def print_cluster_status():
+    """Imprime status do cluster"""
+    metrics = get_mesos_metrics()
+    if metrics:
+        print("=== Status do Cluster Mesos ===")
+        print(f"Slaves Ativos: {metrics['master/slaves_active']}")
+        print(f"Slaves Inativos: {metrics['master/slaves_inactive']}")
+        print(f"Frameworks Ativos: {metrics['master/frameworks_active']}")
+        print(f"Tarefas Executando: {metrics['master/tasks_running']}")
+        print(f"Tarefas Falharam: {metrics['master/tasks_failed']}")
+        print(f"CPU Utilização: {metrics['master/cpus_used']}/{metrics['master/cpus_total']}")
+        print(f"Memória Utilização: {metrics['master/mem_used']:.0f}MB/{metrics['master/mem_total']:.0f}MB")
+
+if __name__ == "__main__":
+    print_cluster_status()</code></pre>
+                    </div>
+
+                    <h3>Mesos vs Kubernetes</h3>
+                    <div class="table-responsive">
+                        <table class="table table-dark table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Aspecto</th>
+                                    <th>Apache Mesos</th>
+                                    <th>Kubernetes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Foco</strong></td>
+                                    <td>Gerenciamento de recursos</td>
+                                    <td>Orquestração de containers</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Arquitetura</strong></td>
+                                    <td>Two-level scheduling</td>
+                                    <td>Monolithic scheduler</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Flexibilidade</strong></td>
+                                    <td>Múltiplos frameworks</td>
+                                    <td>Focado em containers</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Comunidade</strong></td>
+                                    <td>Em declínio</td>
+                                    <td>Muito ativa</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Adoção</strong></td>
+                                    <td>Limitada</td>
+                                    <td>Padrão da indústria</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Casos de Uso Históricos</h3>
+                    <ul>
+                        <li><strong>Twitter:</strong> Gerenciamento de infraestrutura em larga escala</li>
+                        <li><strong>Airbnb:</strong> Processamento de dados e ML</li>
+                        <li><strong>Netflix:</strong> Execução de jobs batch</li>
+                        <li><strong>Uber:</strong> Processamento de dados em tempo real</li>
+                        <li><strong>Apple:</strong> Infraestrutura interna</li>
+                    </ul>
+
+                    <h3>Vantagens</h3>
+                    <ul>
+                        <li>Abstração eficiente de recursos</li>
+                        <li>Suporte a múltiplos frameworks</li>
+                        <li>Escalabilidade comprovada</li>
+                        <li>Isolamento robusto</li>
+                        <li>APIs nativas flexíveis</li>
+                    </ul>
+
+                    <h3>Desvantagens</h3>
+                    <ul>
+                        <li>Complexidade de configuração</li>
+                        <li>Comunidade em declínio</li>
+                        <li>Documentação limitada</li>
+                        <li>Curva de aprendizado íngreme</li>
+                        <li>Suporte limitado para containers</li>
+                    </ul>
+
+                    <h3>Migração para Kubernetes</h3>
+                    <p>Para organizações usando Mesos, a migração para Kubernetes é recomendada:</p>
+                    <ul>
+                        <li><strong>Planejamento:</strong> Inventário de workloads atuais</li>
+                        <li><strong>Containerização:</strong> Migrar aplicações para containers</li>
+                        <li><strong>Configuração:</strong> Traduzir configurações Mesos para Kubernetes</li>
+                        <li><strong>Testes:</strong> Validar funcionalidade em ambiente de teste</li>
+                        <li><strong>Migração Gradual:</strong> Mover workloads incrementalmente</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="sidebar-info">
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header">
+                            <h5>Informações Técnicas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><strong>Linguagem:</strong> C++</li>
+                                <li><strong>Licença:</strong> Apache 2.0</li>
+                                <li><strong>Primeira Release:</strong> 2011</li>
+                                <li><strong>Versão Atual:</strong> 1.11.0</li>
+                                <li><strong>Status:</strong> Manutenção</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card bg-dark border-info mb-4">
+                        <div class="card-header">
+                            <h5>Links Úteis</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="https://mesos.apache.org" target="_blank">Site Oficial</a></li>
+                                <li><a href="https://mesos.apache.org/documentation/" target="_blank">Documentação</a></li>
+                                <li><a href="https://github.com/apache/mesos" target="_blank">GitHub</a></li>
+                                <li><a href="https://mesosphere.github.io/marathon/" target="_blank">Marathon</a></li>
+                                <li><a href="https://mesos.apache.org/community/" target="_blank">Comunidade</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card bg-dark border-warning mb-4">
+                        <div class="card-header">
+                            <h5>Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="../kubernetes/">Kubernetes</a> - Sucessor moderno</li>
+                                <li><a href="../docker/">Docker</a> - Containerização</li>
+                                <li><a href="../apache-airflow/">Apache Airflow</a> - Workflows</li>
+                                <li><a href="../../processamento/apache-spark/">Apache Spark</a> - Processamento</li>
+                                <li><a href="../../streaming/apache-kafka/">Apache Kafka</a> - Streaming</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card bg-dark border-danger mb-4">
+                        <div class="card-header">
+                            <h5>⚠️ Aviso Importante</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-warning">O Apache Mesos está em modo de manutenção. Para novos projetos, recomendamos usar <a href="../kubernetes/">Kubernetes</a>.</p>
+                        </div>
+                    </div>
+
+                    <div class="card bg-dark border-primary">
+                        <div class="card-header">
+                            <h5>Cursos Relacionados</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="../../../cursos/distributed-systems/">Distributed Systems</a></li>
+                                <li><a href="../../../cursos/kubernetes-fundamentals/">Kubernetes Fundamentals</a></li>
+                                <li><a href="../../../cursos/cluster-management/">Cluster Management</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Portal Big Data</h5>
+                    <p>Seu guia completo para tecnologias de Big Data</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2024 Portal Big Data. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../assets/js/technology-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau - Visualização | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Tableau - Visualização | Portal Big Data">
+    <meta name="description" content="Tableau: líder mundial em visualização de dados e business intelligence. Guia completo, recursos avançados e casos de uso empresariais.">
+    <meta name="keywords" content="tableau, business intelligence, visualização de dados, analytics, dashboard, data visualization, bi">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/visualizacao/tableau">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/visualizacao/tableau">
+    <meta property="og:title" content="Tableau - Visualização | Portal Big Data">
+    <meta property="og:description" content="Tableau: líder mundial em visualização de dados e business intelligence.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/og/tableau-og.jpg">
+    <meta property="og:site_name" content="Portal Big Data">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/tecnologias/visualizacao/tableau">
+    <meta property="twitter:title" content="Tableau - Visualização | Portal Big Data">
+    <meta property="twitter:description" content="Tableau: líder mundial em visualização de dados e business intelligence.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/tableau-twitter.jpg">
+    <meta property="twitter:site" content="@portalbigdata">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Tableau",
+        "description": "Plataforma líder mundial em visualização de dados e business intelligence",
+        "url": "https://www.tableau.com",
+        "applicationCategory": "Business Intelligence",
+        "operatingSystem": "Windows, macOS, Linux",
+        "programmingLanguage": "C++, Java",
+        "license": "Proprietary",
+        "version": "2024.1",
+        "datePublished": "2003-01-01",
+        "dateModified": "2024-12-01",
+        "author": {
+            "@type": "Organization",
+            "name": "Salesforce (Tableau)"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "70",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        }
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="/">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Visualização</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Tableau</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Technology Header -->
+                <div class="tech-header d-flex align-items-center mb-4">
+                    <img src="../../../assets/images/logos/tableau-logo.png" alt="Tableau Logo" class="tech-logo me-3" style="width: 80px; height: 80px;">
+                    <div>
+                        <h1 class="mb-2">Tableau</h1>
+                        <div class="tech-badges">
+                            <span class="badge bg-primary">Comercial</span>
+                            <span class="badge bg-info">Líder de Mercado</span>
+                            <span class="badge bg-warning text-dark">Visualização</span>
+                            <span class="badge bg-success">Enterprise</span>
+                        </div>
+                        <p class="lead mt-2 mb-0">Plataforma líder mundial em visualização de dados e business intelligence</p>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs nav-fill mb-4" id="techTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            Visão Geral
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">
+                            Recursos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="use-cases-tab" data-bs-toggle="tab" data-bs-target="#use-cases" type="button" role="tab">
+                            Casos de Uso
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="examples-tab" data-bs-toggle="tab" data-bs-target="#examples" type="button" role="tab">
+                            Exemplos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button" role="tab">
+                            Comparações
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="techTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>O que é Tableau?</h3>
+                                <p>Tableau é uma plataforma líder mundial em visualização de dados e business intelligence, reconhecida por sua capacidade de transformar dados complexos em insights visuais compreensíveis. Fundada em 2003 e adquirida pela Salesforce em 2019, Tableau é amplamente utilizada por organizações Fortune 500 para análise de dados, relatórios executivos e tomada de decisões baseada em dados.</p>
+                                
+                                <h4>História</h4>
+                                <p>Tableau foi fundada em 2003 por Chris Stolte, Pat Hanrahan e Christian Chabot, baseada em pesquisas de Stanford sobre visualização de dados. A empresa foi pioneira em tornar a análise de dados acessível através de interfaces drag-and-drop intuitivas. Em 2019, foi adquirida pela Salesforce por $15.7 bilhões, tornando-se parte do ecossistema Salesforce Customer 360.</p>
+                                
+                                <h4>Arquitetura</h4>
+                                <p>Tableau utiliza uma arquitetura híbrida que combina processamento local e em nuvem. O Tableau Desktop é construído em C++ para performance, enquanto o Tableau Server/Online utiliza Java e tecnologias web. A plataforma suporta conexões diretas (live) e extratos de dados (TDE/Hyper), permitindo flexibilidade entre performance e atualização em tempo real.</p>
+                                
+                                <h4>Vantagens</h4>
+                                <ul>
+                                    <li><strong>Interface Intuitiva:</strong> Drag-and-drop visual para criação de análises</li>
+                                    <li><strong>Visualizações Avançadas:</strong> Ampla gama de gráficos e visualizações interativas</li>
+                                    <li><strong>Performance Superior:</strong> Engine otimizado para grandes volumes de dados</li>
+                                    <li><strong>Conectividade Ampla:</strong> 100+ conectores nativos para fontes de dados</li>
+                                    <li><strong>Colaboração:</strong> Compartilhamento e colaboração em tempo real</li>
+                                    <li><strong>Mobile First:</strong> Dashboards responsivos e apps móveis nativas</li>
+                                    <li><strong>Governança:</strong> Controles robustos de segurança e governança</li>
+                                    <li><strong>Ecossistema:</strong> Integração com Salesforce e marketplace de extensões</li>
+                                </ul>
+                                
+                                <h4>Desvantagens</h4>
+                                <ul>
+                                    <li><strong>Custo Elevado:</strong> Licenças caras, especialmente para grandes equipes</li>
+                                    <li><strong>Curva de Aprendizado:</strong> Recursos avançados requerem treinamento</li>
+                                    <li><strong>Dependência de Licença:</strong> Modelo de licenciamento por usuário</li>
+                                    <li><strong>Customização Limitada:</strong> Menos flexível que soluções programáticas</li>
+                                    <li><strong>Versionamento:</strong> Controle de versão pode ser complexo</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane fade" id="features" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Principais Recursos</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🎨 Visual Analytics</h5>
+                                            <p>Interface drag-and-drop intuitiva para criação de visualizações complexas sem programação.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>📊 Smart Dashboards</h5>
+                                            <p>Dashboards interativos e responsivos com filtros dinâmicos e drill-down automático.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🔍 Ask Data</h5>
+                                            <p>Consultas em linguagem natural usando IA para gerar visualizações automaticamente.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>📱 Mobile Analytics</h5>
+                                            <p>Apps móveis nativas para iOS e Android com dashboards otimizados para touch.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🤖 Einstein Discovery</h5>
+                                            <p>IA integrada para descoberta automática de insights e previsões estatísticas.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🔐 Enterprise Security</h5>
+                                            <p>Controles granulares de segurança, SSO, criptografia e auditoria completa.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4>Produtos da Família Tableau</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Tableau Desktop:</strong></td>
+                                                <td>Ferramenta de autoria para criação de visualizações</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Tableau Server:</strong></td>
+                                                <td>Plataforma on-premise para compartilhamento e colaboração</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Tableau Online:</strong></td>
+                                                <td>Versão SaaS hospedada na nuvem</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Tableau Public:</strong></td>
+                                                <td>Versão gratuita para visualizações públicas</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Tableau Prep:</strong></td>
+                                                <td>Ferramenta de preparação e limpeza de dados</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Tableau Mobile:</strong></td>
+                                                <td>Apps móveis para iOS e Android</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Tab -->
+                    <div class="tab-pane fade" id="use-cases" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Casos de Uso</h3>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>📈 Executive Dashboards</h5>
+                                    <p>Dashboards executivos com KPIs estratégicos, métricas financeiras e indicadores de performance.</p>
+                                    <div class="alert alert-info">
+                                        <strong>Exemplo:</strong> Dashboard C-level com receita, margem, crescimento e análise de mercado.
+                                    </div>
+                                </div>
+
+                                <div class="use-case mb-4">
+                                    <h5>🛒 Sales Analytics</h5>
+                                    <p>Análise de vendas, performance de equipes, pipeline e previsões de receita.</p>
+                                    <div class="alert alert-info">
+                                        <strong>Exemplo:</strong> Dashboard de vendas com análise geográfica, performance por produto e forecast.
+                                    </div>
+                                </div>
+
+                                <div class="use-case mb-4">
+                                    <h5>📊 Financial Reporting</h5>
+                                    <p>Relatórios financeiros automatizados, análise de custos e planejamento orçamentário.</p>
+                                    <div class="alert alert-info">
+                                        <strong>Exemplo:</strong> Relatórios P&L interativos com drill-down por departamento e centro de custo.
+                                    </div>
+                                </div>
+
+                                <div class="use-case mb-4">
+                                    <h5>🎯 Marketing Analytics</h5>
+                                    <p>Análise de campanhas, ROI de marketing, customer journey e attribution modeling.</p>
+                                    <div class="alert alert-info">
+                                        <strong>Exemplo:</strong> Dashboard de marketing digital com CAC, LTV, conversões por canal.
+                                    </div>
+                                </div>
+
+                                <div class="use-case mb-4">
+                                    <h5>🏥 Healthcare Analytics</h5>
+                                    <p>Análise de dados clínicos, outcomes de pacientes e otimização operacional hospitalar.</p>
+                                    <div class="alert alert-info">
+                                        <strong>Exemplo:</strong> Dashboard de qualidade hospitalar com readmissões, tempo de permanência.
+                                    </div>
+                                </div>
+                                
+                                <h4>Quando Usar Tableau</h4>
+                                <div class="alert alert-success">
+                                    <h5>✅ Recomendado para:</h5>
+                                    <ul class="mb-0">
+                                        <li>Organizações enterprise com orçamento para licenças</li>
+                                        <li>Usuários de negócio que precisam de self-service analytics</li>
+                                        <li>Análises complexas e visualizações avançadas</li>
+                                        <li>Ambientes que requerem governança robusta</li>
+                                        <li>Integração com ecossistema Salesforce</li>
+                                        <li>Dashboards executivos e relatórios regulatórios</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <h5>⚠️ Considere alternativas se:</h5>
+                                    <ul class="mb-0">
+                                        <li>Orçamento limitado (considere Power BI ou open source)</li>
+                                        <li>Equipe pequena com poucos usuários</li>
+                                        <li>Necessita de alta customização programática</li>
+                                        <li>Foco principal é monitoramento operacional</li>
+                                        <li>Ambiente 100% open source</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples Tab -->
+                    <div class="tab-pane fade" id="examples" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Exemplos Práticos</h3>
+                                
+                                <h4>Conectando a uma Fonte de Dados</h4>
+                                <div class="code-example">
+                                    <pre><code># Exemplo de conexão via Tableau Desktop
+1. Abrir Tableau Desktop
+2. Clicar em "Connect" > "To a Server" > "PostgreSQL"
+3. Configurar:
+   - Server: localhost
+   - Port: 5432
+   - Database: analytics
+   - Authentication: Username and Password
+   - Username: tableau_user
+   - Password: ********
+
+# Ou via Tableau Server REST API
+curl -X POST https://tableau-server/api/3.19/auth/signin \
+  -H "Content-Type: application/json" \
+  -d '{
+    "credentials": {
+      "name": "username",
+      "password": "password",
+      "site": {
+        "contentUrl": "site-name"
+      }
+    }
+  }'</code></pre>
+                                </div>
+                                
+                                <h4>Criando um Dashboard Básico</h4>
+                                <div class="code-example">
+                                    <pre><code># Passos para criar dashboard de vendas:
+
+1. Conectar à fonte de dados (ex: sales_data.csv)
+
+2. Criar visualizações:
+   - Arrastar "Sales" para Rows
+   - Arrastar "Date" para Columns
+   - Arrastar "Region" para Color
+
+3. Criar dashboard:
+   - New Dashboard
+   - Arrastar sheets para o dashboard
+   - Adicionar filtros interativos
+   - Configurar actions entre sheets
+
+4. Formatação:
+   - Aplicar tema corporativo
+   - Adicionar títulos e legendas
+   - Configurar tooltips personalizados</code></pre>
+                                </div>
+                                
+                                <h4>Calculated Fields (Campos Calculados)</h4>
+                                <div class="code-example">
+                                    <pre><code># Exemplos de campos calculados em Tableau
+
+# Profit Margin
+[Profit] / [Sales]
+
+# Year over Year Growth
+(ZN(SUM([Sales])) - LOOKUP(ZN(SUM([Sales])), -1)) / ABS(LOOKUP(ZN(SUM([Sales])), -1))
+
+# Running Total
+RUNNING_SUM(SUM([Sales]))
+
+# Rank
+RANK(SUM([Sales]), 'desc')
+
+# Date Calculations
+DATEDIFF('day', [Order Date], [Ship Date])
+
+# Conditional Logic
+IF [Sales] > 1000 THEN "High"
+ELSEIF [Sales] > 500 THEN "Medium"
+ELSE "Low"
+END</code></pre>
+                                </div>
+
+                                <h4>Tableau Server REST API</h4>
+                                <div class="code-example">
+                                    <pre><code># Publicar workbook via API
+curl -X POST "https://tableau-server/api/3.19/sites/{site-id}/workbooks" \
+  -H "X-Tableau-Auth: {auth-token}" \
+  -H "Content-Type: multipart/mixed" \
+  -F "request_payload=@publish-workbook.xml" \
+  -F "tableau_workbook=@workbook.twbx"
+
+# Atualizar extract
+curl -X POST "https://tableau-server/api/3.19/sites/{site-id}/datasources/{datasource-id}/refresh" \
+  -H "X-Tableau-Auth: {auth-token}" \
+  -H "Content-Type: application/json"
+
+# Listar workbooks
+curl -X GET "https://tableau-server/api/3.19/sites/{site-id}/workbooks" \
+  -H "X-Tableau-Auth: {auth-token}"</code></pre>
+                                </div>
+                                
+                                <h4>Tutoriais Relacionados</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h6>🚀 Tableau Fundamentals</h6>
+                                                <p>Curso completo para iniciantes em Tableau Desktop e Server.</p>
+                                                <a href="#" class="btn btn-sm btn-outline-primary">Ver Tutorial</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h6>📊 Advanced Analytics</h6>
+                                                <p>Técnicas avançadas de análise e visualização com Tableau.</p>
+                                                <a href="#" class="btn btn-sm btn-outline-primary">Ver Tutorial</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Tab -->
+                    <div class="tab-pane fade" id="comparison" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Comparações</h3>
+                                
+                                <h4>Tableau vs Principais Concorrentes</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Critério</th>
+                                                <th>Tableau</th>
+                                                <th>Power BI</th>
+                                                <th>Qlik Sense</th>
+                                                <th>Apache Superset</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Preço (por usuário/mês)</strong></td>
+                                                <td><span class="badge bg-danger">$70</span></td>
+                                                <td><span class="badge bg-warning">$10</span></td>
+                                                <td><span class="badge bg-warning">$30</span></td>
+                                                <td><span class="badge bg-success">Gratuito</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Facilidade de Uso</strong></td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Visualizações Avançadas</strong></td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Performance</strong></td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Conectividade</strong></td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Mobile Experience</strong></td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h4>Análise de Custo-Benefício</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-header bg-success">
+                                                <h6>💰 Investimento Tableau</h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <ul class="mb-0">
+                                                    <li><strong>Creator:</strong> $70/mês</li>
+                                                    <li><strong>Explorer:</strong> $42/mês</li>
+                                                    <li><strong>Viewer:</strong> $15/mês</li>
+                                                    <li><strong>Server:</strong> $35/usuário/mês</li>
+                                                    <li><strong>Treinamento:</strong> $2,000-5,000</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-header bg-info">
+                                                <h6>📈 ROI Esperado</h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <ul class="mb-0">
+                                                    <li>Redução 60% tempo de relatórios</li>
+                                                    <li>Aumento 25% produtividade analistas</li>
+                                                    <li>Melhoria 30% tomada de decisão</li>
+                                                    <li>ROI típico: 300-500% em 2 anos</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4>Matriz de Decisão</h4>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <div class="alert alert-success">
+                                            <h5>✅ Escolha Tableau se:</h5>
+                                            <ul class="mb-0">
+                                                <li>Orçamento para licenças premium</li>
+                                                <li>Necessita das melhores visualizações</li>
+                                                <li>Usuários de negócio não-técnicos</li>
+                                                <li>Performance é crítica</li>
+                                                <li>Ambiente enterprise complexo</li>
+                                                <li>Integração com Salesforce</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="alert alert-warning">
+                                            <h5>⚠️ Considere alternativas se:</h5>
+                                            <ul class="mb-0">
+                                                <li>Orçamento limitado (Power BI)</li>
+                                                <li>Equipe pequena (Metabase)</li>
+                                                <li>Ambiente 100% Microsoft (Power BI)</li>
+                                                <li>Necessita customização total (Superset)</li>
+                                                <li>Foco em monitoramento (Grafana)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>📊 Quick Facts</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-dark">
+                                <tr>
+                                    <td><strong>Versão Atual:</strong></td>
+                                    <td>2024.1</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Licença:</strong></td>
+                                    <td>Proprietária</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Linguagem:</strong></td>
+                                    <td>C++, Java</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Primeira Release:</strong></td>
+                                    <td>2003</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Empresa:</strong></td>
+                                    <td>Salesforce</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔗 Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="https://www.tableau.com" class="btn btn-outline-success btn-sm" target="_blank">
+                                    🌐 Site Oficial
+                                </a>
+                                <a href="https://public.tableau.com" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📊 Tableau Public
+                                </a>
+                                <a href="https://help.tableau.com" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📚 Documentação
+                                </a>
+                                <a href="https://community.tableau.com" class="btn btn-outline-success btn-sm" target="_blank">
+                                    👥 Community
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pricing -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>💰 Preços (USD/mês)</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-dark">
+                                <tr>
+                                    <td><strong>Creator:</strong></td>
+                                    <td>$70</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Explorer:</strong></td>
+                                    <td>$42</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Viewer:</strong></td>
+                                    <td>$15</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Public:</strong></td>
+                                    <td>Gratuito</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔄 Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="../power-bi/" class="btn btn-outline-info btn-sm">Microsoft Power BI</a>
+                                <a href="../qlik-sense/" class="btn btn-outline-info btn-sm">Qlik Sense</a>
+                                <a href="../apache-superset/" class="btn btn-outline-info btn-sm">Apache Superset</a>
+                                <a href="../looker/" class="btn btn-outline-info btn-sm">Looker</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Courses -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🎓 Cursos Relacionados</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group list-group-flush">
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    Tableau Desktop Fundamentals
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    Advanced Tableau Analytics
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    Tableau Server Administration
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sponsored Content -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>💼 Conteúdo Patrocinado</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <p class="small">Espaço para conteúdo patrocinado relacionado a Tableau</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/main.js"></script>
+    <script src="../../../assets/js/technology-page.js"></script>
+    <script src="../../../assets/js/theme-toggle.js"></script>
+</body>
+</html>

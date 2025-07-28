@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Mahout - Distributed Machine Learning | Portal Big Data</title>
+    <meta name="description" content="Apache Mahout: biblioteca de machine learning distribuído. Aprenda sobre algoritmos escaláveis e integração com Hadoop.">
+    <meta name="keywords" content="apache mahout, distributed machine learning, hadoop, spark, clustering, classification, collaborative filtering">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Apache Mahout - Distributed Machine Learning | Portal Big Data">
+    <meta property="og:description" content="Biblioteca de machine learning distribuído para Big Data">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/machine-learning/apache-mahout/">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/matrix-theme.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Apache Mahout",
+        "description": "Distributed machine learning library",
+        "url": "https://mahout.apache.org",
+        "applicationCategory": "Machine Learning Library",
+        "operatingSystem": "Linux, Windows, macOS",
+        "programmingLanguage": ["Java", "Scala"],
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Apache Software Foundation"
+        }
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand text-success" href="../../../index.html">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../../index.html" class="text-success">Home</a></li>
+                <li class="breadcrumb-item"><a href="../../" class="text-success">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../" class="text-success">Machine Learning</a></li>
+                <li class="breadcrumb-item active text-light">Apache Mahout</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Technology Header -->
+                <div class="tech-header mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://mahout.apache.org/images/mahout-logo-poweredby-100.png" alt="Apache Mahout Logo" class="tech-logo me-3" style="height: 80px;">
+                        <div>
+                            <h1 class="text-success mb-2">Apache Mahout</h1>
+                            <div class="tech-badges">
+                                <span class="badge bg-primary">Open Source</span>
+                                <span class="badge bg-success">Apache</span>
+                                <span class="badge bg-warning text-dark">Distributed</span>
+                                <span class="badge bg-info">Hadoop</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Overview -->
+                <section class="mb-5">
+                    <h2 class="text-success">Visão Geral</h2>
+                    <p class="text-light">
+                        Apache Mahout é uma biblioteca de machine learning distribuído projetada para 
+                        trabalhar com grandes volumes de dados. Originalmente focada no ecossistema Hadoop, 
+                        evoluiu para suportar múltiplas plataformas de computação distribuída.
+                    </p>
+                    <p class="text-light">
+                        Mahout oferece implementações escaláveis de algoritmos de machine learning clássicos, 
+                        incluindo clustering, classificação, filtragem colaborativa e redução de dimensionalidade, 
+                        otimizados para processamento distribuído.
+                    </p>
+                </section>
+
+                <!-- Evolution -->
+                <section class="mb-5">
+                    <h2 class="text-success">Evolução da Plataforma</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Mahout 0.x</h5>
+                                    <p class="text-light small">Foco em MapReduce e Hadoop, algoritmos tradicionais</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Mahout 0.10+</h5>
+                                    <p class="text-light small">Transição para Spark, DSL matemático Samsara</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Mahout 0.13+</h5>
+                                    <p class="text-light small">Suporte para Flink, GPU acceleration</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Mahout 14+</h5>
+                                    <p class="text-light small">Modernização, deep learning integration</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Key Algorithms -->
+                <section class="mb-5">
+                    <h2 class="text-success">Algoritmos Principais</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="text-success">Clustering</h5>
+                            <ul class="text-light">
+                                <li>K-Means</li>
+                                <li>Fuzzy K-Means</li>
+                                <li>Canopy Clustering</li>
+                                <li>Mean Shift</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-success">Classification</h5>
+                            <ul class="text-light">
+                                <li>Naive Bayes</li>
+                                <li>Random Forest</li>
+                                <li>Logistic Regression</li>
+                                <li>SVM</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-success">Collaborative Filtering</h5>
+                            <ul class="text-light">
+                                <li>User-based CF</li>
+                                <li>Item-based CF</li>
+                                <li>Matrix Factorization</li>
+                                <li>ALS (Alternating Least Squares)</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-success">Dimensionality Reduction</h5>
+                            <ul class="text-light">
+                                <li>Principal Component Analysis</li>
+                                <li>Singular Value Decomposition</li>
+                                <li>Stochastic SVD</li>
+                                <li>QR Decomposition</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Code Example -->
+                <section class="mb-5">
+                    <h2 class="text-success">Exemplo Prático</h2>
+                    <p class="text-light">Exemplo de clustering K-Means com Mahout:</p>
+                    <pre class="bg-dark p-3 rounded border border-success"><code class="text-success">import org.apache.mahout.clustering.kmeans.KMeansDriver
+import org.apache.mahout.clustering.kmeans.Kluster
+import org.apache.mahout.common.distance.EuclideanDistanceMeasure
+import org.apache.mahout.math.{DenseVector, NamedVector, Vector}
+import org.apache.spark.SparkContext
+import org.apache.mahout.sparkbindings._
+import org.apache.mahout.math.scalabindings._
+import org.apache.mahout.math.drm._
+
+// Configurar Spark context
+implicit val sc = new SparkContext()
+
+// Criar dados de exemplo
+val data = drmParallelize(dense(
+  (1.0, 1.0),
+  (1.5, 2.0),
+  (3.0, 4.0),
+  (5.0, 7.0),
+  (3.5, 5.0),
+  (4.5, 5.0),
+  (3.5, 4.5)
+))
+
+// Configurar parâmetros do K-Means
+val k = 2  // número de clusters
+val maxIterations = 10
+val convergenceThreshold = 0.001
+
+// Executar K-Means
+val (centroids, assignments) = kmeans(
+  data,
+  k = k,
+  maxIterations = maxIterations,
+  convergenceThreshold = convergenceThreshold
+)
+
+// Mostrar centroids
+println("Centroids:")
+centroids.collect.zipWithIndex.foreach { case (centroid, idx) =>
+  println(s"Cluster $idx: ${centroid.toString}")
+}
+
+// Mostrar assignments
+println("\nAssignments:")
+assignments.collect.foreach { case (point, cluster) =>
+  println(s"Point ${point.toString} -> Cluster $cluster")
+}
+
+// Exemplo com Mahout Samsara DSL
+import org.apache.mahout.math.scalabindings.RLikeOps._
+
+// Criar matriz distribuída
+val drmData = drmParallelize(dense(
+  (2.0, 3.0, 1.0),
+  (4.0, 1.0, 2.0),
+  (1.0, 5.0, 3.0),
+  (3.0, 2.0, 1.0)
+))
+
+// Operações matriciais
+val result = drmData.t %*% drmData  // transposta multiplicada pela original
+val collected = result.collect
+
+println("\nMatrix multiplication result:")
+println(collected)
+
+// Decomposição SVD
+val (u, v, s) = dsvd(drmData, k = 2)
+println(s"\nSVD - Singular values: ${s}")
+
+sc.stop()
+</code></pre>
+                </section>
+
+                <!-- Current Status -->
+                <section class="mb-5">
+                    <h2 class="text-success">Status Atual e Futuro</h2>
+                    <div class="alert alert-warning" role="alert">
+                        <h5 class="text-dark">⚠️ Nota Importante</h5>
+                        <p class="text-dark mb-0">
+                            Apache Mahout teve desenvolvimento reduzido nos últimos anos. Para novos projetos, 
+                            considere alternativas como Spark MLlib, que oferece funcionalidades similares 
+                            com desenvolvimento mais ativo.
+                        </p>
+                    </div>
+                    
+                    <h5 class="text-success">Alternativas Recomendadas</h5>
+                    <ul class="text-light">
+                        <li><strong>Spark MLlib:</strong> Para machine learning distribuído moderno</li>
+                        <li><strong>H2O.ai:</strong> Para AutoML e algoritmos escaláveis</li>
+                        <li><strong>Dask-ML:</strong> Para machine learning distribuído em Python</li>
+                        <li><strong>Ray:</strong> Para ML distribuído e hyperparameter tuning</li>
+                    </ul>
+                </section>
+
+                <!-- Tutorial Links -->
+                <section class="mb-5">
+                    <h2 class="text-success">Tutoriais e Recursos</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="text-success">Documentação Oficial</h5>
+                            <ul class="text-light">
+                                <li><a href="https://mahout.apache.org/users/basics/quickstart.html" class="text-success" target="_blank">Quickstart</a></li>
+                                <li><a href="https://mahout.apache.org/users/basics/algorithms.html" class="text-success" target="_blank">Algorithms</a></li>
+                                <li><a href="https://mahout.apache.org/users/sparkbindings/home.html" class="text-success" target="_blank">Spark Bindings</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-success">Recursos da Comunidade</h5>
+                            <ul class="text-light">
+                                <li><a href="https://github.com/apache/mahout" class="text-success" target="_blank">GitHub Repository</a></li>
+                                <li><a href="https://mahout.apache.org/general/mailing-lists,-irc-and-archives.html" class="text-success" target="_blank">Mailing Lists</a></li>
+                                <li><a href="https://stackoverflow.com/questions/tagged/mahout" class="text-success" target="_blank">Stack Overflow</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-md-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Informações Rápidas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled text-light">
+                                <li><strong>Desenvolvedor:</strong> Apache Foundation</li>
+                                <li><strong>Primeira Versão:</strong> 2009</li>
+                                <li><strong>Linguagem:</strong> Java, Scala</li>
+                                <li><strong>Licença:</strong> Apache 2.0</li>
+                                <li><strong>Status:</strong> Desenvolvimento reduzido</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="../spark-mllib/" class="text-success">Spark MLlib</a></li>
+                                <li><a href="../h2o-ai/" class="text-success">H2O.ai</a></li>
+                                <li><a href="../../sistemas-arquivos/hdfs/" class="text-success">HDFS</a></li>
+                                <li><a href="../../processamento/apache-spark/" class="text-success">Apache Spark</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card bg-dark border-success">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="https://mahout.apache.org" class="text-success" target="_blank">Site Oficial</a></li>
+                                <li><a href="https://github.com/apache/mahout" class="text-success" target="_blank">GitHub</a></li>
+                                <li><a href="https://mahout.apache.org/users/basics/quickstart.html" class="text-success" target="_blank">Quickstart</a></li>
+                                <li><a href="https://mahout.apache.org/general/mailing-lists,-irc-and-archives.html" class="text-success" target="_blank">Community</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2024 Portal Big Data. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="../../../contato/" class="text-success">Contato</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

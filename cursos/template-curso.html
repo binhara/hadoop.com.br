@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[COURSE_TITLE] - Cursos | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="[COURSE_DESCRIPTION] - Curso especializado em Big Data no Portal Big Data.">
+    <meta name="keywords" content="[COURSE_TITLE], curso big data, [TECHNOLOGIES], treinamento, certificação">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="[COURSE_TITLE] - Cursos | Portal Big Data">
+    <meta property="og:description" content="[COURSE_DESCRIPTION] - Curso especializado em Big Data.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/courses/[COURSE_ID]-og.jpg">
+    <meta property="og:url" content="https://hadoop.com.br/cursos/[COURSE_ID]">
+    <meta property="og:type" content="article">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="[COURSE_TITLE] - Cursos | Portal Big Data">
+    <meta name="twitter:description" content="[COURSE_DESCRIPTION] - Curso especializado em Big Data.">
+    <meta name="twitter:image" content="https://hadoop.com.br/assets/images/courses/[COURSE_ID]-twitter.jpg">
+    
+    <!-- Structured Data for Course -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "[COURSE_TITLE]",
+        "description": "[COURSE_DESCRIPTION]",
+        "provider": {
+            "@type": "EducationalOrganization",
+            "name": "Portal Big Data",
+            "url": "https://hadoop.com.br",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://hadoop.com.br/assets/images/logo.png"
+            }
+        },
+        "instructor": {
+            "@type": "Person",
+            "name": "[INSTRUCTOR_NAME]",
+            "description": "[INSTRUCTOR_BIO]",
+            "image": "https://hadoop.com.br/assets/images/instructors/[INSTRUCTOR_ID].jpg",
+            "jobTitle": "[INSTRUCTOR_TITLE]"
+        },
+        "courseCode": "[COURSE_ID]",
+        "educationalLevel": "[LEVEL]",
+        "timeRequired": "[DURATION]",
+        "inLanguage": "pt-BR",
+        "availableLanguage": "pt-BR",
+        "teaches": [
+            "[LEARNING_OBJECTIVE_1]",
+            "[LEARNING_OBJECTIVE_2]",
+            "[LEARNING_OBJECTIVE_3]"
+        ],
+        "coursePrerequisites": [
+            "[PREREQUISITE_1]",
+            "[PREREQUISITE_2]"
+        ],
+        "educationalCredentialAwarded": "Certificate of Completion",
+        "image": "https://hadoop.com.br/assets/images/courses/[COURSE_ID].jpg",
+        "url": "https://hadoop.com.br/cursos/[COURSE_ID]",
+        "datePublished": "[DATE_PUBLISHED]",
+        "dateModified": "[LAST_UPDATED]",
+        "offers": {
+            "@type": "Offer",
+            "price": "[PRICE]",
+            "priceCurrency": "BRL",
+            "availability": "https://schema.org/InStock",
+            "validFrom": "[VALID_FROM]",
+            "category": "[CATEGORY]"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "[RATING]",
+            "ratingCount": "[RATING_COUNT]",
+            "bestRating": 5,
+            "worstRating": 1
+        },
+        "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "online",
+            "courseWorkload": "[DURATION]",
+            "instructor": {
+                "@type": "Person",
+                "name": "[INSTRUCTOR_NAME]"
+            }
+        }
+    }
+    </script>
+    
+    <!-- Breadcrumb Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Início",
+                "item": {
+                    "@type": "WebPage",
+                    "@id": "https://hadoop.com.br",
+                    "name": "Portal Big Data"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Cursos",
+                "item": {
+                    "@type": "WebPage",
+                    "@id": "https://hadoop.com.br/cursos",
+                    "name": "Cursos Big Data"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "[COURSE_TITLE]",
+                "item": {
+                    "@type": "WebPage",
+                    "@id": "https://hadoop.com.br/cursos/[COURSE_ID]",
+                    "name": "[COURSE_TITLE]"
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="/">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../tecnologias/">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="../cursos/">Cursos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">[COURSE_TITLE]</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Course Header -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="course-header">
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="course-image me-4">
+                            <img src="../assets/images/courses/[COURSE_ID].jpg" alt="[COURSE_TITLE]" class="img-fluid rounded" style="max-width: 200px;">
+                        </div>
+                        <div class="flex-grow-1">
+                            <h1 class="mb-2">[COURSE_TITLE]</h1>
+                            <div class="course-badges mb-3">
+                                <span class="badge bg-info" id="level-badge">[LEVEL]</span>
+                                <span class="badge bg-success" id="price-badge">[PRICE_DISPLAY]</span>
+                                <span class="badge bg-warning text-dark" id="category-badge">[CATEGORY]</span>
+                                <span class="badge bg-primary" id="featured-badge" style="display: none;">⭐ Destaque</span>
+                            </div>
+                            <p class="lead">[COURSE_DESCRIPTION]</p>
+                            <div class="course-stats d-flex gap-4 mb-3">
+                                <div class="rating">
+                                    <span class="text-warning" id="rating-stars">★★★★★</span>
+                                    <span class="ms-1" id="rating-value">[RATING]</span>
+                                </div>
+                                <div class="students">
+                                    <span>👥 <span id="students-count">[STUDENTS]</span> alunos</span>
+                                </div>
+                                <div class="duration">
+                                    <span>⏱️ <span id="duration">[DURATION]</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <!-- Partner Banner -->
+                <div class="banner-sidebar-top mb-4"></div>
+                
+                <div class="course-enrollment-card">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h5>📚 Inscreva-se no Curso</h5>
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="price-display mb-3">
+                                <span class="h3 text-success" id="price-display">[PRICE_DISPLAY]</span>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <a href="[ENROLLMENT_URL]" class="btn btn-primary btn-lg" target="_blank">
+                                    🚀 Começar Agora
+                                </a>
+                                <button class="btn btn-outline-success" onclick="addToWishlist('[COURSE_ID]')">
+                                    ❤️ Adicionar à Lista de Desejos
+                                </button>
+                            </div>
+                            <div class="course-guarantee mt-3">
+                                <small class="text-muted">
+                                    ✅ Certificado de conclusão<br>
+                                    ✅ Acesso vitalício<br>
+                                    ✅ Suporte da comunidade
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Partner Banner -->
+                <div class="banner-sidebar-bottom mt-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Content Tabs -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <ul class="nav nav-tabs nav-fill mb-4" id="courseTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            📋 Visão Geral
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="curriculum-tab" data-bs-toggle="tab" data-bs-target="#curriculum" type="button" role="tab">
+                            📚 Currículo
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="instructor-tab" data-bs-toggle="tab" data-bs-target="#instructor" type="button" role="tab">
+                            👨‍🏫 Instrutor
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab">
+                            ⭐ Avaliações
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="courseTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h3>O que você vai aprender</h3>
+                                        <div id="learning-objectives">
+                                            <!-- Learning objectives will be populated by JavaScript -->
+                                        </div>
+                                        
+                                        <h4>Pré-requisitos</h4>
+                                        <div id="prerequisites">
+                                            <!-- Prerequisites will be populated by JavaScript -->
+                                        </div>
+                                        
+                                        <h4>Tecnologias Abordadas</h4>
+                                        <div id="technologies" class="mb-3">
+                                            <!-- Technologies will be populated by JavaScript -->
+                                        </div>
+                                        
+                                        <h4>Descrição Detalhada</h4>
+                                        <div id="detailed-description">
+                                            <!-- Detailed description will be populated by JavaScript -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>📊 Informações do Curso</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-sm table-dark">
+                                            <tr>
+                                                <td><strong>Nível:</strong></td>
+                                                <td id="course-level">[LEVEL]</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Duração:</strong></td>
+                                                <td id="course-duration">[DURATION]</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Categoria:</strong></td>
+                                                <td id="course-category">[CATEGORY]</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Idioma:</strong></td>
+                                                <td>Português</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Certificado:</strong></td>
+                                                <td>✅ Sim</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Última Atualização:</strong></td>
+                                                <td id="last-updated">[LAST_UPDATED]</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Curriculum Tab -->
+                    <div class="tab-pane fade" id="curriculum" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Módulos do Curso</h3>
+                                <div id="course-modules">
+                                    <!-- Course modules will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Instructor Tab -->
+                    <div class="tab-pane fade" id="instructor" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3 text-center">
+                                        <img src="../assets/images/instructors/[INSTRUCTOR_ID].jpg" alt="[INSTRUCTOR_NAME]" class="img-fluid rounded-circle mb-3" style="max-width: 150px;">
+                                    </div>
+                                    <div class="col-md-9">
+                                        <h3 id="instructor-name">[INSTRUCTOR_NAME]</h3>
+                                        <p class="text-muted" id="instructor-title">[INSTRUCTOR_TITLE]</p>
+                                        <div id="instructor-bio">
+                                            <!-- Instructor bio will be populated by JavaScript -->
+                                        </div>
+                                        <div class="instructor-stats mt-3">
+                                            <div class="row text-center">
+                                                <div class="col-4">
+                                                    <div class="stat-item">
+                                                        <div class="h4 text-success" id="instructor-rating">[INSTRUCTOR_RATING]</div>
+                                                        <small>Avaliação</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="stat-item">
+                                                        <div class="h4 text-success" id="instructor-students">[INSTRUCTOR_STUDENTS]</div>
+                                                        <small>Alunos</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="stat-item">
+                                                        <div class="h4 text-success" id="instructor-courses">[INSTRUCTOR_COURSES]</div>
+                                                        <small>Cursos</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reviews Tab -->
+                    <div class="tab-pane fade" id="reviews" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="rating-summary text-center">
+                                            <div class="h2 text-warning" id="overall-rating">[RATING]</div>
+                                            <div class="rating-stars mb-2">
+                                                <span class="text-warning" id="overall-stars">★★★★★</span>
+                                            </div>
+                                            <p class="text-muted">Baseado em <span id="total-reviews">[TOTAL_REVIEWS]</span> avaliações</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div id="rating-breakdown">
+                                            <!-- Rating breakdown will be populated by JavaScript -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div id="reviews-list">
+                                    <!-- Reviews will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Related Courses -->
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mb-4">📚 Cursos Relacionados</h3>
+                <div class="row" id="related-courses">
+                    <!-- Related courses will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/course-detail.js"></script>
+    <script src="../assets/js/theme-toggle.js"></script>
+    <script src="../assets/js/banner-system.js"></script>
+</body>
+</html>

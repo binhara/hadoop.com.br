@@ -1,0 +1,14 @@
+<svg width="300" height="120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gubigdataGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="300" height="120" fill="url(#gubigdataGradient)" rx="8"/>
+  <text x="150" y="45" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="white">GU Big Data</text>
+  <text x="150" y="70" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#d1fae5">Consultoria &amp; Treinamentos</text>
+  <text x="150" y="90" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#a7f3d0">Especialistas em Big Data</text>
+  <polygon points="25,25 35,15 45,25 35,35" fill="#00ff00" opacity="0.8"/>
+  <polygon points="255,85 265,75 275,85 265,95" fill="#00ff00" opacity="0.6"/>
+</svg>

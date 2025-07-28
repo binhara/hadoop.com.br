@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriais Big Data | Portal Big Data - Guias Passo-a-Passo</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Tutoriais Big Data | Portal Big Data - Guias Passo-a-Passo">
+    <meta name="description" content="Tutoriais estruturados sobre Big Data, Hadoop, Spark e tecnologias relacionadas. Guias passo-a-passo com exemplos práticos e código executável.">
+    <meta name="keywords" content="tutoriais big data, guias hadoop, tutoriais spark, passo a passo, exemplos práticos, código">
+    <link rel="canonical" href="https://hadoop.com.br/blog/tutoriais/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hadoop.com.br/blog/tutoriais/">
+    <meta property="og:title" content="Tutoriais Big Data | Portal Big Data">
+    <meta property="og:description" content="Tutoriais estruturados sobre Big Data com guias passo-a-passo e exemplos práticos.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/blog/tutoriais-og.jpg">
+    <meta property="og:site_name" content="Portal Big Data">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/blog/tutoriais/">
+    <meta property="twitter:title" content="Tutoriais Big Data | Portal Big Data">
+    <meta property="twitter:description" content="Tutoriais estruturados sobre Big Data com guias passo-a-passo e exemplos práticos.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/blog/tutoriais-twitter.jpg">
+    <meta property="twitter:site" content="@portalbigdata">
+    
+    <!-- Structured Data for Tutorials -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Tutoriais Big Data",
+        "description": "Coleção de tutoriais estruturados sobre Big Data, Hadoop, Spark e tecnologias relacionadas",
+        "url": "https://hadoop.com.br/blog/tutoriais/",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Portal Big Data",
+            "url": "https://hadoop.com.br",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://hadoop.com.br/assets/images/logo.png",
+                "width": 200,
+                "height": 60
+            }
+        },
+        "inLanguage": "pt-BR",
+        "about": [
+            {
+                "@type": "Thing",
+                "name": "Big Data Tutorials"
+            },
+            {
+                "@type": "Thing",
+                "name": "Apache Hadoop"
+            },
+            {
+                "@type": "Thing",
+                "name": "Apache Spark"
+            }
+        ]
+    }
+    </script>
+    
+    <!-- Theme Color for Mobile Browsers -->
+    <meta name="theme-color" content="#000000">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+</head>
+<body class="matrix-theme">
+    <!-- Navigation - Bootstrap Standard Component -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="/">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../tecnologias/">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb - Bootstrap Standard Component -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="../">Blog</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Tutoriais</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Hero Section - Bootstrap Components -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="hero-section text-center mb-5">
+                    <h1 class="display-4 mb-3">
+                        <i class="fas fa-book me-3"></i>Tutoriais Big Data
+                    </h1>
+                    <p class="lead">Guias passo-a-passo com exemplos práticos e código executável</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content - Bootstrap Grid System -->
+    <div class="container">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Tutorial Filters - Bootstrap Form -->
+                <div class="tutorial-filters mb-4">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <select class="form-select matrix-input" id="difficulty-filter">
+                                <option value="">Todas as dificuldades</option>
+                                <option value="beginner">Iniciante</option>
+                                <option value="intermediate">Intermediário</option>
+                                <option value="advanced">Avançado</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-select matrix-input" id="technology-filter">
+                                <option value="">Todas as tecnologias</option>
+                                <option value="hadoop">Hadoop</option>
+                                <option value="spark">Apache Spark</option>
+                                <option value="kafka">Apache Kafka</option>
+                                <option value="flink">Apache Flink</option>
+                                <option value="hive">Apache Hive</option>
+                                <option value="python">Python</option>
+                                <option value="scala">Scala</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-select matrix-input" id="duration-filter">
+                                <option value="">Qualquer duração</option>
+                                <option value="short">Rápido (< 30 min)</option>
+                                <option value="medium">Médio (30-60 min)</option>
+                                <option value="long">Longo (> 60 min)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tutorial Grid - Bootstrap Cards -->
+                <div id="tutorials-grid" class="row">
+                    <!-- Tutorials will be loaded dynamically -->
+                </div>
+
+                <!-- Pagination - Bootstrap Pagination -->
+                <nav aria-label="Tutorials pagination" class="mt-5">
+                    <ul class="pagination justify-content-center" id="tutorials-pagination">
+                        <!-- Pagination will be generated dynamically -->
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Sidebar - Bootstrap Column -->
+            <div class="col-lg-4">
+                <!-- Tutorial Progress Tracker - Bootstrap Card -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-chart-line me-2"></i>Seu Progresso</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="progress-tracker">
+                            <p class="text-muted">Faça login para acompanhar seu progresso nos tutoriais.</p>
+                            <button class="btn btn-primary btn-sm">
+                                <i class="fas fa-sign-in-alt me-1"></i>Fazer Login
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning Path - Bootstrap Card -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-route me-2"></i>Trilhas de Aprendizado</h5>
+                    </div>
+                    <div class="list-group list-group-flush" id="learning-paths">
+                        <!-- Learning paths will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Prerequisites Helper - Bootstrap Card -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-list-check me-2"></i>Pré-requisitos</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="prerequisites-helper">
+                            <p class="text-muted small">Selecione um tutorial para ver os pré-requisitos necessários.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Popular Tutorials - Bootstrap Card -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-fire me-2"></i>Tutoriais Populares</h5>
+                    </div>
+                    <div class="list-group list-group-flush" id="popular-tutorials">
+                        <!-- Popular tutorials will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Tutorial Feedback - Bootstrap Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-comment me-2"></i>Feedback</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text small">Tem sugestões para novos tutoriais?</p>
+                        <button class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                            <i class="fas fa-lightbulb me-1"></i>Sugerir Tutorial
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Modal - Bootstrap Modal -->
+    <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="feedbackModalLabel">
+                        <i class="fas fa-lightbulb me-2"></i>Sugerir Tutorial
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="tutorial-suggestion-form">
+                        <div class="mb-3">
+                            <label for="tutorial-title" class="form-label">Título do Tutorial</label>
+                            <input type="text" class="form-control matrix-input" id="tutorial-title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tutorial-technology" class="form-label">Tecnologia</label>
+                            <select class="form-select matrix-input" id="tutorial-technology" required>
+                                <option value="">Selecione uma tecnologia</option>
+                                <option value="hadoop">Hadoop</option>
+                                <option value="spark">Apache Spark</option>
+                                <option value="kafka">Apache Kafka</option>
+                                <option value="flink">Apache Flink</option>
+                                <option value="other">Outra</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tutorial-description" class="form-label">Descrição</label>
+                            <textarea class="form-control matrix-input" id="tutorial-description" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tutorial-difficulty" class="form-label">Dificuldade Sugerida</label>
+                            <select class="form-select matrix-input" id="tutorial-difficulty" required>
+                                <option value="">Selecione a dificuldade</option>
+                                <option value="beginner">Iniciante</option>
+                                <option value="intermediate">Intermediário</option>
+                                <option value="advanced">Avançado</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="submitTutorialSuggestion()">
+                        <i class="fas fa-paper-plane me-1"></i>Enviar Sugestão
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS - Simple and Bootstrap Studio Compatible -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/theme-toggle.js"></script>
+    <script src="../../assets/js/tutorials-system.js"></script>
+</body>
+</html>

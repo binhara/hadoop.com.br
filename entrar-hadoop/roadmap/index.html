@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap de Aprendizado Hadoop - Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Roadmap estruturado para aprender Hadoop do zero ao avançado. Fluxo visual de aprendizado com pré-requisitos, estimativas de tempo e recursos complementares.">
+    <meta name="keywords" content="roadmap hadoop, aprender hadoop, trilha aprendizado hadoop, hadoop iniciante, big data roadmap">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Roadmap de Aprendizado Hadoop - Portal Big Data">
+    <meta property="og:description" content="Roadmap estruturado para aprender Hadoop do zero ao avançado com fluxo visual de aprendizado.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/entrar-hadoop/roadmap/">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Portal Big Data - Roadmap Hadoop",
+        "description": "Roadmap estruturado para aprendizado de Hadoop",
+        "url": "https://hadoop.com.br/entrar-hadoop/roadmap/"
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation for "Entrar no Hadoop" area -->
+    <nav class="navbar navbar-expand-lg navbar-matrix-green">
+        <div class="container">
+            <a class="navbar-brand" href="../">🟢 Entrar no Hadoop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../introducao/">Introdução</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../distribuicoes/">Distribuições</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../primeiros-passos/">Primeiros Passos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../casos-uso/">Casos de Uso</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./">Roadmap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Voltar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="container mt-3">
+        <div class="breadcrumb-matrix">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../../">Portal Big Data</a></li>
+                    <li class="breadcrumb-item"><a href="../">Entrar no Hadoop</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Roadmap de Aprendizado</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4 text-success mb-3">🗺️ Roadmap de Aprendizado Hadoop</h1>
+                <p class="lead">Sua jornada estruturada para dominar o ecossistema Hadoop</p>
+                <div class="alert alert-success" role="alert">
+                    <strong>💡 Dica:</strong> Siga a sequência recomendada para um aprendizado mais eficiente. Cada etapa prepara você para a próxima!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Overview -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">📊 Visão Geral do Roadmap</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-3">
+                                <div class="roadmap-stat">
+                                    <h4 class="text-success">6</h4>
+                                    <p>Fases de Aprendizado</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="roadmap-stat">
+                                    <h4 class="text-success">120-180h</h4>
+                                    <p>Tempo Total Estimado</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="roadmap-stat">
+                                    <h4 class="text-success">25+</h4>
+                                    <p>Tecnologias Abordadas</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="roadmap-stat">
+                                    <h4 class="text-success">50+</h4>
+                                    <p>Exercícios Práticos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Learning Path -->
+    <div class="container mt-5">
+        <div class="roadmap-container">
+            
+            <!-- Phase 1: Fundamentos -->
+            <div class="roadmap-phase" data-phase="1">
+                <div class="row align-items-center">
+                    <div class="col-md-2 text-center">
+                        <div class="phase-number">
+                            <span class="badge bg-success fs-4">1</span>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="card roadmap-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0">🎯 Fundamentos de Big Data e Hadoop</h4>
+                                <span class="badge bg-info">20-30 horas</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5>Objetivos de Aprendizado:</h5>
+                                        <ul class="learning-objectives">
+                                            <li>Compreender os conceitos básicos de Big Data</li>
+                                            <li>Conhecer a história e evolução do Hadoop</li>
+                                            <li>Entender os problemas que o Hadoop resolve</li>
+                                            <li>Familiarizar-se com o ecossistema Hadoop</li>
+                                        </ul>
+                                        
+                                        <h5>Pré-requisitos:</h5>
+                                        <div class="prerequisites">
+                                            <span class="badge bg-warning">Conhecimentos básicos de Linux</span>
+                                            <span class="badge bg-warning">Conceitos de programação</span>
+                                            <span class="badge bg-warning">Noções de banco de dados</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5>Recursos de Estudo:</h5>
+                                        <div class="study-resources">
+                                            <a href="../introducao/" class="btn btn-outline-success btn-sm mb-2 d-block">📖 Introdução ao Hadoop</a>
+                                            <a href="../../cursos/" class="btn btn-outline-primary btn-sm mb-2 d-block">🎓 Curso: Hadoop Fundamentals</a>
+                                            <a href="#exercises-1" class="btn btn-outline-info btn-sm mb-2 d-block">💻 Exercícios Práticos</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Exercises Section -->
+                                <div class="collapse mt-3" id="exercises-1">
+                                    <div class="card bg-dark">
+                                        <div class="card-body">
+                                            <h6>🔧 Exercícios Práticos - Fase 1:</h6>
+                                            <ol class="exercise-list">
+                                                <li>Instalar uma máquina virtual Linux (Ubuntu/CentOS)</li>
+                                                <li>Configurar ambiente básico de desenvolvimento</li>
+                                                <li>Pesquisar e documentar 5 casos de uso reais do Hadoop</li>
+                                                <li>Criar um glossário pessoal com 20 termos de Big Data</li>
+                                                <li>Assistir documentários sobre a história do Big Data</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connection Arrow -->
+            <div class="roadmap-arrow text-center">
+                <i class="fas fa-arrow-down text-success fs-2"></i>
+            </div>
+
+            <!-- Phase 2: HDFS -->
+            <div class="roadmap-phase" data-phase="2">
+                <div class="row align-items-center">
+                    <div class="col-md-2 text-center">
+                        <div class="phase-number">
+                            <span class="badge bg-success fs-4">2</span>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="card roadmap-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0">💾 Hadoop Distributed File System (HDFS)</h4>
+                                <span class="badge bg-info">25-35 horas</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5>Objetivos de Aprendizado:</h5>
+                                        <ul class="learning-objectives">
+                                            <li>Compreender a arquitetura do HDFS</li>
+                                            <li>Aprender comandos básicos do HDFS</li>
+                                            <li>Entender conceitos de replicação e tolerância a falhas</li>
+                                            <li>Configurar um cluster HDFS básico</li>
+                                        </ul>
+                                        
+                                        <h5>Pré-requisitos:</h5>
+                                        <div class="prerequisites">
+                                            <span class="badge bg-success">✅ Fase 1 Concluída</span>
+                                            <span class="badge bg-warning">Comandos Linux intermediários</span>
+                                            <span class="badge bg-warning">Conceitos de sistemas distribuídos</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5>Recursos de Estudo:</h5>
+                                        <div class="study-resources">
+                                            <a href="../../tecnologias/sistemas-arquivos/hdfs/" class="btn btn-outline-success btn-sm mb-2 d-block">📖 Guia HDFS</a>
+                                            <a href="../../cursos/" class="btn btn-outline-primary btn-sm mb-2 d-block">🎓 Curso: HDFS Essentials</a>
+                                            <a href="#exercises-2" class="btn btn-outline-info btn-sm mb-2 d-block">💻 Exercícios Práticos</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Exercises Section -->
+                                <div class="collapse mt-3" id="exercises-2">
+                                    <div class="card bg-dark">
+                                        <div class="card-body">
+                                            <h6>🔧 Exercícios Práticos - Fase 2:</h6>
+                                            <ol class="exercise-list">
+                                                <li>Instalar Hadoop em modo standalone</li>
+                                                <li>Configurar um cluster HDFS de 3 nós</li>
+                                                <li>Praticar comandos hdfs dfs (put, get, ls, rm, etc.)</li>
+                                                <li>Monitorar a interface web do NameNode</li>
+                                                <li>Simular falha de DataNode e observar recuperação</li>
+                                                <li>Configurar diferentes fatores de replicação</li>
+                                                <li>Analisar logs do HDFS</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connection Arrow -->
+            <div class="roadmap-arrow text-center">
+                <i class="fas fa-arrow-down text-success fs-2"></i>
+            </div>
+
+            <!-- Phase 3: MapReduce -->
+            <div class="roadmap-phase" data-phase="3">
+                <div class="row align-items-center">
+                    <div class="col-md-2 text-center">
+                        <div class="phase-number">
+                            <span class="badge bg-success fs-4">3</span>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="card roadmap-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0">⚙️ MapReduce e YARN</h4>
+                                <span class="badge bg-info">30-40 horas</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5>Objetivos de Aprendizado:</h5>
+                                        <ul class="learning-objectives">
+                                            <li>Compreender o paradigma MapReduce</li>
+                                            <li>Desenvolver aplicações MapReduce em Java</li>
+                                            <li>Entender o funcionamento do YARN</li>
+                                            <li>Otimizar jobs MapReduce</li>
+                                        </ul>
+                                        
+                                        <h5>Pré-requisitos:</h5>
+                                        <div class="prerequisites">
+                                            <span class="badge bg-success">✅ Fase 2 Concluída</span>
+                                            <span class="badge bg-warning">Java básico/intermediário</span>
+                                            <span class="badge bg-warning">Maven ou Gradle</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5>Recursos de Estudo:</h5>
+                                        <div class="study-resources">
+                                            <a href="../../tecnologias/processamento/mapreduce/" class="btn btn-outline-success btn-sm mb-2 d-block">📖 Guia MapReduce</a>
+                                            <a href="../../cursos/" class="btn btn-outline-primary btn-sm mb-2 d-block">🎓 Curso: MapReduce Programming</a>
+                                            <a href="#exercises-3" class="btn btn-outline-info btn-sm mb-2 d-block">💻 Exercícios Práticos</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Exercises Section -->
+                                <div class="collapse mt-3" id="exercises-3">
+                                    <div class="card bg-dark">
+                                        <div class="card-body">
+                                            <h6>🔧 Exercícios Práticos - Fase 3:</h6>
+                                            <ol class="exercise-list">
+                                                <li>Implementar WordCount em Java</li>
+                                                <li>Criar job para análise de logs de servidor</li>
+                                                <li>Desenvolver aplicação de agregação de dados</li>
+                                                <li>Configurar e monitorar YARN ResourceManager</li>
+                                                <li>Otimizar performance de jobs MapReduce</li>
+                                                <li>Implementar custom InputFormat e OutputFormat</li>
+                                                <li>Usar Counters para monitoramento</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connection Arrow -->
+            <div class="roadmap-arrow text-center">
+                <i class="fas fa-arrow-down text-success fs-2"></i>
+            </div>
+
+            <!-- Phase 4: Ecosystem Tools -->
+            <div class="roadmap-phase" data-phase="4">
+                <div class="row align-items-center">
+                    <div class="col-md-2 text-center">
+                        <div class="phase-number">
+                            <span class="badge bg-success fs-4">4</span>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="card roadmap-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0">🛠️ Ferramentas do Ecossistema Hadoop</h4>
+                                <span class="badge bg-info">35-45 horas</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5>Objetivos de Aprendizado:</h5>
+                                        <ul class="learning-objectives">
+                                            <li>Dominar Hive para análise de dados</li>
+                                            <li>Aprender HBase para NoSQL</li>
+                                            <li>Usar Pig para processamento de dados</li>
+                                            <li>Integrar Sqoop para ETL</li>
+                                            <li>Implementar Flume para ingestão de dados</li>
+                                        </ul>
+                                        
+                                        <h5>Pré-requisitos:</h5>
+                                        <div class="prerequisites">
+                                            <span class="badge bg-success">✅ Fase 3 Concluída</span>
+                                            <span class="badge bg-warning">SQL intermediário</span>
+                                            <span class="badge bg-warning">Conceitos de NoSQL</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5>Recursos de Estudo:</h5>
+                                        <div class="study-resources">
+                                            <a href="../../tecnologias/data-warehousing/hive/" class="btn btn-outline-success btn-sm mb-2 d-block">📖 Apache Hive</a>
+                                            <a href="../../tecnologias/nosql/hbase/" class="btn btn-outline-success btn-sm mb-2 d-block">📖 Apache HBase</a>
+                                            <a href="../../cursos/" class="btn btn-outline-primary btn-sm mb-2 d-block">🎓 Curso: Hadoop Ecosystem</a>
+                                            <a href="#exercises-4" class="btn btn-outline-info btn-sm mb-2 d-block">💻 Exercícios Práticos</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Exercises Section -->
+                                <div class="collapse mt-3" id="exercises-4">
+                                    <div class="card bg-dark">
+                                        <div class="card-body">
+                                            <h6>🔧 Exercícios Práticos - Fase 4:</h6>
+                                            <ol class="exercise-list">
+                                                <li>Criar tabelas Hive e executar queries complexas</li>
+                                                <li>Configurar HBase e criar column families</li>
+                                                <li>Desenvolver scripts Pig para transformação de dados</li>
+                                                <li>Usar Sqoop para importar dados de MySQL</li>
+                                                <li>Configurar Flume para coleta de logs</li>
+                                                <li>Integrar múltiplas ferramentas em pipeline</li>
+                                                <li>Monitorar performance das aplicações</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connection Arrow -->
+            <div class="roadmap-arrow text-center">
+                <i class="fas fa-arrow-down text-success fs-2"></i>
+            </div>
+
+            <!-- Phase 5: Advanced Topics -->
+            <div class="roadmap-phase" data-phase="5">
+                <div class="row align-items-center">
+                    <div class="col-md-2 text-center">
+                        <div class="phase-number">
+                            <span class="badge bg-success fs-4">5</span>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="card roadmap-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0">🚀 Tópicos Avançados</h4>
+                                <span class="badge bg-info">25-35 horas</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5>Objetivos de Aprendizado:</h5>
+                                        <ul class="learning-objectives">
+                                            <li>Implementar segurança no Hadoop (Kerberos)</li>
+                                            <li>Configurar alta disponibilidade</li>
+                                            <li>Otimizar performance do cluster</li>
+                                            <li>Implementar governança de dados</li>
+                                            <li>Monitorar e fazer troubleshooting</li>
+                                        </ul>
+                                        
+                                        <h5>Pré-requisitos:</h5>
+                                        <div class="prerequisites">
+                                            <span class="badge bg-success">✅ Fase 4 Concluída</span>
+                                            <span class="badge bg-warning">Conceitos de segurança</span>
+                                            <span class="badge bg-warning">Administração de sistemas</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5>Recursos de Estudo:</h5>
+                                        <div class="study-resources">
+                                            <a href="../../tecnologias/seguranca/kerberos/" class="btn btn-outline-success btn-sm mb-2 d-block">📖 Hadoop Security</a>
+                                            <a href="../../cursos/" class="btn btn-outline-primary btn-sm mb-2 d-block">🎓 Curso: Hadoop Administration</a>
+                                            <a href="#exercises-5" class="btn btn-outline-info btn-sm mb-2 d-block">💻 Exercícios Práticos</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Exercises Section -->
+                                <div class="collapse mt-3" id="exercises-5">
+                                    <div class="card bg-dark">
+                                        <div class="card-body">
+                                            <h6>🔧 Exercícios Práticos - Fase 5:</h6>
+                                            <ol class="exercise-list">
+                                                <li>Configurar autenticação Kerberos</li>
+                                                <li>Implementar NameNode HA com QJM</li>
+                                                <li>Configurar ResourceManager HA</li>
+                                                <li>Implementar políticas de segurança com Ranger</li>
+                                                <li>Configurar monitoramento com Ambari/Cloudera Manager</li>
+                                                <li>Otimizar configurações de performance</li>
+                                                <li>Implementar backup e disaster recovery</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connection Arrow -->
+            <div class="roadmap-arrow text-center">
+                <i class="fas fa-arrow-down text-success fs-2"></i>
+            </div>
+
+            <!-- Phase 6: Real World Projects -->
+            <div class="roadmap-phase" data-phase="6">
+                <div class="row align-items-center">
+                    <div class="col-md-2 text-center">
+                        <div class="phase-number">
+                            <span class="badge bg-success fs-4">6</span>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="card roadmap-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0">🏆 Projetos do Mundo Real</h4>
+                                <span class="badge bg-info">30-40 horas</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5>Objetivos de Aprendizado:</h5>
+                                        <ul class="learning-objectives">
+                                            <li>Implementar data lake completo</li>
+                                            <li>Desenvolver pipeline de ETL robusto</li>
+                                            <li>Criar sistema de análise em tempo real</li>
+                                            <li>Implementar machine learning com Hadoop</li>
+                                            <li>Preparar para certificações</li>
+                                        </ul>
+                                        
+                                        <h5>Pré-requisitos:</h5>
+                                        <div class="prerequisites">
+                                            <span class="badge bg-success">✅ Fase 5 Concluída</span>
+                                            <span class="badge bg-warning">Experiência com projetos</span>
+                                            <span class="badge bg-warning">Conhecimento de negócio</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5>Recursos de Estudo:</h5>
+                                        <div class="study-resources">
+                                            <a href="../casos-uso/" class="btn btn-outline-success btn-sm mb-2 d-block">📖 Casos de Uso</a>
+                                            <a href="../../cursos/" class="btn btn-outline-primary btn-sm mb-2 d-block">🎓 Curso: Hadoop Projects</a>
+                                            <a href="#exercises-6" class="btn btn-outline-info btn-sm mb-2 d-block">💻 Projetos Práticos</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Exercises Section -->
+                                <div class="collapse mt-3" id="exercises-6">
+                                    <div class="card bg-dark">
+                                        <div class="card-body">
+                                            <h6>🔧 Projetos Práticos - Fase 6:</h6>
+                                            <ol class="exercise-list">
+                                                <li>Projeto: Sistema de análise de logs de e-commerce</li>
+                                                <li>Projeto: Data lake para análise de redes sociais</li>
+                                                <li>Projeto: Pipeline de ETL para dados financeiros</li>
+                                                <li>Projeto: Sistema de recomendação com Mahout</li>
+                                                <li>Projeto: Análise de sentimentos em tempo real</li>
+                                                <li>Preparação para certificação Cloudera/Hortonworks</li>
+                                                <li>Portfólio profissional no GitHub</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Completion Section -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="card bg-success text-dark">
+                    <div class="card-body text-center">
+                        <h3>🎉 Parabéns! Você completou o Roadmap Hadoop!</h3>
+                        <p class="lead">Agora você está pronto para trabalhar com Hadoop em ambiente profissional</p>
+                        <div class="row mt-4">
+                            <div class="col-md-4">
+                                <h5>📜 Próximos Passos</h5>
+                                <ul class="list-unstyled">
+                                    <li>Buscar certificações oficiais</li>
+                                    <li>Contribuir para projetos open source</li>
+                                    <li>Participar de comunidades</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>💼 Oportunidades de Carreira</h5>
+                                <ul class="list-unstyled">
+                                    <li>Big Data Engineer</li>
+                                    <li>Hadoop Administrator</li>
+                                    <li>Data Architect</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>🔄 Mantenha-se Atualizado</h5>
+                                <ul class="list-unstyled">
+                                    <li>Acompanhe releases do Hadoop</li>
+                                    <li>Explore tecnologias complementares</li>
+                                    <li>Participe de conferências</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/roadmap.js"></script>
+</body>
+</html>

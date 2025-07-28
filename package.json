@@ -1,0 +1,53 @@
+{
+  "name": "portal-big-data",
+  "version": "1.0.0",
+  "description": "Portal Big Data - Hub completo para Hadoop e tecnologias Big Data",
+  "main": "index.html",
+  "scripts": {
+    "build": "npm run build:css && npm run build:js && npm run optimize:images && npm run generate:webp && npm run generate:avif",
+    "build:css": "postcss assets/css/matrix-theme.css -o assets/css/matrix-theme.min.css --use autoprefixer cssnano && postcss assets/css/image-optimization.css -o assets/css/image-optimization.min.css --use autoprefixer cssnano",
+    "build:js": "terser assets/js/main.js -o assets/js/main.min.js --compress --mangle && npm run build:optimization-js",
+    "build:optimization-js": "terser assets/js/image-optimization.js assets/js/cdn-config.js assets/js/asset-compression.js assets/js/placeholder-generator.js -o assets/js/optimization.min.js --compress --mangle",
+    "optimize:images": "imagemin assets/images/**/*.{jpg,jpeg,png} --out-dir=assets/images/optimized --plugin=mozjpeg --plugin=pngquant",
+    "generate:webp": "imagemin assets/images/**/*.{jpg,jpeg,png} --out-dir=assets/images/webp --plugin=webp",
+    "generate:avif": "imagemin assets/images/**/*.{jpg,jpeg,png} --out-dir=assets/images/avif --plugin=avif",
+    "dev": "live-server --port=3000 --host=localhost",
+    "validate": "html-validate *.html **/*.html",
+    "lighthouse": "lighthouse http://localhost:3000 --output=html --output-path=./reports/lighthouse.html --chrome-flags='--no-sandbox --headless'",
+    "test:seo": "npm run validate && npm run lighthouse",
+    "test:optimization": "live-server --port=3001 --open=test-image-optimization.html",
+    "analyze:images": "node scripts/analyze-images.js",
+    "compress:all": "npm run optimize:images && npm run generate:webp && npm run generate:avif"
+  },
+  "keywords": [
+    "hadoop",
+    "big-data",
+    "apache-spark",
+    "data-processing",
+    "bootstrap",
+    "matrix-theme"
+  ],
+  "author": "Portal Big Data Team",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "cssnano": "^6.0.1",
+    "html-validate": "^8.7.4",
+    "imagemin": "^8.0.1",
+    "imagemin-avif": "^0.1.6",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-webp": "^8.0.0",
+    "lighthouse": "^11.4.0",
+    "live-server": "^1.2.2",
+    "postcss": "^8.4.32",
+    "postcss-cli": "^11.0.0",
+    "sharp": "^0.33.0",
+    "terser": "^5.26.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

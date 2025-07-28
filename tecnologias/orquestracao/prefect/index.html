@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prefect - Orquestração Moderna de Workflows | Portal Big Data</title>
+    <meta name="description" content="Guia completo do Prefect: plataforma moderna de orquestração com foco em simplicidade, observabilidade e experiência do desenvolvedor.">
+    <meta name="keywords" content="prefect, workflow orchestration, python, data pipeline, modern orchestration, dataflow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Prefect - Orquestração Moderna de Workflows | Portal Big Data">
+    <meta property="og:description" content="Guia completo do Prefect: plataforma moderna de orquestração com foco em simplicidade e observabilidade.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/orquestracao/prefect/">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/orquestracao/prefect/">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Prefect",
+        "description": "Modern workflow orchestration platform for data engineering",
+        "url": "https://prefect.io",
+        "applicationCategory": "Workflow Orchestration",
+        "operatingSystem": "Linux, macOS, Windows",
+        "programmingLanguage": "Python",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand matrix-brand" href="../../../index.html">
+                <span class="matrix-text">Portal Big Data</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Orquestração</a></li>
+                <li class="breadcrumb-item active">Prefect</li>
+            </ol>
+        </nav>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="tech-header mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="../../../assets/images/logos/prefect-logo.png" alt="Prefect" class="tech-logo me-3" style="width: 64px; height: 64px;">
+                        <div>
+                            <h1 class="mb-2">Prefect</h1>
+                            <div class="tech-badges">
+                                <span class="badge bg-primary">Open Source</span>
+                                <span class="badge bg-warning">Moderno</span>
+                                <span class="badge bg-info">Python</span>
+                                <span class="badge bg-success">Developer-Friendly</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="lead">Plataforma moderna de orquestração com foco em simplicidade e observabilidade</p>
+                </div>
+
+                <div class="content-section">
+                    <h2>Visão Geral</h2>
+                    <p>Prefect é uma plataforma moderna de orquestração de workflows que prioriza a experiência do desenvolvedor. Criado pelos fundadores originais do Airflow, o Prefect 2.0 representa uma abordagem completamente nova para orquestração, com foco em simplicidade, observabilidade e facilidade de uso.</p>
+
+                    <h3>Principais Características</h3>
+                    <ul>
+                        <li><strong>API-First:</strong> Arquitetura baseada em APIs REST</li>
+                        <li><strong>Hybrid Execution:</strong> Execução local, remota ou híbrida</li>
+                        <li><strong>Dynamic Workflows:</strong> Workflows dinâmicos e condicionais</li>
+                        <li><strong>Observabilidade:</strong> Monitoramento em tempo real</li>
+                        <li><strong>Simplicidade:</strong> Configuração mínima necessária</li>
+                        <li><strong>Cloud-Native:</strong> Projetado para ambientes modernos</li>
+                    </ul>
+
+                    <h3>Arquitetura Prefect 2.0</h3>
+                    <p>O Prefect 2.0 introduziu uma arquitetura simplificada:</p>
+                    <ul>
+                        <li><strong>Prefect Server:</strong> API central e interface web</li>
+                        <li><strong>Prefect Agent:</strong> Executa workflows em ambientes específicos</li>
+                        <li><strong>Work Pools:</strong> Gerenciam recursos de execução</li>
+                        <li><strong>Deployments:</strong> Configurações de execução</li>
+                        <li><strong>Flows:</strong> Definições de workflow</li>
+                    </ul>
+
+                    <h3>Exemplo de Flow</h3>
+                    <div class="code-example">
+                        <pre><code class="language-python">from prefect import flow, task
+from prefect.tasks import task_input_hash
+from datetime import timedelta
+import httpx
+
+@task(cache_key_fn=task_input_hash, cache_expiration=timedelta(hours=1))
+def extract_data(url: str):
+    """Extrai dados de uma API"""
+    response = httpx.get(url)
+    response.raise_for_status()
+    return response.json()
+
+@task
+def transform_data(raw_data: dict):
+    """Transforma os dados extraídos"""
+    # Lógica de transformação
+    transformed = {
+        'processed_at': '2024-01-01',
+        'records': len(raw_data.get('items', [])),
+        'data': raw_data
+    }
+    return transformed
+
+@task
+def load_data(data: dict, destination: str):
+    """Carrega dados no destino"""
+    print(f"Carregando {data['records']} registros em {destination}")
+    # Lógica de carregamento
+    return f"Loaded {data['records']} records successfully"
+
+@flow(name="ETL Pipeline", description="Pipeline ETL com Prefect")
+def etl_pipeline(api_url: str, destination: str = "warehouse"):
+    """Flow principal do pipeline ETL"""
+    
+    # Extração
+    raw_data = extract_data(api_url)
+    
+    # Transformação
+    processed_data = transform_data(raw_data)
+    
+    # Carregamento
+    result = load_data(processed_data, destination)
+    
+    return result
+
+# Execução local
+if __name__ == "__main__":
+    result = etl_pipeline(
+        api_url="https://api.example.com/data",
+        destination="data_warehouse"
+    )</code></pre>
+                    </div>
+
+                    <h3>Deployment e Agendamento</h3>
+                    <div class="code-example">
+                        <pre><code class="language-python"># deployment.py
+from prefect import flow
+from prefect.deployments import Deployment
+from prefect.server.schemas.schedules import CronSchedule
+
+@flow
+def my_flow():
+    print("Hello from Prefect!")
+
+# Criar deployment
+deployment = Deployment.build_from_flow(
+    flow=my_flow,
+    name="daily-etl",
+    schedule=CronSchedule(cron="0 2 * * *"),  # Diário às 2h
+    work_pool_name="default-agent-pool",
+    tags=["etl", "production"]
+)
+
+if __name__ == "__main__":
+    deployment.apply()</code></pre>
+                    </div>
+
+                    <h3>Configuração com Docker</h3>
+                    <div class="code-example">
+                        <pre><code class="language-yaml"># docker-compose.yml
+version: '3.8'
+
+services:
+  prefect-server:
+    image: prefecthq/prefect:2.14-python3.11
+    command: prefect server start --host 0.0.0.0
+    environment:
+      - PREFECT_UI_URL=http://localhost:4200/api
+      - PREFECT_API_URL=http://localhost:4200/api
+      - PREFECT_SERVER_API_HOST=0.0.0.0
+    ports:
+      - "4200:4200"
+    volumes:
+      - prefect_data:/root/.prefect
+
+  prefect-agent:
+    image: prefecthq/prefect:2.14-python3.11
+    command: prefect agent start --pool default-agent-pool
+    environment:
+      - PREFECT_API_URL=http://prefect-server:4200/api
+    depends_on:
+      - prefect-server
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./flows:/opt/prefect/flows
+
+volumes:
+  prefect_data:</code></pre>
+                    </div>
+
+                    <h3>Recursos Avançados</h3>
+                    
+                    <h4>Conditional Logic</h4>
+                    <div class="code-example">
+                        <pre><code class="language-python">from prefect import flow, task
+
+@task
+def check_data_quality(data):
+    return len(data) > 100  # Retorna True se dados suficientes
+
+@task
+def process_full_dataset(data):
+    print("Processando dataset completo")
+    return "full_processing_complete"
+
+@task
+def process_sample(data):
+    print("Processando amostra dos dados")
+    return "sample_processing_complete"
+
+@flow
+def conditional_processing(data):
+    quality_check = check_data_quality(data)
+    
+    if quality_check:
+        result = process_full_dataset(data)
+    else:
+        result = process_sample(data)
+    
+    return result</code></pre>
+                    </div>
+
+                    <h4>Error Handling</h4>
+                    <div class="code-example">
+                        <pre><code class="language-python">from prefect import flow, task
+from prefect.tasks import task_input_hash
+from datetime import timedelta
+
+@task(
+    retries=3,
+    retry_delay_seconds=60,
+    cache_key_fn=task_input_hash,
+    cache_expiration=timedelta(minutes=30)
+)
+def unreliable_task():
+    import random
+    if random.random() < 0.7:  # 70% chance de falha
+        raise Exception("Task failed!")
+    return "Success!"
+
+@flow
+def resilient_flow():
+    try:
+        result = unreliable_task()
+        return result
+    except Exception as e:
+        print(f"Flow failed: {e}")
+        return "Flow completed with errors"</code></pre>
+                    </div>
+
+                    <h3>Integração com Kubernetes</h3>
+                    <div class="code-example">
+                        <pre><code class="language-python">from prefect import flow
+from prefect_kubernetes.jobs import KubernetesJob
+
+@flow
+def kubernetes_flow():
+    job = KubernetesJob(
+        image="python:3.11-slim",
+        command=["python", "-c", "print('Hello from Kubernetes!')"],
+        namespace="prefect",
+        labels={"app": "prefect-job"}
+    )
+    
+    return job.submit()</code></pre>
+                    </div>
+
+                    <h3>Monitoramento e Observabilidade</h3>
+                    <ul>
+                        <li><strong>Real-time Dashboard:</strong> Interface web moderna</li>
+                        <li><strong>Flow Run Tracking:</strong> Histórico detalhado de execuções</li>
+                        <li><strong>Logs Centralizados:</strong> Logs estruturados e pesquisáveis</li>
+                        <li><strong>Metrics:</strong> Métricas de performance e saúde</li>
+                        <li><strong>Notifications:</strong> Alertas customizáveis</li>
+                    </ul>
+
+                    <h3>Casos de Uso</h3>
+                    <ul>
+                        <li><strong>Data Engineering:</strong> Pipelines ETL/ELT modernos</li>
+                        <li><strong>ML Operations:</strong> Treinamento e deploy de modelos</li>
+                        <li><strong>API Orchestration:</strong> Coordenação de microserviços</li>
+                        <li><strong>Business Automation:</strong> Automação de processos</li>
+                        <li><strong>Data Quality:</strong> Validação e monitoramento</li>
+                    </ul>
+
+                    <h3>Vantagens</h3>
+                    <ul>
+                        <li>Experiência de desenvolvedor superior</li>
+                        <li>Configuração mínima necessária</li>
+                        <li>Execução híbrida (local/remota)</li>
+                        <li>Interface moderna e intuitiva</li>
+                        <li>Forte observabilidade nativa</li>
+                        <li>Suporte nativo ao Python moderno</li>
+                    </ul>
+
+                    <h3>Desvantagens</h3>
+                    <ul>
+                        <li>Ecossistema menor que Airflow</li>
+                        <li>Menos operadores pré-construídos</li>
+                        <li>Comunidade ainda em crescimento</li>
+                        <li>Mudanças significativas entre versões</li>
+                        <li>Documentação em evolução</li>
+                    </ul>
+
+                    <h3>Prefect vs Airflow</h3>
+                    <div class="table-responsive">
+                        <table class="table table-dark table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Aspecto</th>
+                                    <th>Prefect</th>
+                                    <th>Airflow</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Configuração</td>
+                                    <td>Mínima</td>
+                                    <td>Complexa</td>
+                                </tr>
+                                <tr>
+                                    <td>Execução</td>
+                                    <td>Híbrida</td>
+                                    <td>Centralizada</td>
+                                </tr>
+                                <tr>
+                                    <td>Interface</td>
+                                    <td>Moderna</td>
+                                    <td>Funcional</td>
+                                </tr>
+                                <tr>
+                                    <td>Ecossistema</td>
+                                    <td>Crescendo</td>
+                                    <td>Maduro</td>
+                                </tr>
+                                <tr>
+                                    <td>Curva de Aprendizado</td>
+                                    <td>Baixa</td>
+                                    <td>Média-Alta</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="sidebar-info">
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header">
+                            <h5>Informações Técnicas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><strong>Linguagem:</strong> Python</li>
+                                <li><strong>Licença:</strong> Apache 2.0</li>
+                                <li><strong>Primeira Release:</strong> 2019</li>
+                                <li><strong>Versão Atual:</strong> 2.14</li>
+                                <li><strong>Desenvolvedor:</strong> Prefect Technologies</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card bg-dark border-info mb-4">
+                        <div class="card-header">
+                            <h5>Links Úteis</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="https://prefect.io" target="_blank">Site Oficial</a></li>
+                                <li><a href="https://docs.prefect.io" target="_blank">Documentação</a></li>
+                                <li><a href="https://github.com/PrefectHQ/prefect" target="_blank">GitHub</a></li>
+                                <li><a href="https://discourse.prefect.io" target="_blank">Community Forum</a></li>
+                                <li><a href="https://prefect.io/cloud" target="_blank">Prefect Cloud</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card bg-dark border-warning mb-4">
+                        <div class="card-header">
+                            <h5>Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="../apache-airflow/">Apache Airflow</a> - Alternativa tradicional</li>
+                                <li><a href="../dagster/">Dagster</a> - Foco em dados</li>
+                                <li><a href="../kubernetes/">Kubernetes</a> - Execução</li>
+                                <li><a href="../docker/">Docker</a> - Containerização</li>
+                                <li><a href="../../processamento/apache-spark/">Apache Spark</a> - Processamento</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card bg-dark border-primary">
+                        <div class="card-header">
+                            <h5>Cursos Relacionados</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="../../../cursos/prefect-fundamentals/">Prefect Fundamentals</a></li>
+                                <li><a href="../../../cursos/modern-orchestration/">Modern Orchestration</a></li>
+                                <li><a href="../../../cursos/python-data-pipelines/">Python Data Pipelines</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Portal Big Data</h5>
+                    <p>Seu guia completo para tecnologias de Big Data</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2024 Portal Big Data. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../assets/js/technology-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spark MLlib - Distributed Machine Learning | Portal Big Data</title>
+    <meta name="description" content="Spark MLlib: biblioteca de machine learning do Apache Spark. Aprenda sobre algoritmos distribuídos e pipelines de ML.">
+    <meta name="keywords" content="spark mllib, apache spark, machine learning, distributed ml, scala, python, java">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Spark MLlib - Distributed Machine Learning | Portal Big Data">
+    <meta property="og:description" content="Biblioteca de machine learning distribuído do Apache Spark">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/machine-learning/spark-mllib/">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/matrix-theme.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Spark MLlib",
+        "description": "Machine learning library for Apache Spark",
+        "url": "https://spark.apache.org/mllib/",
+        "applicationCategory": "Machine Learning Library",
+        "operatingSystem": "Linux, Windows, macOS",
+        "programmingLanguage": ["Scala", "Python", "Java", "R"],
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Apache Software Foundation"
+        }
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand text-success" href="../../../index.html">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../../index.html" class="text-success">Home</a></li>
+                <li class="breadcrumb-item"><a href="../../" class="text-success">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../" class="text-success">Machine Learning</a></li>
+                <li class="breadcrumb-item active text-light">Spark MLlib</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Technology Header -->
+                <div class="tech-header mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://spark.apache.org/images/spark-logo-trademark.png" alt="Spark MLlib Logo" class="tech-logo me-3" style="height: 80px;">
+                        <div>
+                            <h1 class="text-success mb-2">Spark MLlib</h1>
+                            <div class="tech-badges">
+                                <span class="badge bg-primary">Open Source</span>
+                                <span class="badge bg-success">Apache Spark</span>
+                                <span class="badge bg-warning text-dark">Distributed</span>
+                                <span class="badge bg-info">Multi-language</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Overview -->
+                <section class="mb-5">
+                    <h2 class="text-success">Visão Geral</h2>
+                    <p class="text-light">
+                        Spark MLlib é a biblioteca de machine learning do Apache Spark, projetada para 
+                        tornar o machine learning prático e escalável. Oferece algoritmos e utilitários 
+                        de alta qualidade que funcionam em clusters distribuídos.
+                    </p>
+                    <p class="text-light">
+                        MLlib aproveita a arquitetura in-memory do Spark para acelerar algoritmos de ML, 
+                        oferecendo APIs em Scala, Java, Python e R. É uma das bibliotecas de ML distribuído 
+                        mais maduras e amplamente utilizadas.
+                    </p>
+                </section>
+
+                <!-- Architecture -->
+                <section class="mb-5">
+                    <h2 class="text-success">Arquitetura</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">DataFrame-based API</h5>
+                                    <p class="text-light small">API moderna baseada em DataFrames (spark.ml)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">RDD-based API</h5>
+                                    <p class="text-light small">API legada baseada em RDDs (spark.mllib)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">ML Pipelines</h5>
+                                    <p class="text-light small">Workflows de ML composáveis e reutilizáveis</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Feature Engineering</h5>
+                                    <p class="text-light small">Transformadores para preparação de dados</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Key Algorithms -->
+                <section class="mb-5">
+                    <h2 class="text-success">Algoritmos Principais</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="text-success">Classification</h5>
+                            <ul class="text-light">
+                                <li>Logistic Regression</li>
+                                <li>Decision Trees</li>
+                                <li>Random Forest</li>
+                                <li>Gradient Boosted Trees</li>
+                                <li>Naive Bayes</li>
+                                <li>Linear SVM</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-success">Regression</h5>
+                            <ul class="text-light">
+                                <li>Linear Regression</li>
+                                <li>Generalized Linear Models</li>
+                                <li>Decision Tree Regression</li>
+                                <li>Random Forest Regression</li>
+                                <li>Gradient Boosted Trees</li>
+                                <li>Survival Regression</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-success">Clustering</h5>
+                            <ul class="text-light">
+                                <li>K-Means</li>
+                                <li>Latent Dirichlet Allocation</li>
+                                <li>Bisecting K-Means</li>
+                                <li>Gaussian Mixture Model</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-success">Collaborative Filtering</h5>
+                            <ul class="text-light">
+                                <li>Alternating Least Squares</li>
+                                <li>Matrix Factorization</li>
+                                <li>Recommendation Systems</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Code Example -->
+                <section class="mb-5">
+                    <h2 class="text-success">Exemplo Prático</h2>
+                    <p class="text-light">Exemplo de pipeline de ML com Spark MLlib (PySpark):</p>
+                    <pre class="bg-dark p-3 rounded border border-success"><code class="text-success">from pyspark.sql import SparkSession
+from pyspark.ml import Pipeline
+from pyspark.ml.classification import RandomForestClassifier
+from pyspark.ml.feature import VectorAssembler, StringIndexer, StandardScaler
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+from pyspark.sql.functions import col
+
+# Criar SparkSession
+spark = SparkSession.builder \
+    .appName("MLlib Example") \
+    .getOrCreate()
+
+# Carregar dados (exemplo com dataset Iris)
+data = spark.read.format("csv") \
+    .option("header", "true") \
+    .option("inferSchema", "true") \
+    .load("iris.csv")
+
+# Preparar features
+feature_cols = ["sepal_length", "sepal_width", "petal_length", "petal_width"]
+assembler = VectorAssembler(inputCols=feature_cols, outputCol="features")
+
+# Indexar labels
+label_indexer = StringIndexer(inputCol="species", outputCol="label")
+
+# Normalizar features
+scaler = StandardScaler(inputCol="features", outputCol="scaled_features")
+
+# Criar classificador
+rf = RandomForestClassifier(
+    featuresCol="scaled_features",
+    labelCol="label",
+    numTrees=100,
+    maxDepth=5,
+    seed=42
+)
+
+# Criar pipeline
+pipeline = Pipeline(stages=[assembler, label_indexer, scaler, rf])
+
+# Dividir dados
+train_data, test_data = data.randomSplit([0.8, 0.2], seed=42)
+
+# Treinar modelo
+model = pipeline.fit(train_data)
+
+# Fazer predições
+predictions = model.transform(test_data)
+
+# Avaliar modelo
+evaluator = MulticlassClassificationEvaluator(
+    labelCol="label",
+    predictionCol="prediction",
+    metricName="accuracy"
+)
+
+accuracy = evaluator.evaluate(predictions)
+print(f"Accuracy: {accuracy:.4f}")
+
+# Mostrar algumas predições
+predictions.select("features", "label", "prediction", "probability").show(10)
+
+# Feature importance
+rf_model = model.stages[-1]  # último estágio é o RandomForest
+feature_importance = rf_model.featureImportances.toArray()
+
+print("\nFeature Importance:")
+for i, importance in enumerate(feature_importance):
+    print(f"{feature_cols[i]}: {importance:.4f}")
+
+# Salvar modelo
+model.write().overwrite().save("iris_model")
+
+# Exemplo de uso do modelo salvo
+from pyspark.ml import PipelineModel
+loaded_model = PipelineModel.load("iris_model")
+
+# Fazer predições com modelo carregado
+new_predictions = loaded_model.transform(test_data)
+
+spark.stop()
+</code></pre>
+                </section>
+
+                <!-- Key Features -->
+                <section class="mb-5">
+                    <h2 class="text-success">Principais Características</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="text-light">
+                                <li><strong>Scalability:</strong> Processamento distribuído</li>
+                                <li><strong>In-memory:</strong> Computação em memória</li>
+                                <li><strong>Multi-language:</strong> Scala, Python, Java, R</li>
+                                <li><strong>ML Pipelines:</strong> Workflows estruturados</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="text-light">
+                                <li><strong>Feature Engineering:</strong> Transformadores built-in</li>
+                                <li><strong>Model Selection:</strong> Cross-validation e tuning</li>
+                                <li><strong>Persistence:</strong> Salvar/carregar modelos</li>
+                                <li><strong>Integration:</strong> Integração com ecossistema Spark</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Tutorial Links -->
+                <section class="mb-5">
+                    <h2 class="text-success">Tutoriais e Recursos</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="text-success">Documentação Oficial</h5>
+                            <ul class="text-light">
+                                <li><a href="https://spark.apache.org/docs/latest/ml-guide.html" class="text-success" target="_blank">ML Guide</a></li>
+                                <li><a href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.ml.html" class="text-success" target="_blank">PySpark ML API</a></li>
+                                <li><a href="https://spark.apache.org/docs/latest/ml-pipeline.html" class="text-success" target="_blank">ML Pipelines</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-success">Recursos da Comunidade</h5>
+                            <ul class="text-light">
+                                <li><a href="https://github.com/apache/spark" class="text-success" target="_blank">GitHub Repository</a></li>
+                                <li><a href="https://spark.apache.org/examples.html" class="text-success" target="_blank">Examples</a></li>
+                                <li><a href="https://stackoverflow.com/questions/tagged/apache-spark-mllib" class="text-success" target="_blank">Stack Overflow</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-md-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Informações Rápidas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled text-light">
+                                <li><strong>Parte de:</strong> Apache Spark</li>
+                                <li><strong>Primeira Versão:</strong> 2014</li>
+                                <li><strong>Linguagem:</strong> Scala, Python, Java, R</li>
+                                <li><strong>Licença:</strong> Apache 2.0</li>
+                                <li><strong>Versão Atual:</strong> 3.5+</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="../../processamento/apache-spark/" class="text-success">Apache Spark</a></li>
+                                <li><a href="../apache-mahout/" class="text-success">Apache Mahout</a></li>
+                                <li><a href="../h2o-ai/" class="text-success">H2O.ai</a></li>
+                                <li><a href="../mlflow/" class="text-success">MLflow</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card bg-dark border-success">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="https://spark.apache.org/mllib/" class="text-success" target="_blank">MLlib Homepage</a></li>
+                                <li><a href="https://github.com/apache/spark" class="text-success" target="_blank">GitHub</a></li>
+                                <li><a href="https://spark.apache.org/docs/latest/ml-guide.html" class="text-success" target="_blank">Documentation</a></li>
+                                <li><a href="https://spark.apache.org/community.html" class="text-success" target="_blank">Community</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2024 Portal Big Data. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="../../../contato/" class="text-success">Contato</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

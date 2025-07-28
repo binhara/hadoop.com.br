@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MinIO - High Performance Object Storage | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="MinIO - High Performance Object Storage | Portal Big Data">
+    <meta name="description" content="MinIO - Object storage de alta performance compatível com Amazon S3. Guia completo, casos de uso, instalação e comparações para aplicações cloud-native.">
+    <meta name="keywords" content="MinIO, object storage, S3 compatible, cloud native, kubernetes, docker, high performance storage">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/sistemas-arquivos/minio">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/sistemas-arquivos/minio">
+    <meta property="og:title" content="MinIO - High Performance Object Storage | Portal Big Data">
+    <meta property="og:description" content="MinIO - Object storage de alta performance compatível com Amazon S3. Guia completo para aplicações cloud-native.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/og/minio-og.jpg">
+    <meta property="og:site_name" content="Portal Big Data">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/tecnologias/sistemas-arquivos/minio">
+    <meta property="twitter:title" content="MinIO - High Performance Object Storage | Portal Big Data">
+    <meta property="twitter:description" content="MinIO - Object storage de alta performance compatível com Amazon S3. Guia completo para aplicações cloud-native.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/minio-twitter.jpg">
+    <meta property="twitter:site" content="@portalbigdata">
+    
+    <!-- Structured Data for Software Application -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "MinIO",
+        "description": "High Performance Object Storage compatível com Amazon S3 API",
+        "url": "https://min.io",
+        "applicationCategory": "Object Storage",
+        "operatingSystem": "Linux, Windows, macOS",
+        "programmingLanguage": "Go",
+        "license": "GNU AGPL v3.0",
+        "version": "2024.1.16",
+        "datePublished": "2015-01-01",
+        "dateModified": "2024-01-16",
+        "author": {
+            "@type": "Organization",
+            "name": "MinIO Inc.",
+            "url": "https://min.io"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        },
+        "featureList": [
+            "S3 API Compatibility",
+            "High Performance",
+            "Kubernetes Native",
+            "Multi-Cloud Support"
+        ],
+        "requirements": "Linux/Windows/macOS, 4GB RAM mínimo"
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="../../../">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../../">Início</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Sistemas de Arquivos Distribuídos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">MinIO</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Technology Header -->
+                <div class="tech-header d-flex align-items-center mb-4">
+                    <img src="../../../assets/images/logos/minio-logo.png" alt="MinIO Logo" class="tech-logo me-4" style="width: 80px; height: 80px;">
+                    <div>
+                        <h1 class="mb-2">MinIO</h1>
+                        <div class="tech-badges">
+                            <span class="badge bg-primary">Open Source</span>
+                            <span class="badge bg-success">2024 Trending</span>
+                            <span class="badge bg-warning text-dark">Object Storage</span>
+                        </div>
+                        <p class="lead mt-2 mb-0">Object storage de alta performance compatível com Amazon S3, ideal para aplicações cloud-native e containerizadas.</p>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs nav-fill mb-4" id="techTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            Visão Geral
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">
+                            Recursos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="use-cases-tab" data-bs-toggle="tab" data-bs-target="#use-cases" type="button" role="tab">
+                            Casos de Uso
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="examples-tab" data-bs-toggle="tab" data-bs-target="#examples" type="button" role="tab">
+                            Exemplos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button" role="tab">
+                            Comparações
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="techTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>O que é MinIO?</h3>
+                                <p>MinIO é um object storage de alta performance, compatível com a API do Amazon S3, projetado para aplicações cloud-native. É escrito em Go e otimizado para performance, oferecendo throughput excepcional e baixa latência. MinIO é ideal para workloads de machine learning, analytics e backup/arquivamento.</p>
+                                
+                                <h4>História</h4>
+                                <p>MinIO foi criado em 2015 pela MinIO Inc. como uma alternativa open-source ao Amazon S3. Foi projetado desde o início para ser cloud-native, com foco em simplicidade, performance e compatibilidade com Kubernetes. Rapidamente se tornou uma das soluções de object storage mais populares para ambientes híbridos e multi-cloud.</p>
+                                
+                                <h4>Arquitetura</h4>
+                                <p>MinIO utiliza uma arquitetura distribuída baseada em erasure coding para proteção de dados. Pode ser executado em modo standalone ou distribuído, com múltiplos nós formando um cluster. Suporta deployment em bare metal, VMs, containers e Kubernetes, oferecendo flexibilidade total de deployment.</p>
+                                
+                                <h4>Vantagens</h4>
+                                <ul>
+                                    <li>Alta performance - throughput superior ao S3 em muitos cenários</li>
+                                    <li>100% compatível com API do Amazon S3</li>
+                                    <li>Kubernetes-native com operator oficial</li>
+                                    <li>Baixo footprint de recursos</li>
+                                    <li>Suporte a multi-tenancy e encryption</li>
+                                    <li>Interface web intuitiva para administração</li>
+                                    <li>Suporte a versioning e lifecycle policies</li>
+                                </ul>
+                                
+                                <h4>Desvantagens</h4>
+                                <ul>
+                                    <li>Menos features avançadas comparado ao S3 (algumas APIs não implementadas)</li>
+                                    <li>Comunidade menor comparada a soluções mais estabelecidas</li>
+                                    <li>Requer conhecimento de object storage para otimização</li>
+                                    <li>Licença AGPL pode ser restritiva para alguns casos comerciais</li>
+                                    <li>Menos integrações nativas com ferramentas de terceiros</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane fade" id="features" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Principais Recursos</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">S3 API Compatibility</h6>
+                                                <p class="card-text small">100% compatível com Amazon S3 API, permitindo migração sem alteração de código.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Erasure Coding</h6>
+                                                <p class="card-text small">Proteção de dados avançada com overhead mínimo de storage.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Kubernetes Operator</h6>
+                                                <p class="card-text small">Deployment e gerenciamento nativo no Kubernetes com operator oficial.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Multi-Cloud Gateway</h6>
+                                                <p class="card-text small">Interface unificada para múltiplos provedores de cloud storage.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4>Especificações Técnicas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Tamanho Máximo de Objeto:</strong></td>
+                                                <td>5TB</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Número Máximo de Buckets:</strong></td>
+                                                <td>Ilimitado</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Protocolos Suportados:</strong></td>
+                                                <td>HTTP/HTTPS, S3 API</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Encryption:</strong></td>
+                                                <td>AES-256, TLS 1.2+</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Deployment Modes:</strong></td>
+                                                <td>Standalone, Distributed, Kubernetes</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Tab -->
+                    <div class="tab-pane fade" id="use-cases" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Casos de Uso</h3>
+                                
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Machine Learning Pipelines</h6>
+                                        <p class="card-text">Armazenamento de datasets, modelos e artifacts de ML com alta performance.</p>
+                                        <small class="text-muted">Exemplo: MLflow usando MinIO como artifact store para modelos treinados.</small>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Data Lakes Modernos</h6>
+                                        <p class="card-text">Substituição do HDFS em arquiteturas modernas com Spark, Delta Lake e Iceberg.</p>
+                                        <small class="text-muted">Exemplo: Data lake com Spark + Delta Lake + MinIO para analytics em tempo real.</small>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Backup e Disaster Recovery</h6>
+                                        <p class="card-text">Solução de backup de alta performance para aplicações críticas.</p>
+                                        <small class="text-muted">Exemplo: Backup de bancos de dados PostgreSQL com replicação cross-region.</small>
+                                    </div>
+                                </div>
+                                
+                                <h4>Quando Usar MinIO</h4>
+                                <div class="alert alert-success">
+                                    <h5>✅ Recomendado para:</h5>
+                                    <ul>
+                                        <li>Aplicações cloud-native e containerizadas</li>
+                                        <li>Workloads de machine learning e AI</li>
+                                        <li>Migração de HDFS para object storage</li>
+                                        <li>Ambientes híbridos e multi-cloud</li>
+                                        <li>Aplicações que precisam de alta performance</li>
+                                        <li>Deployment em Kubernetes</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <h5>⚠️ Considere alternativas se:</h5>
+                                    <ul>
+                                        <li>Você precisa de todas as features avançadas do S3</li>
+                                        <li>Requer suporte enterprise 24/7</li>
+                                        <li>Tem restrições com licenças AGPL</li>
+                                        <li>Precisa de integrações específicas não disponíveis</li>
+                                        <li>Workload é principalmente de arquivos pequenos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples Tab -->
+                    <div class="tab-pane fade" id="examples" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Exemplos Práticos</h3>
+                                
+                                <h4>Instalação</h4>
+                                <div class="code-example">
+                                    <pre><code># Download MinIO Server
+wget https://dl.min.io/server/minio/release/linux-amd64/minio
+chmod +x minio
+sudo mv minio /usr/local/bin/
+
+# Download MinIO Client
+wget https://dl.min.io/client/mc/release/linux-amd64/mc
+chmod +x mc
+sudo mv mc /usr/local/bin/
+
+# Docker
+docker run -p 9000:9000 -p 9001:9001 \
+  -e "MINIO_ROOT_USER=admin" \
+  -e "MINIO_ROOT_PASSWORD=password123" \
+  minio/minio server /data --console-address ":9001"</code></pre>
+                                </div>
+                                
+                                <h4>Configuração Básica</h4>
+                                <div class="code-example">
+                                    <pre><code># Iniciar MinIO Server
+export MINIO_ROOT_USER=admin
+export MINIO_ROOT_PASSWORD=password123
+minio server /data --console-address ":9001"
+
+# Configurar MinIO Client
+mc alias set myminio http://localhost:9000 admin password123
+
+# Criar bucket
+mc mb myminio/my-bucket
+
+# Configurar política de acesso
+mc policy set public myminio/my-bucket</code></pre>
+                                </div>
+                                
+                                <h4>Exemplo de Uso</h4>
+                                <div class="code-example">
+                                    <pre><code># Upload de arquivo
+mc cp local-file.txt myminio/my-bucket/
+
+# Download de arquivo
+mc cp myminio/my-bucket/local-file.txt downloaded-file.txt
+
+# Sincronização de diretório
+mc mirror local-folder/ myminio/my-bucket/folder/
+
+# Python SDK
+import boto3
+
+s3_client = boto3.client(
+    's3',
+    endpoint_url='http://localhost:9000',
+    aws_access_key_id='admin',
+    aws_secret_access_key='password123'
+)
+
+# Upload file
+s3_client.upload_file('local-file.txt', 'my-bucket', 'remote-file.txt')
+
+# List objects
+response = s3_client.list_objects_v2(Bucket='my-bucket')
+for obj in response.get('Contents', []):
+    print(obj['Key'])</code></pre>
+                                </div>
+                                
+                                <h4>Tutoriais Relacionados</h4>
+                                <div class="card mb-2">
+                                    <div class="card-body py-2">
+                                        <h6 class="card-title mb-1">MinIO com Kubernetes</h6>
+                                        <small class="text-muted">Nível: Intermediário</small>
+                                        <a href="../../../blog/minio-kubernetes-deployment/" class="btn btn-sm btn-outline-success ms-2">Ver Tutorial</a>
+                                    </div>
+                                </div>
+                                <div class="card mb-2">
+                                    <div class="card-body py-2">
+                                        <h6 class="card-title mb-1">Data Lake com Spark e MinIO</h6>
+                                        <small class="text-muted">Nível: Avançado</small>
+                                        <a href="../../../blog/spark-minio-data-lake/" class="btn btn-sm btn-outline-success ms-2">Ver Tutorial</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Tab -->
+                    <div class="tab-pane fade" id="comparison" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Comparações</h3>
+                                
+                                <h4>Alternativas Similares</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Tecnologia</th>
+                                                <th>Performance</th>
+                                                <th>Facilidade de Uso</th>
+                                                <th>Comunidade</th>
+                                                <th>Licença</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>MinIO</strong></td>
+                                                <td><span class="text-warning">★★★★★</span></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                                <td><span class="text-warning">★★★☆☆</span></td>
+                                                <td><span class="badge bg-info">AGPL v3</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Amazon S3</strong></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                                <td><span class="text-warning">★★★★★</span></td>
+                                                <td><span class="text-warning">★★★★★</span></td>
+                                                <td><span class="badge bg-warning text-dark">Commercial</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Ceph</strong></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                                <td><span class="text-warning">★★☆☆☆</span></td>
+                                                <td><span class="text-warning">★★★☆☆</span></td>
+                                                <td><span class="badge bg-info">LGPL</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>HDFS</strong></td>
+                                                <td><span class="text-warning">★★★☆☆</span></td>
+                                                <td><span class="text-warning">★★☆☆☆</span></td>
+                                                <td><span class="text-warning">★★★★★</span></td>
+                                                <td><span class="badge bg-info">Apache 2.0</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h4>Matriz de Decisão</h4>
+                                <div class="alert alert-info">
+                                    <h6>💡 Dica de Escolha:</h6>
+                                    <p>Escolha MinIO se você precisa de alta performance, compatibilidade S3 e deployment flexível. É ideal para modernizar arquiteturas baseadas em HDFS ou criar novos data lakes cloud-native.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>📊 Quick Facts</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-dark">
+                                <tr>
+                                    <td><strong>Versão Atual:</strong></td>
+                                    <td>2024.1.16</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Licença:</strong></td>
+                                    <td>GNU AGPL v3.0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Linguagem:</strong></td>
+                                    <td>Go</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Primeira Release:</strong></td>
+                                    <td>2015</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Última Atualização:</strong></td>
+                                    <td>Janeiro 2024</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔗 Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="https://min.io" class="btn btn-outline-success btn-sm" target="_blank">
+                                    🌐 Site Oficial
+                                </a>
+                                <a href="https://github.com/minio/minio" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📁 GitHub
+                                </a>
+                                <a href="https://docs.min.io" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📚 Documentação
+                                </a>
+                                <a href="https://slack.min.io" class="btn btn-outline-success btn-sm" target="_blank">
+                                    👥 Comunidade
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔄 Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <a href="../../processamento/apache-spark/" class="btn btn-outline-success btn-sm mb-2 me-2">Apache Spark</a>
+                            <a href="../delta-lake/" class="btn btn-outline-success btn-sm mb-2 me-2">Delta Lake</a>
+                            <a href="../../orquestracao/kubernetes/" class="btn btn-outline-success btn-sm mb-2 me-2">Kubernetes</a>
+                            <a href="../../machine-learning/mlflow/" class="btn btn-outline-success btn-sm mb-2 me-2">MLflow</a>
+                        </div>
+                    </div>
+
+                    <!-- Courses -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🎓 Cursos Relacionados</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="card mb-2">
+                                <div class="card-body py-2">
+                                    <h6 class="card-title mb-1">Object Storage Fundamentals</h6>
+                                    <small class="text-muted">Iniciante • 15h</small>
+                                    <a href="../../../cursos/object-storage-fundamentals/" class="btn btn-sm btn-primary mt-1">Ver Curso</a>
+                                </div>
+                            </div>
+                            <div class="card mb-2">
+                                <div class="card-body py-2">
+                                    <h6 class="card-title mb-1">MinIO for Data Engineers</h6>
+                                    <small class="text-muted">Intermediário • 25h</small>
+                                    <a href="../../../cursos/minio-data-engineers/" class="btn btn-sm btn-primary mt-1">Ver Curso</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sponsored Content -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>💼 Conteúdo Patrocinado</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <p class="small mb-2">Aprenda mais sobre Big Data:</p>
+                                <a href="https://dssbr.com.br" target="_blank" class="btn btn-warning btn-sm mb-2 d-block">
+                                    📊 Data Science & Big Data
+                                </a>
+                                <a href="https://gubigdata.com.br" target="_blank" class="btn btn-warning btn-sm mb-2 d-block">
+                                    🎓 Cursos Especializados
+                                </a>
+                                <a href="https://oworkshop.com.br" target="_blank" class="btn btn-warning btn-sm d-block">
+                                    🛠️ Workshops Práticos
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/main.js"></script>
+    <script src="../../../assets/js/technology-page.js"></script>
+</body>
+</html>

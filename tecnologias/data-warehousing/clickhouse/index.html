@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickHouse - Data Warehousing | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="ClickHouse - Data Warehousing | Portal Big Data">
+    <meta name="description" content="ClickHouse: DBMS colunar de alta performance para analytics em tempo real. Consultas ultra-rápidas e processamento de bilhões de registros.">
+    <meta name="keywords" content="clickhouse, dbms colunar, analytics tempo real, alta performance, olap, big data, yandex">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/data-warehousing/clickhouse">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/data-warehousing/clickhouse">
+    <meta property="og:title" content="ClickHouse - Data Warehousing | Portal Big Data">
+    <meta property="og:description" content="ClickHouse: DBMS colunar de alta performance para analytics em tempo real. Consultas ultra-rápidas e processamento de bilhões de registros.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/og/clickhouse-og.jpg">
+    <meta property="og:site_name" content="Portal Big Data">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/tecnologias/data-warehousing/clickhouse">
+    <meta property="twitter:title" content="ClickHouse - Data Warehousing | Portal Big Data">
+    <meta property="twitter:description" content="ClickHouse: DBMS colunar de alta performance para analytics em tempo real. Consultas ultra-rápidas e processamento de bilhões de registros.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/clickhouse-twitter.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "ClickHouse",
+        "description": "Fast open-source column-oriented database management system for online analytical processing",
+        "url": "https://clickhouse.com",
+        "applicationCategory": "Data Warehousing",
+        "operatingSystem": "Linux, Windows, macOS",
+        "programmingLanguage": "C++",
+        "license": "Apache License 2.0",
+        "version": "24.1",
+        "datePublished": "2016-06-15",
+        "dateModified": "2024-01-15",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="/">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Data Warehousing</a></li>
+                <li class="breadcrumb-item active" aria-current="page">ClickHouse</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Technology Header -->
+                <div class="tech-header d-flex align-items-center mb-4">
+                    <img src="../../../assets/images/logos/clickhouse-logo.png" alt="ClickHouse Logo" class="tech-logo me-3" style="width: 80px; height: 80px;">
+                    <div>
+                        <h1 class="mb-2">ClickHouse</h1>
+                        <div class="tech-badges">
+                            <span class="badge bg-success">Open Source</span>
+                            <span class="badge bg-primary">2024 Trending</span>
+                            <span class="badge bg-danger">Ultra Performance</span>
+                            <span class="badge bg-warning text-dark">Data Warehousing</span>
+                        </div>
+                        <p class="lead mt-2 mb-0">DBMS colunar de alta performance para processamento analítico online</p>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs nav-fill mb-4" id="techTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            Visão Geral
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">
+                            Recursos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="use-cases-tab" data-bs-toggle="tab" data-bs-target="#use-cases" type="button" role="tab">
+                            Casos de Uso
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="examples-tab" data-bs-toggle="tab" data-bs-target="#examples" type="button" role="tab">
+                            Exemplos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button" role="tab">
+                            Comparações
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="techTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>O que é ClickHouse?</h3>
+                                <p>ClickHouse é um sistema de gerenciamento de banco de dados (DBMS) colunar de código aberto para processamento analítico online (OLAP). Desenvolvido para fornecer consultas ultra-rápidas em grandes volumes de dados, ClickHouse pode processar bilhões de registros em milissegundos.</p>
+                                
+                                <h4>História</h4>
+                                <p>Desenvolvido pela Yandex em 2009 para análise de dados de web analytics e posteriormente open-sourced em 2016. ClickHouse foi projetado desde o início para lidar com cargas de trabalho analíticas extremamente exigentes, processando trilhões de registros por dia no Yandex.Metrica.</p>
+                                
+                                <h4>Arquitetura</h4>
+                                <p>ClickHouse utiliza uma arquitetura colunar otimizada:</p>
+                                <ul>
+                                    <li><strong>Armazenamento Colunar:</strong> Dados organizados por colunas para compressão e performance</li>
+                                    <li><strong>Processamento Vetorizado:</strong> Operações SIMD para máxima performance</li>
+                                    <li><strong>Compressão Avançada:</strong> Algoritmos de compressão específicos por tipo de dados</li>
+                                    <li><strong>Índices Esparsos:</strong> Índices otimizados para consultas analíticas</li>
+                                    <li><strong>Replicação e Sharding:</strong> Distribuição horizontal nativa</li>
+                                </ul>
+                                
+                                <h4>Vantagens</h4>
+                                <ul>
+                                    <li>Performance excepcional (consultas em milissegundos)</li>
+                                    <li>Compressão de dados extremamente eficiente</li>
+                                    <li>Escalabilidade linear horizontal</li>
+                                    <li>SQL familiar com extensões analíticas</li>
+                                    <li>Suporte nativo a arrays e nested data</li>
+                                    <li>Inserção de dados em tempo real</li>
+                                    <li>Baixo custo operacional</li>
+                                </ul>
+                                
+                                <h4>Desvantagens</h4>
+                                <ul>
+                                    <li>Não adequado para workloads OLTP</li>
+                                    <li>Limitações em operações UPDATE/DELETE</li>
+                                    <li>Curva de aprendizado para otimização</li>
+                                    <li>Menos conectores comparado a outras soluções</li>
+                                    <li>Requer planejamento cuidadoso de schema</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane fade" id="features" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Principais Recursos</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card bg-dark">
+                                            <div class="card-body">
+                                                <h5>⚡ Ultra Performance</h5>
+                                                <p>Consultas em bilhões de registros em milissegundos</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card bg-dark">
+                                            <div class="card-body">
+                                                <h5>🗜️ Compressão Avançada</h5>
+                                                <p>Redução de 90% no espaço de armazenamento</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card bg-dark">
+                                            <div class="card-body">
+                                                <h5>📊 Armazenamento Colunar</h5>
+                                                <p>Otimizado para consultas analíticas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card bg-dark">
+                                            <div class="card-body">
+                                                <h5>🔄 Real-time Ingestion</h5>
+                                                <p>Inserção de dados em tempo real com alta throughput</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4>Engines de Tabela</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>MergeTree</strong></td>
+                                                <td>Engine principal para dados analíticos</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>ReplacingMergeTree</strong></td>
+                                                <td>Remove duplicatas durante merge</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>SummingMergeTree</strong></td>
+                                                <td>Agrega valores durante merge</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>AggregatingMergeTree</strong></td>
+                                                <td>Armazena estados de agregação</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Distributed</strong></td>
+                                                <td>Distribui dados entre múltiplos shards</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Tab -->
+                    <div class="tab-pane fade" id="use-cases" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Casos de Uso</h3>
+                                
+                                <div class="mb-4">
+                                    <h4>📊 Web Analytics</h4>
+                                    <p>Análise de eventos de websites com bilhões de pageviews.</p>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h4>📈 Real-time Dashboards</h4>
+                                    <p>Dashboards operacionais com atualizações em tempo real.</p>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h4>🔍 Log Analytics</h4>
+                                    <p>Análise de logs de aplicações e infraestrutura.</p>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h4>💰 Financial Analytics</h4>
+                                    <p>Análise de transações financeiras e detecção de fraudes.</p>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h4>🌐 IoT Data Processing</h4>
+                                    <p>Processamento de dados de sensores IoT em tempo real.</p>
+                                </div>
+                                
+                                <div class="alert alert-success">
+                                    <h5>✅ Recomendado para:</h5>
+                                    <ul>
+                                        <li>Analytics de alta performance</li>
+                                        <li>Consultas em tempo real</li>
+                                        <li>Grandes volumes de dados (TB/PB)</li>
+                                        <li>Workloads read-heavy</li>
+                                        <li>Time-series data</li>
+                                        <li>Event streaming analytics</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <h5>⚠️ Considere alternativas se:</h5>
+                                    <ul>
+                                        <li>Precisa de transações ACID completas</li>
+                                        <li>Workloads OLTP intensivos</li>
+                                        <li>Muitas operações UPDATE/DELETE</li>
+                                        <li>Dados altamente normalizados</li>
+                                        <li>Requer joins complexos frequentes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples Tab -->
+                    <div class="tab-pane fade" id="examples" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Exemplos Práticos</h3>
+                                
+                                <h4>Criação de Tabela Otimizada</h4>
+                                <div class="code-example">
+                                    <pre><code>CREATE TABLE events (
+    timestamp DateTime,
+    user_id UInt64,
+    event_type String,
+    page_url String,
+    country String,
+    device_type String,
+    session_duration UInt32
+) ENGINE = MergeTree()
+PARTITION BY toYYYYMM(timestamp)
+ORDER BY (timestamp, user_id)
+SETTINGS index_granularity = 8192;</code></pre>
+                                </div>
+                                
+                                <h4>Consulta de Alta Performance</h4>
+                                <div class="code-example">
+                                    <pre><code>SELECT 
+    toStartOfHour(timestamp) as hour,
+    country,
+    device_type,
+    count() as events,
+    uniq(user_id) as unique_users,
+    avg(session_duration) as avg_duration
+FROM events 
+WHERE timestamp >= now() - INTERVAL 24 HOUR
+    AND event_type = 'page_view'
+GROUP BY hour, country, device_type
+ORDER BY hour DESC, events DESC
+LIMIT 1000;</code></pre>
+                                </div>
+                                
+                                <h4>Inserção em Batch</h4>
+                                <div class="code-example">
+                                    <pre><code>INSERT INTO events VALUES
+    ('2024-01-15 10:30:00', 12345, 'page_view', '/home', 'US', 'mobile', 45),
+    ('2024-01-15 10:30:01', 12346, 'click', '/product/123', 'BR', 'desktop', 120),
+    ('2024-01-15 10:30:02', 12347, 'purchase', '/checkout', 'UK', 'tablet', 300);
+
+-- Ou inserção de arquivo
+INSERT INTO events 
+FROM INFILE 'events.csv' 
+FORMAT CSV;</code></pre>
+                                </div>
+                                
+                                <h4>Materialized View para Agregações</h4>
+                                <div class="code-example">
+                                    <pre><code>-- Criar tabela para agregações
+CREATE TABLE daily_stats (
+    date Date,
+    country String,
+    total_events UInt64,
+    unique_users UInt64
+) ENGINE = SummingMergeTree()
+ORDER BY (date, country);
+
+-- Criar materialized view
+CREATE MATERIALIZED VIEW daily_stats_mv TO daily_stats AS
+SELECT 
+    toDate(timestamp) as date,
+    country,
+    count() as total_events,
+    uniq(user_id) as unique_users
+FROM events
+GROUP BY date, country;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Tab -->
+                    <div class="tab-pane fade" id="comparison" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Comparações</h3>
+                                
+                                <h4>ClickHouse vs Alternativas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Aspecto</th>
+                                                <th>ClickHouse</th>
+                                                <th>Trino</th>
+                                                <th>BigQuery</th>
+                                                <th>Snowflake</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Latência</strong></td>
+                                                <td>Muito Baixa (ms)</td>
+                                                <td>Baixa (segundos)</td>
+                                                <td>Baixa (segundos)</td>
+                                                <td>Baixa (segundos)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Throughput</strong></td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Compressão</strong></td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Real-time Ingestion</strong></td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐</td>
+                                                <td>⭐⭐⭐</td>
+                                                <td>⭐⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Custo</strong></td>
+                                                <td>Muito Baixo</td>
+                                                <td>Baixo</td>
+                                                <td>Médio</td>
+                                                <td>Alto</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h4>Performance Benchmarks</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card bg-success bg-opacity-25">
+                                            <div class="card-body">
+                                                <h5>🚀 Vantagens Competitivas</h5>
+                                                <ul>
+                                                    <li>Consultas sub-segundo</li>
+                                                    <li>Compressão 10:1 típica</li>
+                                                    <li>Inserção de milhões de registros/s</li>
+                                                    <li>Baixo uso de recursos</li>
+                                                    <li>Escalabilidade linear</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card bg-warning bg-opacity-25">
+                                            <div class="card-body">
+                                                <h5>⚠️ Limitações</h5>
+                                                <ul>
+                                                    <li>Não é OLTP</li>
+                                                    <li>Updates/Deletes limitados</li>
+                                                    <li>Joins podem ser custosos</li>
+                                                    <li>Schema deve ser bem planejado</li>
+                                                    <li>Curva de aprendizado</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>📊 Quick Facts</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-dark">
+                                <tr>
+                                    <td><strong>Versão Atual:</strong></td>
+                                    <td>24.1</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Licença:</strong></td>
+                                    <td>Apache 2.0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Linguagem:</strong></td>
+                                    <td>C++</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Primeira Release:</strong></td>
+                                    <td>2016</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Última Atualização:</strong></td>
+                                    <td>Janeiro 2024</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔗 Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="https://clickhouse.com" class="btn btn-outline-success btn-sm" target="_blank">
+                                    🌐 Site Oficial
+                                </a>
+                                <a href="https://github.com/ClickHouse/ClickHouse" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📁 GitHub
+                                </a>
+                                <a href="https://clickhouse.com/docs" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📚 Documentação
+                                </a>
+                                <a href="https://clickhouse.com/community" class="btn btn-outline-success btn-sm" target="_blank">
+                                    👥 Comunidade
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔄 Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="../trino/" class="btn btn-outline-primary btn-sm">Trino</a>
+                                <a href="../apache-impala/" class="btn btn-outline-primary btn-sm">Apache Impala</a>
+                                <a href="../../processamento/apache-kafka/" class="btn btn-outline-primary btn-sm">Apache Kafka</a>
+                                <a href="../google-bigquery/" class="btn btn-outline-primary btn-sm">Google BigQuery</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Courses -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🎓 Cursos Relacionados</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="../../../cursos/clickhouse-fundamentals/" class="btn btn-outline-warning btn-sm">ClickHouse Fundamentals</a>
+                                <a href="../../../cursos/real-time-analytics/" class="btn btn-outline-warning btn-sm">Real-time Analytics</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/main.js"></script>
+</body>
+</html>

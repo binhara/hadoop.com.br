@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kubeflow - ML Platform on Kubernetes | Portal Big Data</title>
+    <meta name="description" content="Kubeflow: plataforma de machine learning no Kubernetes. Aprenda sobre pipelines, notebooks e deployment escalável.">
+    <meta name="keywords" content="kubeflow, kubernetes, machine learning, mlops, pipelines, google, cloud native">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Kubeflow - ML Platform on Kubernetes | Portal Big Data">
+    <meta property="og:description" content="Plataforma de machine learning cloud-native baseada em Kubernetes">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/machine-learning/kubeflow/">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/matrix-theme.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Kubeflow",
+        "description": "Machine learning platform for Kubernetes",
+        "url": "https://kubeflow.org",
+        "applicationCategory": "MLOps Platform",
+        "operatingSystem": "Linux",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Google"
+        }
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand text-success" href="../../../index.html">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../../index.html" class="text-success">Home</a></li>
+                <li class="breadcrumb-item"><a href="../../" class="text-success">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../" class="text-success">Machine Learning</a></li>
+                <li class="breadcrumb-item active text-light">Kubeflow</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Technology Header -->
+                <div class="tech-header mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://www.kubeflow.org/docs/images/kubeflow-logo.svg" alt="Kubeflow Logo" class="tech-logo me-3" style="height: 80px;">
+                        <div>
+                            <h1 class="text-success mb-2">Kubeflow</h1>
+                            <div class="tech-badges">
+                                <span class="badge bg-primary">Open Source</span>
+                                <span class="badge bg-success">Google</span>
+                                <span class="badge bg-warning text-dark">Kubernetes</span>
+                                <span class="badge bg-info">Cloud Native</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Overview -->
+                <section class="mb-5">
+                    <h2 class="text-success">Visão Geral</h2>
+                    <p class="text-light">
+                        Kubeflow é uma plataforma open-source para machine learning que roda no Kubernetes, 
+                        projetada para tornar deployments de workflows de ML escaláveis, portáveis e composáveis.
+                    </p>
+                    <p class="text-light">
+                        Desenvolvido pelo Google e pela comunidade, Kubeflow oferece uma solução completa 
+                        para o ciclo de vida de ML, desde desenvolvimento até produção, aproveitando a 
+                        orquestração e escalabilidade do Kubernetes.
+                    </p>
+                </section>
+
+                <!-- Components -->
+                <section class="mb-5">
+                    <h2 class="text-success">Componentes Principais</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Kubeflow Pipelines</h5>
+                                    <p class="text-light small">Plataforma para construir e deployar workflows de ML</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Jupyter Notebooks</h5>
+                                    <p class="text-light small">Ambiente de desenvolvimento interativo</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Katib</h5>
+                                    <p class="text-light small">Sistema de hyperparameter tuning e AutoML</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">KServe</h5>
+                                    <p class="text-light small">Serving de modelos serverless</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Key Features -->
+                <section class="mb-5">
+                    <h2 class="text-success">Principais Características</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="text-light">
+                                <li><strong>Cloud Native:</strong> Baseado em Kubernetes</li>
+                                <li><strong>Multi-framework:</strong> TensorFlow, PyTorch, etc.</li>
+                                <li><strong>Pipeline Management:</strong> Workflows visuais</li>
+                                <li><strong>Auto Scaling:</strong> Escalabilidade automática</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="text-light">
+                                <li><strong>Multi-tenant:</strong> Isolamento de usuários</li>
+                                <li><strong>Experiment Tracking:</strong> Rastreamento de experimentos</li>
+                                <li><strong>Model Serving:</strong> Deploy de modelos</li>
+                                <li><strong>Hyperparameter Tuning:</strong> Otimização automática</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Use Cases -->
+                <section class="mb-5">
+                    <h2 class="text-success">Casos de Uso</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Enterprise ML</h5>
+                                    <p class="text-light small">Plataforma ML empresarial escalável</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Multi-cloud ML</h5>
+                                    <p class="text-light small">Portabilidade entre provedores cloud</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Research Platforms</h5>
+                                    <p class="text-light small">Plataformas de pesquisa colaborativa</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">CI/CD for ML</h5>
+                                    <p class="text-light small">Integração e deployment contínuo</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Code Example -->
+                <section class="mb-5">
+                    <h2 class="text-success">Exemplo Prático</h2>
+                    <p class="text-light">Exemplo de pipeline Kubeflow com Python SDK:</p>
+                    <pre class="bg-dark p-3 rounded border border-success"><code class="text-success">import kfp
+from kfp import dsl
+from kfp.components import create_component_from_func
+
+# Definir componente de treinamento
+def train_model(data_path: str, model_path: str) -> str:
+    import pandas as pd
+    from sklearn.ensemble import RandomForestClassifier
+    import joblib
+    
+    # Carregar dados
+    data = pd.read_csv(data_path)
+    X = data.drop('target', axis=1)
+    y = data['target']
+    
+    # Treinar modelo
+    model = RandomForestClassifier(n_estimators=100)
+    model.fit(X, y)
+    
+    # Salvar modelo
+    joblib.dump(model, model_path)
+    return model_path
+
+# Definir componente de avaliação
+def evaluate_model(model_path: str, test_data_path: str) -> float:
+    import pandas as pd
+    import joblib
+    from sklearn.metrics import accuracy_score
+    
+    # Carregar modelo e dados de teste
+    model = joblib.load(model_path)
+    test_data = pd.read_csv(test_data_path)
+    X_test = test_data.drop('target', axis=1)
+    y_test = test_data['target']
+    
+    # Avaliar modelo
+    predictions = model.predict(X_test)
+    accuracy = accuracy_score(y_test, predictions)
+    
+    return accuracy
+
+# Criar componentes
+train_op = create_component_from_func(
+    train_model,
+    base_image='python:3.8',
+    packages_to_install=['pandas', 'scikit-learn', 'joblib']
+)
+
+evaluate_op = create_component_from_func(
+    evaluate_model,
+    base_image='python:3.8',
+    packages_to_install=['pandas', 'scikit-learn', 'joblib']
+)
+
+# Definir pipeline
+@dsl.pipeline(
+    name='ML Training Pipeline',
+    description='Pipeline para treinamento e avaliação de modelo'
+)
+def ml_pipeline(
+    data_path: str = '/data/train.csv',
+    test_data_path: str = '/data/test.csv',
+    model_path: str = '/models/model.pkl'
+):
+    # Etapa de treinamento
+    train_task = train_op(data_path, model_path)
+    
+    # Etapa de avaliação
+    evaluate_task = evaluate_op(model_path, test_data_path)
+    evaluate_task.after(train_task)
+
+# Compilar e executar pipeline
+if __name__ == '__main__':
+    kfp.compiler.Compiler().compile(ml_pipeline, 'ml_pipeline.yaml')
+    
+    # Conectar ao Kubeflow
+    client = kfp.Client()
+    
+    # Executar pipeline
+    run = client.run_pipeline(
+        experiment_id='ml-experiment',
+        job_name='ml-training-run',
+        pipeline_package_path='ml_pipeline.yaml'
+    )
+</code></pre>
+                </section>
+
+                <!-- Tutorial Links -->
+                <section class="mb-5">
+                    <h2 class="text-success">Tutoriais e Recursos</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="text-success">Tutoriais Oficiais</h5>
+                            <ul class="text-light">
+                                <li><a href="https://www.kubeflow.org/docs/started/getting-started/" class="text-success" target="_blank">Getting Started</a></li>
+                                <li><a href="https://www.kubeflow.org/docs/components/pipelines/" class="text-success" target="_blank">Pipelines Guide</a></li>
+                                <li><a href="https://www.kubeflow.org/docs/" class="text-success" target="_blank">Documentation</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-success">Recursos da Comunidade</h5>
+                            <ul class="text-light">
+                                <li><a href="https://github.com/kubeflow/kubeflow" class="text-success" target="_blank">GitHub Repository</a></li>
+                                <li><a href="https://www.kubeflow.org/docs/about/community/" class="text-success" target="_blank">Community</a></li>
+                                <li><a href="https://blog.kubeflow.org/" class="text-success" target="_blank">Kubeflow Blog</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-md-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Informações Rápidas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled text-light">
+                                <li><strong>Desenvolvedor:</strong> Google + Comunidade</li>
+                                <li><strong>Primeira Versão:</strong> 2017</li>
+                                <li><strong>Plataforma:</strong> Kubernetes</li>
+                                <li><strong>Licença:</strong> Apache 2.0</li>
+                                <li><strong>Versão Atual:</strong> 1.7+</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="../mlflow/" class="text-success">MLflow</a></li>
+                                <li><a href="../tensorflow/" class="text-success">TensorFlow</a></li>
+                                <li><a href="../pytorch/" class="text-success">PyTorch</a></li>
+                                <li><a href="../h2o-ai/" class="text-success">H2O.ai</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card bg-dark border-success">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="https://kubeflow.org" class="text-success" target="_blank">Site Oficial</a></li>
+                                <li><a href="https://github.com/kubeflow/kubeflow" class="text-success" target="_blank">GitHub</a></li>
+                                <li><a href="https://www.kubeflow.org/docs/started/getting-started/" class="text-success" target="_blank">Getting Started</a></li>
+                                <li><a href="https://www.kubeflow.org/docs/about/community/" class="text-success" target="_blank">Community</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2024 Portal Big Data. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="../../../contato/" class="text-success">Contato</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

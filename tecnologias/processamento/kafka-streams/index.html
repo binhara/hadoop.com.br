@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka Streams - Stream Processing Library | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Kafka Streams - Stream Processing Library | Portal Big Data">
+    <meta name="description" content="Kafka Streams: biblioteca Java para processamento de streams em tempo real. Guia completo, casos de uso e exemplos práticos.">
+    <meta name="keywords" content="kafka streams, stream processing, apache kafka, real-time, java, microservices">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/processamento/kafka-streams">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/processamento/kafka-streams">
+    <meta property="og:title" content="Kafka Streams - Stream Processing Library | Portal Big Data">
+    <meta property="og:description" content="Kafka Streams: biblioteca Java para processamento de streams em tempo real. Guia completo, casos de uso e exemplos práticos.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/og/kafka-streams-og.jpg">
+    <meta property="og:site_name" content="Portal Big Data">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/tecnologias/processamento/kafka-streams">
+    <meta property="twitter:title" content="Kafka Streams - Stream Processing Library | Portal Big Data">
+    <meta property="twitter:description" content="Kafka Streams: biblioteca Java para processamento de streams em tempo real. Guia completo, casos de uso e exemplos práticos.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/kafka-streams-twitter.jpg">
+    <meta property="twitter:site" content="@portalbigdata">
+    
+    <!-- Structured Data for Software Application -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Kafka Streams",
+        "description": "Client library for building applications and microservices with Apache Kafka",
+        "url": "https://kafka.apache.org/documentation/streams/",
+        "applicationCategory": "Stream Processing",
+        "operatingSystem": "Cross-platform",
+        "programmingLanguage": ["Java", "Scala"],
+        "license": "Apache License 2.0",
+        "version": "3.6.0",
+        "datePublished": "2016-05-25",
+        "dateModified": "2024-12-01",
+        "author": {
+            "@type": "Organization",
+            "name": "Apache Software Foundation",
+            "url": "https://apache.org"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        },
+        "featureList": [
+            "Exactly-once processing semantics",
+            "Stateful and stateless operations",
+            "Windowing support",
+            "Interactive queries",
+            "Fault tolerance",
+            "Elastic scaling"
+        ],
+        "requirements": "Java 8+, Apache Kafka cluster"
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="/">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Processamento</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Kafka Streams</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Technology Header -->
+                <div class="tech-header d-flex align-items-center mb-4">
+                    <div class="tech-logo-placeholder bg-info text-white rounded me-3 d-flex align-items-center justify-content-center" style="width: 80px; height: 80px; font-size: 24px;">
+                        🌊
+                    </div>
+                    <div>
+                        <h1 class="mb-2">Kafka Streams</h1>
+                        <div class="tech-badges">
+                            <span class="badge bg-primary">Open Source</span>
+                            <span class="badge bg-success">2024 Trending</span>
+                            <span class="badge bg-info">Stream Processing</span>
+                            <span class="badge bg-warning text-dark">Java</span>
+                        </div>
+                        <p class="lead mt-2 mb-0">Biblioteca cliente para construir aplicações de stream processing com Kafka</p>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs nav-fill mb-4" id="techTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            Visão Geral
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">
+                            Recursos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="use-cases-tab" data-bs-toggle="tab" data-bs-target="#use-cases" type="button" role="tab">
+                            Casos de Uso
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="examples-tab" data-bs-toggle="tab" data-bs-target="#examples" type="button" role="tab">
+                            Exemplos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button" role="tab">
+                            Comparações
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="techTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>O que é Kafka Streams?</h3>
+                                <p>Kafka Streams é uma biblioteca cliente para construir aplicações e microserviços críticos em tempo real, onde os dados de entrada e saída são armazenados em clusters Kafka. Combina a simplicidade de escrever e deployar aplicações Java e Scala padrão no lado cliente com os benefícios da tecnologia de cluster server-side do Kafka.</p>
+                                
+                                <h4>História</h4>
+                                <p>Kafka Streams foi introduzido como parte do Apache Kafka 0.10.0 em maio de 2016. Foi desenvolvido pela Confluent e pela comunidade Apache Kafka para fornecer uma alternativa mais simples aos frameworks de stream processing como Apache Storm e Apache Spark Streaming, especificamente otimizada para trabalhar com Kafka.</p>
+                                
+                                <h4>Arquitetura</h4>
+                                <p>Kafka Streams utiliza uma arquitetura de processamento distribuído onde cada aplicação é composta por uma ou mais stream threads. Cada thread processa uma ou mais partições de tópicos Kafka. A biblioteca fornece abstrações de alto nível como KStream (stream de registros) e KTable (changelog stream) para facilitar o desenvolvimento.</p>
+                                
+                                <h4>Vantagens</h4>
+                                <ul>
+                                    <li><strong>Simplicidade:</strong> Biblioteca Java/Scala simples, sem necessidade de cluster separado</li>
+                                    <li><strong>Exactly-once semantics:</strong> Garantias de processamento exactly-once</li>
+                                    <li><strong>Fault tolerance:</strong> Recuperação automática de falhas</li>
+                                    <li><strong>Escalabilidade:</strong> Escala horizontalmente adicionando instâncias</li>
+                                    <li><strong>Stateful processing:</strong> Suporte nativo a operações com estado</li>
+                                    <li><strong>Interactive queries:</strong> Consulta do estado local da aplicação</li>
+                                </ul>
+                                
+                                <h4>Desvantagens</h4>
+                                <ul>
+                                    <li><strong>Limitado ao Kafka:</strong> Funciona apenas com Apache Kafka</li>
+                                    <li><strong>Linguagens limitadas:</strong> Apenas Java e Scala nativamente</li>
+                                    <li><strong>Complexidade de debugging:</strong> Debugging distribuído pode ser desafiador</li>
+                                    <li><strong>Overhead de serialização:</strong> Performance pode ser impactada por serialização</li>
+                                    <li><strong>Curva de aprendizado:</strong> Conceitos de stream processing podem ser complexos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane fade" id="features" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Principais Recursos</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🔄 Stream Processing</h5>
+                                            <p>Processamento contínuo de streams de dados com baixa latência.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>✅ Exactly-Once</h5>
+                                            <p>Garantias de processamento exactly-once para aplicações críticas.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🗃️ Stateful Operations</h5>
+                                            <p>Suporte a operações com estado usando state stores locais.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🪟 Windowing</h5>
+                                            <p>Operações em janelas de tempo para agregações temporais.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🔍 Interactive Queries</h5>
+                                            <p>Consulta do estado local da aplicação em tempo real.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>⚡ High Performance</h5>
+                                            <p>Processamento de milhões de mensagens por segundo.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4>Especificações Técnicas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Versão Atual</strong></td>
+                                                <td>3.6.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Linguagens Suportadas</strong></td>
+                                                <td>Java, Scala</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Dependências</strong></td>
+                                                <td>Apache Kafka cluster</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Processamento</strong></td>
+                                                <td>Stream processing, Stateful, Stateless</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Garantias</strong></td>
+                                                <td>At-least-once, Exactly-once</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Requisitos Mínimos</strong></td>
+                                                <td>Java 8+, Kafka 2.8+</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Tab -->
+                    <div class="tab-pane fade" id="use-cases" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Casos de Uso</h3>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>🔍 Real-time Analytics</h5>
+                                    <p>Análise em tempo real de streams de dados para dashboards, métricas e alertas instantâneos.</p>
+                                </div>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>🛡️ Fraud Detection</h5>
+                                    <p>Detecção de fraudes em tempo real analisando padrões de transações e comportamentos suspeitos.</p>
+                                </div>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>🔄 Data Transformation</h5>
+                                    <p>Transformação e enriquecimento de dados em tempo real entre diferentes sistemas.</p>
+                                </div>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>📊 Event Sourcing</h5>
+                                    <p>Implementação de arquiteturas event-sourced com processamento de eventos em tempo real.</p>
+                                </div>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>🎯 Personalization</h5>
+                                    <p>Personalização em tempo real baseada no comportamento do usuário e histórico de interações.</p>
+                                </div>
+                                
+                                <h4>Quando Usar Kafka Streams</h4>
+                                <div class="alert alert-success">
+                                    <h5>✅ Recomendado para:</h5>
+                                    <ul>
+                                        <li>Aplicações que já usam Apache Kafka</li>
+                                        <li>Microserviços que processam streams</li>
+                                        <li>Necessidade de exactly-once processing</li>
+                                        <li>Processamento com baixa latência</li>
+                                        <li>Aplicações Java/Scala</li>
+                                        <li>Operações stateful em streams</li>
+                                        <li>Integração simples com infraestrutura existente</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <h5>⚠️ Considere alternativas se:</h5>
+                                    <ul>
+                                        <li>Você não usa Kafka como message broker</li>
+                                        <li>Precisa de suporte a outras linguagens além de Java/Scala</li>
+                                        <li>Requer processamento batch complexo</li>
+                                        <li>Necessita de conectores para muitas fontes de dados</li>
+                                        <li>Workloads muito complexos de machine learning</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples Tab -->
+                    <div class="tab-pane fade" id="examples" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Exemplos Práticos</h3>
+                                
+                                <h4>Configuração Maven</h4>
+                                <div class="code-example mb-4">
+                                    <pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.kafka&lt;/groupId&gt;
+    &lt;artifactId&gt;kafka-streams&lt;/artifactId&gt;
+    &lt;version&gt;3.6.0&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.kafka&lt;/groupId&gt;
+    &lt;artifactId&gt;kafka-clients&lt;/artifactId&gt;
+    &lt;version&gt;3.6.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+                                </div>
+                                
+                                <h4>Exemplo Básico - Word Count</h4>
+                                <div class="code-example mb-4">
+                                    <pre><code>import org.apache.kafka.streams.KafkaStreams;
+import org.apache.kafka.streams.StreamsBuilder;
+import org.apache.kafka.streams.StreamsConfig;
+import org.apache.kafka.streams.kstream.KStream;
+import org.apache.kafka.streams.kstream.KTable;
+import org.apache.kafka.streams.kstream.Produced;
+
+import java.util.Arrays;
+import java.util.Properties;
+
+public class WordCountExample {
+    public static void main(String[] args) {
+        Properties props = new Properties();
+        props.put(StreamsConfig.APPLICATION_ID_CONFIG, "word-count-app");
+        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, 
+                  Serdes.String().getClass());
+        props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, 
+                  Serdes.String().getClass());
+
+        StreamsBuilder builder = new StreamsBuilder();
+        
+        // Input stream
+        KStream&lt;String, String&gt; textLines = builder.stream("text-input");
+        
+        // Processing pipeline
+        KTable&lt;String, Long&gt; wordCounts = textLines
+            .flatMapValues(textLine -&gt; Arrays.asList(textLine.toLowerCase().split("\\W+")))
+            .groupBy((key, word) -&gt; word)
+            .count();
+        
+        // Output stream
+        wordCounts.toStream().to("word-count-output", Produced.with(Serdes.String(), Serdes.Long()));
+        
+        KafkaStreams streams = new KafkaStreams(builder.build(), props);
+        streams.start();
+        
+        // Shutdown hook
+        Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
+    }
+}</code></pre>
+                                </div>
+                                
+                                <h4>Exemplo Avançado - Fraud Detection</h4>
+                                <div class="code-example mb-4">
+                                    <pre><code>import org.apache.kafka.streams.kstream.*;
+import java.time.Duration;
+
+public class FraudDetectionExample {
+    public static void main(String[] args) {
+        StreamsBuilder builder = new StreamsBuilder();
+        
+        // Input stream de transações
+        KStream&lt;String, Transaction&gt; transactions = builder.stream("transactions");
+        
+        // Detectar múltiplas transações do mesmo usuário em janela de tempo
+        KTable&lt;Windowed&lt;String&gt;, Long&gt; transactionCounts = transactions
+            .groupBy((key, transaction) -&gt; transaction.getUserId())
+            .windowedBy(TimeWindows.of(Duration.ofMinutes(5)))
+            .count();
+        
+        // Filtrar usuários com muitas transações (possível fraude)
+        KStream&lt;Windowed&lt;String&gt;, Long&gt; suspiciousActivity = transactionCounts
+            .toStream()
+            .filter((windowedUserId, count) -&gt; count &gt; 10);
+        
+        // Enriquecer com dados do usuário
+        KTable&lt;String, User&gt; users = builder.table("users");
+        
+        KStream&lt;String, FraudAlert&gt; fraudAlerts = transactions
+            .join(users, 
+                  (transaction, user) -&gt; new TransactionWithUser(transaction, user),
+                  Joined.with(Serdes.String(), transactionSerde, userSerde))
+            .filter((key, txWithUser) -&gt; isSuspicious(txWithUser))
+            .mapValues(txWithUser -&gt; new FraudAlert(
+                txWithUser.getTransaction(),
+                txWithUser.getUser(),
+                "High frequency transactions detected"
+            ));
+        
+        // Output para tópico de alertas
+        fraudAlerts.to("fraud-alerts");
+        
+        KafkaStreams streams = new KafkaStreams(builder.build(), getProperties());
+        streams.start();
+    }
+    
+    private static boolean isSuspicious(TransactionWithUser txWithUser) {
+        // Lógica de detecção de fraude
+        return txWithUser.getTransaction().getAmount() &gt; 10000 ||
+               txWithUser.getUser().getRiskScore() &gt; 0.8;
+    }
+}</code></pre>
+                                </div>
+                                
+                                <h4>Exemplo com Windowing e Aggregations</h4>
+                                <div class="code-example mb-4">
+                                    <pre><code>import org.apache.kafka.streams.kstream.TimeWindows;
+import org.apache.kafka.streams.kstream.WindowedSerdes;
+import java.time.Duration;
+
+public class RealTimeAnalyticsExample {
+    public static void main(String[] args) {
+        StreamsBuilder builder = new StreamsBuilder();
+        
+        // Stream de eventos de cliques
+        KStream&lt;String, ClickEvent&gt; clicks = builder.stream("click-events");
+        
+        // Agregações em janelas de tempo
+        KTable&lt;Windowed&lt;String&gt;, Long&gt; clicksPerPage = clicks
+            .groupBy((key, click) -&gt; click.getPageId())
+            .windowedBy(TimeWindows.of(Duration.ofMinutes(1)))
+            .count();
+        
+        // Calcular taxa de cliques por sessão
+        KTable&lt;Windowed&lt;String&gt;, Double&gt; clickRateBySession = clicks
+            .groupBy((key, click) -&gt; click.getSessionId())
+            .windowedBy(TimeWindows.of(Duration.ofMinutes(5)))
+            .aggregate(
+                () -&gt; new ClickStats(0, 0),
+                (key, click, stats) -&gt; {
+                    stats.incrementClicks();
+                    if (click.isConversion()) {
+                        stats.incrementConversions();
+                    }
+                    return stats;
+                },
+                Materialized.with(Serdes.String(), clickStatsSerde)
+            )
+            .mapValues(stats -&gt; stats.getConversionRate());
+        
+        // Stream de alertas para páginas com baixa performance
+        KStream&lt;String, Alert&gt; performanceAlerts = clickRateBySession
+            .toStream()
+            .filter((windowedSession, rate) -&gt; rate &lt; 0.02)
+            .map((windowedSession, rate) -&gt; KeyValue.pair(
+                windowedSession.key(),
+                new Alert("Low conversion rate", rate, System.currentTimeMillis())
+            ));
+        
+        // Output streams
+        clicksPerPage.toStream().to("page-analytics");
+        performanceAlerts.to("performance-alerts");
+        
+        KafkaStreams streams = new KafkaStreams(builder.build(), getProperties());
+        streams.start();
+    }
+}</code></pre>
+                                </div>
+                                
+                                <h4>Interactive Queries Example</h4>
+                                <div class="code-example mb-4">
+                                    <pre><code>import org.apache.kafka.streams.state.QueryableStoreTypes;
+import org.apache.kafka.streams.state.ReadOnlyKeyValueStore;
+
+public class InteractiveQueriesExample {
+    private KafkaStreams streams;
+    
+    public void setupStreams() {
+        StreamsBuilder builder = new StreamsBuilder();
+        
+        // Criar uma KTable materializada
+        KTable&lt;String, Long&gt; userClickCounts = builder
+            .stream("user-clicks")
+            .groupBy((key, click) -&gt; click.getUserId())
+            .count(Materialized.&lt;String, Long, KeyValueStore&lt;Bytes, byte[]&gt;&gt;as("user-click-counts"));
+        
+        streams = new KafkaStreams(builder.build(), getProperties());
+        streams.start();
+    }
+    
+    // Método para consultar o estado local
+    public Long getUserClickCount(String userId) {
+        ReadOnlyKeyValueStore&lt;String, Long&gt; store = streams.store(
+            "user-click-counts",
+            QueryableStoreTypes.keyValueStore()
+        );
+        
+        return store.get(userId);
+    }
+    
+    // REST endpoint para expor as consultas
+    @GetMapping("/user/{userId}/clicks")
+    public ResponseEntity&lt;Long&gt; getUserClicks(@PathVariable String userId) {
+        Long clickCount = getUserClickCount(userId);
+        return clickCount != null ? 
+            ResponseEntity.ok(clickCount) : 
+            ResponseEntity.notFound().build();
+    }
+}</code></pre>
+                                </div>
+                                
+                                <h4>Tutoriais Relacionados</h4>
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <h6>Kafka Streams Fundamentals</h6>
+                                        <small>Introdução ao processamento de streams com Kafka</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <h6>Building Microservices with Kafka Streams</h6>
+                                        <small>Arquiteturas de microserviços usando stream processing</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <h6>Advanced Kafka Streams Patterns</h6>
+                                        <small>Padrões avançados e otimizações de performance</small>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Tab -->
+                    <div class="tab-pane fade" id="comparison" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Comparações</h3>
+                                
+                                <h4>Alternativas Similares</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Tecnologia</th>
+                                                <th>Latência</th>
+                                                <th>Facilidade de Uso</th>
+                                                <th>Escalabilidade</th>
+                                                <th>Ecossistema</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Kafka Streams</strong></td>
+                                                <td><span class="badge bg-success">Baixa</span></td>
+                                                <td><span class="badge bg-success">Alta</span></td>
+                                                <td><span class="badge bg-success">Excelente</span></td>
+                                                <td><span class="badge bg-info">Kafka</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Apache Flink</td>
+                                                <td><span class="badge bg-success">Muito Baixa</span></td>
+                                                <td><span class="badge bg-warning">Média</span></td>
+                                                <td><span class="badge bg-success">Excelente</span></td>
+                                                <td><span class="badge bg-success">Amplo</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Apache Storm</td>
+                                                <td><span class="badge bg-success">Baixa</span></td>
+                                                <td><span class="badge bg-warning">Média</span></td>
+                                                <td><span class="badge bg-info">Boa</span></td>
+                                                <td><span class="badge bg-warning">Limitado</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Spark Streaming</td>
+                                                <td><span class="badge bg-warning">Média</span></td>
+                                                <td><span class="badge bg-success">Alta</span></td>
+                                                <td><span class="badge bg-success">Excelente</span></td>
+                                                <td><span class="badge bg-success">Amplo</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Apache Samza</td>
+                                                <td><span class="badge bg-success">Baixa</span></td>
+                                                <td><span class="badge bg-warning">Média</span></td>
+                                                <td><span class="badge bg-info">Boa</span></td>
+                                                <td><span class="badge bg-info">Kafka</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h4>Quando Escolher Kafka Streams vs Alternativas</h4>
+                                <div class="comparison-section">
+                                    <h5>Kafka Streams vs Apache Flink</h5>
+                                    <p><strong>Escolha Kafka Streams se:</strong> Você já usa Kafka, quer simplicidade de deployment, e precisa de exactly-once processing com baixa latência.</p>
+                                    <p><strong>Escolha Flink se:</strong> Você precisa de latência ultra-baixa, suporte a múltiplas fontes de dados, ou processamento de eventos complexos.</p>
+                                </div>
+                                
+                                <div class="comparison-section">
+                                    <h5>Kafka Streams vs Spark Streaming</h5>
+                                    <p><strong>Escolha Kafka Streams se:</strong> Você quer processamento verdadeiramente contínuo, baixa latência, e simplicidade operacional.</p>
+                                    <p><strong>Escolha Spark Streaming se:</strong> Você precisa de processamento batch também, tem workloads complexos de ML, ou quer usar múltiplas linguagens.</p>
+                                </div>
+                                
+                                <div class="comparison-section">
+                                    <h5>Kafka Streams vs Apache Samza</h5>
+                                    <p><strong>Escolha Kafka Streams se:</strong> Você quer uma API mais simples, melhor documentação, e comunidade mais ativa.</p>
+                                    <p><strong>Escolha Samza se:</strong> Você precisa de controle mais granular sobre o processamento ou tem requisitos específicos de deployment.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Quick Facts -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Informações Rápidas</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li><strong>Tipo:</strong> Stream Processing Library</li>
+                            <li><strong>Licença:</strong> Apache 2.0</li>
+                            <li><strong>Primeira Versão:</strong> 2016</li>
+                            <li><strong>Linguagens:</strong> Java, Scala</li>
+                            <li><strong>Dependências:</strong> Apache Kafka</li>
+                            <li><strong>Categoria:</strong> Stream Processing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Official Links -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Links Oficiais</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <a href="https://kafka.apache.org/documentation/streams/" class="btn btn-outline-primary btn-sm" target="_blank">
+                                🌐 Documentação Oficial
+                            </a>
+                            <a href="https://github.com/apache/kafka" class="btn btn-outline-info btn-sm" target="_blank">
+                                💻 GitHub
+                            </a>
+                            <a href="https://kafka.apache.org/downloads" class="btn btn-outline-success btn-sm" target="_blank">
+                                📥 Download
+                            </a>
+                            <a href="https://kafka.apache.org/documentation/streams/tutorial" class="btn btn-outline-warning btn-sm" target="_blank">
+                                📚 Tutorial
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Technologies -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Tecnologias Relacionadas</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap gap-2">
+                            <a href="../../streaming/apache-kafka/" class="badge bg-primary text-decoration-none">Apache Kafka</a>
+                            <a href="../apache-flink/" class="badge bg-success text-decoration-none">Apache Flink</a>
+                            <a href="../apache-storm/" class="badge bg-info text-decoration-none">Apache Storm</a>
+                            <a href="../apache-samza/" class="badge bg-warning text-decoration-none">Apache Samza</a>
+                            <a href="../apache-spark/" class="badge bg-danger text-decoration-none">Spark Streaming</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Courses -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Cursos Relacionados</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <h6 class="mb-1">Kafka Streams Fundamentals</h6>
+                                <small>Introdução ao stream processing</small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <h6 class="mb-1">Building Event-Driven Microservices</h6>
+                                <small>Arquiteturas com Kafka Streams</small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <h6 class="mb-1">Real-time Analytics with Kafka</h6>
+                                <small>Analytics em tempo real</small>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Portal Big Data</h5>
+                    <p>Seu guia completo para tecnologias de Big Data</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2024 Portal Big Data. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/technology-page.js"></script>
+</body>
+</html>

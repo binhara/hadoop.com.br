@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Superset - Visualização | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Apache Superset - Visualização | Portal Big Data">
+    <meta name="description" content="Apache Superset: plataforma moderna de business intelligence e visualização de dados. Guia completo, instalação, dashboards e integrações.">
+    <meta name="keywords" content="apache superset, business intelligence, visualização de dados, dashboard, bi, open source, python">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/visualizacao/apache-superset">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/visualizacao/apache-superset">
+    <meta property="og:title" content="Apache Superset - Visualização | Portal Big Data">
+    <meta property="og:description" content="Apache Superset: plataforma moderna de business intelligence e visualização de dados.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/og/apache-superset-og.jpg">
+    <meta property="og:site_name" content="Portal Big Data">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/tecnologias/visualizacao/apache-superset">
+    <meta property="twitter:title" content="Apache Superset - Visualização | Portal Big Data">
+    <meta property="twitter:description" content="Apache Superset: plataforma moderna de business intelligence e visualização de dados.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/apache-superset-twitter.jpg">
+    <meta property="twitter:site" content="@portalbigdata">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Apache Superset",
+        "description": "Plataforma moderna de business intelligence e visualização de dados",
+        "url": "https://superset.apache.org",
+        "applicationCategory": "Business Intelligence",
+        "operatingSystem": "Linux, Windows, macOS",
+        "programmingLanguage": "Python",
+        "license": "Apache License 2.0",
+        "version": "3.0.0",
+        "datePublished": "2015-01-01",
+        "dateModified": "2024-12-01",
+        "author": {
+            "@type": "Organization",
+            "name": "Apache Software Foundation"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        }
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="/">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Visualização</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Apache Superset</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Technology Header -->
+                <div class="tech-header d-flex align-items-center mb-4">
+                    <img src="../../../assets/images/logos/apache-superset-logo.png" alt="Apache Superset Logo" class="tech-logo me-3" style="width: 80px; height: 80px;">
+                    <div>
+                        <h1 class="mb-2">Apache Superset</h1>
+                        <div class="tech-badges">
+                            <span class="badge bg-success">Open Source</span>
+                            <span class="badge bg-info">Maduro</span>
+                            <span class="badge bg-warning text-dark">Visualização</span>
+                            <span class="badge bg-primary">2024 Trending</span>
+                        </div>
+                        <p class="lead mt-2 mb-0">Plataforma moderna de business intelligence e visualização de dados</p>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs nav-fill mb-4" id="techTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            Visão Geral
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">
+                            Recursos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="use-cases-tab" data-bs-toggle="tab" data-bs-target="#use-cases" type="button" role="tab">
+                            Casos de Uso
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="examples-tab" data-bs-toggle="tab" data-bs-target="#examples" type="button" role="tab">
+                            Exemplos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button" role="tab">
+                            Comparações
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="techTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>O que é Apache Superset?</h3>
+                                <p>Apache Superset é uma plataforma moderna de business intelligence e visualização de dados, desenvolvida originalmente pelo Airbnb e doada para a Apache Software Foundation. É uma ferramenta web rica em recursos que permite aos usuários explorar e visualizar dados de forma intuitiva, criar dashboards interativos e compartilhar insights com facilidade.</p>
+                                
+                                <h4>História</h4>
+                                <p>Superset foi criado em 2015 pelo Airbnb para atender suas necessidades internas de visualização de dados. Em 2017, tornou-se um projeto Apache de nível superior (Top-Level Project). Desde então, tem sido adotado por milhares de empresas ao redor do mundo, incluindo Netflix, Twitter, Lyft e muitas outras organizações que precisam de uma solução robusta e escalável para BI.</p>
+                                
+                                <h4>Arquitetura</h4>
+                                <p>Superset é construído em Python usando Flask como framework web, SQLAlchemy para ORM e React para o frontend. Sua arquitetura modular permite integração com diversos bancos de dados e sistemas de armazenamento, incluindo PostgreSQL, MySQL, Presto, Hive, Spark SQL, ClickHouse, BigQuery e muitos outros.</p>
+                                
+                                <h4>Vantagens</h4>
+                                <ul>
+                                    <li><strong>Interface Intuitiva:</strong> Interface web moderna e fácil de usar</li>
+                                    <li><strong>Ampla Conectividade:</strong> Suporte a mais de 40 tipos de banco de dados</li>
+                                    <li><strong>Visualizações Ricas:</strong> Mais de 50 tipos de visualizações disponíveis</li>
+                                    <li><strong>Dashboards Interativos:</strong> Criação de dashboards responsivos e interativos</li>
+                                    <li><strong>SQL Lab:</strong> Editor SQL avançado para exploração de dados</li>
+                                    <li><strong>Controle de Acesso:</strong> Sistema robusto de permissões e segurança</li>
+                                    <li><strong>API REST:</strong> API completa para integração e automação</li>
+                                    <li><strong>Escalabilidade:</strong> Arquitetura que suporta grandes volumes de dados</li>
+                                </ul>
+                                
+                                <h4>Desvantagens</h4>
+                                <ul>
+                                    <li><strong>Curva de Aprendizado:</strong> Pode ser complexo para usuários iniciantes</li>
+                                    <li><strong>Configuração Inicial:</strong> Requer conhecimento técnico para setup</li>
+                                    <li><strong>Performance:</strong> Pode ser lento com consultas muito complexas</li>
+                                    <li><strong>Customização:</strong> Limitações para visualizações muito específicas</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane fade" id="features" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Principais Recursos</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>📊 Visualizações Avançadas</h5>
+                                            <p>Mais de 50 tipos de gráficos e visualizações, incluindo mapas, heatmaps, treemaps e visualizações customizadas.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🔍 SQL Lab</h5>
+                                            <p>Editor SQL avançado com autocomplete, histórico de consultas e capacidade de salvar e compartilhar queries.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>📈 Dashboards Interativos</h5>
+                                            <p>Criação de dashboards responsivos com filtros globais, drill-down e capacidades de tempo real.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🔐 Controle de Acesso</h5>
+                                            <p>Sistema granular de permissões baseado em roles, com integração LDAP/OAuth.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🔌 Conectividade Ampla</h5>
+                                            <p>Suporte nativo a mais de 40 bancos de dados e sistemas de armazenamento.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>⚡ Cache Inteligente</h5>
+                                            <p>Sistema de cache configurável para melhorar performance de consultas frequentes.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4>Especificações Técnicas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Linguagem Principal:</strong></td>
+                                                <td>Python (Backend), TypeScript/React (Frontend)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Framework Web:</strong></td>
+                                                <td>Flask</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Banco de Dados Suportados:</strong></td>
+                                                <td>40+ incluindo PostgreSQL, MySQL, Presto, Hive, Spark SQL</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Autenticação:</strong></td>
+                                                <td>Database, LDAP, OAuth, OpenID</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>API:</strong></td>
+                                                <td>REST API completa</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Deployment:</strong></td>
+                                                <td>Docker, Kubernetes, Cloud providers</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Tab -->
+                    <div class="tab-pane fade" id="use-cases" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Casos de Uso</h3>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>📊 Business Intelligence Empresarial</h5>
+                                    <p>Criação de dashboards executivos e relatórios operacionais para tomada de decisão baseada em dados.</p>
+                                    <div class="alert alert-info">
+                                        <strong>Exemplo:</strong> Dashboard de vendas com métricas de receita, conversão e performance por região.
+                                    </div>
+                                </div>
+
+                                <div class="use-case mb-4">
+                                    <h5>🔍 Análise Exploratória de Dados</h5>
+                                    <p>Exploração interativa de grandes datasets para descobrir insights e padrões.</p>
+                                    <div class="alert alert-info">
+                                        <strong>Exemplo:</strong> Análise de comportamento de usuários em plataformas digitais.
+                                    </div>
+                                </div>
+
+                                <div class="use-case mb-4">
+                                    <h5>📈 Monitoramento Operacional</h5>
+                                    <p>Dashboards em tempo real para monitoramento de KPIs e métricas operacionais.</p>
+                                    <div class="alert alert-info">
+                                        <strong>Exemplo:</strong> Monitoramento de performance de aplicações e infraestrutura.
+                                    </div>
+                                </div>
+
+                                <div class="use-case mb-4">
+                                    <h5>🎯 Self-Service Analytics</h5>
+                                    <p>Capacitar usuários de negócio a criar suas próprias visualizações e relatórios.</p>
+                                    <div class="alert alert-info">
+                                        <strong>Exemplo:</strong> Equipes de marketing criando relatórios de campanha sem dependência de TI.
+                                    </div>
+                                </div>
+                                
+                                <h4>Quando Usar Apache Superset</h4>
+                                <div class="alert alert-success">
+                                    <h5>✅ Recomendado para:</h5>
+                                    <ul class="mb-0">
+                                        <li>Organizações que precisam de uma solução BI open source</li>
+                                        <li>Equipes técnicas com conhecimento em Python/SQL</li>
+                                        <li>Ambientes com múltiplas fontes de dados</li>
+                                        <li>Necessidade de customização e controle total</li>
+                                        <li>Orçamento limitado para ferramentas comerciais</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <h5>⚠️ Considere alternativas se:</h5>
+                                    <ul class="mb-0">
+                                        <li>Usuários finais não têm conhecimento técnico</li>
+                                        <li>Necessita de suporte comercial garantido</li>
+                                        <li>Requer visualizações muito específicas não suportadas</li>
+                                        <li>Ambiente 100% Microsoft (considere Power BI)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples Tab -->
+                    <div class="tab-pane fade" id="examples" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Exemplos Práticos</h3>
+                                
+                                <h4>Instalação com Docker</h4>
+                                <div class="code-example">
+                                    <pre><code># Clone do repositório oficial
+git clone https://github.com/apache/superset.git
+cd superset
+
+# Instalação com Docker Compose
+docker-compose -f docker-compose-non-dev.yml up -d
+
+# Acesso via navegador
+# http://localhost:8088
+# Usuário: admin / Senha: admin</code></pre>
+                                </div>
+                                
+                                <h4>Instalação via pip</h4>
+                                <div class="code-example">
+                                    <pre><code># Instalação do Superset
+pip install apache-superset
+
+# Inicialização do banco de dados
+superset db upgrade
+
+# Criação de usuário admin
+export FLASK_APP=superset
+superset fab create-admin
+
+# Carregamento de exemplos (opcional)
+superset load_examples
+
+# Inicialização do Superset
+superset init
+
+# Execução do servidor
+superset run -p 8088 --with-threads --reload --debugger</code></pre>
+                                </div>
+                                
+                                <h4>Configuração de Conexão com PostgreSQL</h4>
+                                <div class="code-example">
+                                    <pre><code># String de conexão PostgreSQL
+postgresql://username:password@host:port/database
+
+# Exemplo prático
+postgresql://superset:mypassword@localhost:5432/analytics
+
+# Teste de conexão SQL
+SELECT COUNT(*) FROM information_schema.tables;</code></pre>
+                                </div>
+
+                                <h4>Exemplo de Dashboard JSON</h4>
+                                <div class="code-example">
+                                    <pre><code>{
+  "dashboard_title": "Sales Analytics",
+  "description": "Dashboard de análise de vendas",
+  "charts": [
+    {
+      "slice_name": "Revenue by Month",
+      "viz_type": "line",
+      "datasource": "sales_data",
+      "metrics": ["sum__revenue"],
+      "groupby": ["month"]
+    },
+    {
+      "slice_name": "Top Products",
+      "viz_type": "table",
+      "datasource": "sales_data",
+      "metrics": ["sum__quantity"],
+      "groupby": ["product_name"]
+    }
+  ]
+}</code></pre>
+                                </div>
+                                
+                                <h4>Tutoriais Relacionados</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h6>🚀 Primeiros Passos</h6>
+                                                <p>Guia completo para instalação e configuração inicial do Apache Superset.</p>
+                                                <a href="#" class="btn btn-sm btn-outline-primary">Ver Tutorial</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h6>📊 Criando Dashboards</h6>
+                                                <p>Como criar dashboards interativos e visualizações avançadas.</p>
+                                                <a href="#" class="btn btn-sm btn-outline-primary">Ver Tutorial</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Tab -->
+                    <div class="tab-pane fade" id="comparison" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Comparações</h3>
+                                
+                                <h4>Apache Superset vs Alternativas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Critério</th>
+                                                <th>Apache Superset</th>
+                                                <th>Grafana</th>
+                                                <th>Tableau</th>
+                                                <th>Power BI</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Custo</strong></td>
+                                                <td><span class="badge bg-success">Gratuito</span></td>
+                                                <td><span class="badge bg-success">Gratuito</span></td>
+                                                <td><span class="badge bg-danger">$70/mês</span></td>
+                                                <td><span class="badge bg-warning">$10/mês</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Facilidade de Uso</strong></td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Conectividade</strong></td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Customização</strong></td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐</td>
+                                                <td>⭐⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Escalabilidade</strong></td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h4>Matriz de Decisão</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="alert alert-success">
+                                            <h5>✅ Escolha Superset se:</h5>
+                                            <ul class="mb-0">
+                                                <li>Precisa de uma solução gratuita e open source</li>
+                                                <li>Tem equipe técnica para manutenção</li>
+                                                <li>Requer alta customização</li>
+                                                <li>Trabalha com múltiplas fontes de dados</li>
+                                                <li>Quer controle total sobre a plataforma</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="alert alert-warning">
+                                            <h5>⚠️ Considere alternativas se:</h5>
+                                            <ul class="mb-0">
+                                                <li>Usuários finais não são técnicos</li>
+                                                <li>Precisa de suporte comercial</li>
+                                                <li>Quer solução plug-and-play</li>
+                                                <li>Ambiente 100% Microsoft</li>
+                                                <li>Foco em monitoramento (use Grafana)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>📊 Quick Facts</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-dark">
+                                <tr>
+                                    <td><strong>Versão Atual:</strong></td>
+                                    <td>3.0.0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Licença:</strong></td>
+                                    <td>Apache 2.0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Linguagem:</strong></td>
+                                    <td>Python, TypeScript</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Primeira Release:</strong></td>
+                                    <td>2015</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Última Atualização:</strong></td>
+                                    <td>Dezembro 2024</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔗 Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="https://superset.apache.org" class="btn btn-outline-success btn-sm" target="_blank">
+                                    🌐 Site Oficial
+                                </a>
+                                <a href="https://github.com/apache/superset" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📁 GitHub
+                                </a>
+                                <a href="https://superset.apache.org/docs/intro" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📚 Documentação
+                                </a>
+                                <a href="https://apache-superset.slack.com" class="btn btn-outline-success btn-sm" target="_blank">
+                                    👥 Slack Community
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔄 Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="../grafana/" class="btn btn-outline-info btn-sm">Grafana</a>
+                                <a href="../metabase/" class="btn btn-outline-info btn-sm">Metabase</a>
+                                <a href="../../data-warehousing/clickhouse/" class="btn btn-outline-info btn-sm">ClickHouse</a>
+                                <a href="../../processamento/apache-spark/" class="btn btn-outline-info btn-sm">Apache Spark</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Courses -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🎓 Cursos Relacionados</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group list-group-flush">
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    Apache Superset Fundamentals
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    Business Intelligence com Superset
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    Dashboards Avançados
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sponsored Content -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>💼 Conteúdo Patrocinado</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <p class="small">Espaço para conteúdo patrocinado relacionado a Apache Superset</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/main.js"></script>
+    <script src="../../../assets/js/technology-page.js"></script>
+    <script src="../../../assets/js/theme-toggle.js"></script>
+</body>
+</html>

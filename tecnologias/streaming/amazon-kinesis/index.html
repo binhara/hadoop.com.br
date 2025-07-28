@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Kinesis - Streaming | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Amazon Kinesis - Streaming | Portal Big Data">
+    <meta name="description" content="Amazon Kinesis: serviço gerenciado da AWS para coleta, processamento e análise de dados de streaming em tempo real. Guia completo e comparações.">
+    <meta name="keywords" content="amazon kinesis, aws, streaming, real-time, managed service, data streams, analytics">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/streaming/amazon-kinesis">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/streaming/amazon-kinesis">
+    <meta property="og:title" content="Amazon Kinesis - Streaming | Portal Big Data">
+    <meta property="og:description" content="Amazon Kinesis: serviço gerenciado da AWS para coleta, processamento e análise de dados de streaming em tempo real.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/og/amazon-kinesis-og.jpg">
+    <meta property="og:site_name" content="Portal Big Data">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/tecnologias/streaming/amazon-kinesis">
+    <meta property="twitter:title" content="Amazon Kinesis - Streaming | Portal Big Data">
+    <meta property="twitter:description" content="Amazon Kinesis: serviço gerenciado da AWS para coleta, processamento e análise de dados de streaming em tempo real.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/amazon-kinesis-twitter.jpg">
+    <meta property="twitter:site" content="@portalbigdata">
+    
+    <!-- Structured Data for Software Application -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Amazon Kinesis",
+        "description": "Serviço gerenciado da AWS para coleta, processamento e análise de dados de streaming em tempo real",
+        "url": "https://aws.amazon.com/kinesis/",
+        "applicationCategory": "Streaming Service",
+        "operatingSystem": "Cloud Service",
+        "programmingLanguage": ["Java", "Python", "JavaScript", "Go", "C++"],
+        "license": "Proprietary",
+        "author": {
+            "@type": "Organization",
+            "name": "Amazon Web Services",
+            "url": "https://aws.amazon.com"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "Pay-per-use",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        },
+        "featureList": [
+            "Real-time data streaming",
+            "Auto-scaling",
+            "Managed service",
+            "Multiple data formats",
+            "AWS integration"
+        ],
+        "requirements": "AWS Account"
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="/">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Streaming</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Amazon Kinesis</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Technology Header -->
+                <div class="tech-header d-flex align-items-center mb-4">
+                    <img src="../../../assets/images/logos/amazon-kinesis-logo.png" alt="Amazon Kinesis Logo" class="tech-logo">
+                    <div>
+                        <h1 class="mb-2">Amazon Kinesis</h1>
+                        <div class="tech-badges">
+                            <span class="badge bg-danger">Commercial</span>
+                            <span class="badge bg-info">Managed</span>
+                            <span class="badge bg-success">AWS</span>
+                            <span class="badge bg-warning text-dark">Streaming</span>
+                        </div>
+                        <p class="lead mt-2 mb-0">Serviço gerenciado da AWS para coleta, processamento e análise de dados de streaming em tempo real</p>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs nav-fill mb-4" id="techTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            Visão Geral
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">
+                            Recursos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="use-cases-tab" data-bs-toggle="tab" data-bs-target="#use-cases" type="button" role="tab">
+                            Casos de Uso
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="examples-tab" data-bs-toggle="tab" data-bs-target="#examples" type="button" role="tab">
+                            Exemplos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button" role="tab">
+                            Comparações
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="techTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>O que é Amazon Kinesis?</h3>
+                                <p>Amazon Kinesis é uma plataforma totalmente gerenciada da AWS para coleta, processamento e análise de dados de streaming em tempo real. Kinesis facilita a ingestão e processamento de grandes volumes de dados de streaming, permitindo que você obtenha insights em tempo real e reaja rapidamente a novas informações.</p>
+                                
+                                <p>A plataforma Kinesis consiste em quatro serviços principais: Kinesis Data Streams para ingestão de dados, Kinesis Data Firehose para entrega de dados, Kinesis Data Analytics para análise em tempo real, e Kinesis Video Streams para streaming de vídeo.</p>
+                                
+                                <h4>História</h4>
+                                <p>Lançado pela Amazon Web Services em 2013, o Kinesis foi desenvolvido para competir com soluções como Apache Kafka, oferecendo uma alternativa totalmente gerenciada. O serviço evoluiu significativamente, adicionando capacidades de analytics, video streaming e integração profunda com o ecossistema AWS.</p>
+                                
+                                <h4>Arquitetura</h4>
+                                <p>A arquitetura do Kinesis é baseada em componentes especializados:</p>
+                                <ul>
+                                    <li><strong>Data Streams:</strong> Captura e armazena dados de streaming</li>
+                                    <li><strong>Shards:</strong> Unidades de capacidade que determinam throughput</li>
+                                    <li><strong>Producers:</strong> Aplicações que enviam dados para streams</li>
+                                    <li><strong>Consumers:</strong> Aplicações que processam dados dos streams</li>
+                                    <li><strong>Kinesis Client Library (KCL):</strong> Biblioteca para construir consumers</li>
+                                </ul>
+                                
+                                <h4>Vantagens</h4>
+                                <ul>
+                                    <li>Totalmente gerenciado pela AWS</li>
+                                    <li>Escalabilidade automática e elástica</li>
+                                    <li>Integração nativa com serviços AWS</li>
+                                    <li>Baixa latência para processamento em tempo real</li>
+                                    <li>Durabilidade com replicação automática</li>
+                                    <li>Modelo de preços pay-per-use</li>
+                                    <li>Suporte a múltiplos formatos de dados</li>
+                                    <li>Monitoramento integrado com CloudWatch</li>
+                                </ul>
+                                
+                                <h4>Desvantagens</h4>
+                                <ul>
+                                    <li>Vendor lock-in com AWS</li>
+                                    <li>Custos podem ser altos para grandes volumes</li>
+                                    <li>Limitações de throughput por shard</li>
+                                    <li>Menos flexibilidade comparado a soluções open-source</li>
+                                    <li>Dependência da infraestrutura AWS</li>
+                                    <li>Limitações geográficas baseadas em regiões AWS</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane fade" id="features" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Principais Recursos</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-item">
+                                            <h5>🔄 Data Streams</h5>
+                                            <p>Captura e armazena dados de streaming com baixa latência</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-item">
+                                            <h5>🚀 Data Firehose</h5>
+                                            <p>Entrega dados para destinos como S3, Redshift, e Elasticsearch</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-item">
+                                            <h5>📊 Data Analytics</h5>
+                                            <p>Análise de dados de streaming usando SQL padrão</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-item">
+                                            <h5>📹 Video Streams</h5>
+                                            <p>Streaming de vídeo seguro para análise e playback</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-item">
+                                            <h5>📈 Auto Scaling</h5>
+                                            <p>Escalabilidade automática baseada na demanda</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-item">
+                                            <h5>🔐 Security</h5>
+                                            <p>Criptografia em trânsito e em repouso com IAM</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4>Especificações Técnicas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Throughput por Shard</strong></td>
+                                                <td>1 MB/s ou 1,000 records/s (ingress)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Throughput de Saída</strong></td>
+                                                <td>2 MB/s por shard</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Retenção de Dados</strong></td>
+                                                <td>24 horas a 365 dias</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Tamanho Máximo do Record</strong></td>
+                                                <td>1 MB</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Regiões Disponíveis</strong></td>
+                                                <td>Todas as regiões AWS principais</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>SLA</strong></td>
+                                                <td>99.9% de disponibilidade</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Tab -->
+                    <div class="tab-pane fade" id="use-cases" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Casos de Uso</h3>
+                                
+                                <div class="use-case-item mb-4">
+                                    <h5>📊 Real-time Analytics</h5>
+                                    <p>Análise de métricas de aplicações, logs de sistema e dados de IoT em tempo real para dashboards e alertas.</p>
+                                </div>
+                                
+                                <div class="use-case-item mb-4">
+                                    <h5>🛒 E-commerce Recommendations</h5>
+                                    <p>Processamento de eventos de clickstream para recomendações personalizadas em tempo real.</p>
+                                </div>
+                                
+                                <div class="use-case-item mb-4">
+                                    <h5>🔍 Fraud Detection</h5>
+                                    <p>Detecção de fraudes em transações financeiras usando machine learning em tempo real.</p>
+                                </div>
+                                
+                                <div class="use-case-item mb-4">
+                                    <h5>📱 Mobile and Web Analytics</h5>
+                                    <p>Coleta e análise de eventos de aplicações móveis e web para insights de usuário.</p>
+                                </div>
+                                
+                                <div class="use-case-item mb-4">
+                                    <h5>🏭 IoT Data Processing</h5>
+                                    <p>Processamento de dados de sensores IoT para monitoramento e automação industrial.</p>
+                                </div>
+                                
+                                <h4>Quando Usar Amazon Kinesis</h4>
+                                <div class="alert alert-success">
+                                    <h5>✅ Recomendado para:</h5>
+                                    <ul>
+                                        <li>Aplicações já hospedadas na AWS</li>
+                                        <li>Equipes que preferem serviços gerenciados</li>
+                                        <li>Necessidade de integração com outros serviços AWS</li>
+                                        <li>Casos onde operação e manutenção devem ser minimizadas</li>
+                                        <li>Projetos com orçamento para serviços premium</li>
+                                        <li>Análise de dados de streaming com SQL</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <h5>⚠️ Considere alternativas se:</h5>
+                                    <ul>
+                                        <li>Precisa evitar vendor lock-in</li>
+                                        <li>Volumes de dados são extremamente altos</li>
+                                        <li>Orçamento é limitado para serviços gerenciados</li>
+                                        <li>Requer customizações específicas não suportadas</li>
+                                        <li>Infraestrutura não está na AWS</li>
+                                        <li>Precisa de controle total sobre configuração</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples Tab -->
+                    <div class="tab-pane fade" id="examples" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Exemplos Práticos</h3>
+                                
+                                <h4>Criação de Stream via AWS CLI</h4>
+                                <div class="code-example">
+                                    <pre><code># Criar stream
+aws kinesis create-stream --stream-name my-stream --shard-count 2
+
+# Verificar status
+aws kinesis describe-stream --stream-name my-stream
+
+# Listar streams
+aws kinesis list-streams</code></pre>
+                                </div>
+                                
+                                <h4>Producer em Python (boto3)</h4>
+                                <div class="code-example">
+                                    <pre><code>import boto3
+import json
+import time
+from datetime import datetime
+
+# Criar cliente Kinesis
+kinesis = boto3.client('kinesis', region_name='us-east-1')
+
+def put_record(stream_name, data, partition_key):
+    try:
+        response = kinesis.put_record(
+            StreamName=stream_name,
+            Data=json.dumps(data),
+            PartitionKey=partition_key
+        )
+        print(f"Record sent: {response['SequenceNumber']}")
+        return response
+    except Exception as e:
+        print(f"Error sending record: {e}")
+
+# Exemplo de uso
+for i in range(100):
+    data = {
+        'timestamp': datetime.now().isoformat(),
+        'user_id': f'user_{i}',
+        'event': 'page_view',
+        'page': f'/page_{i % 10}'
+    }
+    
+    put_record('my-stream', data, f'user_{i}')
+    time.sleep(0.1)</code></pre>
+                                </div>
+                                
+                                <h4>Consumer em Python</h4>
+                                <div class="code-example">
+                                    <pre><code>import boto3
+import json
+import time
+
+kinesis = boto3.client('kinesis', region_name='us-east-1')
+
+def get_shard_iterator(stream_name, shard_id):
+    response = kinesis.get_shard_iterator(
+        StreamName=stream_name,
+        ShardId=shard_id,
+        ShardIteratorType='LATEST'
+    )
+    return response['ShardIterator']
+
+def consume_records(stream_name):
+    # Obter informações do stream
+    stream_info = kinesis.describe_stream(StreamName=stream_name)
+    shards = stream_info['StreamDescription']['Shards']
+    
+    # Processar cada shard
+    for shard in shards:
+        shard_id = shard['ShardId']
+        shard_iterator = get_shard_iterator(stream_name, shard_id)
+        
+        while shard_iterator:
+            try:
+                response = kinesis.get_records(ShardIterator=shard_iterator)
+                records = response['Records']
+                
+                for record in records:
+                    data = json.loads(record['Data'])
+                    print(f"Received: {data}")
+                
+                shard_iterator = response.get('NextShardIterator')
+                time.sleep(1)
+                
+            except Exception as e:
+                print(f"Error reading records: {e}")
+                break
+
+# Consumir records
+consume_records('my-stream')</code></pre>
+                                </div>
+                                
+                                <h4>Kinesis Data Analytics SQL</h4>
+                                <div class="code-example">
+                                    <pre><code>-- Criar stream de entrada
+CREATE STREAM "SOURCE_SQL_STREAM_001" (
+    "timestamp" VARCHAR(32),
+    "user_id" VARCHAR(32),
+    "event" VARCHAR(32),
+    "page" VARCHAR(64)
+);
+
+-- Análise em tempo real - contagem de eventos por página
+CREATE STREAM "DESTINATION_SQL_STREAM" AS 
+SELECT 
+    "page",
+    COUNT(*) as "event_count",
+    ROWTIME_TO_TIMESTAMP(ROWTIME) as "window_time"
+FROM "SOURCE_SQL_STREAM_001"
+GROUP BY "page", 
+         ROWTIME RANGE INTERVAL '1' MINUTE;
+
+-- Detecção de anomalias - usuários com muitos eventos
+CREATE STREAM "ANOMALY_STREAM" AS
+SELECT 
+    "user_id",
+    COUNT(*) as "event_count",
+    ROWTIME_TO_TIMESTAMP(ROWTIME) as "window_time"
+FROM "SOURCE_SQL_STREAM_001"
+GROUP BY "user_id",
+         ROWTIME RANGE INTERVAL '5' MINUTE
+HAVING COUNT(*) > 100;</code></pre>
+                                </div>
+                                
+                                <h4>Terraform Configuration</h4>
+                                <div class="code-example">
+                                    <pre><code># Kinesis Stream
+resource "aws_kinesis_stream" "example" {
+  name             = "my-stream"
+  shard_count      = 2
+  retention_period = 48
+
+  shard_level_metrics = [
+    "IncomingRecords",
+    "OutgoingRecords",
+  ]
+
+  tags = {
+    Environment = "production"
+    Application = "streaming-app"
+  }
+}
+
+# Kinesis Firehose
+resource "aws_kinesis_firehose_delivery_stream" "example" {
+  name        = "my-firehose"
+  destination = "s3"
+
+  s3_configuration {
+    role_arn   = aws_iam_role.firehose_role.arn
+    bucket_arn = aws_s3_bucket.bucket.arn
+    prefix     = "data/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/"
+    
+    buffer_size     = 5
+    buffer_interval = 300
+    
+    compression_format = "GZIP"
+  }
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Tab -->
+                    <div class="tab-pane fade" id="comparison" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Comparações</h3>
+                                
+                                <h4>Kinesis vs Alternativas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Aspecto</th>
+                                                <th>Amazon Kinesis</th>
+                                                <th>Apache Kafka</th>
+                                                <th>Google Pub/Sub</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Gerenciamento</strong></td>
+                                                <td>Totalmente gerenciado</td>
+                                                <td>Self-managed</td>
+                                                <td>Totalmente gerenciado</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Escalabilidade</strong></td>
+                                                <td>Manual (shards)</td>
+                                                <td>Manual</td>
+                                                <td>Automática</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Throughput</strong></td>
+                                                <td>1 MB/s por shard</td>
+                                                <td>Muito alto</td>
+                                                <td>Muito alto</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Latência</strong></td>
+                                                <td>~200ms</td>
+                                                <td>~10ms</td>
+                                                <td>~100ms</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Custo</strong></td>
+                                                <td>Pay-per-shard</td>
+                                                <td>Infraestrutura</td>
+                                                <td>Pay-per-use</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Vendor Lock-in</strong></td>
+                                                <td>Alto (AWS)</td>
+                                                <td>Baixo</td>
+                                                <td>Alto (GCP)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h4>Matriz de Decisão</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="decision-card">
+                                            <h5>🎯 Escolha Kinesis se:</h5>
+                                            <ul>
+                                                <li>Já usa AWS extensivamente</li>
+                                                <li>Prefere serviços totalmente gerenciados</li>
+                                                <li>Precisa de integração com AWS services</li>
+                                                <li>Quer análise SQL em tempo real</li>
+                                                <li>Equipe pequena para operações</li>
+                                                <li>Throughput moderado é suficiente</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="decision-card">
+                                            <h5>🔄 Considere alternativas se:</h5>
+                                            <ul>
+                                                <li>Precisa de throughput muito alto</li>
+                                                <li>Quer evitar vendor lock-in</li>
+                                                <li>Orçamento limitado para serviços gerenciados</li>
+                                                <li>Precisa de latência ultra-baixa</li>
+                                                <li>Requer customizações específicas</li>
+                                                <li>Multi-cloud é requisito</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>📊 Quick Facts</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-dark">
+                                <tr>
+                                    <td><strong>Lançamento:</strong></td>
+                                    <td>2013</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Licença:</strong></td>
+                                    <td>Proprietária</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tipo:</strong></td>
+                                    <td>Managed Service</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Provider:</strong></td>
+                                    <td>Amazon Web Services</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SLA:</strong></td>
+                                    <td>99.9%</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔗 Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="https://aws.amazon.com/kinesis/" class="btn btn-outline-success btn-sm" target="_blank">
+                                    🌐 Site Oficial
+                                </a>
+                                <a href="https://docs.aws.amazon.com/kinesis/" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📚 Documentação
+                                </a>
+                                <a href="https://aws.amazon.com/kinesis/pricing/" class="btn btn-outline-success btn-sm" target="_blank">
+                                    💰 Preços
+                                </a>
+                                <a href="https://console.aws.amazon.com/kinesis/" class="btn btn-outline-success btn-sm" target="_blank">
+                                    🎛️ Console AWS
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔄 Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="../apache-kafka/" class="btn btn-outline-info btn-sm">Apache Kafka</a>
+                                <a href="../google-pubsub/" class="btn btn-outline-info btn-sm">Google Pub/Sub</a>
+                                <a href="../../processamento/apache-flink/" class="btn btn-outline-info btn-sm">Apache Flink</a>
+                                <a href="../../data-warehousing/amazon-redshift/" class="btn btn-outline-info btn-sm">Amazon Redshift</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Courses -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🎓 Cursos Relacionados</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="../../../cursos/amazon-kinesis-fundamentals/" class="btn btn-outline-warning btn-sm">Kinesis Fundamentals</a>
+                                <a href="../../../cursos/aws-streaming-analytics/" class="btn btn-outline-warning btn-sm">AWS Streaming Analytics</a>
+                                <a href="../../../cursos/real-time-data-processing/" class="btn btn-outline-warning btn-sm">Real-time Processing</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sponsored Content -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>💼 Conteúdo Patrocinado</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="sponsored-content">
+                                <p><small class="text-muted">Conteúdo Patrocinado</small></p>
+                                <h6>AWS Training</h6>
+                                <p class="small">Treinamentos oficiais AWS para Kinesis e streaming.</p>
+                                <a href="https://aws.amazon.com/training/" class="btn btn-sm btn-outline-primary" target="_blank">Saiba Mais</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/main.js"></script>
+    <script src="../../../assets/js/technology-page.js"></script>
+    <script src="../../../assets/js/theme-toggle.js"></script>
+</body>
+</html>

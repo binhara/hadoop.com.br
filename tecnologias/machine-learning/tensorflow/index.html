@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TensorFlow - Machine Learning Framework | Portal Big Data</title>
+    <meta name="description" content="TensorFlow: framework open-source para machine learning. Aprenda sobre deep learning, redes neurais e implementação em produção.">
+    <meta name="keywords" content="tensorflow, machine learning, deep learning, neural networks, google, ai, python">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="TensorFlow - Machine Learning Framework | Portal Big Data">
+    <meta property="og:description" content="Framework open-source do Google para machine learning e deep learning">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/machine-learning/tensorflow/">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/matrix-theme.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "TensorFlow",
+        "description": "Open-source machine learning framework",
+        "url": "https://tensorflow.org",
+        "applicationCategory": "Machine Learning Framework",
+        "operatingSystem": "Linux, Windows, macOS",
+        "programmingLanguage": ["Python", "JavaScript", "C++", "Java"],
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Google"
+        }
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand text-success" href="../../../index.html">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../../index.html" class="text-success">Home</a></li>
+                <li class="breadcrumb-item"><a href="../../" class="text-success">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../" class="text-success">Machine Learning</a></li>
+                <li class="breadcrumb-item active text-light">TensorFlow</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Technology Header -->
+                <div class="tech-header mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://www.tensorflow.org/images/tf_logo_social.png" alt="TensorFlow Logo" class="tech-logo me-3" style="height: 80px;">
+                        <div>
+                            <h1 class="text-success mb-2">TensorFlow</h1>
+                            <div class="tech-badges">
+                                <span class="badge bg-primary">Open Source</span>
+                                <span class="badge bg-success">Google</span>
+                                <span class="badge bg-warning text-dark">Deep Learning</span>
+                                <span class="badge bg-info">Python</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Overview -->
+                <section class="mb-5">
+                    <h2 class="text-success">Visão Geral</h2>
+                    <p class="text-light">
+                        TensorFlow é uma plataforma open-source de machine learning desenvolvida pelo Google. 
+                        É uma das bibliotecas mais populares para deep learning e redes neurais, oferecendo 
+                        ferramentas flexíveis para pesquisa e produção.
+                    </p>
+                    <p class="text-light">
+                        Com suporte para múltiplas linguagens e plataformas, TensorFlow permite desde 
+                        prototipagem rápida até deployment em escala empresarial, incluindo dispositivos móveis e edge.
+                    </p>
+                </section>
+
+                <!-- Key Features -->
+                <section class="mb-5">
+                    <h2 class="text-success">Principais Características</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="text-light">
+                                <li><strong>Keras Integration:</strong> API de alto nível integrada</li>
+                                <li><strong>Eager Execution:</strong> Execução imediata para debugging</li>
+                                <li><strong>TensorBoard:</strong> Visualização de modelos e métricas</li>
+                                <li><strong>Distributed Training:</strong> Treinamento distribuído</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="text-light">
+                                <li><strong>TensorFlow Serving:</strong> Deployment em produção</li>
+                                <li><strong>TensorFlow Lite:</strong> Modelos para mobile/IoT</li>
+                                <li><strong>TensorFlow.js:</strong> ML no navegador</li>
+                                <li><strong>AutoML:</strong> Automated machine learning</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Use Cases -->
+                <section class="mb-5">
+                    <h2 class="text-success">Casos de Uso</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Computer Vision</h5>
+                                    <p class="text-light small">Classificação de imagens, detecção de objetos, reconhecimento facial</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">NLP</h5>
+                                    <p class="text-light small">Processamento de linguagem natural, chatbots, tradução</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Time Series</h5>
+                                    <p class="text-light small">Previsão de séries temporais, análise de tendências</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Recommendation</h5>
+                                    <p class="text-light small">Sistemas de recomendação, personalização</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Code Example -->
+                <section class="mb-5">
+                    <h2 class="text-success">Exemplo Prático</h2>
+                    <p class="text-light">Exemplo básico de classificação com TensorFlow/Keras:</p>
+                    <pre class="bg-dark p-3 rounded border border-success"><code class="text-success">import tensorflow as tf
+from tensorflow import keras
+import numpy as np
+
+# Carregar dados
+(x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
+
+# Normalizar dados
+x_train = x_train.astype('float32') / 255.0
+x_test = x_test.astype('float32') / 255.0
+
+# Criar modelo
+model = keras.Sequential([
+    keras.layers.Flatten(input_shape=(28, 28)),
+    keras.layers.Dense(128, activation='relu'),
+    keras.layers.Dropout(0.2),
+    keras.layers.Dense(10, activation='softmax')
+])
+
+# Compilar modelo
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+# Treinar modelo
+model.fit(x_train, y_train, epochs=5, validation_split=0.1)
+
+# Avaliar modelo
+test_loss, test_acc = model.evaluate(x_test, y_test, verbose=0)
+print(f'Acurácia no teste: {test_acc:.4f}')
+</code></pre>
+                </section>
+
+                <!-- Tutorial Links -->
+                <section class="mb-5">
+                    <h2 class="text-success">Tutoriais e Recursos</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="text-success">Tutoriais Oficiais</h5>
+                            <ul class="text-light">
+                                <li><a href="https://www.tensorflow.org/tutorials" class="text-success" target="_blank">TensorFlow Tutorials</a></li>
+                                <li><a href="https://www.tensorflow.org/guide" class="text-success" target="_blank">Developer Guide</a></li>
+                                <li><a href="https://www.tensorflow.org/api_docs" class="text-success" target="_blank">API Documentation</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-success">Recursos da Comunidade</h5>
+                            <ul class="text-light">
+                                <li><a href="https://github.com/tensorflow/tensorflow" class="text-success" target="_blank">GitHub Repository</a></li>
+                                <li><a href="https://www.tensorflow.org/community" class="text-success" target="_blank">Community</a></li>
+                                <li><a href="https://blog.tensorflow.org/" class="text-success" target="_blank">TensorFlow Blog</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-md-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Informações Rápidas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled text-light">
+                                <li><strong>Desenvolvedor:</strong> Google</li>
+                                <li><strong>Primeira Versão:</strong> 2015</li>
+                                <li><strong>Linguagem:</strong> Python, C++, JavaScript</li>
+                                <li><strong>Licença:</strong> Apache 2.0</li>
+                                <li><strong>Versão Atual:</strong> 2.15+</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="../pytorch/" class="text-success">PyTorch</a></li>
+                                <li><a href="../scikit-learn/" class="text-success">Scikit-learn</a></li>
+                                <li><a href="../mlflow/" class="text-success">MLflow</a></li>
+                                <li><a href="../kubeflow/" class="text-success">Kubeflow</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card bg-dark border-success">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="https://tensorflow.org" class="text-success" target="_blank">Site Oficial</a></li>
+                                <li><a href="https://github.com/tensorflow/tensorflow" class="text-success" target="_blank">GitHub</a></li>
+                                <li><a href="https://www.tensorflow.org/install" class="text-success" target="_blank">Instalação</a></li>
+                                <li><a href="https://www.tensorflow.org/community" class="text-success" target="_blank">Comunidade</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2024 Portal Big Data. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="../../../contato/" class="text-success">Contato</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

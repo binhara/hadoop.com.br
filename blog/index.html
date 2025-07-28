@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Big Data | Portal Big Data - Artigos, Tutoriais e Novidades</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Brand Icons for Social Sharing -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css" rel="stylesheet">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Blog Big Data | Portal Big Data - Artigos, Tutoriais e Novidades">
+    <meta name="description" content="Blog especializado em Big Data com artigos, tutoriais, estudos de caso e novidades sobre Hadoop, Spark, tecnologias de dados e muito mais.">
+    <meta name="keywords" content="blog big data, artigos hadoop, tutoriais spark, estudos de caso, novidades tecnologia, data engineering">
+    <link rel="canonical" href="https://hadoop.com.br/blog/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hadoop.com.br/blog/">
+    <meta property="og:title" content="Blog Big Data | Portal Big Data">
+    <meta property="og:description" content="Blog especializado em Big Data com artigos, tutoriais, estudos de caso e novidades sobre tecnologias de dados.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/blog/blog-og.jpg">
+    <meta property="og:site_name" content="Portal Big Data">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/blog/">
+    <meta property="twitter:title" content="Blog Big Data | Portal Big Data">
+    <meta property="twitter:description" content="Blog especializado em Big Data com artigos, tutoriais, estudos de caso e novidades sobre tecnologias de dados.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/blog/blog-twitter.jpg">
+    <meta property="twitter:site" content="@portalbigdata">
+    
+    <!-- Structured Data for Blog -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Blog Big Data",
+        "description": "Blog especializado em Big Data com artigos, tutoriais, estudos de caso e novidades sobre tecnologias de dados",
+        "url": "https://hadoop.com.br/blog/",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Portal Big Data",
+            "url": "https://hadoop.com.br",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://hadoop.com.br/assets/images/logo.png",
+                "width": 200,
+                "height": 60
+            }
+        },
+        "inLanguage": "pt-BR",
+        "about": [
+            {
+                "@type": "Thing",
+                "name": "Big Data"
+            },
+            {
+                "@type": "Thing",
+                "name": "Apache Hadoop"
+            },
+            {
+                "@type": "Thing",
+                "name": "Data Engineering"
+            },
+            {
+                "@type": "Thing",
+                "name": "Apache Spark"
+            }
+        ]
+    }
+    </script>
+    
+    <!-- Breadcrumb Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Início",
+                "item": {
+                    "@type": "WebPage",
+                    "@id": "https://hadoop.com.br",
+                    "name": "Portal Big Data"
+                }
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": {
+                    "@type": "WebPage",
+                    "@id": "https://hadoop.com.br/blog",
+                    "name": "Blog Big Data"
+                }
+            }
+        ]
+    }
+    </script>
+    
+    <!-- Theme Color for Mobile Browsers -->
+    <meta name="theme-color" content="#000000">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+</head>
+<body class="matrix-theme">
+    <!-- Navigation - Bootstrap Standard Component -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="/">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../tecnologias/">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb - Bootstrap Standard Component -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Blog</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Hero Section - Bootstrap Components -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="hero-section text-center mb-5">
+                    <h1 class="display-4 mb-3">Blog Big Data</h1>
+                    <p class="lead">Artigos, tutoriais, estudos de caso e novidades sobre tecnologias de Big Data</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content - Bootstrap Grid System -->
+    <div class="container">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Blog Categories Navigation - Bootstrap Nav Pills -->
+                <div class="blog-categories mb-4">
+                    <ul class="nav nav-pills nav-fill" id="blog-categories" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="all-tab" data-bs-toggle="pill" data-bs-target="#all-content" type="button" role="tab" aria-controls="all-content" aria-selected="true">
+                                <i class="fas fa-globe me-2"></i>Todos
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="articles-tab" data-bs-toggle="pill" data-bs-target="#articles-content" type="button" role="tab" aria-controls="articles-content" aria-selected="false">
+                                <i class="fas fa-newspaper me-2"></i>Artigos
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="tutorials-tab" data-bs-toggle="pill" data-bs-target="#tutorials-content" type="button" role="tab" aria-controls="tutorials-content" aria-selected="false">
+                                <i class="fas fa-book me-2"></i>Tutoriais
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="case-studies-tab" data-bs-toggle="pill" data-bs-target="#case-studies-content" type="button" role="tab" aria-controls="case-studies-content" aria-selected="false">
+                                <i class="fas fa-chart-line me-2"></i>Estudos de Caso
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="news-tab" data-bs-toggle="pill" data-bs-target="#news-content" type="button" role="tab" aria-controls="news-content" aria-selected="false">
+                                <i class="fas fa-rss me-2"></i>Novidades
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Search and Filter Bar - Bootstrap Form -->
+                <div class="search-filter-bar mb-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                <input type="text" class="form-control matrix-input" id="blog-search" placeholder="Buscar no blog...">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-select matrix-input" id="tag-filter">
+                                <option value="">Todas as tags</option>
+                                <option value="hadoop">Hadoop</option>
+                                <option value="spark">Apache Spark</option>
+                                <option value="kafka">Apache Kafka</option>
+                                <option value="flink">Apache Flink</option>
+                                <option value="data-engineering">Data Engineering</option>
+                                <option value="machine-learning">Machine Learning</option>
+                                <option value="cloud">Cloud</option>
+                                <option value="streaming">Streaming</option>
+                                <option value="data-warehouse">Data Warehouse</option>
+                                <option value="migration">Migração</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-select matrix-input" id="sort-filter">
+                                <option value="newest">Mais recentes</option>
+                                <option value="oldest">Mais antigos</option>
+                                <option value="popular">Mais populares</option>
+                                <option value="trending">Em alta</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content - Bootstrap Tab Panes -->
+                <div class="tab-content" id="blog-content">
+                    <!-- All Content Tab -->
+                    <div class="tab-pane fade show active" id="all-content" role="tabpanel" aria-labelledby="all-tab">
+                        <div id="all-posts" class="blog-posts">
+                            <!-- Posts will be loaded dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Articles Tab -->
+                    <div class="tab-pane fade" id="articles-content" role="tabpanel" aria-labelledby="articles-tab">
+                        <div id="articles-posts" class="blog-posts">
+                            <!-- Articles will be loaded dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Tutorials Tab -->
+                    <div class="tab-pane fade" id="tutorials-content" role="tabpanel" aria-labelledby="tutorials-tab">
+                        <div id="tutorials-posts" class="blog-posts">
+                            <!-- Tutorials will be loaded dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Case Studies Tab -->
+                    <div class="tab-pane fade" id="case-studies-content" role="tabpanel" aria-labelledby="case-studies-tab">
+                        <div id="case-studies-posts" class="blog-posts">
+                            <!-- Case studies will be loaded dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- News Tab -->
+                    <div class="tab-pane fade" id="news-content" role="tabpanel" aria-labelledby="news-tab">
+                        <div id="news-posts" class="blog-posts">
+                            <!-- News will be loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination - Bootstrap Pagination -->
+                <nav aria-label="Blog pagination" class="mt-5">
+                    <ul class="pagination justify-content-center" id="blog-pagination">
+                        <!-- Pagination will be generated dynamically -->
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Sidebar - Bootstrap Column -->
+            <div class="col-lg-4">
+                <!-- News and Trends Quick Access -->
+                <div class="card mb-4 border-success">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0"><i class="fas fa-bolt me-2"></i>Novidades e Tendências</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Acompanhe as últimas notícias, tecnologias trending e eventos do mundo Big Data.</p>
+                        <div class="d-grid gap-2">
+                            <a href="novidades/" class="btn btn-success">
+                                <i class="fas fa-rss me-2"></i>Ver Feed de Notícias
+                            </a>
+                            <a href="novidades/newsletter-template.html" class="btn btn-outline-success">
+                                <i class="fas fa-envelope me-2"></i>Newsletter Semanal
+                            </a>
+                        </div>
+                        <hr>
+                        <div class="row text-center">
+                            <div class="col-4">
+                                <small class="text-success fw-bold d-block">24</small>
+                                <small class="text-muted">Notícias</small>
+                            </div>
+                            <div class="col-4">
+                                <small class="text-success fw-bold d-block">6</small>
+                                <small class="text-muted">Trending</small>
+                            </div>
+                            <div class="col-4">
+                                <small class="text-success fw-bold d-block">12</small>
+                                <small class="text-muted">Eventos</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Post - Bootstrap Card -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-star me-2"></i>Post em Destaque</h5>
+                    </div>
+                    <div id="featured-post">
+                        <!-- Featured post will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Popular Tags - Bootstrap Card -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-tags me-2"></i>Tags Populares</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="popular-tags">
+                            <!-- Popular tags will be loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Comments - Bootstrap Card -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-comments me-2"></i>Comentários Recentes</h5>
+                    </div>
+                    <div class="list-group list-group-flush" id="recent-comments">
+                        <!-- Recent comments will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Archive - Bootstrap Card -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-archive me-2"></i>Arquivo</h5>
+                    </div>
+                    <div class="list-group list-group-flush" id="blog-archive">
+                        <!-- Archive will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Newsletter Signup - Bootstrap Form -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-envelope me-2"></i>Newsletter</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Receba os melhores artigos sobre Big Data diretamente no seu e-mail</p>
+                        <form id="newsletter-form">
+                            <div class="mb-3">
+                                <input type="email" class="form-control matrix-input" placeholder="Seu e-mail" required>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="weekly-digest">
+                                    <label class="form-check-label" for="weekly-digest">
+                                        Resumo semanal
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="breaking-news">
+                                    <label class="form-check-label" for="breaking-news">
+                                        Notícias importantes
+                                    </label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100">
+                                <i class="fas fa-paper-plane me-2"></i>Inscrever-se
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Partner Banner -->
+                <div class="banner-sidebar-blog"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS - Simple and Bootstrap Studio Compatible -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/theme-toggle.js"></script>
+    <script src="../assets/js/banner-system.js"></script>
+    <script src="../assets/js/blog-system.js"></script>
+</body>
+</html>

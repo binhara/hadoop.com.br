@@ -1,0 +1,44 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://hadoop.com.br/sitemap.xml
+
+# Allow important resources
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /assets/images/
+
+# Disallow admin and test pages
+Disallow: /admin/
+Disallow: /private/
+Disallow: /test-*
+Disallow: /*.json$
+Disallow: /*.xml$
+Allow: /sitemap.xml
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+# Block aggressive crawlers
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /

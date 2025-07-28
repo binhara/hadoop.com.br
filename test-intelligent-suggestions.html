@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Intelligent Suggestions - Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="assets/css/matrix-theme.css" rel="stylesheet">
+    <link href="assets/css/intelligent-suggestions.css" rel="stylesheet">
+</head>
+<body class="matrix-theme">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-success mb-4">Test Intelligent Suggestions System</h1>
+                <p class="text-light">Esta página testa o sistema de sugestões inteligentes.</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Conteúdo Principal</h3>
+                        <p>Esta é uma página de teste para verificar se o sistema de sugestões inteligentes está funcionando corretamente.</p>
+                        
+                        <!-- Main Suggestions -->
+                        <div id="main-suggestions" class="mt-4">
+                            <!-- Main suggestions will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <!-- Intelligent Suggestions -->
+                <div id="intelligent-suggestions" class="mb-4">
+                    <!-- Intelligent suggestions will be populated by JavaScript -->
+                </div>
+
+                <!-- Learning Progress -->
+                <div id="learning-progress" class="mb-4">
+                    <!-- Learning progress will be populated by JavaScript -->
+                </div>
+
+                <!-- Next Steps -->
+                <div id="next-steps" class="mb-4">
+                    <!-- Next steps will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Debug Information</h4>
+                        <div id="debug-info">
+                            <!-- Debug info will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="assets/js/search-index.js"></script>
+    <script src="assets/js/intelligent-suggestions.js"></script>
+    
+    <script>
+        // Add some debug information
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                const debugInfo = document.getElementById('debug-info');
+                if (debugInfo && window.intelligentSuggestions) {
+                    const userInteractions = window.intelligentSuggestions.userInteractions;
+                    debugInfo.innerHTML = `
+                        <h6>User Interactions:</h6>
+                        <pre class="text-success">${JSON.stringify(userInteractions, null, 2)}</pre>
+                        
+                        <h6>Current Page Info:</h6>
+                        <pre class="text-success">${JSON.stringify(window.intelligentSuggestions.getCurrentPageInfo(), null, 2)}</pre>
+                        
+                        <h6>Learning Path Progress:</h6>
+                        <pre class="text-success">${JSON.stringify(window.intelligentSuggestions.getLearningPathProgress(), null, 2)}</pre>
+                    `;
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

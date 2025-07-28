@@ -1,0 +1,67 @@
+{
+  "totalImages": 7,
+  "totalSize": 1423318,
+  "optimizationPotential": 425786.39999999997,
+  "recommendations": [
+    {
+      "path": "C:\\ProjetosComercial\\portalHadoop\\assets\\images\\banners\\dssbr-banner.jpg",
+      "size": 958,
+      "format": "jpg",
+      "recommendations": [
+        "Considere gerar versões WebP e AVIF"
+      ]
+    },
+    {
+      "path": "C:\\ProjetosComercial\\portalHadoop\\assets\\images\\banners\\gubigdata-banner.jpg",
+      "size": 998,
+      "format": "jpg",
+      "recommendations": [
+        "Considere gerar versões WebP e AVIF"
+      ]
+    },
+    {
+      "path": "C:\\ProjetosComercial\\portalHadoop\\assets\\images\\banners\\oworkshop-banner.jpg",
+      "size": 985,
+      "format": "jpg",
+      "recommendations": [
+        "Considere gerar versões WebP e AVIF"
+      ]
+    },
+    {
+      "path": "C:\\ProjetosComercial\\portalHadoop\\assets\\images\\banners\\placeholder.jpg",
+      "size": 746,
+      "format": "jpg",
+      "recommendations": [
+        "Considere gerar versões WebP e AVIF"
+      ]
+    },
+    {
+      "path": "C:\\ProjetosComercial\\portalHadoop\\assets\\images\\morpheus-pills.png",
+      "size": 343,
+      "format": "png",
+      "recommendations": [
+        "PNG - considere converter para JPEG se não precisar de transparência",
+        "Considere gerar versões WebP e AVIF"
+      ]
+    },
+    {
+      "path": "C:\\ProjetosComercial\\portalHadoop\\assets\\images\\morpheus.png",
+      "size": 1419288,
+      "format": "png",
+      "recommendations": [
+        "Arquivo grande (1.35 MB) - considere compressão",
+        "PNG - considere converter para JPEG se não precisar de transparência",
+        "Considere gerar versões WebP e AVIF",
+        "Arquivo pode se beneficiar de otimização de qualidade"
+      ]
+    },
+    {
+      "path": "C:\\ProjetosComercial\\portalHadoop\\assets\\images\\placeholder.jpg",
+      "size": 0,
+      "format": "jpg",
+      "recommendations": [
+        "Considere gerar versões WebP e AVIF"
+      ]
+    }
+  ]
+}

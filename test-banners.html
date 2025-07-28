@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Banners - Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="assets/css/matrix-theme.css" rel="stylesheet">
+    <link href="assets/css/banner-styles.css" rel="stylesheet">
+</head>
+<body class="matrix-theme">
+    <div class="container mt-5">
+        <h1 class="text-success mb-4">Teste de Integração de Banners dos Parceiros</h1>
+        
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Conteúdo Principal</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Esta é uma página de teste para verificar se os banners dos parceiros estão sendo exibidos corretamente.</p>
+                        
+                        <h4>Banner Content Top</h4>
+                        <div class="banner-content-top"></div>
+                        
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        
+                        <h4>Banner Content Middle</h4>
+                        <div class="banner-content-middle"></div>
+                        
+                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        
+                        <h4>Banner Content Bottom</h4>
+                        <div class="banner-content-bottom"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Sidebar</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6>Banner Sidebar Top</h6>
+                        <div class="banner-sidebar-top"></div>
+                        
+                        <h6>Banner Sidebar Middle</h6>
+                        <div class="banner-sidebar-middle"></div>
+                        
+                        <h6>Banner Sidebar Bottom</h6>
+                        <div class="banner-sidebar-bottom"></div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Estatísticas dos Banners</h5>
+                    </div>
+                    <div class="card-body">
+                        <button class="btn btn-success btn-sm" onclick="showBannerStats()">Ver Estatísticas</button>
+                        <button class="btn btn-warning btn-sm" onclick="clearBannerStats()">Limpar Stats</button>
+                        <div id="banner-stats" class="mt-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Informações dos Parceiros</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h6>DSS Brasil</h6>
+                                <p><strong>URL:</strong> <a href="https://dssbr.com.br" target="_blank">dssbr.com.br</a></p>
+                                <p><strong>Especialidade:</strong> Data Science & Big Data</p>
+                                <p><strong>Serviços:</strong> Cursos e Certificações</p>
+                            </div>
+                            <div class="col-md-4">
+                                <h6>GU Big Data</h6>
+                                <p><strong>URL:</strong> <a href="https://gubigdata.com.br" target="_blank">gubigdata.com.br</a></p>
+                                <p><strong>Especialidade:</strong> Consultoria & Treinamentos</p>
+                                <p><strong>Serviços:</strong> Especialistas em Big Data</p>
+                            </div>
+                            <div class="col-md-4">
+                                <h6>O Workshop</h6>
+                                <p><strong>URL:</strong> <a href="https://oworkshop.com.br" target="_blank">oworkshop.com.br</a></p>
+                                <p><strong>Especialidade:</strong> Eventos & Treinamentos</p>
+                                <p><strong>Serviços:</strong> Workshops e eventos de tecnologia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="assets/js/banner-system.js"></script>
+    
+    <script>
+        function showBannerStats() {
+            if (window.bannerSystem) {
+                const stats = window.bannerSystem.getBannerStats();
+                const statsContainer = document.getElementById('banner-stats');
+                
+                let statsHtml = '<h6>Estatísticas dos Banners:</h6>';
+                
+                if (Object.keys(stats).length === 0) {
+                    statsHtml += '<p class="text-muted">Nenhuma estatística disponível ainda.</p>';
+                } else {
+                    statsHtml += '<div class="table-responsive"><table class="table table-sm table-dark">';
+                    statsHtml += '<thead><tr><th>Parceiro</th><th>Impressões</th><th>Cliques</th><th>CTR</th></tr></thead><tbody>';
+                    
+                    Object.keys(stats).forEach(bannerId => {
+                        const stat = stats[bannerId];
+                        statsHtml += `<tr>
+                            <td>${stat.partner_name}</td>
+                            <td>${stat.impressions}</td>
+                            <td>${stat.clicks}</td>
+                            <td>${stat.ctr}%</td>
+                        </tr>`;
+                    });
+                    
+                    statsHtml += '</tbody></table></div>';
+                }
+                
+                statsContainer.innerHTML = statsHtml;
+            } else {
+                document.getElementById('banner-stats').innerHTML = '<p class="text-danger">Sistema de banners não carregado.</p>';
+            }
+        }
+        
+        function clearBannerStats() {
+            if (window.bannerSystem) {
+                window.bannerSystem.clearStats();
+                document.getElementById('banner-stats').innerHTML = '<p class="text-success">Estatísticas limpas com sucesso!</p>';
+            }
+        }
+        
+        // Auto-show stats after 5 seconds
+        setTimeout(() => {
+            showBannerStats();
+        }, 5000);
+    </script>
+</body>
+</html>

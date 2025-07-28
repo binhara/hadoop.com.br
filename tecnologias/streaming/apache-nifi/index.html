@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache NiFi - Streaming | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Apache NiFi - Streaming | Portal Big Data">
+    <meta name="description" content="Apache NiFi: sistema de automação de fluxo de dados com interface visual para roteamento e transformação. Guia completo e exemplos práticos.">
+    <meta name="keywords" content="apache nifi, data flow, automation, visual interface, data routing, transformation">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/streaming/apache-nifi">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/streaming/apache-nifi">
+    <meta property="og:title" content="Apache NiFi - Streaming | Portal Big Data">
+    <meta property="og:description" content="Apache NiFi: sistema de automação de fluxo de dados com interface visual para roteamento e transformação.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/og/apache-nifi-og.jpg">
+    <meta property="og:site_name" content="Portal Big Data">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/tecnologias/streaming/apache-nifi">
+    <meta property="twitter:title" content="Apache NiFi - Streaming | Portal Big Data">
+    <meta property="twitter:description" content="Apache NiFi: sistema de automação de fluxo de dados com interface visual para roteamento e transformação.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/apache-nifi-twitter.jpg">
+    <meta property="twitter:site" content="@portalbigdata">
+    
+    <!-- Structured Data for Software Application -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Apache NiFi",
+        "description": "Sistema de automação de fluxo de dados com interface visual para roteamento e transformação",
+        "url": "https://nifi.apache.org",
+        "applicationCategory": "Data Flow Automation",
+        "operatingSystem": "Linux, Windows, macOS",
+        "programmingLanguage": ["Java"],
+        "license": "Apache License 2.0",
+        "version": "1.24.0",
+        "datePublished": "2014-07-01",
+        "dateModified": "2024-01-15",
+        "author": {
+            "@type": "Organization",
+            "name": "Apache Software Foundation",
+            "url": "https://apache.org"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        },
+        "featureList": [
+            "Visual data flow design",
+            "Real-time data routing",
+            "Data transformation",
+            "Flow monitoring",
+            "Security and governance"
+        ],
+        "requirements": "Java 8+",
+        "downloadUrl": "https://nifi.apache.org/download.html"
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="/">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Streaming</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Apache NiFi</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Technology Header -->
+                <div class="tech-header d-flex align-items-center mb-4">
+                    <img src="../../../assets/images/logos/apache-nifi-logo.png" alt="Apache NiFi Logo" class="tech-logo">
+                    <div>
+                        <h1 class="mb-2">Apache NiFi</h1>
+                        <div class="tech-badges">
+                            <span class="badge bg-primary">Open Source</span>
+                            <span class="badge bg-info">Mature</span>
+                            <span class="badge bg-success">Visual</span>
+                            <span class="badge bg-warning text-dark">Streaming</span>
+                        </div>
+                        <p class="lead mt-2 mb-0">Sistema de automação de fluxo de dados com interface visual para roteamento e transformação</p>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs nav-fill mb-4" id="techTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            Visão Geral
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">
+                            Recursos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="use-cases-tab" data-bs-toggle="tab" data-bs-target="#use-cases" type="button" role="tab">
+                            Casos de Uso
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="examples-tab" data-bs-toggle="tab" data-bs-target="#examples" type="button" role="tab">
+                            Exemplos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button" role="tab">
+                            Comparações
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="techTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>O que é Apache NiFi?</h3>
+                                <p>Apache NiFi é uma plataforma de automação de fluxo de dados que suporta roteamento, transformação e mediação de sistemas poderosos e escaláveis. NiFi foi originalmente desenvolvido pela NSA e posteriormente doado para a Apache Software Foundation, oferecendo uma interface web visual para projetar, controlar e monitorar fluxos de dados.</p>
+                                
+                                <p>O sistema é baseado no conceito de Flow-Based Programming (FBP), onde dados fluem através de uma rede de componentes conectados. NiFi facilita a movimentação de dados entre sistemas díspares, oferecendo recursos robustos de segurança, monitoramento e governança.</p>
+                                
+                                <h4>História</h4>
+                                <p>Desenvolvido originalmente pela NSA como "Niagara Files" em 2006, o projeto foi open-sourced em 2014 e doado para a Apache Software Foundation. Tornou-se um projeto Apache de nível superior em 2015, sendo amplamente adotado por organizações que precisam de integração de dados robusta e governança.</p>
+                                
+                                <h4>Arquitetura</h4>
+                                <p>A arquitetura do NiFi é baseada em componentes fundamentais:</p>
+                                <ul>
+                                    <li><strong>FlowFile:</strong> Objeto que representa dados em movimento</li>
+                                    <li><strong>Processor:</strong> Componente que executa trabalho específico</li>
+                                    <li><strong>Connection:</strong> Liga processors e atua como queue</li>
+                                    <li><strong>Process Group:</strong> Agrupa componentes relacionados</li>
+                                    <li><strong>Controller Services:</strong> Serviços compartilhados</li>
+                                    <li><strong>Reporting Tasks:</strong> Tarefas de monitoramento</li>
+                                </ul>
+                                
+                                <h4>Vantagens</h4>
+                                <ul>
+                                    <li>Interface visual intuitiva para design de fluxos</li>
+                                    <li>Garantias de entrega e rastreabilidade completa</li>
+                                    <li>Configuração dinâmica sem necessidade de restart</li>
+                                    <li>Backpressure handling automático</li>
+                                    <li>Segurança robusta com autenticação e autorização</li>
+                                    <li>Extensibilidade através de custom processors</li>
+                                    <li>Clustering para alta disponibilidade</li>
+                                    <li>Monitoramento e alertas em tempo real</li>
+                                </ul>
+                                
+                                <h4>Desvantagens</h4>
+                                <ul>
+                                    <li>Curva de aprendizado para conceitos específicos</li>
+                                    <li>Consumo significativo de recursos (CPU, memória)</li>
+                                    <li>Não é ideal para processamento de streams complexo</li>
+                                    <li>Performance pode ser limitada para casos de alta throughput</li>
+                                    <li>Interface web pode ser lenta com fluxos muito grandes</li>
+                                    <li>Debugging pode ser desafiador em fluxos complexos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane fade" id="features" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Principais Recursos</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-item">
+                                            <h5>🎨 Visual Design</h5>
+                                            <p>Interface drag-and-drop para criação de fluxos de dados</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-item">
+                                            <h5>🔄 Data Provenance</h5>
+                                            <p>Rastreabilidade completa de dados através do fluxo</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-item">
+                                            <h5>⚡ Real-time Configuration</h5>
+                                            <p>Modificação de fluxos sem interrupção do serviço</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-item">
+                                            <h5>🔒 Security</h5>
+                                            <p>Autenticação, autorização e criptografia integradas</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-item">
+                                            <h5>📊 Monitoring</h5>
+                                            <p>Métricas em tempo real e alertas configuráveis</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-item">
+                                            <h5>🔧 Extensibility</h5>
+                                            <p>Custom processors e controller services</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4>Especificações Técnicas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Versão Atual</strong></td>
+                                                <td>1.24.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Linguagem Principal</strong></td>
+                                                <td>Java</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Protocolos Suportados</strong></td>
+                                                <td>HTTP, FTP, SFTP, JMS, Kafka, HDFS</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Formatos de Dados</strong></td>
+                                                <td>JSON, XML, CSV, Avro, Parquet</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Clustering</strong></td>
+                                                <td>Suporte nativo</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Processors Inclusos</strong></td>
+                                                <td>300+ processors</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Tab -->
+                    <div class="tab-pane fade" id="use-cases" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Casos de Uso</h3>
+                                
+                                <div class="use-case-item mb-4">
+                                    <h5>🔄 Data Integration</h5>
+                                    <p>Integração de dados entre sistemas heterogêneos com transformações e validações.</p>
+                                </div>
+                                
+                                <div class="use-case-item mb-4">
+                                    <h5>📊 ETL Pipelines</h5>
+                                    <p>Construção de pipelines ETL visuais com monitoramento e governança.</p>
+                                </div>
+                                
+                                <div class="use-case-item mb-4">
+                                    <h5>🌊 Stream Processing</h5>
+                                    <p>Processamento de dados em tempo real com roteamento baseado em conteúdo.</p>
+                                </div>
+                                
+                                <div class="use-case-item mb-4">
+                                    <h5>📁 File Movement</h5>
+                                    <p>Movimentação automatizada de arquivos entre sistemas com validação.</p>
+                                </div>
+                                
+                                <div class="use-case-item mb-4">
+                                    <h5>🔍 Data Enrichment</h5>
+                                    <p>Enriquecimento de dados com informações de múltiplas fontes.</p>
+                                </div>
+                                
+                                <h4>Quando Usar Apache NiFi</h4>
+                                <div class="alert alert-success">
+                                    <h5>✅ Recomendado para:</h5>
+                                    <ul>
+                                        <li>Integração de dados entre sistemas diversos</li>
+                                        <li>Casos onde governança e auditoria são críticas</li>
+                                        <li>Equipes que preferem interfaces visuais</li>
+                                        <li>Necessidade de configuração dinâmica</li>
+                                        <li>Processamento de dados com transformações complexas</li>
+                                        <li>Ambientes onde segurança é prioritária</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <h5>⚠️ Considere alternativas se:</h5>
+                                    <ul>
+                                        <li>Precisa de throughput extremamente alto</li>
+                                        <li>Casos de uso simples de mensageria</li>
+                                        <li>Recursos de infraestrutura são limitados</li>
+                                        <li>Equipe prefere soluções baseadas em código</li>
+                                        <li>Processamento de streams complexo é necessário</li>
+                                        <li>Latência ultra-baixa é requisito</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples Tab -->
+                    <div class="tab-pane fade" id="examples" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Exemplos Práticos</h3>
+                                
+                                <h4>Instalação</h4>
+                                <div class="code-example">
+                                    <pre><code># Download e instalação
+wget https://downloads.apache.org/nifi/1.24.0/nifi-1.24.0-bin.tar.gz
+tar -xzf nifi-1.24.0-bin.tar.gz
+cd nifi-1.24.0
+
+# Configurar Java (se necessário)
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+
+# Iniciar NiFi
+./bin/nifi.sh start
+
+# Verificar status
+./bin/nifi.sh status
+
+# Acessar interface web
+# http://localhost:8080/nifi</code></pre>
+                                </div>
+                                
+                                <h4>Configuração Básica (nifi.properties)</h4>
+                                <div class="code-example">
+                                    <pre><code># Web properties
+nifi.web.http.host=localhost
+nifi.web.http.port=8080
+nifi.web.https.port=8443
+
+# Cluster properties
+nifi.cluster.is.node=false
+nifi.cluster.node.address=localhost
+nifi.cluster.node.protocol.port=11443
+
+# Security properties
+nifi.security.keystore=
+nifi.security.keystoreType=
+nifi.security.keystore.passwd=
+nifi.security.truststore=
+nifi.security.truststoreType=
+nifi.security.truststore.passwd=
+
+# Repository properties
+nifi.flowfile.repository.directory=./flowfile_repository
+nifi.content.repository.directory.default=./content_repository
+nifi.provenance.repository.directory.default=./provenance_repository
+
+# Performance tuning
+nifi.flowcontroller.graceful.shutdown.period=10 sec
+nifi.flowservice.writedelay.interval=500 ms
+nifi.administrative.yield.duration=30 sec</code></pre>
+                                </div>
+                                
+                                <h4>Exemplo de Fluxo: File to Kafka</h4>
+                                <div class="code-example">
+                                    <pre><code>Fluxo Visual no NiFi:
+
+1. GetFile Processor
+   - Directory: /input
+   - File Filter: *.json
+   - Keep Source File: false
+
+2. EvaluateJsonPath Processor
+   - Destination: flowfile-attribute
+   - user_id: $.user_id
+   - event_type: $.event_type
+
+3. RouteOnAttribute Processor
+   - Route based on event_type
+   - login_events: ${event_type:equals('login')}
+   - purchase_events: ${event_type:equals('purchase')}
+
+4. PublishKafka_2_6 Processor
+   - Kafka Brokers: localhost:9092
+   - Topic Name: user-events
+   - Message Key Field: user_id</code></pre>
+                                </div>
+                                
+                                <h4>Custom Processor (Java)</h4>
+                                <div class="code-example">
+                                    <pre><code>@Tags({"custom", "transform", "example"})
+@CapabilityDescription("Custom processor example")
+public class CustomTransformProcessor extends AbstractProcessor {
+    
+    public static final PropertyDescriptor TRANSFORM_TYPE = new PropertyDescriptor.Builder()
+        .name("Transform Type")
+        .description("Type of transformation to apply")
+        .required(true)
+        .allowableValues("uppercase", "lowercase", "reverse")
+        .defaultValue("uppercase")
+        .build();
+    
+    public static final Relationship REL_SUCCESS = new Relationship.Builder()
+        .name("success")
+        .description("Successfully transformed FlowFiles")
+        .build();
+    
+    public static final Relationship REL_FAILURE = new Relationship.Builder()
+        .name("failure")
+        .description("Failed to transform FlowFiles")
+        .build();
+    
+    @Override
+    protected List<PropertyDescriptor> getSupportedPropertyDescriptors() {
+        return Arrays.asList(TRANSFORM_TYPE);
+    }
+    
+    @Override
+    public Set<Relationship> getRelationships() {
+        return new HashSet<>(Arrays.asList(REL_SUCCESS, REL_FAILURE));
+    }
+    
+    @Override
+    public void onTrigger(ProcessContext context, ProcessSession session) {
+        FlowFile flowFile = session.get();
+        if (flowFile == null) {
+            return;
+        }
+        
+        try {
+            String transformType = context.getProperty(TRANSFORM_TYPE).getValue();
+            
+            flowFile = session.write(flowFile, (inputStream, outputStream) -> {
+                String content = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
+                String transformed;
+                
+                switch (transformType) {
+                    case "uppercase":
+                        transformed = content.toUpperCase();
+                        break;
+                    case "lowercase":
+                        transformed = content.toLowerCase();
+                        break;
+                    case "reverse":
+                        transformed = new StringBuilder(content).reverse().toString();
+                        break;
+                    default:
+                        transformed = content;
+                }
+                
+                outputStream.write(transformed.getBytes(StandardCharsets.UTF_8));
+            });
+            
+            session.transfer(flowFile, REL_SUCCESS);
+            
+        } catch (Exception e) {
+            getLogger().error("Failed to transform FlowFile", e);
+            session.transfer(flowFile, REL_FAILURE);
+        }
+    }
+}</code></pre>
+                                </div>
+                                
+                                <h4>Docker Compose Setup</h4>
+                                <div class="code-example">
+                                    <pre><code>version: '3.8'
+services:
+  nifi:
+    image: apache/nifi:1.24.0
+    container_name: nifi
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    environment:
+      - NIFI_WEB_HTTP_PORT=8080
+      - NIFI_CLUSTER_IS_NODE=true
+      - NIFI_CLUSTER_NODE_PROTOCOL_PORT=8082
+      - NIFI_ZK_CONNECT_STRING=zookeeper:2181
+      - NIFI_ELECTION_MAX_WAIT=30 sec
+      - NIFI_SENSITIVE_PROPS_KEY=changemeplease
+    volumes:
+      - nifi_database_repository:/opt/nifi/nifi-current/database_repository
+      - nifi_flowfile_repository:/opt/nifi/nifi-current/flowfile_repository
+      - nifi_content_repository:/opt/nifi/nifi-current/content_repository
+      - nifi_provenance_repository:/opt/nifi/nifi-current/provenance_repository
+      - nifi_state:/opt/nifi/nifi-current/state
+      - nifi_logs:/opt/nifi/nifi-current/logs
+      - ./input:/input
+      - ./output:/output
+    networks:
+      - nifi_network
+
+  zookeeper:
+    image: zookeeper:3.7
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=0.0.0.0:2888:3888;2181
+    networks:
+      - nifi_network
+
+volumes:
+  nifi_database_repository:
+  nifi_flowfile_repository:
+  nifi_content_repository:
+  nifi_provenance_repository:
+  nifi_state:
+  nifi_logs:
+
+networks:
+  nifi_network:
+    driver: bridge</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Tab -->
+                    <div class="tab-pane fade" id="comparison" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Comparações</h3>
+                                
+                                <h4>NiFi vs Alternativas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Aspecto</th>
+                                                <th>Apache NiFi</th>
+                                                <th>StreamSets</th>
+                                                <th>Apache Kafka</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Interface</strong></td>
+                                                <td>Visual drag-and-drop</td>
+                                                <td>Visual drag-and-drop</td>
+                                                <td>Código/CLI</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Governança</strong></td>
+                                                <td>Excelente</td>
+                                                <td>Boa</td>
+                                                <td>Limitada</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Throughput</strong></td>
+                                                <td>Moderado</td>
+                                                <td>Alto</td>
+                                                <td>Muito Alto</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Latência</strong></td>
+                                                <td>Moderada</td>
+                                                <td>Baixa</td>
+                                                <td>Muito Baixa</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Facilidade de Uso</strong></td>
+                                                <td>Alta</td>
+                                                <td>Alta</td>
+                                                <td>Baixa</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Licença</strong></td>
+                                                <td>Apache 2.0</td>
+                                                <td>Proprietária</td>
+                                                <td>Apache 2.0</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h4>Matriz de Decisão</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="decision-card">
+                                            <h5>🎯 Escolha NiFi se:</h5>
+                                            <ul>
+                                                <li>Precisa de interface visual intuitiva</li>
+                                                <li>Governança e auditoria são críticas</li>
+                                                <li>Integração de sistemas diversos</li>
+                                                <li>Configuração dinâmica é importante</li>
+                                                <li>Equipe prefere ferramentas visuais</li>
+                                                <li>Segurança robusta é necessária</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="decision-card">
+                                            <h5>🔄 Considere alternativas se:</h5>
+                                            <ul>
+                                                <li>Precisa de throughput extremamente alto</li>
+                                                <li>Latência ultra-baixa é crítica</li>
+                                                <li>Recursos de infraestrutura limitados</li>
+                                                <li>Casos de uso simples de mensageria</li>
+                                                <li>Equipe prefere soluções baseadas em código</li>
+                                                <li>Processamento de streams complexo</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>📊 Quick Facts</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-dark">
+                                <tr>
+                                    <td><strong>Versão Atual:</strong></td>
+                                    <td>1.24.0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Licença:</strong></td>
+                                    <td>Apache 2.0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Linguagem:</strong></td>
+                                    <td>Java</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Primeira Release:</strong></td>
+                                    <td>2014</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Última Atualização:</strong></td>
+                                    <td>Janeiro 2024</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔗 Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="https://nifi.apache.org" class="btn btn-outline-success btn-sm" target="_blank">
+                                    🌐 Site Oficial
+                                </a>
+                                <a href="https://github.com/apache/nifi" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📁 GitHub
+                                </a>
+                                <a href="https://nifi.apache.org/docs.html" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📚 Documentação
+                                </a>
+                                <a href="https://community.cloudera.com/t5/Community-Articles/bd-p/CommunityArticles" class="btn btn-outline-success btn-sm" target="_blank">
+                                    👥 Comunidade
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔄 Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="../apache-kafka/" class="btn btn-outline-info btn-sm">Apache Kafka</a>
+                                <a href="../streamsets/" class="btn btn-outline-info btn-sm">StreamSets</a>
+                                <a href="../../processamento/apache-spark/" class="btn btn-outline-info btn-sm">Apache Spark</a>
+                                <a href="../../sistemas-arquivos/hdfs/" class="btn btn-outline-info btn-sm">HDFS</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Courses -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🎓 Cursos Relacionados</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="../../../cursos/apache-nifi-fundamentals/" class="btn btn-outline-warning btn-sm">NiFi Fundamentals</a>
+                                <a href="../../../cursos/data-flow-automation/" class="btn btn-outline-warning btn-sm">Data Flow Automation</a>
+                                <a href="../../../cursos/data-integration/" class="btn btn-outline-warning btn-sm">Data Integration</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sponsored Content -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>💼 Conteúdo Patrocinado</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="sponsored-content">
+                                <p><small class="text-muted">Conteúdo Patrocinado</small></p>
+                                <h6>Cloudera DataFlow</h6>
+                                <p class="small">NiFi como serviço gerenciado na nuvem.</p>
+                                <a href="https://www.cloudera.com/products/dataflow.html" class="btn btn-sm btn-outline-primary" target="_blank">Saiba Mais</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/main.js"></script>
+    <script src="../../../assets/js/technology-page.js"></script>
+    <script src="../../../assets/js/theme-toggle.js"></script>
+</body>
+</html>

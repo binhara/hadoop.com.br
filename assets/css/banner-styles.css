@@ -1,0 +1,230 @@
+/* Banner System Styles for Portal Big Data */
+
+/* Banner Container Styles */
+.banner-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.banner-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 255, 0, 0.2);
+}
+
+/* Banner Item Styles */
+.banner-item {
+    position: relative;
+    transition: opacity 0.3s ease;
+}
+
+.banner-card {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.banner-card:hover {
+    border-color: rgba(0, 255, 0, 0.6);
+    background: rgba(0, 0, 0, 0.9);
+}
+
+/* Banner Image Styles */
+.banner-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+.banner-image:hover {
+    transform: scale(1.02);
+}
+
+/* Banner Link Styles */
+.banner-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.banner-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Banner Placeholder Styles */
+.banner-placeholder {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.1), rgba(0, 255, 0, 0.1));
+    border: 2px dashed rgba(0, 255, 0, 0.3);
+    border-radius: 8px;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.banner-placeholder:hover {
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.2), rgba(0, 255, 0, 0.2));
+    border-color: rgba(0, 255, 0, 0.5);
+}
+
+/* Position-specific Banner Styles */
+.banner-header {
+    margin-bottom: 20px;
+}
+
+.banner-sidebar-top,
+.banner-sidebar-middle,
+.banner-sidebar-bottom {
+    margin-bottom: 20px;
+}
+
+.banner-content-top,
+.banner-content-middle,
+.banner-content-bottom {
+    margin: 20px 0;
+}
+
+.banner-footer {
+    margin-top: 20px;
+}
+
+/* Responsive Banner Styles */
+@media (max-width: 768px) {
+    .banner-container {
+        margin-bottom: 15px;
+    }
+    
+    .banner-card .card-body {
+        padding: 1rem;
+    }
+    
+    .banner-image {
+        max-height: 80px;
+        object-fit: contain;
+    }
+}
+
+@media (max-width: 576px) {
+    .banner-container {
+        margin-bottom: 10px;
+    }
+    
+    .banner-card .card-body {
+        padding: 0.75rem;
+    }
+    
+    .banner-placeholder {
+        min-height: 80px;
+        font-size: 0.875rem;
+    }
+}
+
+/* Matrix Theme Integration */
+.matrix-theme .banner-card {
+    background: rgba(0, 20, 0, 0.9);
+    border-color: rgba(0, 255, 0, 0.3);
+}
+
+.matrix-theme .banner-card:hover {
+    border-color: rgba(0, 255, 0, 0.6);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.matrix-theme .banner-placeholder {
+    background: linear-gradient(45deg, rgba(0, 20, 0, 0.3), rgba(0, 255, 0, 0.1));
+    border-color: rgba(0, 255, 0, 0.3);
+    color: rgba(0, 255, 0, 0.8);
+}
+
+/* Animation for Banner Rotation */
+@keyframes bannerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bannerFadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+.banner-item.fade-in {
+    animation: bannerFadeIn 0.3s ease-out;
+}
+
+.banner-item.fade-out {
+    animation: bannerFadeOut 0.3s ease-out;
+}
+
+/* Partner Specific Styles */
+.banner-item[data-partner-id="dssbr"] .banner-card {
+    border-left: 3px solid #3b82f6;
+}
+
+.banner-item[data-partner-id="gubigdata"] .banner-card {
+    border-left: 3px solid #10b981;
+}
+
+.banner-item[data-partner-id="oworkshop"] .banner-card {
+    border-left: 3px solid #ef4444;
+}
+
+/* Loading State */
+.banner-loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.2), transparent);
+    animation: bannerLoading 1.5s infinite;
+}
+
+@keyframes bannerLoading {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Accessibility Improvements */
+.banner-link:focus {
+    outline: 2px solid rgba(0, 255, 0, 0.8);
+    outline-offset: 2px;
+}
+
+.banner-item[aria-hidden="true"] {
+    display: none;
+}
+
+/* Print Styles */
+@media print {
+    .banner-container,
+    .banner-item {
+        display: none !important;
+    }
+}

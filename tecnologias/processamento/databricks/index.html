@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Databricks - Plataforma Unificada de Analytics | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Databricks - Plataforma Unificada de Analytics | Portal Big Data">
+    <meta name="description" content="Databricks: plataforma unificada para analytics, data science e machine learning. Guia completo, casos de uso e comparações.">
+    <meta name="keywords" content="databricks, lakehouse, apache spark, data science, machine learning, analytics">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/processamento/databricks">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/processamento/databricks">
+    <meta property="og:title" content="Databricks - Plataforma Unificada de Analytics | Portal Big Data">
+    <meta property="og:description" content="Databricks: plataforma unificada para analytics, data science e machine learning. Guia completo, casos de uso e comparações.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/og/databricks-og.jpg">
+    <meta property="og:site_name" content="Portal Big Data">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/tecnologias/processamento/databricks">
+    <meta property="twitter:title" content="Databricks - Plataforma Unificada de Analytics | Portal Big Data">
+    <meta property="twitter:description" content="Databricks: plataforma unificada para analytics, data science e machine learning. Guia completo, casos de uso e comparações.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/databricks-twitter.jpg">
+    <meta property="twitter:site" content="@portalbigdata">
+    
+    <!-- Structured Data for Software Application -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Databricks",
+        "description": "Unified analytics platform for big data and machine learning",
+        "url": "https://databricks.com",
+        "applicationCategory": "Data Analytics Platform",
+        "operatingSystem": "Cloud-based",
+        "programmingLanguage": ["Python", "Scala", "SQL", "R"],
+        "license": "Commercial",
+        "datePublished": "2013-10-15",
+        "dateModified": "2024-12-01",
+        "author": {
+            "@type": "Organization",
+            "name": "Databricks Inc.",
+            "url": "https://databricks.com"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "Variable",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        },
+        "featureList": [
+            "Lakehouse architecture",
+            "Collaborative notebooks",
+            "Auto-scaling clusters",
+            "MLOps capabilities",
+            "Delta Lake integration",
+            "Multi-cloud support"
+        ],
+        "requirements": "Cloud account (AWS, Azure, GCP)"
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="/">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Processamento</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Databricks</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Technology Header -->
+                <div class="tech-header d-flex align-items-center mb-4">
+                    <div class="tech-logo-placeholder bg-danger text-white rounded me-3 d-flex align-items-center justify-content-center" style="width: 80px; height: 80px; font-size: 24px;">
+                        🧱
+                    </div>
+                    <div>
+                        <h1 class="mb-2">Databricks</h1>
+                        <div class="tech-badges">
+                            <span class="badge bg-warning text-dark">Commercial</span>
+                            <span class="badge bg-success">2024 Trending</span>
+                            <span class="badge bg-info">Lakehouse</span>
+                            <span class="badge bg-primary">Multi-Cloud</span>
+                        </div>
+                        <p class="lead mt-2 mb-0">Plataforma unificada para analytics, data science e machine learning</p>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs nav-fill mb-4" id="techTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            Visão Geral
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">
+                            Recursos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="use-cases-tab" data-bs-toggle="tab" data-bs-target="#use-cases" type="button" role="tab">
+                            Casos de Uso
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="examples-tab" data-bs-toggle="tab" data-bs-target="#examples" type="button" role="tab">
+                            Exemplos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button" role="tab">
+                            Comparações
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="techTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>O que é Databricks?</h3>
+                                <p>Databricks é uma plataforma unificada de analytics que combina data warehouses e data lakes em uma arquitetura lakehouse. Fundada pelos criadores do Apache Spark, a plataforma oferece um ambiente colaborativo para data science, machine learning e analytics, executando na nuvem com otimizações proprietárias para performance e facilidade de uso.</p>
+                                
+                                <h4>História</h4>
+                                <p>Databricks foi fundada em 2013 pelos criadores originais do Apache Spark na UC Berkeley, incluindo Ali Ghodsi, Matei Zaharia, Ion Stoica, Patrick Wendell, Reynold Xin e Andy Konwinski. A empresa foi criada para comercializar e simplificar o uso do Spark, oferecendo uma plataforma gerenciada que elimina a complexidade de configuração e manutenção de clusters.</p>
+                                
+                                <h4>Arquitetura Lakehouse</h4>
+                                <p>Databricks pioneirou o conceito de Lakehouse, que combina a flexibilidade e economia de data lakes com a performance e confiabilidade de data warehouses. A arquitetura utiliza Delta Lake como camada de armazenamento, fornecendo transações ACID, versionamento de dados e otimizações de performance sobre object storage.</p>
+                                
+                                <h4>Vantagens</h4>
+                                <ul>
+                                    <li><strong>Facilidade de uso:</strong> Interface intuitiva com notebooks colaborativos</li>
+                                    <li><strong>Performance otimizada:</strong> Photon engine e otimizações proprietárias</li>
+                                    <li><strong>Escalabilidade automática:</strong> Auto-scaling de clusters baseado na demanda</li>
+                                    <li><strong>MLOps integrado:</strong> MLflow nativo para gerenciamento de modelos</li>
+                                    <li><strong>Multi-cloud:</strong> Disponível em AWS, Azure e Google Cloud</li>
+                                    <li><strong>Governança:</strong> Unity Catalog para governança unificada de dados</li>
+                                </ul>
+                                
+                                <h4>Desvantagens</h4>
+                                <ul>
+                                    <li><strong>Custo:</strong> Pode ser caro para workloads pequenos ou esporádicos</li>
+                                    <li><strong>Vendor lock-in:</strong> Dependência da plataforma Databricks</li>
+                                    <li><strong>Complexidade de pricing:</strong> Modelo de cobrança pode ser confuso</li>
+                                    <li><strong>Limitações on-premise:</strong> Focado em soluções cloud</li>
+                                    <li><strong>Curva de aprendizado:</strong> Requer conhecimento específico da plataforma</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane fade" id="features" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Principais Recursos</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>📊 Lakehouse Platform</h5>
+                                            <p>Arquitetura unificada que combina data lakes e data warehouses com Delta Lake.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>⚡ Photon Engine</h5>
+                                            <p>Engine de execução nativo otimizado para workloads SQL e streaming.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🤝 Collaborative Notebooks</h5>
+                                            <p>Notebooks colaborativos com suporte a múltiplas linguagens e visualizações.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🤖 MLflow Integration</h5>
+                                            <p>Plataforma MLOps integrada para gerenciamento completo do ciclo de vida de ML.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🔒 Unity Catalog</h5>
+                                            <p>Governança unificada de dados com controle de acesso e linhagem.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>☁️ Multi-Cloud</h5>
+                                            <p>Disponível em AWS, Microsoft Azure e Google Cloud Platform.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4>Especificações Técnicas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Tipo</strong></td>
+                                                <td>Plataforma SaaS</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Linguagens Suportadas</strong></td>
+                                                <td>Python, Scala, SQL, R, Java</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Cloud Providers</strong></td>
+                                                <td>AWS, Azure, Google Cloud</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Formatos de Dados</strong></td>
+                                                <td>Delta Lake, Parquet, JSON, CSV, Avro</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Integrações</strong></td>
+                                                <td>Kafka, Kinesis, EventHub, BigQuery, Snowflake</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Modelo de Pricing</strong></td>
+                                                <td>DBU (Databricks Units) + Cloud compute</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Tab -->
+                    <div class="tab-pane fade" id="use-cases" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Casos de Uso</h3>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>🏗️ Data Engineering</h5>
+                                    <p>Construção de pipelines ETL/ELT escaláveis com Delta Live Tables para processamento de dados em tempo real e batch.</p>
+                                </div>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>🔬 Data Science</h5>
+                                    <p>Ambiente colaborativo para exploração de dados, feature engineering e desenvolvimento de modelos de machine learning.</p>
+                                </div>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>🤖 Machine Learning</h5>
+                                    <p>Plataforma MLOps completa com AutoML, experiment tracking, model registry e deployment automatizado.</p>
+                                </div>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>📊 Business Intelligence</h5>
+                                    <p>Analytics self-service com Databricks SQL para consultas ad-hoc e dashboards interativos.</p>
+                                </div>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>🌊 Real-time Analytics</h5>
+                                    <p>Processamento de streaming com Structured Streaming para analytics em tempo real e alertas.</p>
+                                </div>
+                                
+                                <h4>Quando Usar Databricks</h4>
+                                <div class="alert alert-success">
+                                    <h5>✅ Recomendado para:</h5>
+                                    <ul>
+                                        <li>Organizações que precisam de uma plataforma unificada</li>
+                                        <li>Equipes colaborativas de data science e engineering</li>
+                                        <li>Workloads de machine learning em produção</li>
+                                        <li>Migração de Hadoop para arquitetura moderna</li>
+                                        <li>Necessidade de governança avançada de dados</li>
+                                        <li>Projetos que requerem alta performance</li>
+                                        <li>Ambientes multi-cloud</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <h5>⚠️ Considere alternativas se:</h5>
+                                    <ul>
+                                        <li>Orçamento limitado para workloads pequenos</li>
+                                        <li>Necessidade de controle total da infraestrutura</li>
+                                        <li>Preferência por soluções open-source puras</li>
+                                        <li>Workloads muito simples que não justificam a complexidade</li>
+                                        <li>Requisitos de deployment on-premise</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples Tab -->
+                    <div class="tab-pane fade" id="examples" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Exemplos Práticos</h3>
+                                
+                                <h4>Configuração Inicial</h4>
+                                <div class="code-example mb-4">
+                                    <pre><code># Instalação do Databricks CLI
+pip install databricks-cli
+
+# Configuração de autenticação
+databricks configure --token
+
+# Configuração do workspace
+databricks workspace ls /
+
+# Upload de notebook
+databricks workspace import notebook.py /Users/user@company.com/notebook</code></pre>
+                                </div>
+                                
+                                <h4>Exemplo Python - ETL com Delta Lake</h4>
+                                <div class="code-example mb-4">
+                                    <pre><code># Databricks notebook cell
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col, current_timestamp, when
+from delta.tables import DeltaTable
+
+# Spark session já configurado no Databricks
+spark = spark
+
+# Ler dados de origem
+raw_data = spark.read.format("json") \
+    .option("multiline", "true") \
+    .load("/mnt/raw-data/events/")
+
+# Transformações
+cleaned_data = raw_data \
+    .filter(col("event_type").isNotNull()) \
+    .withColumn("processed_at", current_timestamp()) \
+    .withColumn("is_valid", when(col("user_id").isNotNull(), True).otherwise(False))
+
+# Escrever para Delta Lake
+cleaned_data.write \
+    .format("delta") \
+    .mode("overwrite") \
+    .option("mergeSchema", "true") \
+    .save("/mnt/delta/events_cleaned")
+
+# Criar tabela Delta
+spark.sql("""
+    CREATE TABLE IF NOT EXISTS events_cleaned
+    USING DELTA
+    LOCATION '/mnt/delta/events_cleaned'
+""")
+
+print(f"Processados {cleaned_data.count()} registros")</code></pre>
+                                </div>
+                                
+                                <h4>Exemplo SQL - Analytics</h4>
+                                <div class="code-example mb-4">
+                                    <pre><code>-- Databricks SQL cell
+-- Análise de eventos por dia
+SELECT 
+    DATE(processed_at) as date,
+    event_type,
+    COUNT(*) as event_count,
+    COUNT(DISTINCT user_id) as unique_users
+FROM events_cleaned
+WHERE processed_at >= current_date() - INTERVAL 30 DAYS
+GROUP BY DATE(processed_at), event_type
+ORDER BY date DESC, event_count DESC;
+
+-- Criar view materializada
+CREATE OR REPLACE VIEW daily_events_summary AS
+SELECT 
+    DATE(processed_at) as date,
+    event_type,
+    COUNT(*) as total_events,
+    COUNT(DISTINCT user_id) as unique_users,
+    AVG(CASE WHEN is_valid THEN 1.0 ELSE 0.0 END) as validity_rate
+FROM events_cleaned
+GROUP BY DATE(processed_at), event_type;</code></pre>
+                                </div>
+                                
+                                <h4>Exemplo MLflow - Machine Learning</h4>
+                                <div class="code-example mb-4">
+                                    <pre><code>import mlflow
+import mlflow.sklearn
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, classification_report
+
+# Configurar MLflow
+mlflow.set_experiment("/Users/user@company.com/fraud_detection")
+
+# Carregar dados
+df = spark.table("events_cleaned").toPandas()
+X = df[['feature1', 'feature2', 'feature3']]
+y = df['is_fraud']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Iniciar run do MLflow
+with mlflow.start_run():
+    # Parâmetros do modelo
+    n_estimators = 100
+    max_depth = 10
+    
+    # Log de parâmetros
+    mlflow.log_param("n_estimators", n_estimators)
+    mlflow.log_param("max_depth", max_depth)
+    
+    # Treinar modelo
+    model = RandomForestClassifier(
+        n_estimators=n_estimators,
+        max_depth=max_depth,
+        random_state=42
+    )
+    model.fit(X_train, y_train)
+    
+    # Predições e métricas
+    y_pred = model.predict(X_test)
+    accuracy = accuracy_score(y_test, y_pred)
+    
+    # Log de métricas
+    mlflow.log_metric("accuracy", accuracy)
+    
+    # Log do modelo
+    mlflow.sklearn.log_model(model, "fraud_detection_model")
+    
+    print(f"Accuracy: {accuracy:.4f}")
+    print(f"Run ID: {mlflow.active_run().info.run_id}")</code></pre>
+                                </div>
+                                
+                                <h4>Exemplo Delta Live Tables</h4>
+                                <div class="code-example mb-4">
+                                    <pre><code>import dlt
+from pyspark.sql.functions import col, current_timestamp
+
+# Bronze layer - dados brutos
+@dlt.table(
+    comment="Raw events data from source systems"
+)
+def bronze_events():
+    return spark.readStream.format("cloudFiles") \
+        .option("cloudFiles.format", "json") \
+        .load("/mnt/raw-data/events/")
+
+# Silver layer - dados limpos
+@dlt.table(
+    comment="Cleaned and validated events"
+)
+@dlt.expect_or_drop("valid_event", "event_type IS NOT NULL")
+@dlt.expect_or_drop("valid_user", "user_id IS NOT NULL")
+def silver_events():
+    return dlt.read_stream("bronze_events") \
+        .select(
+            col("event_id"),
+            col("user_id"),
+            col("event_type"),
+            col("timestamp").cast("timestamp"),
+            current_timestamp().alias("processed_at")
+        )
+
+# Gold layer - dados agregados
+@dlt.table(
+    comment="Daily event aggregations"
+)
+def gold_daily_events():
+    return dlt.read("silver_events") \
+        .groupBy(
+            col("event_type"),
+            date_format(col("timestamp"), "yyyy-MM-dd").alias("date")
+        ) \
+        .agg(
+            count("*").alias("event_count"),
+            countDistinct("user_id").alias("unique_users")
+        )</code></pre>
+                                </div>
+                                
+                                <h4>Tutoriais Relacionados</h4>
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <h6>Databricks Lakehouse Fundamentals</h6>
+                                        <small>Introdução à arquitetura lakehouse e Delta Lake</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <h6>MLOps com Databricks e MLflow</h6>
+                                        <small>Implementando pipelines de machine learning em produção</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <h6>Delta Live Tables para Data Engineering</h6>
+                                        <small>Construindo pipelines de dados declarativos</small>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Tab -->
+                    <div class="tab-pane fade" id="comparison" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Comparações</h3>
+                                
+                                <h4>Alternativas Similares</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Plataforma</th>
+                                                <th>Facilidade de Uso</th>
+                                                <th>Performance</th>
+                                                <th>Custo</th>
+                                                <th>Flexibilidade</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Databricks</strong></td>
+                                                <td><span class="badge bg-success">Excelente</span></td>
+                                                <td><span class="badge bg-success">Excelente</span></td>
+                                                <td><span class="badge bg-warning">Alto</span></td>
+                                                <td><span class="badge bg-success">Alta</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Snowflake</td>
+                                                <td><span class="badge bg-success">Excelente</span></td>
+                                                <td><span class="badge bg-success">Excelente</span></td>
+                                                <td><span class="badge bg-warning">Alto</span></td>
+                                                <td><span class="badge bg-warning">Média</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Apache Spark (Open Source)</td>
+                                                <td><span class="badge bg-warning">Média</span></td>
+                                                <td><span class="badge bg-info">Boa</span></td>
+                                                <td><span class="badge bg-success">Baixo</span></td>
+                                                <td><span class="badge bg-success">Alta</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Google Dataflow</td>
+                                                <td><span class="badge bg-info">Boa</span></td>
+                                                <td><span class="badge bg-success">Excelente</span></td>
+                                                <td><span class="badge bg-info">Médio</span></td>
+                                                <td><span class="badge bg-warning">Média</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Amazon EMR</td>
+                                                <td><span class="badge bg-warning">Média</span></td>
+                                                <td><span class="badge bg-info">Boa</span></td>
+                                                <td><span class="badge bg-info">Médio</span></td>
+                                                <td><span class="badge bg-success">Alta</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h4>Quando Escolher Databricks vs Alternativas</h4>
+                                <div class="comparison-section">
+                                    <h5>Databricks vs Snowflake</h5>
+                                    <p><strong>Escolha Databricks se:</strong> Você precisa de machine learning avançado, processamento de dados não estruturados, ou workloads de data science colaborativo.</p>
+                                    <p><strong>Escolha Snowflake se:</strong> Seu foco principal é analytics SQL, data warehousing tradicional, ou você precisa de separação completa entre compute e storage.</p>
+                                </div>
+                                
+                                <div class="comparison-section">
+                                    <h5>Databricks vs Apache Spark Open Source</h5>
+                                    <p><strong>Escolha Databricks se:</strong> Você quer facilidade de uso, otimizações de performance, colaboração em equipe, e suporte empresarial.</p>
+                                    <p><strong>Escolha Spark Open Source se:</strong> Você tem expertise técnica interna, quer controle total da infraestrutura, ou tem restrições orçamentárias.</p>
+                                </div>
+                                
+                                <div class="comparison-section">
+                                    <h5>Databricks vs Cloud Native (EMR, Dataflow)</h5>
+                                    <p><strong>Escolha Databricks se:</strong> Você quer uma experiência consistente multi-cloud e recursos avançados de MLOps.</p>
+                                    <p><strong>Escolha soluções cloud-native se:</strong> Você está totalmente comprometido com um provedor de nuvem específico e quer integração nativa.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Quick Facts -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Informações Rápidas</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li><strong>Tipo:</strong> Plataforma SaaS</li>
+                            <li><strong>Licença:</strong> Commercial</li>
+                            <li><strong>Primeira Versão:</strong> 2013</li>
+                            <li><strong>Linguagens:</strong> Python, Scala, SQL, R</li>
+                            <li><strong>Cloud Support:</strong> AWS, Azure, GCP</li>
+                            <li><strong>Categoria:</strong> Lakehouse Platform</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Official Links -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Links Oficiais</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <a href="https://databricks.com" class="btn btn-outline-primary btn-sm" target="_blank">
+                                🌐 Site Oficial
+                            </a>
+                            <a href="https://docs.databricks.com" class="btn btn-outline-info btn-sm" target="_blank">
+                                📚 Documentação
+                            </a>
+                            <a href="https://community.databricks.com" class="btn btn-outline-success btn-sm" target="_blank">
+                                👥 Comunidade
+                            </a>
+                            <a href="https://databricks.com/try-databricks" class="btn btn-outline-warning btn-sm" target="_blank">
+                                🆓 Free Trial
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Technologies -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Tecnologias Relacionadas</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap gap-2">
+                            <a href="../apache-spark/" class="badge bg-primary text-decoration-none">Apache Spark</a>
+                            <a href="../../sistemas-arquivos/delta-lake/" class="badge bg-success text-decoration-none">Delta Lake</a>
+                            <a href="../apache-kafka/" class="badge bg-info text-decoration-none">Apache Kafka</a>
+                            <a href="../../data-warehousing/snowflake/" class="badge bg-warning text-decoration-none">Snowflake</a>
+                            <a href="../../machine-learning/mlflow/" class="badge bg-danger text-decoration-none">MLflow</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Courses -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Cursos Relacionados</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <h6 class="mb-1">Databricks Fundamentals</h6>
+                                <small>Introdução à plataforma Databricks</small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <h6 class="mb-1">Lakehouse Architecture</h6>
+                                <small>Arquitetura moderna de dados</small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <h6 class="mb-1">MLOps with Databricks</h6>
+                                <small>Machine Learning em produção</small>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Portal Big Data</h5>
+                    <p>Seu guia completo para tecnologias de Big Data</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2024 Portal Big Data. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/technology-page.js"></script>
+</body>
+</html>

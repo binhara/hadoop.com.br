@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Storm - Real-time Processing | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Apache Storm - Real-time Processing | Portal Big Data">
+    <meta name="description" content="Apache Storm: sistema distribuído para processamento de streams em tempo real com garantias de processamento.">
+    <meta name="keywords" content="apache storm, real-time processing, stream processing, distributed computing, topology">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/processamento/apache-storm">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Apache Storm",
+        "description": "Distributed real-time computation system",
+        "url": "https://storm.apache.org",
+        "applicationCategory": "Stream Processing",
+        "operatingSystem": "Linux, Windows, macOS",
+        "programmingLanguage": ["Java", "Clojure", "Python"],
+        "license": "Apache License 2.0",
+        "version": "2.6.0"
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="/">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Processamento</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Apache Storm</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Technology Header -->
+                <div class="tech-header d-flex align-items-center mb-4">
+                    <div class="tech-logo-placeholder bg-danger text-white rounded me-3 d-flex align-items-center justify-content-center" style="width: 80px; height: 80px; font-size: 24px;">
+                        ⛈️
+                    </div>
+                    <div>
+                        <h1 class="mb-2">Apache Storm</h1>
+                        <div class="tech-badges">
+                            <span class="badge bg-primary">Open Source</span>
+                            <span class="badge bg-warning text-dark">Real-time</span>
+                            <span class="badge bg-info">Mature</span>
+                            <span class="badge bg-warning text-dark">Processamento</span>
+                        </div>
+                        <p class="lead mt-2 mb-0">Sistema distribuído para computação em tempo real</p>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs nav-fill mb-4" id="techTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            Visão Geral
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">
+                            Recursos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="use-cases-tab" data-bs-toggle="tab" data-bs-target="#use-cases" type="button" role="tab">
+                            Casos de Uso
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="examples-tab" data-bs-toggle="tab" data-bs-target="#examples" type="button" role="tab">
+                            Exemplos
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="techTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>O que é Apache Storm?</h3>
+                                <p>Apache Storm é um sistema de computação distribuída, livre e open source para processamento de streams de dados em tempo real. Storm torna fácil processar streams unbounded de dados de forma confiável, processando streams tão facilmente quanto o Hadoop processa batches. Storm tem muitos casos de uso: analytics em tempo real, online machine learning, computação contínua, ETL distribuído, e mais.</p>
+                                
+                                <h4>História</h4>
+                                <p>Storm foi criado originalmente por Nathan Marz na BackType em 2010. Foi open-sourced em 2011 e posteriormente adquirido pelo Twitter. Em 2013, Storm foi doado para a Apache Software Foundation e se tornou um projeto Apache top-level em 2014. Storm foi um dos primeiros frameworks dedicados ao processamento de streams em tempo real.</p>
+                                
+                                <h4>Arquitetura</h4>
+                                <p>Storm utiliza uma arquitetura master-worker com Nimbus (master) e Supervisor nodes (workers). As aplicações são organizadas como topologies - grafos direcionados de spouts (fontes de dados) e bolts (unidades de processamento). Storm garante que cada tuple seja processado pelo menos uma vez e fornece primitivas para exactly-once processing.</p>
+                                
+                                <h4>Vantagens</h4>
+                                <ul>
+                                    <li><strong>Simplicidade:</strong> Fácil de usar e entender</li>
+                                    <li><strong>Escalabilidade:</strong> Escala horizontalmente</li>
+                                    <li><strong>Fault-tolerance:</strong> Recuperação automática de falhas</li>
+                                    <li><strong>Garantias:</strong> At-least-once processing garantido</li>
+                                    <li><strong>Multi-linguagem:</strong> Suporte a Java, Python, Ruby, etc.</li>
+                                    <li><strong>Integração:</strong> Funciona bem com sistemas de queue</li>
+                                </ul>
+                                
+                                <h4>Desvantagens</h4>
+                                <ul>
+                                    <li><strong>Latência:</strong> Maior overhead comparado a soluções mais modernas</li>
+                                    <li><strong>Estado:</strong> Gerenciamento de estado limitado</li>
+                                    <li><strong>Desenvolvimento:</strong> Menos ativo que outros projetos</li>
+                                    <li><strong>Complexidade:</strong> Configuração pode ser complexa</li>
+                                    <li><strong>Performance:</strong> Menor throughput que Flink/Spark</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane fade" id="features" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Principais Recursos</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>⚡ Real-time Processing</h5>
+                                            <p>Processamento de streams em tempo real com baixa latência.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🔄 Fault Tolerance</h5>
+                                            <p>Recuperação automática de falhas com reprocessamento de dados.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>📈 Horizontal Scaling</h5>
+                                            <p>Escala facilmente adicionando mais nós ao cluster.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🌐 Multi-language</h5>
+                                            <p>Suporte a múltiplas linguagens de programação.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4>Especificações Técnicas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Versão Atual</strong></td>
+                                                <td>2.6.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Linguagens</strong></td>
+                                                <td>Java, Clojure, Python, Ruby, JavaScript</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Deployment</strong></td>
+                                                <td>Standalone, YARN</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Messaging</strong></td>
+                                                <td>ZeroMQ, Netty</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Coordination</strong></td>
+                                                <td>Apache ZooKeeper</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Tab -->
+                    <div class="tab-pane fade" id="use-cases" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Casos de Uso</h3>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>📊 Real-time Analytics</h5>
+                                    <p>Processamento de métricas e KPIs em tempo real para dashboards e alertas.</p>
+                                </div>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>🔄 ETL Contínuo</h5>
+                                    <p>Transformação e carregamento de dados em tempo real entre sistemas.</p>
+                                </div>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>🚨 Alertas e Monitoramento</h5>
+                                    <p>Detecção de anomalias e geração de alertas baseados em thresholds.</p>
+                                </div>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>🤖 Machine Learning Online</h5>
+                                    <p>Aplicação de modelos ML em streams de dados para predições em tempo real.</p>
+                                </div>
+                                
+                                <h4>Quando Usar Apache Storm</h4>
+                                <div class="alert alert-success">
+                                    <h5>✅ Recomendado para:</h5>
+                                    <ul>
+                                        <li>Processamento simples de streams</li>
+                                        <li>Sistemas legados que já usam Storm</li>
+                                        <li>Casos onde simplicidade é prioridade</li>
+                                        <li>Integração com sistemas de messaging existentes</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <h5>⚠️ Considere alternativas se:</h5>
+                                    <ul>
+                                        <li>Você precisa de alta performance (use Flink)</li>
+                                        <li>Gerenciamento de estado complexo é necessário</li>
+                                        <li>Você quer tecnologias mais modernas</li>
+                                        <li>Exactly-once processing é crítico</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples Tab -->
+                    <div class="tab-pane fade" id="examples" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Exemplos Práticos</h3>
+                                
+                                <h4>Instalação</h4>
+                                <div class="code-example mb-4">
+                                    <pre><code># Download e instalação
+wget https://archive.apache.org/dist/storm/apache-storm-2.6.0/apache-storm-2.6.0.tar.gz
+tar -xzf apache-storm-2.6.0.tar.gz
+cd apache-storm-2.6.0
+
+# Configurar storm.yaml
+# storm.zookeeper.servers:
+#   - "localhost"
+# nimbus.seeds: ["localhost"]
+
+# Iniciar ZooKeeper
+bin/storm dev-zookeeper &
+
+# Iniciar Nimbus
+bin/storm nimbus &
+
+# Iniciar Supervisor
+bin/storm supervisor &
+
+# Iniciar UI
+bin/storm ui &</code></pre>
+                                </div>
+                                
+                                <h4>Exemplo Java - Word Count Topology</h4>
+                                <div class="code-example mb-4">
+                                    <pre><code>import org.apache.storm.Config;
+import org.apache.storm.LocalCluster;
+import org.apache.storm.topology.TopologyBuilder;
+import org.apache.storm.topology.base.BaseBasicBolt;
+import org.apache.storm.topology.base.BaseRichSpout;
+import org.apache.storm.tuple.Fields;
+import org.apache.storm.tuple.Tuple;
+import org.apache.storm.tuple.Values;
+
+public class WordCountTopology {
+    public static void main(String[] args) {
+        TopologyBuilder builder = new TopologyBuilder();
+        
+        // Adicionar spout
+        builder.setSpout("sentence-spout", new SentenceSpout(), 1);
+        
+        // Adicionar bolt para split
+        builder.setBolt("split-bolt", new SplitSentenceBolt(), 2)
+               .shuffleGrouping("sentence-spout");
+        
+        // Adicionar bolt para count
+        builder.setBolt("count-bolt", new WordCountBolt(), 2)
+               .fieldsGrouping("split-bolt", new Fields("word"));
+        
+        Config config = new Config();
+        config.setDebug(true);
+        
+        LocalCluster cluster = new LocalCluster();
+        cluster.submitTopology("word-count", config, builder.createTopology());
+        
+        // Executar por 10 segundos
+        Thread.sleep(10000);
+        cluster.shutdown();
+    }
+}
+
+// Spout que emite sentenças
+class SentenceSpout extends BaseRichSpout {
+    private SpoutOutputCollector collector;
+    private String[] sentences = {
+        "the cow jumped over the moon",
+        "an apple a day keeps the doctor away",
+        "four score and seven years ago"
+    };
+    private int index = 0;
+    
+    @Override
+    public void nextTuple() {
+        collector.emit(new Values(sentences[index]));
+        index = (index + 1) % sentences.length;
+        Thread.sleep(1000);
+    }
+    
+    @Override
+    public void declareOutputFields(OutputFieldsDeclarer declarer) {
+        declarer.declare(new Fields("sentence"));
+    }
+}
+
+// Bolt que divide sentenças em palavras
+class SplitSentenceBolt extends BaseBasicBolt {
+    @Override
+    public void execute(Tuple tuple, BasicOutputCollector collector) {
+        String sentence = tuple.getString(0);
+        String[] words = sentence.split(" ");
+        for (String word : words) {
+            collector.emit(new Values(word));
+        }
+    }
+    
+    @Override
+    public void declareOutputFields(OutputFieldsDeclarer declarer) {
+        declarer.declare(new Fields("word"));
+    }
+}</code></pre>
+                                </div>
+                                
+                                <h4>Exemplo Python</h4>
+                                <div class="code-example mb-4">
+                                    <pre><code>import storm
+
+class SplitSentenceBolt(storm.BasicBolt):
+    def process(self, tup):
+        words = tup.values[0].split(" ")
+        for word in words:
+            storm.emit([word])
+
+class WordCountBolt(storm.BasicBolt):
+    def initialize(self, conf, context):
+        self.counts = {}
+    
+    def process(self, tup):
+        word = tup.values[0]
+        self.counts[word] = self.counts.get(word, 0) + 1
+        storm.emit([word, self.counts[word]])
+
+# Executar bolt
+if __name__ == '__main__':
+    if len(sys.argv) == 2:
+        if sys.argv[1] == "split":
+            SplitSentenceBolt().run()
+        elif sys.argv[1] == "count":
+            WordCountBolt().run()</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>📊 Quick Facts</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-dark">
+                                <tr>
+                                    <td><strong>Versão Atual:</strong></td>
+                                    <td>2.6.0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Licença:</strong></td>
+                                    <td>Apache 2.0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Linguagem:</strong></td>
+                                    <td>Java, Clojure</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Primeira Release:</strong></td>
+                                    <td>2011</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Última Atualização:</strong></td>
+                                    <td>2024</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔗 Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="https://storm.apache.org" class="btn btn-outline-success btn-sm" target="_blank">
+                                    🌐 Site Oficial
+                                </a>
+                                <a href="https://github.com/apache/storm" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📁 GitHub
+                                </a>
+                                <a href="https://storm.apache.org/releases/current/index.html" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📚 Documentação
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔄 Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex flex-wrap gap-2">
+                                <a href="../apache-flink/" class="badge bg-info text-decoration-none">Apache Flink</a>
+                                <a href="../apache-spark/" class="badge bg-warning text-dark text-decoration-none">Apache Spark</a>
+                                <a href="../kafka-streams/" class="badge bg-success text-decoration-none">Kafka Streams</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sponsored Content -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>💼 Conteúdo Patrocinado</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <p><small>Espaço disponível para parceiros</small></p>
+                                <a href="#" class="btn btn-outline-warning btn-sm">Anuncie Aqui</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/main.js"></script>
+    <script src="../../../assets/js/technology-page.js"></script>
+    <script src="../../../assets/js/theme-toggle.js"></script>
+</body>
+</html>

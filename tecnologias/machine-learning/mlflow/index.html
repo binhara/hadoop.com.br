@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLflow - MLOps Platform | Portal Big Data</title>
+    <meta name="description" content="MLflow: plataforma open-source para MLOps. Aprenda sobre tracking, projetos, modelos e deployment de ML.">
+    <meta name="keywords" content="mlflow, mlops, machine learning, model management, experiment tracking, databricks">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="MLflow - MLOps Platform | Portal Big Data">
+    <meta property="og:description" content="Plataforma open-source para gerenciamento do ciclo de vida de machine learning">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/machine-learning/mlflow/">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/matrix-theme.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "MLflow",
+        "description": "Open-source platform for ML lifecycle management",
+        "url": "https://mlflow.org",
+        "applicationCategory": "MLOps Platform",
+        "operatingSystem": "Linux, Windows, macOS",
+        "programmingLanguage": ["Python", "R", "Java", "Scala"],
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Databricks"
+        }
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand text-success" href="../../../index.html">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../../index.html" class="text-success">Home</a></li>
+                <li class="breadcrumb-item"><a href="../../" class="text-success">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../" class="text-success">Machine Learning</a></li>
+                <li class="breadcrumb-item active text-light">MLflow</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Technology Header -->
+                <div class="tech-header mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://mlflow.org/docs/latest/_static/MLflow-logo-final-black.png" alt="MLflow Logo" class="tech-logo me-3" style="height: 80px; filter: invert(1);">
+                        <div>
+                            <h1 class="text-success mb-2">MLflow</h1>
+                            <div class="tech-badges">
+                                <span class="badge bg-primary">Open Source</span>
+                                <span class="badge bg-success">Databricks</span>
+                                <span class="badge bg-warning text-dark">MLOps</span>
+                                <span class="badge bg-info">Multi-language</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Overview -->
+                <section class="mb-5">
+                    <h2 class="text-success">Visão Geral</h2>
+                    <p class="text-light">
+                        MLflow é uma plataforma open-source para gerenciar o ciclo de vida completo de 
+                        machine learning, incluindo experimentação, reprodutibilidade, deployment e 
+                        registro central de modelos.
+                    </p>
+                    <p class="text-light">
+                        Desenvolvido pela Databricks, MLflow oferece quatro componentes principais que 
+                        trabalham juntos para simplificar o desenvolvimento e operação de modelos ML 
+                        em qualquer biblioteca, algoritmo, ferramenta de deployment ou linguagem.
+                    </p>
+                </section>
+
+                <!-- Components -->
+                <section class="mb-5">
+                    <h2 class="text-success">Componentes Principais</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">MLflow Tracking</h5>
+                                    <p class="text-light small">Rastreamento de experimentos, parâmetros, métricas e artefatos</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">MLflow Projects</h5>
+                                    <p class="text-light small">Formato padrão para empacotar código ML reutilizável</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">MLflow Models</h5>
+                                    <p class="text-light small">Formato padrão para empacotar modelos ML</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Model Registry</h5>
+                                    <p class="text-light small">Armazenamento centralizado, versionamento e gerenciamento de modelos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Key Features -->
+                <section class="mb-5">
+                    <h2 class="text-success">Principais Características</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="text-light">
+                                <li><strong>Experiment Tracking:</strong> Rastreamento automático</li>
+                                <li><strong>Model Versioning:</strong> Controle de versões</li>
+                                <li><strong>Model Deployment:</strong> Deploy simplificado</li>
+                                <li><strong>Multi-framework:</strong> Suporte a qualquer biblioteca</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="text-light">
+                                <li><strong>REST API:</strong> Integração via API</li>
+                                <li><strong>UI Dashboard:</strong> Interface web intuitiva</li>
+                                <li><strong>Artifact Storage:</strong> Armazenamento de artefatos</li>
+                                <li><strong>Model Serving:</strong> Serving de modelos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Code Example -->
+                <section class="mb-5">
+                    <h2 class="text-success">Exemplo Prático</h2>
+                    <p class="text-light">Exemplo de tracking de experimento com MLflow:</p>
+                    <pre class="bg-dark p-3 rounded border border-success"><code class="text-success">import mlflow
+import mlflow.sklearn
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_wine
+from sklearn.metrics import accuracy_score
+
+# Configurar experimento
+mlflow.set_experiment("wine_classification")
+
+# Carregar dados
+wine = load_wine()
+X_train, X_test, y_train, y_test = train_test_split(
+    wine.data, wine.target, test_size=0.2, random_state=42
+)
+
+# Iniciar run do MLflow
+with mlflow.start_run():
+    # Parâmetros do modelo
+    n_estimators = 100
+    max_depth = 6
+    
+    # Log parâmetros
+    mlflow.log_param("n_estimators", n_estimators)
+    mlflow.log_param("max_depth", max_depth)
+    
+    # Treinar modelo
+    rf = RandomForestClassifier(
+        n_estimators=n_estimators,
+        max_depth=max_depth,
+        random_state=42
+    )
+    rf.fit(X_train, y_train)
+    
+    # Fazer predições
+    y_pred = rf.predict(X_test)
+    accuracy = accuracy_score(y_test, y_pred)
+    
+    # Log métricas
+    mlflow.log_metric("accuracy", accuracy)
+    
+    # Log modelo
+    mlflow.sklearn.log_model(rf, "random_forest_model")
+    
+    # Log artefatos adicionais
+    import matplotlib.pyplot as plt
+    feature_importance = rf.feature_importances_
+    plt.figure(figsize=(10, 6))
+    plt.bar(wine.feature_names, feature_importance)
+    plt.title("Feature Importance")
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig("feature_importance.png")
+    mlflow.log_artifact("feature_importance.png")
+    
+    print(f"Accuracy: {accuracy:.4f}")
+    print(f"Run ID: {mlflow.active_run().info.run_id}")
+</code></pre>
+                </section>
+
+                <!-- Tutorial Links -->
+                <section class="mb-5">
+                    <h2 class="text-success">Tutoriais e Recursos</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="text-success">Tutoriais Oficiais</h5>
+                            <ul class="text-light">
+                                <li><a href="https://mlflow.org/docs/latest/tutorials-and-examples/index.html" class="text-success" target="_blank">Tutorials</a></li>
+                                <li><a href="https://mlflow.org/docs/latest/quickstart.html" class="text-success" target="_blank">Quickstart</a></li>
+                                <li><a href="https://mlflow.org/docs/latest/index.html" class="text-success" target="_blank">Documentation</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-success">Recursos da Comunidade</h5>
+                            <ul class="text-light">
+                                <li><a href="https://github.com/mlflow/mlflow" class="text-success" target="_blank">GitHub Repository</a></li>
+                                <li><a href="https://mlflow.org/docs/latest/community-model-flavors.html" class="text-success" target="_blank">Community Flavors</a></li>
+                                <li><a href="https://stackoverflow.com/questions/tagged/mlflow" class="text-success" target="_blank">Stack Overflow</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-md-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Informações Rápidas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled text-light">
+                                <li><strong>Desenvolvedor:</strong> Databricks</li>
+                                <li><strong>Primeira Versão:</strong> 2018</li>
+                                <li><strong>Linguagem:</strong> Python, R, Java, Scala</li>
+                                <li><strong>Licença:</strong> Apache 2.0</li>
+                                <li><strong>Versão Atual:</strong> 2.8+</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="../kubeflow/" class="text-success">Kubeflow</a></li>
+                                <li><a href="../tensorflow/" class="text-success">TensorFlow</a></li>
+                                <li><a href="../pytorch/" class="text-success">PyTorch</a></li>
+                                <li><a href="../scikit-learn/" class="text-success">Scikit-learn</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card bg-dark border-success">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="https://mlflow.org" class="text-success" target="_blank">Site Oficial</a></li>
+                                <li><a href="https://github.com/mlflow/mlflow" class="text-success" target="_blank">GitHub</a></li>
+                                <li><a href="https://mlflow.org/docs/latest/quickstart.html" class="text-success" target="_blank">Quickstart</a></li>
+                                <li><a href="https://community.databricks.com/s/topic/0TO5Y000000g8YWWAY/mlflow" class="text-success" target="_blank">Community</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2024 Portal Big Data. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="../../../contato/" class="text-success">Contato</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

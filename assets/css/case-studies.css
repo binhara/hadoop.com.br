@@ -1,0 +1,313 @@
+/* Case Studies Specific Styles */
+
+.case-study-card {
+    background: #0d1117;
+    border: 1px solid #00ff00;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.case-study-card:hover {
+    border-color: #00cc00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    transform: translateY(-5px);
+}
+
+.case-study-header {
+    background: linear-gradient(135deg, #001100, #003300);
+    border-bottom: 1px solid #00ff00;
+}
+
+.case-study-title {
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+}
+
+.case-study-company {
+    color: #00cc00;
+    font-size: 0.9rem;
+}
+
+.case-study-industry {
+    background: #00ff00;
+    color: #000;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.case-study-tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.tech-badge {
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    font-family: 'Courier New', monospace;
+}
+
+.metrics-section {
+    background: rgba(0, 255, 0, 0.05);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.metric-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.1);
+}
+
+.metric-item:last-child {
+    border-bottom: none;
+}
+
+.metric-label {
+    color: #00cc00;
+    font-size: 0.9rem;
+}
+
+.metric-value {
+    color: #00ff00;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+}
+
+.metric-improvement {
+    color: #00ff00;
+    font-weight: bold;
+}
+
+.metric-improvement.positive::before {
+    content: "↑ ";
+}
+
+.metric-improvement.negative::before {
+    content: "↓ ";
+}
+
+.case-study-summary {
+    color: #cccccc;
+    line-height: 1.6;
+    margin: 1rem 0;
+}
+
+.case-study-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.btn-case-study {
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    background: transparent;
+    transition: all 0.3s ease;
+    font-family: 'Courier New', monospace;
+}
+
+.btn-case-study:hover {
+    background: #00ff00;
+    color: #000;
+}
+
+.btn-download {
+    border: 1px solid #00cc00;
+    color: #00cc00;
+    background: transparent;
+}
+
+.btn-download:hover {
+    background: #00cc00;
+    color: #000;
+}
+
+.case-study-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin-top: 1rem;
+}
+
+.case-study-tag {
+    background: rgba(0, 255, 0, 0.1);
+    color: #00ff00;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.2rem;
+    font-size: 0.7rem;
+    border: 1px solid rgba(0, 255, 0, 0.3);
+}
+
+.case-study-date {
+    color: #666;
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+.case-study-difficulty {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.3rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.difficulty-beginner {
+    background: rgba(0, 255, 0, 0.2);
+    color: #00ff00;
+    border: 1px solid #00ff00;
+}
+
+.difficulty-intermediate {
+    background: rgba(255, 255, 0, 0.2);
+    color: #ffff00;
+    border: 1px solid #ffff00;
+}
+
+.difficulty-advanced {
+    background: rgba(255, 0, 0, 0.2);
+    color: #ff0000;
+    border: 1px solid #ff0000;
+}
+
+.resources-section {
+    background: rgba(0, 255, 0, 0.05);
+    border-left: 3px solid #00ff00;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.resource-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    color: #cccccc;
+}
+
+.resource-item i {
+    color: #00ff00;
+    width: 20px;
+}
+
+.download-stats {
+    color: #666;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.filter-results-count {
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    margin-bottom: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .case-study-actions {
+        flex-direction: column;
+    }
+    
+    .case-study-tech-stack {
+        justify-content: center;
+    }
+    
+    .metrics-section {
+        padding: 0.5rem;
+    }
+    
+    .metric-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+}
+
+/* Animation for loading */
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+.loading-pulse {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Case Study Detail Modal Styles */
+.modal-content {
+    background: #0d1117;
+    border: 1px solid #00ff00;
+}
+
+.modal-header {
+    border-bottom: 1px solid #00ff00;
+    background: linear-gradient(135deg, #001100, #003300);
+}
+
+.modal-title {
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+}
+
+.btn-close {
+    filter: invert(1);
+}
+
+.modal-body {
+    color: #cccccc;
+}
+
+.case-study-full-content {
+    line-height: 1.8;
+}
+
+.case-study-full-content h3 {
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.case-study-full-content h4 {
+    color: #00cc00;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.case-study-full-content ul {
+    padding-left: 1.5rem;
+}
+
+.case-study-full-content li {
+    margin-bottom: 0.5rem;
+}
+
+.case-study-architecture {
+    background: rgba(0, 255, 0, 0.05);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.architecture-diagram {
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    color: #00ff00;
+    background: #000;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    margin: 1rem 0;
+}

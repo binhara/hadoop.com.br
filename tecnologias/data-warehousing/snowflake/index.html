@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snowflake - Data Warehousing | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Snowflake - Data Warehousing | Portal Big Data">
+    <meta name="description" content="Snowflake: plataforma de data cloud moderna com arquitetura única. Escalabilidade automática, performance superior e facilidade de uso.">
+    <meta name="keywords" content="snowflake, data cloud, data warehouse, cloud nativo, escalabilidade automática, sql">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/data-warehousing/snowflake">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/data-warehousing/snowflake">
+    <meta property="og:title" content="Snowflake - Data Warehousing | Portal Big Data">
+    <meta property="og:description" content="Snowflake: plataforma de data cloud moderna com arquitetura única. Escalabilidade automática, performance superior e facilidade de uso.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/og/snowflake-og.jpg">
+    <meta property="og:site_name" content="Portal Big Data">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/tecnologias/data-warehousing/snowflake">
+    <meta property="twitter:title" content="Snowflake - Data Warehousing | Portal Big Data">
+    <meta property="twitter:description" content="Snowflake: plataforma de data cloud moderna com arquitetura única. Escalabilidade automática, performance superior e facilidade de uso.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/snowflake-twitter.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Snowflake",
+        "description": "Cloud-built data platform that enables data warehousing, data lakes, data engineering, data science, and data application development",
+        "url": "https://snowflake.com",
+        "applicationCategory": "Data Warehousing",
+        "operatingSystem": "Cloud",
+        "programmingLanguage": "SQL",
+        "license": "Commercial",
+        "datePublished": "2012-01-01",
+        "dateModified": "2024-01-15",
+        "offers": {
+            "@type": "Offer",
+            "price": "Variable",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="/">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Data Warehousing</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Snowflake</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Technology Header -->
+                <div class="tech-header d-flex align-items-center mb-4">
+                    <img src="../../../assets/images/logos/snowflake-logo.png" alt="Snowflake Logo" class="tech-logo me-3" style="width: 80px; height: 80px;">
+                    <div>
+                        <h1 class="mb-2">Snowflake</h1>
+                        <div class="tech-badges">
+                            <span class="badge bg-primary">Cloud Native</span>
+                            <span class="badge bg-success">2024 Trending</span>
+                            <span class="badge bg-info">Enterprise</span>
+                            <span class="badge bg-warning text-dark">Data Warehousing</span>
+                        </div>
+                        <p class="lead mt-2 mb-0">Plataforma de data cloud com arquitetura única e escalabilidade automática</p>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs nav-fill mb-4" id="techTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            Visão Geral
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">
+                            Recursos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="use-cases-tab" data-bs-toggle="tab" data-bs-target="#use-cases" type="button" role="tab">
+                            Casos de Uso
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="examples-tab" data-bs-toggle="tab" data-bs-target="#examples" type="button" role="tab">
+                            Exemplos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button" role="tab">
+                            Comparações
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="techTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>O que é Snowflake?</h3>
+                                <p>Snowflake é uma plataforma de data cloud construída especificamente para a nuvem, oferecendo data warehousing, data lakes, data engineering, data science e desenvolvimento de aplicações de dados em uma única plataforma. Com arquitetura única que separa armazenamento, computação e serviços, Snowflake oferece escalabilidade automática e performance superior.</p>
+                                
+                                <h4>História</h4>
+                                <p>Fundada em 2012 por ex-executivos da Oracle, Snowflake foi projetada desde o início para ser uma solução cloud-native. A empresa foi pioneira na arquitetura de separação de armazenamento e computação, revolucionando o mercado de data warehousing e se tornando uma das empresas de tecnologia de crescimento mais rápido.</p>
+                                
+                                <h4>Arquitetura Única</h4>
+                                <p>Snowflake utiliza uma arquitetura multi-cluster shared data:</p>
+                                <ul>
+                                    <li><strong>Storage Layer:</strong> Armazenamento colunar otimizado e comprimido</li>
+                                    <li><strong>Compute Layer:</strong> Virtual warehouses independentes e escaláveis</li>
+                                    <li><strong>Services Layer:</strong> Metadados, otimização, segurança e governança</li>
+                                    <li><strong>Cloud Services:</strong> Autenticação, gerenciamento de metadados, otimização</li>
+                                </ul>
+                                
+                                <h4>Vantagens</h4>
+                                <ul>
+                                    <li>Escalabilidade automática e instantânea</li>
+                                    <li>Performance consistente independente da carga</li>
+                                    <li>Zero manutenção de infraestrutura</li>
+                                    <li>Suporte nativo a dados semi-estruturados</li>
+                                    <li>Compartilhamento seguro de dados</li>
+                                    <li>Multi-cloud (AWS, Azure, GCP)</li>
+                                    <li>Time travel e clonagem instantânea</li>
+                                </ul>
+                                
+                                <h4>Desvantagens</h4>
+                                <ul>
+                                    <li>Custo pode ser elevado para workloads intensivos</li>
+                                    <li>Vendor lock-in com formato proprietário</li>
+                                    <li>Limitações em customizações avançadas</li>
+                                    <li>Dependência de conectividade de rede</li>
+                                    <li>Curva de aprendizado para otimização de custos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane fade" id="features" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Principais Recursos</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card bg-dark">
+                                            <div class="card-body">
+                                                <h5>🔄 Auto-Scaling</h5>
+                                                <p>Escalabilidade automática baseada na demanda</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card bg-dark">
+                                            <div class="card-body">
+                                                <h5>⏰ Time Travel</h5>
+                                                <p>Acesso a dados históricos até 90 dias</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card bg-dark">
+                                            <div class="card-body">
+                                                <h5>🔒 Data Sharing</h5>
+                                                <p>Compartilhamento seguro de dados em tempo real</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card bg-dark">
+                                            <div class="card-body">
+                                                <h5>📊 Semi-Structured Data</h5>
+                                                <p>Suporte nativo para JSON, Avro, Parquet</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4>Recursos Avançados</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Snowpipe</strong></td>
+                                                <td>Ingestão contínua de dados</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Streams & Tasks</strong></td>
+                                                <td>Change data capture e automação</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Secure Views</strong></td>
+                                                <td>Proteção de dados sensíveis</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Multi-Cluster Warehouses</strong></td>
+                                                <td>Concorrência automática</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Data Marketplace</strong></td>
+                                                <td>Acesso a dados de terceiros</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Tab -->
+                    <div class="tab-pane fade" id="use-cases" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Casos de Uso</h3>
+                                
+                                <div class="mb-4">
+                                    <h4>🏢 Enterprise Data Warehouse</h4>
+                                    <p>Data warehouse empresarial com escalabilidade automática.</p>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h4>🌊 Data Lake Analytics</h4>
+                                    <p>Análise de dados estruturados e semi-estruturados em data lakes.</p>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h4>🔄 Data Engineering</h4>
+                                    <p>Pipelines de dados modernos com Snowpipe e Tasks.</p>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h4>🤝 Data Sharing</h4>
+                                    <p>Compartilhamento seguro de dados entre organizações.</p>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h4>🔬 Data Science</h4>
+                                    <p>Plataforma para ciência de dados e machine learning.</p>
+                                </div>
+                                
+                                <div class="alert alert-success">
+                                    <h5>✅ Recomendado para:</h5>
+                                    <ul>
+                                        <li>Empresas que buscam simplicidade operacional</li>
+                                        <li>Workloads com demanda variável</li>
+                                        <li>Necessidade de compartilhamento de dados</li>
+                                        <li>Análise de dados semi-estruturados</li>
+                                        <li>Migração de data warehouses legados</li>
+                                        <li>Ambientes multi-cloud</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <h5>⚠️ Considere alternativas se:</h5>
+                                    <ul>
+                                        <li>Orçamento muito limitado</li>
+                                        <li>Precisa de controle total da infraestrutura</li>
+                                        <li>Workloads com padrões muito previsíveis</li>
+                                        <li>Requer customizações profundas</li>
+                                        <li>Dados altamente sensíveis que não podem sair do ambiente</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples Tab -->
+                    <div class="tab-pane fade" id="examples" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Exemplos Práticos</h3>
+                                
+                                <h4>Criação de Virtual Warehouse</h4>
+                                <div class="code-example">
+                                    <pre><code>-- Criar virtual warehouse
+CREATE WAREHOUSE analytics_wh 
+WITH WAREHOUSE_SIZE = 'MEDIUM'
+     AUTO_SUSPEND = 300
+     AUTO_RESUME = TRUE
+     INITIALLY_SUSPENDED = TRUE;
+
+-- Usar warehouse
+USE WAREHOUSE analytics_wh;</code></pre>
+                                </div>
+                                
+                                <h4>Trabalhando com Dados Semi-Estruturados</h4>
+                                <div class="code-example">
+                                    <pre><code>-- Criar tabela com dados JSON
+CREATE TABLE events (
+    id NUMBER,
+    event_data VARIANT,
+    timestamp TIMESTAMP_NTZ
+);
+
+-- Inserir dados JSON
+INSERT INTO events VALUES 
+(1, PARSE_JSON('{"user_id": 123, "action": "click", "page": "/home"}'), CURRENT_TIMESTAMP());
+
+-- Consultar dados JSON
+SELECT 
+    id,
+    event_data:user_id::NUMBER as user_id,
+    event_data:action::STRING as action,
+    event_data:page::STRING as page
+FROM events;</code></pre>
+                                </div>
+                                
+                                <h4>Time Travel</h4>
+                                <div class="code-example">
+                                    <pre><code>-- Consultar dados de 1 hora atrás
+SELECT * FROM sales AT(OFFSET => -3600);
+
+-- Consultar dados de uma data específica
+SELECT * FROM sales AT(TIMESTAMP => '2024-01-15 10:00:00');
+
+-- Restaurar tabela deletada
+UNDROP TABLE sales;</code></pre>
+                                </div>
+                                
+                                <h4>Snowpipe para Ingestão Contínua</h4>
+                                <div class="code-example">
+                                    <pre><code>-- Criar stage para arquivos
+CREATE STAGE my_stage 
+URL = 's3://my-bucket/data/'
+CREDENTIALS = (AWS_KEY_ID = 'xxx' AWS_SECRET_KEY = 'yyy');
+
+-- Criar pipe para ingestão automática
+CREATE PIPE my_pipe AS
+COPY INTO events
+FROM @my_stage
+FILE_FORMAT = (TYPE = 'JSON');
+
+-- Verificar status do pipe
+SELECT SYSTEM$PIPE_STATUS('my_pipe');</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Tab -->
+                    <div class="tab-pane fade" id="comparison" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Comparações</h3>
+                                
+                                <h4>Snowflake vs Alternativas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Aspecto</th>
+                                                <th>Snowflake</th>
+                                                <th>BigQuery</th>
+                                                <th>Redshift</th>
+                                                <th>Databricks</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Facilidade de Uso</strong></td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐</td>
+                                                <td>⭐⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Performance</strong></td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Escalabilidade</strong></td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Multi-Cloud</strong></td>
+                                                <td>✅ AWS, Azure, GCP</td>
+                                                <td>❌ Apenas GCP</td>
+                                                <td>❌ Apenas AWS</td>
+                                                <td>✅ AWS, Azure, GCP</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Custo</strong></td>
+                                                <td>Alto</td>
+                                                <td>Médio-Alto</td>
+                                                <td>Médio</td>
+                                                <td>Alto</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h4>Modelo de Preços</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card bg-info bg-opacity-25">
+                                            <div class="card-body">
+                                                <h5>💰 Estrutura de Custos</h5>
+                                                <ul>
+                                                    <li>Compute: Por segundo de uso</li>
+                                                    <li>Storage: Por TB/mês</li>
+                                                    <li>Cloud Services: Incluído até 10%</li>
+                                                    <li>Data Transfer: Variável</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card bg-success bg-opacity-25">
+                                            <div class="card-body">
+                                                <h5>✅ Vantagens Únicas</h5>
+                                                <ul>
+                                                    <li>Zero administração</li>
+                                                    <li>Escalabilidade instantânea</li>
+                                                    <li>Data sharing nativo</li>
+                                                    <li>Time travel integrado</li>
+                                                    <li>Multi-cloud portability</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>📊 Quick Facts</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-dark">
+                                <tr>
+                                    <td><strong>Fundação:</strong></td>
+                                    <td>2012</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Licença:</strong></td>
+                                    <td>Comercial</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Deployment:</strong></td>
+                                    <td>Cloud Only</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Clouds Suportadas:</strong></td>
+                                    <td>AWS, Azure, GCP</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Última Atualização:</strong></td>
+                                    <td>Janeiro 2024</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔗 Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="https://snowflake.com" class="btn btn-outline-success btn-sm" target="_blank">
+                                    🌐 Site Oficial
+                                </a>
+                                <a href="https://docs.snowflake.com" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📚 Documentação
+                                </a>
+                                <a href="https://community.snowflake.com" class="btn btn-outline-success btn-sm" target="_blank">
+                                    👥 Comunidade
+                                </a>
+                                <a href="https://signup.snowflake.com" class="btn btn-outline-primary btn-sm" target="_blank">
+                                    🆓 Trial Gratuito
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔄 Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="../google-bigquery/" class="btn btn-outline-primary btn-sm">Google BigQuery</a>
+                                <a href="../amazon-redshift/" class="btn btn-outline-primary btn-sm">Amazon Redshift</a>
+                                <a href="../databricks-sql/" class="btn btn-outline-primary btn-sm">Databricks SQL</a>
+                                <a href="../trino/" class="btn btn-outline-primary btn-sm">Trino</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Courses -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🎓 Cursos Relacionados</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="../../../cursos/snowflake-fundamentals/" class="btn btn-outline-warning btn-sm">Snowflake Fundamentals</a>
+                                <a href="../../../cursos/cloud-data-warehouse/" class="btn btn-outline-warning btn-sm">Cloud Data Warehouse</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/main.js"></script>
+</body>
+</html>

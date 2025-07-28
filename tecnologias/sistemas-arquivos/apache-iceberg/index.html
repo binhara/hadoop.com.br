@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Iceberg - Table Format | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Apache Iceberg - Table Format | Portal Big Data">
+    <meta name="description" content="Apache Iceberg - Formato de tabela aberto para datasets analíticos enormes, com suporte a schema evolution e time travel. Guia completo.">
+    <meta name="keywords" content="Apache Iceberg, table format, data lake, schema evolution, time travel, big data, analytics">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/sistemas-arquivos/apache-iceberg">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/sistemas-arquivos/apache-iceberg">
+    <meta property="og:title" content="Apache Iceberg - Table Format | Portal Big Data">
+    <meta property="og:description" content="Apache Iceberg - Formato de tabela aberto para datasets analíticos enormes, com suporte a schema evolution e time travel.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/og/apache-iceberg-og.jpg">
+    <meta property="og:site_name" content="Portal Big Data">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/tecnologias/sistemas-arquivos/apache-iceberg">
+    <meta property="twitter:title" content="Apache Iceberg - Table Format | Portal Big Data">
+    <meta property="twitter:description" content="Apache Iceberg - Formato de tabela aberto para datasets analíticos enormes, com suporte a schema evolution e time travel.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/apache-iceberg-twitter.jpg">
+    <meta property="twitter:site" content="@portalbigdata">
+    
+    <!-- Structured Data for Software Application -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Apache Iceberg",
+        "description": "Formato de tabela aberto para datasets analíticos enormes, com suporte a schema evolution e time travel",
+        "url": "https://iceberg.apache.org/",
+        "applicationCategory": "Table Format",
+        "operatingSystem": "Cross-platform",
+        "programmingLanguage": "Java, Python, Scala",
+        "license": "Apache License 2.0",
+        "version": "1.4.3",
+        "datePublished": "2018-11-16",
+        "dateModified": "2024-01-15",
+        "author": {
+            "@type": "Organization",
+            "name": "Apache Software Foundation",
+            "url": "https://apache.org"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        },
+        "featureList": [
+            "Schema evolution",
+            "Time travel queries",
+            "ACID transactions",
+            "Hidden partitioning"
+        ],
+        "requirements": "Java 8+, Compatible compute engine"
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="../../../">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../../">Início</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Sistemas de Arquivos Distribuídos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Apache Iceberg</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Technology Header -->
+                <div class="tech-header d-flex align-items-center mb-4">
+                    <img src="../../../assets/images/logos/apache-iceberg-logo.png" alt="Apache Iceberg Logo" class="tech-logo me-4" style="width: 80px; height: 80px;">
+                    <div>
+                        <h1 class="mb-2">Apache Iceberg</h1>
+                        <div class="tech-badges">
+                            <span class="badge bg-primary">Open Source</span>
+                            <span class="badge bg-success">2024 Trending</span>
+                            <span class="badge bg-warning text-dark">Table Format</span>
+                        </div>
+                        <p class="lead mt-2 mb-0">Formato de tabela aberto para datasets analíticos enormes, com suporte a schema evolution e time travel.</p>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs nav-fill mb-4" id="techTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            Visão Geral
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">
+                            Recursos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="use-cases-tab" data-bs-toggle="tab" data-bs-target="#use-cases" type="button" role="tab">
+                            Casos de Uso
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="examples-tab" data-bs-toggle="tab" data-bs-target="#examples" type="button" role="tab">
+                            Exemplos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button" role="tab">
+                            Comparações
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="techTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>O que é Apache Iceberg?</h3>
+                                <p>Apache Iceberg é um formato de tabela aberto para datasets analíticos enormes. Projetado para resolver problemas de performance, confiabilidade e evolução em data lakes, oferece recursos como ACID transactions, schema evolution e time travel queries.</p>
+                                
+                                <h4>História</h4>
+                                <p>Desenvolvido originalmente pela Netflix em 2017 para resolver limitações das tabelas Hive, foi doado para a Apache Software Foundation em 2018. Tornou-se um projeto top-level em 2020 e ganhou adoção massiva na comunidade de big data.</p>
+                                
+                                <h4>Arquitetura</h4>
+                                <p>Iceberg usa uma arquitetura de três camadas: dados (arquivos Parquet/ORC), manifests (metadados de arquivos) e metadata (snapshots e schema). Esta estrutura permite operações eficientes como pruning de partições e evolução de schema sem reescrever dados.</p>
+                                
+                                <h4>Vantagens</h4>
+                                <ul>
+                                    <li>Schema evolution segura e automática</li>
+                                    <li>Time travel queries para auditoria e debugging</li>
+                                    <li>ACID transactions para consistência de dados</li>
+                                    <li>Hidden partitioning - sem exposição de detalhes de partição</li>
+                                    <li>Performance otimizada com pruning avançado</li>
+                                    <li>Compatibilidade com múltiplos engines (Spark, Flink, Trino)</li>
+                                    <li>Rollback de mudanças indesejadas</li>
+                                </ul>
+                                
+                                <h4>Desvantagens</h4>
+                                <ul>
+                                    <li>Curva de aprendizado para conceitos novos</li>
+                                    <li>Overhead de metadados para tabelas pequenas</li>
+                                    <li>Ainda em evolução - algumas funcionalidades em desenvolvimento</li>
+                                    <li>Requer planejamento cuidadoso de particionamento</li>
+                                    <li>Dependência de engines compatíveis</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane fade" id="features" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Principais Recursos</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Schema Evolution</h6>
+                                                <p class="card-text small">Adicione, remova ou renomeie colunas sem reescrever dados existentes.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Time Travel</h6>
+                                                <p class="card-text small">Consulte dados como estavam em qualquer ponto no tempo.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">ACID Transactions</h6>
+                                                <p class="card-text small">Garantias de consistência para operações concorrentes.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Hidden Partitioning</h6>
+                                                <p class="card-text small">Particionamento automático sem exposição na API.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4>Especificações Técnicas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Formatos de Arquivo:</strong></td>
+                                                <td>Parquet, ORC, Avro</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Engines Suportados:</strong></td>
+                                                <td>Spark, Flink, Trino, Impala</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Storage Backends:</strong></td>
+                                                <td>HDFS, S3, GCS, Azure Blob</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Catalog Implementations:</strong></td>
+                                                <td>Hive, Hadoop, Nessie, REST</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Linguagens API:</strong></td>
+                                                <td>Java, Python, Scala</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Tab -->
+                    <div class="tab-pane fade" id="use-cases" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Casos de Uso</h3>
+                                
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Data Lakes Modernos</h6>
+                                        <p class="card-text">Substituição de tabelas Hive tradicionais com recursos avançados de gerenciamento.</p>
+                                        <small class="text-muted">Exemplo: Netflix migrou milhares de tabelas Hive para Iceberg para melhor performance.</small>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Analytics em Tempo Real</h6>
+                                        <p class="card-text">Streaming analytics com garantias ACID e schema evolution.</p>
+                                        <small class="text-muted">Exemplo: Empresas de fintech usam para analytics de transações em tempo real.</small>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Data Governance</h6>
+                                        <p class="card-text">Auditoria e compliance com time travel e versionamento de dados.</p>
+                                        <small class="text-muted">Exemplo: Bancos usam time travel para auditoria regulatória.</small>
+                                    </div>
+                                </div>
+                                
+                                <h4>Quando Usar Apache Iceberg</h4>
+                                <div class="alert alert-success">
+                                    <h5>✅ Recomendado para:</h5>
+                                    <ul>
+                                        <li>Data lakes que precisam de schema evolution</li>
+                                        <li>Workloads que requerem ACID transactions</li>
+                                        <li>Cenários com necessidade de time travel</li>
+                                        <li>Ambientes multi-engine (Spark + Trino + Flink)</li>
+                                        <li>Datasets grandes com requisitos de performance</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <h5>⚠️ Considere alternativas se:</h5>
+                                    <ul>
+                                        <li>Você trabalha apenas com datasets pequenos</li>
+                                        <li>Não precisa de schema evolution</li>
+                                        <li>Usa apenas um engine de processamento</li>
+                                        <li>Tem limitações de overhead de metadados</li>
+                                        <li>Equipe não tem experiência com formatos modernos</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples Tab -->
+                    <div class="tab-pane fade" id="examples" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Exemplos Práticos</h3>
+                                
+                                <h4>Spark SQL</h4>
+                                <div class="code-example">
+                                    <pre><code>-- Criar tabela Iceberg
+CREATE TABLE my_catalog.db.events (
+    id bigint,
+    event_time timestamp,
+    user_id string,
+    event_type string
+) USING iceberg
+PARTITIONED BY (days(event_time))
+
+-- Inserir dados
+INSERT INTO my_catalog.db.events VALUES 
+(1, '2024-01-01 10:00:00', 'user1', 'login'),
+(2, '2024-01-01 11:00:00', 'user2', 'purchase')
+
+-- Time travel query
+SELECT * FROM my_catalog.db.events 
+TIMESTAMP AS OF '2024-01-01 10:30:00'
+
+-- Schema evolution
+ALTER TABLE my_catalog.db.events 
+ADD COLUMN session_id string</code></pre>
+                                </div>
+                                
+                                <h4>Python API</h4>
+                                <div class="code-example">
+                                    <pre><code>from pyiceberg.catalog import load_catalog
+import pandas as pd
+
+# Carregar catalog
+catalog = load_catalog("my_catalog")
+
+# Criar tabela
+schema = pa.schema([
+    pa.field("id", pa.int64()),
+    pa.field("event_time", pa.timestamp('us')),
+    pa.field("user_id", pa.string()),
+    pa.field("event_type", pa.string())
+])
+
+table = catalog.create_table(
+    "db.events",
+    schema=schema,
+    partition_spec=PartitionSpec(
+        PartitionField(source_id=2, field_id=1000, transform=DayTransform(), name="event_time_day")
+    )
+)
+
+# Inserir dados
+df = pd.DataFrame({
+    'id': [1, 2, 3],
+    'event_time': pd.to_datetime(['2024-01-01 10:00:00', '2024-01-01 11:00:00', '2024-01-01 12:00:00']),
+    'user_id': ['user1', 'user2', 'user3'],
+    'event_type': ['login', 'purchase', 'logout']
+})
+
+table.append(df)
+
+# Ler dados
+scan = table.scan()
+df_result = scan.to_pandas()</code></pre>
+                                </div>
+                                
+                                <h4>Flink SQL</h4>
+                                <div class="code-example">
+                                    <pre><code>-- Configurar catalog Iceberg
+CREATE CATALOG iceberg_catalog WITH (
+  'type'='iceberg',
+  'catalog-type'='hive',
+  'uri'='thrift://localhost:9083',
+  'warehouse'='hdfs://namenode:port/path/to/warehouse'
+);
+
+USE CATALOG iceberg_catalog;
+
+-- Criar tabela para streaming
+CREATE TABLE events (
+    id BIGINT,
+    event_time TIMESTAMP(3),
+    user_id STRING,
+    event_type STRING,
+    WATERMARK FOR event_time AS event_time - INTERVAL '5' SECOND
+) PARTITIONED BY (event_type);
+
+-- Streaming insert
+INSERT INTO events 
+SELECT id, event_time, user_id, event_type
+FROM kafka_source;</code></pre>
+                                </div>
+                                
+                                <h4>Tutoriais Relacionados</h4>
+                                <div class="card mb-2">
+                                    <div class="card-body py-2">
+                                        <h6 class="card-title mb-1">Iceberg com Spark e Trino</h6>
+                                        <small class="text-muted">Nível: Intermediário</small>
+                                        <a href="../../../blog/iceberg-spark-trino/" class="btn btn-sm btn-outline-success ms-2">Ver Tutorial</a>
+                                    </div>
+                                </div>
+                                <div class="card mb-2">
+                                    <div class="card-body py-2">
+                                        <h6 class="card-title mb-1">Schema Evolution Best Practices</h6>
+                                        <small class="text-muted">Nível: Avançado</small>
+                                        <a href="../../../blog/iceberg-schema-evolution/" class="btn btn-sm btn-outline-success ms-2">Ver Tutorial</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Tab -->
+                    <div class="tab-pane fade" id="comparison" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Comparações</h3>
+                                
+                                <h4>Alternativas Similares</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Tecnologia</th>
+                                                <th>Schema Evolution</th>
+                                                <th>Time Travel</th>
+                                                <th>Performance</th>
+                                                <th>Maturidade</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Apache Iceberg</strong></td>
+                                                <td><span class="text-warning">★★★★★</span></td>
+                                                <td><span class="text-warning">★★★★★</span></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Delta Lake</strong></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                                <td><span class="text-warning">★★★★★</span></td>
+                                                <td><span class="text-warning">★★★★★</span></td>
+                                                <td><span class="text-warning">★★★★★</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Apache Hudi</strong></td>
+                                                <td><span class="text-warning">★★★☆☆</span></td>
+                                                <td><span class="text-warning">★★★☆☆</span></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                                <td><span class="text-warning">★★★☆☆</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Hive Tables</strong></td>
+                                                <td><span class="text-warning">★★☆☆☆</span></td>
+                                                <td><span class="text-warning">★☆☆☆☆</span></td>
+                                                <td><span class="text-warning">★★☆☆☆</span></td>
+                                                <td><span class="text-warning">★★★★★</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h4>Matriz de Decisão</h4>
+                                <div class="alert alert-info">
+                                    <h6>💡 Dica de Escolha:</h6>
+                                    <p>Escolha Apache Iceberg se você precisa de schema evolution robusta e compatibilidade com múltiplos engines. É ideal para ambientes heterogêneos onde diferentes ferramentas precisam acessar os mesmos dados.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>📊 Quick Facts</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-dark">
+                                <tr>
+                                    <td><strong>Versão Atual:</strong></td>
+                                    <td>1.4.3</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Licença:</strong></td>
+                                    <td>Apache 2.0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Linguagem:</strong></td>
+                                    <td>Java</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Primeira Release:</strong></td>
+                                    <td>2018</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Última Atualização:</strong></td>
+                                    <td>Janeiro 2024</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔗 Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="https://iceberg.apache.org/" class="btn btn-outline-success btn-sm" target="_blank">
+                                    🌐 Site Oficial
+                                </a>
+                                <a href="https://github.com/apache/iceberg" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📁 GitHub
+                                </a>
+                                <a href="https://iceberg.apache.org/docs/latest/" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📚 Documentação
+                                </a>
+                                <a href="https://iceberg.apache.org/community/" class="btn btn-outline-success btn-sm" target="_blank">
+                                    👥 Comunidade
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔄 Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="../delta-lake/" class="btn btn-outline-info btn-sm">Delta Lake</a>
+                                <a href="../apache-hudi/" class="btn btn-outline-info btn-sm">Apache Hudi</a>
+                                <a href="../../processamento/apache-spark/" class="btn btn-outline-info btn-sm">Apache Spark</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Courses -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🎓 Cursos Relacionados</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="card mb-2">
+                                <div class="card-body py-2">
+                                    <h6 class="card-title mb-1">Modern Data Lake Formats</h6>
+                                    <small class="text-muted">Intermediário</small>
+                                    <a href="../../../cursos/modern-data-lake-formats/" class="btn btn-sm btn-outline-success ms-2">Ver Curso</a>
+                                </div>
+                            </div>
+                            <div class="card mb-2">
+                                <div class="card-body py-2">
+                                    <h6 class="card-title mb-1">Apache Iceberg Deep Dive</h6>
+                                    <small class="text-muted">Avançado</small>
+                                    <a href="../../../cursos/apache-iceberg-deep-dive/" class="btn btn-sm btn-outline-success ms-2">Ver Curso</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sponsored Content -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>💼 Conteúdo Patrocinado</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <p class="small">Espaço disponível para parceiros</p>
+                                <a href="mailto:contato@hadoop.com.br" class="btn btn-outline-warning btn-sm">Anunciar Aqui</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/main.js"></script>
+    <script src="../../../assets/js/technology-page.js"></script>
+    <script src="../../../assets/js/theme-toggle.js"></script>
+</body>
+</html>

@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alternativas ao Hadoop - Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Descubra as melhores alternativas modernas ao Hadoop - Apache Spark, Delta Lake, Trino, ClickHouse, Snowflake, Databricks, Gaio Data OS e mais.">
+    <meta name="keywords" content="alternativas hadoop, apache spark, delta lake, trino, clickhouse, snowflake, databricks, gaio data os, tecnologias modernas">
+</head>
+<body class="matrix-theme">
+    <!-- Navigation for "Sair do Hadoop" area -->
+    <nav class="navbar navbar-expand-lg navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="../">🔵 Sair do Hadoop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./">Alternativas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../migracao/">Migração</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../comparacoes/">Comparações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../stacks-modernas/">Stacks Modernas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../casos-migracao/">Casos de Migração</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Voltar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="container mt-3">
+        <div class="breadcrumb-matrix">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../../">Portal Big Data</a></li>
+                    <li class="breadcrumb-item"><a href="../">Sair do Hadoop</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Alternativas</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-4 text-center mb-4">Alternativas Modernas ao Hadoop</h1>
+                <p class="lead text-center">Explore tecnologias de próxima geração para processamento de Big Data</p>
+            </div>
+        </div>
+
+        <!-- Interactive Technology Map -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="text-center mb-4">Mapa Interativo de Tecnologias</h2>
+                <div class="technology-map-container">
+                    <!-- Filter Controls -->
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label for="categoryFilter" class="form-label">Filtrar por Categoria:</label>
+                            <select id="categoryFilter" class="form-select">
+                                <option value="all">Todas as Categorias</option>
+                                <option value="processing">Processamento</option>
+                                <option value="storage">Armazenamento</option>
+                                <option value="analytics">Analytics</option>
+                                <option value="streaming">Streaming</option>
+                                <option value="orchestration">Orquestração</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="useCaseFilter" class="form-label">Filtrar por Caso de Uso:</label>
+                            <select id="useCaseFilter" class="form-select">
+                                <option value="all">Todos os Casos</option>
+                                <option value="etl">ETL/ELT</option>
+                                <option value="realtime">Tempo Real</option>
+                                <option value="ml">Machine Learning</option>
+                                <option value="datawarehouse">Data Warehouse</option>
+                                <option value="datalake">Data Lake</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Technology Cards Grid -->
+                    <div id="technologyGrid" class="row g-4">
+                        <!-- Apache Spark -->
+                        <div class="col-lg-4 col-md-6 technology-card" data-category="processing" data-usecase="etl,ml">
+                            <div class="card h-100 border-success">
+                                <div class="card-header bg-success text-white">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Apache Spark</h5>
+                                        <span class="badge bg-light text-dark">Processamento</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Engine unificado para processamento distribuído em memória, 100x mais rápido que MapReduce.</p>
+                                    <div class="mb-3">
+                                        <strong>Casos de Uso:</strong>
+                                        <ul class="list-unstyled mt-2">
+                                            <li>• ETL em larga escala</li>
+                                            <li>• Machine Learning</li>
+                                            <li>• Analytics interativo</li>
+                                            <li>• Streaming em tempo real</li>
+                                        </ul>
+                                    </div>
+                                    <div class="cost-benefit">
+                                        <strong>Benefícios vs Hadoop:</strong>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar bg-success" style="width: 90%">Performance: 90%</div>
+                                        </div>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar bg-warning" style="width: 70%">Facilidade: 70%</div>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-info" style="width: 80%">Custo-Benefício: 80%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline-success btn-sm me-2" onclick="showComparison('spark')">Comparar com Hadoop</button>
+                                    <a href="../../tecnologias/processamento/apache-spark/" class="btn btn-success btn-sm">Saiba Mais</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Delta Lake -->
+                        <div class="col-lg-4 col-md-6 technology-card" data-category="storage" data-usecase="datalake,etl">
+                            <div class="card h-100 border-primary">
+                                <div class="card-header bg-primary text-white">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Delta Lake</h5>
+                                        <span class="badge bg-light text-dark">Armazenamento</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Camada de armazenamento ACID para data lakes, oferecendo confiabilidade e performance.</p>
+                                    <div class="mb-3">
+                                        <strong>Casos de Uso:</strong>
+                                        <ul class="list-unstyled mt-2">
+                                            <li>• Data Lakes confiáveis</li>
+                                            <li>• Versionamento de dados</li>
+                                            <li>• Time travel queries</li>
+                                            <li>• Streaming + Batch unificado</li>
+                                        </ul>
+                                    </div>
+                                    <div class="cost-benefit">
+                                        <strong>Benefícios vs HDFS:</strong>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar bg-success" style="width: 95%">Confiabilidade: 95%</div>
+                                        </div>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar bg-warning" style="width: 85%">Facilidade: 85%</div>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-info" style="width: 90%">Custo-Benefício: 90%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline-primary btn-sm me-2" onclick="showComparison('delta')">Comparar com HDFS</button>
+                                    <a href="../../tecnologias/armazenamento/delta-lake/" class="btn btn-primary btn-sm">Saiba Mais</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Trino (Presto) -->
+                        <div class="col-lg-4 col-md-6 technology-card" data-category="analytics" data-usecase="datawarehouse,etl">
+                            <div class="card h-100 border-info">
+                                <div class="card-header bg-info text-white">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Trino (Presto)</h5>
+                                        <span class="badge bg-light text-dark">Analytics</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Engine SQL distribuído para consultas interativas em petabytes de dados.</p>
+                                    <div class="mb-3">
+                                        <strong>Casos de Uso:</strong>
+                                        <ul class="list-unstyled mt-2">
+                                            <li>• Analytics interativo</li>
+                                            <li>• Data warehouse federado</li>
+                                            <li>• Consultas cross-platform</li>
+                                            <li>• BI e relatórios</li>
+                                        </ul>
+                                    </div>
+                                    <div class="cost-benefit">
+                                        <strong>Benefícios vs Hive:</strong>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar bg-success" style="width: 85%">Performance: 85%</div>
+                                        </div>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar bg-warning" style="width: 90%">Facilidade: 90%</div>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-info" style="width: 85%">Custo-Benefício: 85%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline-info btn-sm me-2" onclick="showComparison('trino')">Comparar com Hive</button>
+                                    <a href="../../tecnologias/analytics/trino/" class="btn btn-info btn-sm">Saiba Mais</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Apache Kafka -->
+                        <div class="col-lg-4 col-md-6 technology-card" data-category="streaming" data-usecase="realtime,etl">
+                            <div class="card h-100 border-warning">
+                                <div class="card-header bg-warning text-dark">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Apache Kafka</h5>
+                                        <span class="badge bg-dark text-light">Streaming</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Plataforma distribuída de streaming para processamento de eventos em tempo real.</p>
+                                    <div class="mb-3">
+                                        <strong>Casos de Uso:</strong>
+                                        <ul class="list-unstyled mt-2">
+                                            <li>• Event streaming</li>
+                                            <li>• Real-time analytics</li>
+                                            <li>• Microservices communication</li>
+                                            <li>• Log aggregation</li>
+                                        </ul>
+                                    </div>
+                                    <div class="cost-benefit">
+                                        <strong>Benefícios vs Flume:</strong>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar bg-success" style="width: 95%">Performance: 95%</div>
+                                        </div>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar bg-warning" style="width: 75%">Facilidade: 75%</div>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-info" style="width: 90%">Custo-Benefício: 90%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline-warning btn-sm me-2" onclick="showComparison('kafka')">Comparar com Flume</button>
+                                    <a href="../../tecnologias/streaming/apache-kafka/" class="btn btn-warning btn-sm">Saiba Mais</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Apache Airflow -->
+                        <div class="col-lg-4 col-md-6 technology-card" data-category="orchestration" data-usecase="etl">
+                            <div class="card h-100 border-secondary">
+                                <div class="card-header bg-secondary text-white">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Apache Airflow</h5>
+                                        <span class="badge bg-light text-dark">Orquestração</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Plataforma para desenvolvimento, agendamento e monitoramento de workflows.</p>
+                                    <div class="mb-3">
+                                        <strong>Casos de Uso:</strong>
+                                        <ul class="list-unstyled mt-2">
+                                            <li>• ETL orchestration</li>
+                                            <li>• Data pipeline management</li>
+                                            <li>• Workflow automation</li>
+                                            <li>• Task scheduling</li>
+                                        </ul>
+                                    </div>
+                                    <div class="cost-benefit">
+                                        <strong>Benefícios vs Oozie:</strong>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar bg-success" style="width: 80%">Performance: 80%</div>
+                                        </div>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar bg-warning" style="width: 95%">Facilidade: 95%</div>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-info" style="width: 90%">Custo-Benefício: 90%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline-secondary btn-sm me-2" onclick="showComparison('airflow')">Comparar com Oozie</button>
+                                    <a href="../../tecnologias/orquestracao/apache-airflow/" class="btn btn-secondary btn-sm">Saiba Mais</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ClickHouse -->
+                        <div class="col-lg-4 col-md-6 technology-card" data-category="analytics" data-usecase="datawarehouse,realtime">
+                            <div class="card h-100 border-danger">
+                                <div class="card-header bg-danger text-white">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">ClickHouse</h5>
+                                        <span class="badge bg-light text-dark">Analytics</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">DBMS colunar para analytics OLAP com performance extrema em consultas agregadas.</p>
+                                    <div class="mb-3">
+                                        <strong>Casos de Uso:</strong>
+                                        <ul class="list-unstyled mt-2">
+                                            <li>• Real-time analytics</li>
+                                            <li>• Time series data</li>
+                                            <li>• Log analytics</li>
+                                            <li>• Business intelligence</li>
+                                        </ul>
+                                    </div>
+                                    <div class="cost-benefit">
+                                        <strong>Benefícios vs Impala:</strong>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar bg-success" style="width: 95%">Performance: 95%</div>
+                                        </div>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar bg-warning" style="width: 80%">Facilidade: 80%</div>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-info" style="width: 85%">Custo-Benefício: 85%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline-danger btn-sm me-2" onclick="showComparison('clickhouse')">Comparar com Impala</button>
+                                    <a href="../../tecnologias/analytics/clickhouse/" class="btn btn-danger btn-sm">Saiba Mais</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Snowflake -->
+                        <div class="col-lg-4 col-md-6 technology-card" data-category="analytics" data-usecase="datawarehouse,etl">
+                            <div class="card h-100 border-primary">
+                                <div class="card-header bg-primary text-white">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Snowflake</h5>
+                                        <span class="badge bg-light text-dark">Cloud DW</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Data warehouse nativo da nuvem com arquitetura de separação de compute e storage.</p>
+                                    <div class="mb-3">
+                                        <strong>Casos de Uso:</strong>
+                                        <ul class="list-unstyled mt-2">
+                                            <li>• Data warehousing moderno</li>
+                                            <li>• Analytics em escala</li>
+                                            <li>• Data sharing seguro</li>
+                                            <li>• Workloads concorrentes</li>
+                                        </ul>
+                                    </div>
+                                    <div class="cost-benefit">
+                                        <strong>Benefícios vs Hadoop:</strong>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar bg-success" style="width: 90%">Performance: 90%</div>
+                                        </div>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar bg-warning" style="width: 95%">Facilidade: 95%</div>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-info" style="width: 75%">Custo-Benefício: 75%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline-primary btn-sm me-2" onclick="showComparison('snowflake')">Comparar com Hive</button>
+                                    <a href="https://www.snowflake.com/" target="_blank" class="btn btn-primary btn-sm">Saiba Mais</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Databricks -->
+                        <div class="col-lg-4 col-md-6 technology-card" data-category="processing" data-usecase="ml,etl,datawarehouse">
+                            <div class="card h-100 border-success">
+                                <div class="card-header bg-success text-white">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Databricks</h5>
+                                        <span class="badge bg-light text-dark">Lakehouse</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Plataforma unificada de analytics que combina data warehouse e data lake (Lakehouse).</p>
+                                    <div class="mb-3">
+                                        <strong>Casos de Uso:</strong>
+                                        <ul class="list-unstyled mt-2">
+                                            <li>• Machine Learning em escala</li>
+                                            <li>• ETL/ELT avançado</li>
+                                            <li>• Collaborative analytics</li>
+                                            <li>• Real-time streaming</li>
+                                        </ul>
+                                    </div>
+                                    <div class="cost-benefit">
+                                        <strong>Benefícios vs Hadoop:</strong>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar bg-success" style="width: 95%">Performance: 95%</div>
+                                        </div>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar bg-warning" style="width: 90%">Facilidade: 90%</div>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-info" style="width: 70%">Custo-Benefício: 70%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline-success btn-sm me-2" onclick="showComparison('databricks')">Comparar com Spark</button>
+                                    <a href="https://databricks.com/" target="_blank" class="btn btn-success btn-sm">Saiba Mais</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gaio Data OS -->
+                        <div class="col-lg-4 col-md-6 technology-card" data-category="processing" data-usecase="etl,datawarehouse,ml">
+                            <div class="card h-100 border-info">
+                                <div class="card-header bg-info text-white">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-0">Gaio Data OS</h5>
+                                        <span class="badge bg-light text-dark">Data OS</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Sistema operacional de dados open-source para processamento distribuído e analytics moderno.</p>
+                                    <div class="mb-3">
+                                        <strong>Casos de Uso:</strong>
+                                        <ul class="list-unstyled mt-2">
+                                            <li>• Data processing unificado</li>
+                                            <li>• Analytics distribuído</li>
+                                            <li>• Pipeline automation</li>
+                                            <li>• Multi-cloud deployment</li>
+                                        </ul>
+                                    </div>
+                                    <div class="cost-benefit">
+                                        <strong>Benefícios vs Hadoop:</strong>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar bg-success" style="width: 85%">Performance: 85%</div>
+                                        </div>
+                                        <div class="progress mb-2">
+                                            <div class="progress-bar bg-warning" style="width: 80%">Facilidade: 80%</div>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-info" style="width: 90%">Custo-Benefício: 90%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline-info btn-sm me-2" onclick="showComparison('gaio')">Comparar com Hadoop</button>
+                                    <a href="https://docs.gaiodataos.com/" target="_blank" class="btn btn-info btn-sm">Saiba Mais</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Modal -->
+        <div class="modal fade" id="comparisonModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="comparisonTitle">Comparação Detalhada</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body" id="comparisonContent">
+                        <!-- Content will be populated by JavaScript -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modern Stacks Section -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="text-center mb-4">Stacks Modernas Recomendadas</h2>
+                <div class="row g-4">
+                    <!-- Lakehouse Stack -->
+                    <div class="col-lg-6">
+                        <div class="card border-primary h-100">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">🏠 Lakehouse Stack</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="stack-components mb-3">
+                                    <span class="badge bg-success me-2">Delta Lake</span>
+                                    <span class="badge bg-warning me-2">Apache Spark</span>
+                                    <span class="badge bg-info me-2">Trino</span>
+                                    <span class="badge bg-secondary">MinIO</span>
+                                </div>
+                                <p><strong>Ideal para:</strong> Empresas que precisam de flexibilidade de data lake com confiabilidade de data warehouse.</p>
+                                <p><strong>Custo:</strong> 40-60% menor que Hadoop tradicional</p>
+                                <p><strong>Performance:</strong> 5-10x mais rápido para analytics</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="../stacks-modernas/#lakehouse" class="btn btn-primary btn-sm">Ver Implementação</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Real-time Analytics Stack -->
+                    <div class="col-lg-6">
+                        <div class="card border-warning h-100">
+                            <div class="card-header bg-warning text-dark">
+                                <h5 class="mb-0">⚡ Real-time Analytics Stack</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="stack-components mb-3">
+                                    <span class="badge bg-warning me-2">Apache Kafka</span>
+                                    <span class="badge bg-success me-2">Apache Flink</span>
+                                    <span class="badge bg-danger me-2">ClickHouse</span>
+                                    <span class="badge bg-info">Apache Superset</span>
+                                </div>
+                                <p><strong>Ideal para:</strong> Aplicações que requerem analytics em tempo real e baixa latência.</p>
+                                <p><strong>Custo:</strong> 30-50% menor que Hadoop + Storm</p>
+                                <p><strong>Latência:</strong> Sub-segundo vs minutos no Hadoop</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="../stacks-modernas/#realtime" class="btn btn-warning btn-sm">Ver Implementação</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Modern Stacks Row -->
+                <div class="row g-4 mt-3">
+                    <!-- Cloud-Native Stack -->
+                    <div class="col-lg-6">
+                        <div class="card border-success h-100">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="mb-0">☁️ Cloud-Native Stack</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="stack-components mb-3">
+                                    <span class="badge bg-primary me-2">Snowflake</span>
+                                    <span class="badge bg-success me-2">Databricks</span>
+                                    <span class="badge bg-warning me-2">Apache Spark</span>
+                                    <span class="badge bg-info">Delta Lake</span>
+                                </div>
+                                <p><strong>Ideal para:</strong> Empresas que querem máxima facilidade de uso e escalabilidade automática.</p>
+                                <p><strong>Custo:</strong> Variável, otimizado por uso</p>
+                                <p><strong>Performance:</strong> 10-50x mais rápido que Hadoop</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="../stacks-modernas/#cloud-native" class="btn btn-success btn-sm">Ver Implementação</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Open-Source Modern Stack -->
+                    <div class="col-lg-6">
+                        <div class="card border-info h-100">
+                            <div class="card-header bg-info text-white">
+                                <h5 class="mb-0">🔓 Open-Source Modern Stack</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="stack-components mb-3">
+                                    <span class="badge bg-info me-2">Gaio Data OS</span>
+                                    <span class="badge bg-success me-2">Apache Spark</span>
+                                    <span class="badge bg-warning me-2">Trino</span>
+                                    <span class="badge bg-secondary">MinIO</span>
+                                </div>
+                                <p><strong>Ideal para:</strong> Organizações que preferem soluções open-source com controle total.</p>
+                                <p><strong>Custo:</strong> 50-70% menor que Hadoop</p>
+                                <p><strong>Performance:</strong> 3-8x mais rápido que Hadoop</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="../stacks-modernas/#open-source" class="btn btn-info btn-sm">Ver Implementação</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cost Analysis Section -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="text-center mb-4">Análise de Custos e ROI</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Hadoop Tradicional</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>Infraestrutura</span>
+                                        <span class="text-danger">$100k/ano</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>Licenças</span>
+                                        <span class="text-danger">$50k/ano</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>Manutenção</span>
+                                        <span class="text-danger">$80k/ano</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <strong>Total</strong>
+                                        <strong class="text-danger">$230k/ano</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Stack Moderna (Spark + Delta)</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>Cloud Infrastructure</span>
+                                        <span class="text-success">$60k/ano</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>Licenças</span>
+                                        <span class="text-success">$20k/ano</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>Manutenção</span>
+                                        <span class="text-success">$40k/ano</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <strong>Total</strong>
+                                        <strong class="text-success">$120k/ano</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-12 text-center">
+                                <div class="alert alert-success">
+                                    <h5>💰 Economia Anual: $110k (48% de redução)</h5>
+                                    <p class="mb-0">ROI típico: 6-12 meses para migração completa</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/technology-alternatives.js"></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+{
+  "passed": 33,
+  "failed": 5,
+  "tests": [
+    {
+      "description": "image-optimization.js existe",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.244Z"
+    },
+    {
+      "description": "cdn-config.js existe",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.246Z"
+    },
+    {
+      "description": "asset-compression.js existe",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.246Z"
+    },
+    {
+      "description": "placeholder-generator.js existe",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.246Z"
+    },
+    {
+      "description": "optimization-config.js existe",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.246Z"
+    },
+    {
+      "description": "image-optimization.css existe",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.247Z"
+    },
+    {
+      "description": "README-optimization.md existe",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.247Z"
+    },
+    {
+      "description": "analyze-images.js existe",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.247Z"
+    },
+    {
+      "description": "ImageOptimizer class definida",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.248Z"
+    },
+    {
+      "description": "Lazy loading implementado",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.248Z"
+    },
+    {
+      "description": "Detecção de formatos implementada",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.248Z"
+    },
+    {
+      "description": "CDN integration implementada",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.248Z"
+    },
+    {
+      "description": "Lazy loading styles definidos",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.248Z"
+    },
+    {
+      "description": "Responsive image styles definidos",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.248Z"
+    },
+    {
+      "description": "Placeholder styles definidos",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.248Z"
+    },
+    {
+      "description": "Otimização integrada no main.js",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.248Z"
+    },
+    {
+      "description": "Scripts de otimização incluídos no index.html",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.249Z"
+    },
+    {
+      "description": "CSS de otimização incluído no index.html",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.249Z"
+    },
+    {
+      "description": "Scripts de otimização definidos no package.json",
+      "passed": "imagemin assets/images/**/*.{jpg,jpeg,png} --out-dir=assets/images/avif --plugin=avif",
+      "timestamp": "2025-07-27T16:50:05.249Z"
+    },
+    {
+      "description": "Arquivo de teste existe",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.250Z"
+    },
+    {
+      "description": "Configuração CDN definida",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.250Z"
+    },
+    {
+      "description": "Configuração de imagens definida",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.250Z"
+    },
+    {
+      "description": "Configuração de compressão definida",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.250Z"
+    },
+    {
+      "description": "Configuração de performance definida",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.250Z"
+    },
+    {
+      "description": "core-web-vitals.js existe",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.251Z"
+    },
+    {
+      "description": "performance-monitor.js existe",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.251Z"
+    },
+    {
+      "description": "performance-monitor.css existe",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.251Z"
+    },
+    {
+      "description": "test-core-web-vitals.html existe",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.251Z"
+    },
+    {
+      "description": "CoreWebVitalsOptimizer class definida",
+      "passed": false,
+      "timestamp": "2025-07-27T16:50:05.252Z"
+    },
+    {
+      "description": "Otimização LCP implementada",
+      "passed": false,
+      "timestamp": "2025-07-27T16:50:05.252Z"
+    },
+    {
+      "description": "Otimização FID implementada",
+      "passed": false,
+      "timestamp": "2025-07-27T16:50:05.252Z"
+    },
+    {
+      "description": "Otimização CLS implementada",
+      "passed": false,
+      "timestamp": "2025-07-27T16:50:05.252Z"
+    },
+    {
+      "description": "Monitoramento implementado",
+      "passed": false,
+      "timestamp": "2025-07-27T16:50:05.252Z"
+    },
+    {
+      "description": "PerformanceMonitor class definida",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.252Z"
+    },
+    {
+      "description": "UI de monitoramento implementada",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.252Z"
+    },
+    {
+      "description": "Exportação de relatórios implementada",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.252Z"
+    },
+    {
+      "description": "Core Web Vitals integrado no main.js",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.253Z"
+    },
+    {
+      "description": "Otimizações de FID implementadas",
+      "passed": true,
+      "timestamp": "2025-07-27T16:50:05.253Z"
+    }
+  ]
+}

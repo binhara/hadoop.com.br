@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Impala - Data Warehousing | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Apache Impala - Data Warehousing | Portal Big Data">
+    <meta name="description" content="Apache Impala: engine SQL de alta performance para consultas interativas em dados armazenados no Hadoop. Baixa latência e processamento MPP.">
+    <meta name="keywords" content="apache impala, sql engine, hadoop, consultas interativas, mpp, baixa latência, cloudera">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/data-warehousing/apache-impala">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/data-warehousing/apache-impala">
+    <meta property="og:title" content="Apache Impala - Data Warehousing | Portal Big Data">
+    <meta property="og:description" content="Apache Impala: engine SQL de alta performance para consultas interativas em dados armazenados no Hadoop. Baixa latência e processamento MPP.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/og/apache-impala-og.jpg">
+    <meta property="og:site_name" content="Portal Big Data">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/tecnologias/data-warehousing/apache-impala">
+    <meta property="twitter:title" content="Apache Impala - Data Warehousing | Portal Big Data">
+    <meta property="twitter:description" content="Apache Impala: engine SQL de alta performance para consultas interativas em dados armazenados no Hadoop. Baixa latência e processamento MPP.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/apache-impala-twitter.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Apache Impala",
+        "description": "Modern, open source, distributed SQL query engine for Apache Hadoop",
+        "url": "https://impala.apache.org",
+        "applicationCategory": "Data Warehousing",
+        "operatingSystem": "Linux",
+        "programmingLanguage": "C++",
+        "license": "Apache License 2.0",
+        "version": "4.4.0",
+        "datePublished": "2012-10-01",
+        "dateModified": "2024-01-15",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="/">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Data Warehousing</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Apache Impala</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Technology Header -->
+                <div class="tech-header d-flex align-items-center mb-4">
+                    <img src="../../../assets/images/logos/apache-impala-logo.png" alt="Apache Impala Logo" class="tech-logo me-3" style="width: 80px; height: 80px;">
+                    <div>
+                        <h1 class="mb-2">Apache Impala</h1>
+                        <div class="tech-badges">
+                            <span class="badge bg-success">Open Source</span>
+                            <span class="badge bg-info">Maduro</span>
+                            <span class="badge bg-warning text-dark">Data Warehousing</span>
+                            <span class="badge bg-primary">Baixa Latência</span>
+                        </div>
+                        <p class="lead mt-2 mb-0">Engine SQL de alta performance para consultas interativas em dados do Hadoop</p>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs nav-fill mb-4" id="techTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            Visão Geral
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">
+                            Recursos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="use-cases-tab" data-bs-toggle="tab" data-bs-target="#use-cases" type="button" role="tab">
+                            Casos de Uso
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="examples-tab" data-bs-toggle="tab" data-bs-target="#examples" type="button" role="tab">
+                            Exemplos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button" role="tab">
+                            Comparações
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="techTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>O que é Apache Impala?</h3>
+                                <p>Apache Impala é um engine SQL moderno, open source e distribuído para Apache Hadoop. Projetado para consultas interativas de baixa latência, Impala utiliza arquitetura MPP (Massively Parallel Processing) para fornecer performance superior em análises de dados em tempo real.</p>
+                                
+                                <h4>História</h4>
+                                <p>Desenvolvido pela Cloudera em 2012 e posteriormente doado à Apache Software Foundation em 2017. Impala foi criado para superar as limitações de latência do Hive, oferecendo consultas SQL interativas em dados armazenados no Hadoop.</p>
+                                
+                                <h4>Arquitetura</h4>
+                                <p>Impala utiliza uma arquitetura distribuída com os seguintes componentes:</p>
+                                <ul>
+                                    <li><strong>Impala Daemon (impalad):</strong> Processo principal que executa em cada nó do cluster</li>
+                                    <li><strong>Statestore:</strong> Serviço de metadados que monitora a saúde dos nós</li>
+                                    <li><strong>Catalog Service:</strong> Gerencia metadados de tabelas e distribui mudanças</li>
+                                    <li><strong>Query Coordinator:</strong> Planeja e coordena a execução de consultas</li>
+                                </ul>
+                                
+                                <h4>Vantagens</h4>
+                                <ul>
+                                    <li>Consultas interativas de baixa latência (segundos)</li>
+                                    <li>Compatibilidade total com SQL ANSI</li>
+                                    <li>Integração nativa com ecossistema Hadoop</li>
+                                    <li>Suporte a formatos colunares otimizados (Parquet, ORC)</li>
+                                    <li>Processamento in-memory para performance superior</li>
+                                    <li>Suporte a particionamento e estatísticas avançadas</li>
+                                </ul>
+                                
+                                <h4>Desvantagens</h4>
+                                <ul>
+                                    <li>Dependência do ecossistema Hadoop</li>
+                                    <li>Consumo elevado de memória</li>
+                                    <li>Limitações em operações de escrita complexas</li>
+                                    <li>Menor tolerância a falhas comparado ao Hive</li>
+                                    <li>Configuração e tuning mais complexos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane fade" id="features" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Principais Recursos</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card bg-dark">
+                                            <div class="card-body">
+                                                <h5>⚡ MPP Architecture</h5>
+                                                <p>Processamento paralelo massivo para consultas de alta performance</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card bg-dark">
+                                            <div class="card-body">
+                                                <h5>🧠 In-Memory Processing</h5>
+                                                <p>Processamento em memória para consultas ultra-rápidas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card bg-dark">
+                                            <div class="card-body">
+                                                <h5>📊 Columnar Storage</h5>
+                                                <p>Otimização para formatos colunares como Parquet e ORC</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card bg-dark">
+                                            <div class="card-body">
+                                                <h5>🔍 Query Optimization</h5>
+                                                <p>Otimizador de consultas avançado com estatísticas detalhadas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4>Especificações Técnicas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Versão Atual</strong></td>
+                                                <td>4.4.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Linguagem Principal</strong></td>
+                                                <td>C++</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Latência Típica</strong></td>
+                                                <td>Segundos a minutos</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Formatos Suportados</strong></td>
+                                                <td>Parquet, ORC, Avro, Text, JSON</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Sistemas de Arquivo</strong></td>
+                                                <td>HDFS, S3, ADLS</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Tab -->
+                    <div class="tab-pane fade" id="use-cases" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Casos de Uso</h3>
+                                
+                                <div class="mb-4">
+                                    <h4>🔍 Análise Interativa</h4>
+                                    <p>Consultas ad-hoc e exploração de dados com resposta em segundos.</p>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h4>📊 Business Intelligence</h4>
+                                    <p>Dashboards e relatórios em tempo real para tomada de decisão.</p>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h4>🔄 Self-Service Analytics</h4>
+                                    <p>Análises self-service para usuários de negócio com interface SQL.</p>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <h4>📈 Real-time Reporting</h4>
+                                    <p>Relatórios em tempo real sobre dados operacionais e transacionais.</p>
+                                </div>
+                                
+                                <div class="alert alert-success">
+                                    <h5>✅ Recomendado para:</h5>
+                                    <ul>
+                                        <li>Consultas interativas de baixa latência</li>
+                                        <li>Análises exploratórias de dados</li>
+                                        <li>Dashboards e BI em tempo real</li>
+                                        <li>Workloads com dados estruturados</li>
+                                        <li>Ambientes com infraestrutura Hadoop existente</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <h5>⚠️ Considere alternativas se:</h5>
+                                    <ul>
+                                        <li>Precisa de alta disponibilidade crítica</li>
+                                        <li>Trabalha principalmente com dados não estruturados</li>
+                                        <li>Requer operações de escrita complexas</li>
+                                        <li>Tem limitações de memória no cluster</li>
+                                        <li>Busca simplicidade operacional</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples Tab -->
+                    <div class="tab-pane fade" id="examples" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Exemplos Práticos</h3>
+                                
+                                <h4>Consulta Básica com Performance</h4>
+                                <div class="code-example">
+                                    <pre><code>-- Consulta otimizada com estatísticas
+COMPUTE STATS sales_data;
+
+SELECT 
+    region,
+    product_category,
+    SUM(revenue) as total_revenue,
+    COUNT(DISTINCT customer_id) as unique_customers
+FROM sales_data 
+WHERE sale_date >= '2024-01-01'
+    AND sale_date < '2024-12-31'
+GROUP BY region, product_category
+ORDER BY total_revenue DESC
+LIMIT 100;</code></pre>
+                                </div>
+                                
+                                <h4>Criação de Tabela Particionada</h4>
+                                <div class="code-example">
+                                    <pre><code>CREATE TABLE sales_partitioned (
+    transaction_id BIGINT,
+    customer_id INT,
+    product_id INT,
+    revenue DECIMAL(10,2),
+    sale_timestamp TIMESTAMP
+)
+PARTITIONED BY (
+    year INT,
+    month INT,
+    region STRING
+)
+STORED AS PARQUET
+LOCATION '/data/sales_partitioned';</code></pre>
+                                </div>
+                                
+                                <h4>Otimização com Hints</h4>
+                                <div class="code-example">
+                                    <pre><code>-- Usando hints para otimização
+SELECT /*+ BROADCAST(d) */ 
+    s.product_id,
+    d.product_name,
+    SUM(s.revenue) as total_revenue
+FROM sales_fact s
+JOIN /* +BROADCAST */ product_dim d 
+    ON s.product_id = d.product_id
+WHERE s.sale_date >= '2024-01-01'
+GROUP BY s.product_id, d.product_name;</code></pre>
+                                </div>
+                                
+                                <h4>Análise de Performance</h4>
+                                <div class="code-example">
+                                    <pre><code>-- Verificar plano de execução
+EXPLAIN SELECT * FROM large_table WHERE id > 1000;
+
+-- Verificar estatísticas da tabela
+SHOW TABLE STATS large_table;
+
+-- Verificar estatísticas das colunas
+SHOW COLUMN STATS large_table;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Tab -->
+                    <div class="tab-pane fade" id="comparison" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Comparações</h3>
+                                
+                                <h4>Apache Impala vs Alternativas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Aspecto</th>
+                                                <th>Apache Impala</th>
+                                                <th>Apache Hive</th>
+                                                <th>Trino</th>
+                                                <th>ClickHouse</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Latência</strong></td>
+                                                <td>Baixa (segundos)</td>
+                                                <td>Alta (minutos)</td>
+                                                <td>Baixa (segundos)</td>
+                                                <td>Muito Baixa (ms)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Throughput</strong></td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Concorrência</strong></td>
+                                                <td>⭐⭐⭐</td>
+                                                <td>⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Facilidade de Uso</strong></td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Tolerância a Falhas</strong></td>
+                                                <td>⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h4>Performance Benchmarks</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card bg-info bg-opacity-25">
+                                            <div class="card-body">
+                                                <h5>📊 Consultas Interativas</h5>
+                                                <ul>
+                                                    <li>Impala: 2-10 segundos</li>
+                                                    <li>Hive: 30-300 segundos</li>
+                                                    <li>Trino: 1-5 segundos</li>
+                                                    <li>ClickHouse: 0.1-2 segundos</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card bg-success bg-opacity-25">
+                                            <div class="card-body">
+                                                <h5>🚀 Casos de Uso Ideais</h5>
+                                                <ul>
+                                                    <li>BI e dashboards interativos</li>
+                                                    <li>Análise exploratória de dados</li>
+                                                    <li>Consultas ad-hoc frequentes</li>
+                                                    <li>Self-service analytics</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>📊 Quick Facts</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-dark">
+                                <tr>
+                                    <td><strong>Versão Atual:</strong></td>
+                                    <td>4.4.0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Licença:</strong></td>
+                                    <td>Apache 2.0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Linguagem:</strong></td>
+                                    <td>C++</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Primeira Release:</strong></td>
+                                    <td>2012</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Última Atualização:</strong></td>
+                                    <td>Janeiro 2024</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔗 Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="https://impala.apache.org" class="btn btn-outline-success btn-sm" target="_blank">
+                                    🌐 Site Oficial
+                                </a>
+                                <a href="https://github.com/apache/impala" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📁 GitHub
+                                </a>
+                                <a href="https://impala.apache.org/docs/build/html/" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📚 Documentação
+                                </a>
+                                <a href="https://impala.apache.org/community.html" class="btn btn-outline-success btn-sm" target="_blank">
+                                    👥 Comunidade
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔄 Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="../apache-hive/" class="btn btn-outline-primary btn-sm">Apache Hive</a>
+                                <a href="../trino/" class="btn btn-outline-primary btn-sm">Trino</a>
+                                <a href="../../sistemas-arquivos/hdfs/" class="btn btn-outline-primary btn-sm">HDFS</a>
+                                <a href="../clickhouse/" class="btn btn-outline-primary btn-sm">ClickHouse</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Courses -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🎓 Cursos Relacionados</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="../../../cursos/impala-performance/" class="btn btn-outline-warning btn-sm">Impala Performance</a>
+                                <a href="../../../cursos/hadoop-sql/" class="btn btn-outline-warning btn-sm">SQL no Hadoop</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/main.js"></script>
+</body>
+</html>

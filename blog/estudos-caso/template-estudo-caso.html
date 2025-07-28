@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[CASE_STUDY_TITLE] - Estudos de Caso - Portal Big Data</title>
+    <meta name="description" content="[CASE_STUDY_DESCRIPTION]">
+    <meta name="keywords" content="[CASE_STUDY_KEYWORDS]">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/blog/estudos-caso/[CASE_STUDY_SLUG]">
+    <meta property="og:title" content="[CASE_STUDY_TITLE] - Portal Big Data">
+    <meta property="og:description" content="[CASE_STUDY_DESCRIPTION]">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/case-studies/[CASE_STUDY_SLUG]-og.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/blog/estudos-caso/[CASE_STUDY_SLUG]">
+    <meta property="twitter:title" content="[CASE_STUDY_TITLE] - Portal Big Data">
+    <meta property="twitter:description" content="[CASE_STUDY_DESCRIPTION]">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/case-studies/[CASE_STUDY_SLUG]-twitter.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "[CASE_STUDY_TITLE]",
+        "description": "[CASE_STUDY_DESCRIPTION]",
+        "author": {
+            "@type": "Organization",
+            "name": "Portal Big Data"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Portal Big Data",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://hadoop.com.br/assets/images/logo.png"
+            }
+        },
+        "datePublished": "[PUBLISH_DATE]",
+        "dateModified": "[MODIFIED_DATE]",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://hadoop.com.br/blog/estudos-caso/[CASE_STUDY_SLUG]"
+        },
+        "image": "https://hadoop.com.br/assets/images/case-studies/[CASE_STUDY_SLUG].jpg"
+    }
+    </script>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Matrix Theme CSS -->
+    <link rel="stylesheet" href="../../assets/css/matrix-theme.css">
+    
+    <!-- Case Studies CSS -->
+    <link rel="stylesheet" href="../../assets/css/case-studies.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand text-success" href="../../index.html">
+                <i class="fas fa-database"></i> Portal Big Data
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../tecnologias/">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Blog
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../index.html">Artigos</a></li>
+                            <li><a class="dropdown-item" href="../tutoriais/">Tutoriais</a></li>
+                            <li><a class="dropdown-item active" href="index.html">Estudos de Caso</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../buscar.html">
+                            <i class="fas fa-search"></i> Buscar
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Blog</a></li>
+                <li class="breadcrumb-item"><a href="index.html">Estudos de Caso</a></li>
+                <li class="breadcrumb-item active">[CASE_STUDY_TITLE]</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Case Study Header -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="case-study-header-detail bg-dark border border-success rounded p-4 mb-4">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h1 class="text-success mb-3">[CASE_STUDY_TITLE]</h1>
+                            <p class="lead text-light mb-3">[CASE_STUDY_SUMMARY]</p>
+                            
+                            <div class="case-study-meta d-flex flex-wrap gap-3 mb-3">
+                                <span class="badge bg-success">[COMPANY_NAME]</span>
+                                <span class="badge bg-outline-success">[INDUSTRY_LABEL]</span>
+                                <span class="badge bg-outline-success">[TECHNOLOGY_MAIN]</span>
+                                <span class="case-study-difficulty difficulty-[DIFFICULTY_LEVEL]">[DIFFICULTY_LABEL]</span>
+                            </div>
+                            
+                            <div class="case-study-tech-stack">
+                                <!-- Tech stack badges will be populated here -->
+                                [TECH_STACK_BADGES]
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <img src="../../assets/images/case-studies/[CASE_STUDY_SLUG].jpg" 
+                                 alt="[CASE_STUDY_TITLE]" 
+                                 class="img-fluid rounded border border-success mb-3">
+                            
+                            <div class="case-study-actions">
+                                <button class="btn btn-success btn-sm me-2" onclick="downloadResources()">
+                                    <i class="fas fa-download"></i> Download Recursos
+                                </button>
+                                <button class="btn btn-outline-success btn-sm" onclick="shareCase()">
+                                    <i class="fas fa-share"></i> Compartilhar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Case Study Content -->
+                <div class="case-study-content">
+                    [CASE_STUDY_FULL_CONTENT]
+                </div>
+                
+                <!-- Architecture Section -->
+                <div class="case-study-architecture mt-5">
+                    <h3 class="text-success mb-3">
+                        <i class="fas fa-sitemap"></i> Arquitetura da Solução
+                    </h3>
+                    <div class="architecture-diagram bg-black p-4 rounded border border-success">
+                        <pre class="text-success mb-0">[ARCHITECTURE_DIAGRAM]</pre>
+                    </div>
+                </div>
+                
+                <!-- Implementation Details -->
+                <div class="implementation-details mt-5">
+                    <h3 class="text-success mb-3">
+                        <i class="fas fa-cogs"></i> Detalhes da Implementação
+                    </h3>
+                    [IMPLEMENTATION_DETAILS]
+                </div>
+                
+                <!-- Lessons Learned -->
+                <div class="lessons-learned mt-5">
+                    <h3 class="text-success mb-3">
+                        <i class="fas fa-lightbulb"></i> Lições Aprendidas
+                    </h3>
+                    [LESSONS_LEARNED]
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <!-- Metrics Sidebar -->
+                <div class="card bg-dark border-success mb-4">
+                    <div class="card-header bg-success text-dark">
+                        <h5 class="mb-0">
+                            <i class="fas fa-chart-line"></i> Principais Métricas
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="metrics-section">
+                            [METRICS_HTML]
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Resources Sidebar -->
+                <div class="card bg-dark border-success mb-4">
+                    <div class="card-header bg-success text-dark">
+                        <h5 class="mb-0">
+                            <i class="fas fa-download"></i> Recursos para Download
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="resources-section">
+                            [RESOURCES_HTML]
+                        </div>
+                        <div class="text-center mt-3">
+                            <button class="btn btn-success btn-sm" onclick="downloadAllResources()">
+                                <i class="fas fa-download"></i> Download Completo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Related Case Studies -->
+                <div class="card bg-dark border-success mb-4">
+                    <div class="card-header bg-success text-dark">
+                        <h5 class="mb-0">
+                            <i class="fas fa-link"></i> Casos Relacionados
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="relatedCaseStudies">
+                            <!-- Related case studies will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Technology Links -->
+                <div class="card bg-dark border-success">
+                    <div class="card-header bg-success text-dark">
+                        <h5 class="mb-0">
+                            <i class="fas fa-external-link-alt"></i> Tecnologias Utilizadas
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="technology-links">
+                            [TECHNOLOGY_LINKS]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comments Section -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="card bg-dark border-success">
+                    <div class="card-header bg-success text-dark">
+                        <h5 class="mb-0">
+                            <i class="fas fa-comments"></i> Discussão
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-light">
+                            Tem experiência com implementações similares? Compartilhe suas dúvidas e insights!
+                        </p>
+                        <div class="text-center">
+                            <a href="mailto:contato@hadoop.com.br?subject=Discussão sobre [CASE_STUDY_TITLE]" 
+                               class="btn btn-outline-success">
+                                <i class="fas fa-envelope"></i> Iniciar Discussão
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-success py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Portal Big Data</h5>
+                    <p>Seu hub completo para tecnologias de Big Data</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2024 Portal Big Data. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Case Study Detail JavaScript -->
+    <script src="../../assets/js/case-study-detail.js"></script>
+    
+    <script>
+        // Initialize case study detail functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCaseStudyDetail({
+                id: '[CASE_STUDY_ID]',
+                title: '[CASE_STUDY_TITLE]',
+                company: '[COMPANY_NAME]',
+                industry: '[INDUSTRY]',
+                technology: '[TECHNOLOGY_MAIN]'
+            });
+        });
+        
+        function downloadResources() {
+            // Track download
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'download', {
+                    'event_category': 'case_study',
+                    'event_label': '[CASE_STUDY_ID]'
+                });
+            }
+            
+            alert('Iniciando download dos recursos do estudo de caso...');
+        }
+        
+        function downloadAllResources() {
+            downloadResources();
+        }
+        
+        function shareCase() {
+            if (navigator.share) {
+                navigator.share({
+                    title: '[CASE_STUDY_TITLE] - Portal Big Data',
+                    text: '[CASE_STUDY_SUMMARY]',
+                    url: window.location.href
+                });
+            } else {
+                // Fallback to copy URL
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    alert('Link copiado para a área de transferência!');
+                });
+            }
+        }
+    </script>
+</body>
+</html>

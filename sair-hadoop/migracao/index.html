@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guias de Migração do Hadoop - Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Guias completos para migração do Hadoop - estratégias, checklists e estudos de caso para modernizar sua infraestrutura.">
+    <meta name="keywords" content="migração hadoop, estratégias migração, hadoop para spark, modernização big data">
+</head>
+<body class="matrix-theme">
+    <!-- Navigation for "Sair do Hadoop" area -->
+    <nav class="navbar navbar-expand-lg navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="../">🔵 Sair do Hadoop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../alternativas/">Alternativas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./">Migração</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../comparacoes/">Comparações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../stacks-modernas/">Stacks Modernas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../casos-migracao/">Casos de Migração</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Voltar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="container mt-3">
+        <div class="breadcrumb-matrix">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../../">Portal Big Data</a></li>
+                    <li class="breadcrumb-item"><a href="../">Sair do Hadoop</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Migração</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-4 text-center mb-4">Guias de Migração do Hadoop</h1>
+                <p class="lead text-center">Estratégias completas e checklists para uma migração bem-sucedida para tecnologias modernas</p>
+            </div>
+        </div>
+
+        <!-- Migration Strategy Overview -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card matrix-card">
+                    <div class="card-header">
+                        <h2 class="h3 mb-0">🎯 Estratégias de Migração</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>A migração do Hadoop requer planejamento cuidadoso e uma abordagem estruturada. Escolha a estratégia mais adequada para seu cenário:</p>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100 matrix-card-inner">
+                                    <div class="card-body">
+                                        <h5 class="card-title">🔄 Migração Gradual</h5>
+                                        <p class="card-text">Migre workloads progressivamente, mantendo sistemas paralelos durante a transição.</p>
+                                        <span class="badge bg-success">Baixo Risco</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100 matrix-card-inner">
+                                    <div class="card-body">
+                                        <h5 class="card-title">⚡ Migração Rápida</h5>
+                                        <p class="card-text">Transição completa em janela de manutenção, ideal para ambientes menores.</p>
+                                        <span class="badge bg-warning">Médio Risco</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100 matrix-card-inner">
+                                    <div class="card-body">
+                                        <h5 class="card-title">🏗️ Reconstrução</h5>
+                                        <p class="card-text">Redesenhar a arquitetura do zero com tecnologias modernas.</p>
+                                        <span class="badge bg-info">Alto Benefício</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Migration Scenarios -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="h3 mb-4">📋 Guias por Cenário de Migração</h2>
+            </div>
+        </div>
+
+        <!-- Scenario Tabs -->
+        <div class="row">
+            <div class="col-12">
+                <ul class="nav nav-tabs matrix-tabs" id="migrationTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="etl-tab" data-bs-toggle="tab" data-bs-target="#etl-migration" type="button" role="tab">ETL/Batch Processing</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="analytics-tab" data-bs-toggle="tab" data-bs-target="#analytics-migration" type="button" role="tab">Analytics/BI</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="streaming-tab" data-bs-toggle="tab" data-bs-target="#streaming-migration" type="button" role="tab">Real-time/Streaming</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="ml-tab" data-bs-toggle="tab" data-bs-target="#ml-migration" type="button" role="tab">Machine Learning</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content matrix-tab-content" id="migrationTabsContent">
+                    <!-- ETL/Batch Processing Migration -->
+                    <div class="tab-pane fade show active" id="etl-migration" role="tabpanel">
+                        <div class="card matrix-card mt-3">
+                            <div class="card-header">
+                                <h4>🔄 Migração de ETL/Batch Processing</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5>📊 Cenário Atual (Hadoop)</h5>
+                                        <ul class="list-unstyled">
+                                            <li>✓ MapReduce jobs</li>
+                                            <li>✓ Hive queries</li>
+                                            <li>✓ Pig scripts</li>
+                                            <li>✓ Oozie workflows</li>
+                                            <li>✓ HDFS storage</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>🎯 Destino Recomendado</h5>
+                                        <ul class="list-unstyled">
+                                            <li>→ <strong>Apache Spark</strong> (processamento)</li>
+                                            <li>→ <strong>Delta Lake</strong> (storage)</li>
+                                            <li>→ <strong>Apache Airflow</strong> (orquestração)</li>
+                                            <li>→ <strong>MinIO/S3</strong> (object storage)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4">
+                                    <h5>📝 Checklist de Migração ETL</h5>
+                                    <div class="checklist-container">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="etl-check1">
+                                            <label class="form-check-label" for="etl-check1">
+                                                Inventário completo de jobs MapReduce e Hive
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="etl-check2">
+                                            <label class="form-check-label" for="etl-check2">
+                                                Análise de dependências entre jobs
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="etl-check3">
+                                            <label class="form-check-label" for="etl-check3">
+                                                Configuração do ambiente Spark
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="etl-check4">
+                                            <label class="form-check-label" for="etl-check4">
+                                                Migração de dados para Delta Lake
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="etl-check5">
+                                            <label class="form-check-label" for="etl-check5">
+                                                Conversão de jobs MapReduce para Spark
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="etl-check6">
+                                            <label class="form-check-label" for="etl-check6">
+                                                Migração de workflows Oozie para Airflow
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="etl-check7">
+                                            <label class="form-check-label" for="etl-check7">
+                                                Testes de performance e validação
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="etl-check8">
+                                            <label class="form-check-label" for="etl-check8">
+                                                Monitoramento e alertas configurados
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4">
+                                    <h5>⏱️ Timeline Estimado</h5>
+                                    <div class="timeline">
+                                        <div class="timeline-item">
+                                            <strong>Semanas 1-2:</strong> Análise e planejamento
+                                        </div>
+                                        <div class="timeline-item">
+                                            <strong>Semanas 3-6:</strong> Setup do ambiente e migração de dados
+                                        </div>
+                                        <div class="timeline-item">
+                                            <strong>Semanas 7-12:</strong> Conversão de jobs críticos
+                                        </div>
+                                        <div class="timeline-item">
+                                            <strong>Semanas 13-16:</strong> Testes e otimização
+                                        </div>
+                                        <div class="timeline-item">
+                                            <strong>Semanas 17-18:</strong> Go-live e monitoramento
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Analytics/BI Migration -->
+                    <div class="tab-pane fade" id="analytics-migration" role="tabpanel">
+                        <div class="card matrix-card mt-3">
+                            <div class="card-header">
+                                <h4>📊 Migração de Analytics/BI</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5>📊 Cenário Atual (Hadoop)</h5>
+                                        <ul class="list-unstyled">
+                                            <li>✓ Hive queries</li>
+                                            <li>✓ Impala analytics</li>
+                                            <li>✓ HBase lookups</li>
+                                            <li>✓ Tableau/PowerBI conectores</li>
+                                            <li>✓ Relatórios batch</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>🎯 Destino Recomendado</h5>
+                                        <ul class="list-unstyled">
+                                            <li>→ <strong>Trino/Presto</strong> (query engine)</li>
+                                            <li>→ <strong>ClickHouse</strong> (OLAP)</li>
+                                            <li>→ <strong>Apache Superset</strong> (visualização)</li>
+                                            <li>→ <strong>Iceberg</strong> (table format)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4">
+                                    <h5>📝 Checklist de Migração Analytics</h5>
+                                    <div class="checklist-container">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="analytics-check1">
+                                            <label class="form-check-label" for="analytics-check1">
+                                                Auditoria de queries e relatórios existentes
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="analytics-check2">
+                                            <label class="form-check-label" for="analytics-check2">
+                                                Análise de padrões de acesso aos dados
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="analytics-check3">
+                                            <label class="form-check-label" for="analytics-check3">
+                                                Setup do Trino/Presto cluster
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="analytics-check4">
+                                            <label class="form-check-label" for="analytics-check4">
+                                                Migração de tabelas para formato Iceberg
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="analytics-check5">
+                                            <label class="form-check-label" for="analytics-check5">
+                                                Conversão de queries Hive para Trino
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="analytics-check6">
+                                            <label class="form-check-label" for="analytics-check6">
+                                                Configuração de conectores BI
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="analytics-check7">
+                                            <label class="form-check-label" for="analytics-check7">
+                                                Testes de performance de queries
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="analytics-check8">
+                                            <label class="form-check-label" for="analytics-check8">
+                                                Treinamento da equipe de BI
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Real-time/Streaming Migration -->
+                    <div class="tab-pane fade" id="streaming-migration" role="tabpanel">
+                        <div class="card matrix-card mt-3">
+                            <div class="card-header">
+                                <h4>⚡ Migração de Real-time/Streaming</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5>📊 Cenário Atual (Hadoop)</h5>
+                                        <ul class="list-unstyled">
+                                            <li>✓ Storm topologies</li>
+                                            <li>✓ Spark Streaming</li>
+                                            <li>✓ Kafka integration</li>
+                                            <li>✓ Flume agents</li>
+                                            <li>✓ HBase writes</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>🎯 Destino Recomendado</h5>
+                                        <ul class="list-unstyled">
+                                            <li>→ <strong>Apache Flink</strong> (stream processing)</li>
+                                            <li>→ <strong>Kafka Streams</strong> (lightweight)</li>
+                                            <li>→ <strong>Apache Pulsar</strong> (messaging)</li>
+                                            <li>→ <strong>ClickHouse</strong> (real-time analytics)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4">
+                                    <h5>📝 Checklist de Migração Streaming</h5>
+                                    <div class="checklist-container">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="streaming-check1">
+                                            <label class="form-check-label" for="streaming-check1">
+                                                Mapeamento de topologies Storm existentes
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="streaming-check2">
+                                            <label class="form-check-label" for="streaming-check2">
+                                                Análise de latência e throughput requirements
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="streaming-check3">
+                                            <label class="form-check-label" for="streaming-check3">
+                                                Setup do Apache Flink cluster
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="streaming-check4">
+                                            <label class="form-check-label" for="streaming-check4">
+                                                Migração de conectores Kafka
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="streaming-check5">
+                                            <label class="form-check-label" for="streaming-check5">
+                                                Conversão de jobs Spark Streaming para Flink
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="streaming-check6">
+                                            <label class="form-check-label" for="streaming-check6">
+                                                Implementação de checkpointing e recovery
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="streaming-check7">
+                                            <label class="form-check-label" for="streaming-check7">
+                                                Testes de failover e recuperação
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="streaming-check8">
+                                            <label class="form-check-label" for="streaming-check8">
+                                                Monitoramento de métricas em tempo real
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Machine Learning Migration -->
+                    <div class="tab-pane fade" id="ml-migration" role="tabpanel">
+                        <div class="card matrix-card mt-3">
+                            <div class="card-header">
+                                <h4>🤖 Migração de Machine Learning</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5>📊 Cenário Atual (Hadoop)</h5>
+                                        <ul class="list-unstyled">
+                                            <li>✓ Spark MLlib</li>
+                                            <li>✓ Mahout algorithms</li>
+                                            <li>✓ Custom MapReduce ML</li>
+                                            <li>✓ HDFS model storage</li>
+                                            <li>✓ Batch training jobs</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>🎯 Destino Recomendado</h5>
+                                        <ul class="list-unstyled">
+                                            <li>→ <strong>MLflow</strong> (ML lifecycle)</li>
+                                            <li>→ <strong>Kubeflow</strong> (ML pipelines)</li>
+                                            <li>→ <strong>Ray</strong> (distributed ML)</li>
+                                            <li>→ <strong>Feature Store</strong> (feature management)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4">
+                                    <h5>📝 Checklist de Migração ML</h5>
+                                    <div class="checklist-container">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="ml-check1">
+                                            <label class="form-check-label" for="ml-check1">
+                                                Inventário de modelos e pipelines ML
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="ml-check2">
+                                            <label class="form-check-label" for="ml-check2">
+                                                Análise de features e datasets utilizados
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="ml-check3">
+                                            <label class="form-check-label" for="ml-check3">
+                                                Setup do MLflow tracking server
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="ml-check4">
+                                            <label class="form-check-label" for="ml-check4">
+                                                Migração de feature engineering pipelines
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="ml-check5">
+                                            <label class="form-check-label" for="ml-check5">
+                                                Conversão de modelos MLlib para frameworks modernos
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="ml-check6">
+                                            <label class="form-check-label" for="ml-check6">
+                                                Implementação de model serving
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="ml-check7">
+                                            <label class="form-check-label" for="ml-check7">
+                                                Testes de acurácia e performance
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="ml-check8">
+                                            <label class="form-check-label" for="ml-check8">
+                                                Setup de monitoring e drift detection
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Migration Planning Templates -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="h3 mb-4">📋 Templates de Planejamento</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card matrix-card h-100">
+                    <div class="card-header">
+                        <h4>📊 Template de Avaliação</h4>
+                    </div>
+                    <div class="card-body">
+                        <h5>Inventário Atual</h5>
+                        <ul class="list-unstyled">
+                            <li>□ Número de jobs MapReduce</li>
+                            <li>□ Queries Hive/Impala por dia</li>
+                            <li>□ Volume de dados (TB)</li>
+                            <li>□ Número de usuários ativos</li>
+                            <li>□ SLAs críticos</li>
+                            <li>□ Dependências externas</li>
+                        </ul>
+                        
+                        <h5 class="mt-3">Recursos Necessários</h5>
+                        <ul class="list-unstyled">
+                            <li>□ Equipe técnica (pessoas/meses)</li>
+                            <li>□ Infraestrutura paralela</li>
+                            <li>□ Janelas de manutenção</li>
+                            <li>□ Budget estimado</li>
+                            <li>□ Treinamento necessário</li>
+                        </ul>
+                        
+                        <div class="mt-3">
+                            <a href="#" class="btn btn-outline-success btn-sm" onclick="downloadTemplate('assessment')">
+                                📥 Download Template
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card matrix-card h-100">
+                    <div class="card-header">
+                        <h4>⏱️ Template de Timeline</h4>
+                    </div>
+                    <div class="card-body">
+                        <h5>Fases do Projeto</h5>
+                        <div class="timeline-template">
+                            <div class="phase">
+                                <strong>Fase 1: Descoberta (2-4 semanas)</strong>
+                                <ul>
+                                    <li>Auditoria completa do ambiente</li>
+                                    <li>Identificação de dependências</li>
+                                    <li>Definição de arquitetura alvo</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="phase">
+                                <strong>Fase 2: Preparação (4-6 semanas)</strong>
+                                <ul>
+                                    <li>Setup do ambiente de destino</li>
+                                    <li>Migração de dados não-críticos</li>
+                                    <li>Desenvolvimento de scripts</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="phase">
+                                <strong>Fase 3: Migração (8-12 semanas)</strong>
+                                <ul>
+                                    <li>Migração de workloads críticos</li>
+                                    <li>Testes paralelos</li>
+                                    <li>Ajustes de performance</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="phase">
+                                <strong>Fase 4: Validação (2-4 semanas)</strong>
+                                <ul>
+                                    <li>Testes de aceitação</li>
+                                    <li>Treinamento de usuários</li>
+                                    <li>Go-live e monitoramento</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-3">
+                            <a href="#" class="btn btn-outline-success btn-sm" onclick="downloadTemplate('timeline')">
+                                📥 Download Template
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Case Studies -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="h3 mb-4">🏆 Estudos de Caso de Sucesso</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card matrix-card h-100">
+                    <div class="card-header">
+                        <h5>🏦 Banco Digital</h5>
+                        <span class="badge bg-success">ETL Migration</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Desafio:</strong> 500+ jobs MapReduce processando transações diárias</p>
+                        <p><strong>Solução:</strong> Migração para Spark + Delta Lake + Airflow</p>
+                        
+                        <h6>Resultados:</h6>
+                        <ul class="list-unstyled">
+                            <li>✅ 60% redução no tempo de processamento</li>
+                            <li>✅ 40% economia em infraestrutura</li>
+                            <li>✅ 90% redução em falhas de jobs</li>
+                            <li>✅ Migração completa em 4 meses</li>
+                        </ul>
+                        
+                        <p><strong>Lições Aprendidas:</strong></p>
+                        <ul>
+                            <li>Priorizar jobs críticos primeiro</li>
+                            <li>Manter sistemas paralelos por 2 meses</li>
+                            <li>Investir em monitoramento desde o início</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card matrix-card h-100">
+                    <div class="card-header">
+                        <h5>🛒 E-commerce</h5>
+                        <span class="badge bg-info">Analytics Migration</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Desafio:</strong> Relatórios Hive lentos impactando decisões de negócio</p>
+                        <p><strong>Solução:</strong> Migração para Trino + Iceberg + ClickHouse</p>
+                        
+                        <h6>Resultados:</h6>
+                        <ul class="list-unstyled">
+                            <li>✅ 10x melhoria na velocidade de queries</li>
+                            <li>✅ Relatórios em tempo real</li>
+                            <li>✅ 50% redução em custos de compute</li>
+                            <li>✅ Self-service analytics para negócio</li>
+                        </ul>
+                        
+                        <p><strong>Lições Aprendidas:</strong></p>
+                        <ul>
+                            <li>Otimizar particionamento desde o início</li>
+                            <li>Treinar equipe de BI antecipadamente</li>
+                            <li>Implementar cache inteligente</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card matrix-card h-100">
+                    <div class="card-header">
+                        <h5>📱 Fintech</h5>
+                        <span class="badge bg-warning">Streaming Migration</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Desafio:</strong> Detecção de fraude em tempo real com Storm</p>
+                        <p><strong>Solução:</strong> Migração para Flink + Kafka + Redis</p>
+                        
+                        <h6>Resultados:</h6>
+                        <ul class="list-unstyled">
+                            <li>✅ Latência reduzida de 5s para 100ms</li>
+                            <li>✅ 99.9% de disponibilidade</li>
+                            <li>✅ Processamento de 1M eventos/seg</li>
+                            <li>✅ Redução de 80% em falsos positivos</li>
+                        </ul>
+                        
+                        <p><strong>Lições Aprendidas:</strong></p>
+                        <ul>
+                            <li>Testar failover extensivamente</li>
+                            <li>Implementar backpressure adequado</li>
+                            <li>Monitorar métricas de latência</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Risk Assessment and Mitigation -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card matrix-card">
+                    <div class="card-header">
+                        <h3>⚠️ Avaliação de Riscos e Mitigação</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>🔴 Riscos Principais</h5>
+                                <div class="risk-item">
+                                    <strong>Perda de Dados</strong>
+                                    <p>Risco: Alto | Impacto: Crítico</p>
+                                    <p><em>Mitigação:</em> Backup completo, validação de integridade, rollback plan</p>
+                                </div>
+                                
+                                <div class="risk-item">
+                                    <strong>Downtime Prolongado</strong>
+                                    <p>Risco: Médio | Impacto: Alto</p>
+                                    <p><em>Mitigação:</em> Migração gradual, sistemas paralelos, janelas de manutenção</p>
+                                </div>
+                                
+                                <div class="risk-item">
+                                    <strong>Performance Degradation</strong>
+                                    <p>Risco: Médio | Impacto: Médio</p>
+                                    <p><em>Mitigação:</em> Testes de carga, otimização prévia, monitoramento contínuo</p>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <h5>✅ Estratégias de Mitigação</h5>
+                                <ul class="list-unstyled">
+                                    <li>🔄 <strong>Rollback Plan:</strong> Capacidade de reverter em 4 horas</li>
+                                    <li>📊 <strong>Monitoring:</strong> Alertas automáticos para métricas críticas</li>
+                                    <li>👥 <strong>Team Readiness:</strong> Equipe 24/7 durante go-live</li>
+                                    <li>🧪 <strong>Testing:</strong> Ambiente de staging idêntico à produção</li>
+                                    <li>📚 <strong>Documentation:</strong> Runbooks detalhados para troubleshooting</li>
+                                    <li>🎓 <strong>Training:</strong> Equipe treinada nas novas tecnologias</li>
+                                </ul>
+                                
+                                <div class="alert alert-info mt-3">
+                                    <strong>💡 Dica:</strong> Sempre mantenha o ambiente Hadoop funcionando por pelo menos 30 dias após a migração para garantir estabilidade.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cost-Benefit Analysis -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card matrix-card">
+                    <div class="card-header">
+                        <h3>💰 Análise de Custos vs Benefícios</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>💸 Custos da Migração</h5>
+                                <table class="table table-dark table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>Custo Estimado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Consultoria Especializada</td>
+                                            <td>$50k - $200k</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Infraestrutura Paralela</td>
+                                            <td>$20k - $100k</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Treinamento da Equipe</td>
+                                            <td>$10k - $50k</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Desenvolvimento/Conversão</td>
+                                            <td>$30k - $150k</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Testes e Validação</td>
+                                            <td>$15k - $75k</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <h5>💎 Benefícios Esperados</h5>
+                                <div class="benefit-item">
+                                    <strong>Redução de Custos Operacionais</strong>
+                                    <p>30-60% economia em infraestrutura e licenças</p>
+                                </div>
+                                
+                                <div class="benefit-item">
+                                    <strong>Melhoria de Performance</strong>
+                                    <p>2-10x melhoria em velocidade de processamento</p>
+                                </div>
+                                
+                                <div class="benefit-item">
+                                    <strong>Agilidade de Desenvolvimento</strong>
+                                    <p>50% redução no time-to-market para novos projetos</p>
+                                </div>
+                                
+                                <div class="benefit-item">
+                                    <strong>Escalabilidade Melhorada</strong>
+                                    <p>Auto-scaling e elasticidade nativa</p>
+                                </div>
+                                
+                                <div class="alert alert-success mt-3">
+                                    <strong>📈 ROI Típico:</strong> 150-300% em 12-18 meses
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="row mt-5 mb-5">
+            <div class="col-12">
+                <div class="card matrix-card">
+                    <div class="card-header">
+                        <h3>🚀 Próximos Passos</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="step-number">1</div>
+                                    <h5>Avaliação Inicial</h5>
+                                    <p>Use nossos templates para fazer um inventário completo do seu ambiente atual</p>
+                                    <a href="#" class="btn btn-outline-success btn-sm">📋 Começar Avaliação</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="step-number">2</div>
+                                    <h5>Planejamento</h5>
+                                    <p>Defina sua estratégia de migração e timeline baseado no seu cenário</p>
+                                    <a href="#" class="btn btn-outline-success btn-sm">📅 Criar Plano</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="step-number">3</div>
+                                    <h5>Execução</h5>
+                                    <p>Implemente sua migração seguindo as melhores práticas e checklists</p>
+                                    <a href="../alternativas/" class="btn btn-outline-success btn-sm">🎯 Ver Alternativas</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/migration-guides.js"></script>
+</body>
+</html>

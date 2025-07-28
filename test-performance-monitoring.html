@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Monitoring Test - Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <style>
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #00ff00;
+            border-radius: 8px;
+            background: #1a1a1a;
+            color: #00ff00;
+        }
+        
+        .test-button {
+            margin: 10px;
+            padding: 10px 20px;
+            background: #2a2a2a;
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        
+        .test-button:hover {
+            background: #00ff00;
+            color: #1a1a1a;
+        }
+        
+        .status-display {
+            margin: 10px 0;
+            padding: 10px;
+            background: #2a2a2a;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        
+        .metric-display {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px;
+            background: #333;
+            border-radius: 4px;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .good { border-left: 4px solid #28a745; }
+        .warning { border-left: 4px solid #ffc107; }
+        .critical { border-left: 4px solid #dc3545; }
+    </style>
+</head>
+<body class="matrix-theme">
+    <div class="container mt-4">
+        <h1 class="text-success mb-4">Performance Monitoring System Test</h1>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="test-section">
+                    <h3>System Status</h3>
+                    <div id="system-status" class="status-display">
+                        Initializing monitoring systems...
+                    </div>
+                    
+                    <h4>Core Web Vitals</h4>
+                    <div id="cwv-metrics">
+                        <div class="metric-display" id="lcp-metric">
+                            <div>LCP</div>
+                            <div id="lcp-value">-</div>
+                        </div>
+                        <div class="metric-display" id="fid-metric">
+                            <div>FID</div>
+                            <div id="fid-value">-</div>
+                        </div>
+                        <div class="metric-display" id="cls-metric">
+                            <div>CLS</div>
+                            <div id="cls-value">-</div>
+                        </div>
+                    </div>
+                    
+                    <h4>System Health</h4>
+                    <div id="health-metrics">
+                        <div class="metric-display" id="uptime-metric">
+                            <div>Uptime</div>
+                            <div id="uptime-value">-</div>
+                        </div>
+                        <div class="metric-display" id="errors-metric">
+                            <div>Errors</div>
+                            <div id="errors-value">-</div>
+                        </div>
+                        <div class="metric-display" id="response-metric">
+                            <div>Response</div>
+                            <div id="response-value">-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="test-section">
+                    <h3>Test Controls</h3>
+                    
+                    <h4>Dashboard Controls</h4>
+                    <button class="test-button" onclick="toggleDashboard()">Toggle Dashboard (Ctrl+Shift+M)</button>
+                    <button class="test-button" onclick="showPerformanceMonitor()">Show Performance Monitor (Ctrl+Shift+P)</button>
+                    
+                    <h4>Alert Configuration</h4>
+                    <button class="test-button" onclick="enableAlerts()">Enable Alerts</button>
+                    <button class="test-button" onclick="disableAlerts()">Disable Alerts (Default)</button>
+                    <button class="test-button" onclick="showConfigHelp()">Show Config Help</button>
+                    
+                    <h4>Error Testing</h4>
+                    <button class="test-button" onclick="triggerJSError()">Trigger JS Error</button>
+                    <button class="test-button" onclick="triggerNetworkError()">Trigger Network Error</button>
+                    <button class="test-button" onclick="triggerMemoryIssue()">Simulate Memory Issue</button>
+                    
+                    <h4>Performance Testing</h4>
+                    <button class="test-button" onclick="simulateSlowTask()">Simulate Slow Task</button>
+                    <button class="test-button" onclick="triggerLayoutShift()">Trigger Layout Shift</button>
+                    <button class="test-button" onclick="loadHeavyResource()">Load Heavy Resource</button>
+                    
+                    <h4>Reporting</h4>
+                    <button class="test-button" onclick="generateTestReport()">Generate Test Report</button>
+                    <button class="test-button" onclick="exportTestData()">Export Test Data</button>
+                    <button class="test-button" onclick="clearAllData()">Clear All Data</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h3>Recent Alerts</h3>
+            <div id="recent-alerts" class="status-display">
+                No alerts yet...
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h3>Test Log</h3>
+            <div id="test-log" class="status-display" style="height: 200px; overflow-y: auto;">
+                Test log will appear here...
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Performance Monitoring Scripts -->
+    <script src="assets/js/core-web-vitals.js"></script>
+    <script src="assets/js/performance-monitor.js"></script>
+    <script src="assets/js/performance-config.js"></script>
+    <script src="assets/js/performance-alerts-system.js"></script>
+    <script src="assets/js/uptime-monitor.js"></script>
+    <script src="assets/js/error-tracking-system.js"></script>
+    <script src="assets/js/performance-reports-generator.js"></script>
+    <script src="assets/js/performance-monitoring-dashboard.js"></script>
+    <script src="assets/js/performance-status-indicator.js"></script>
+    
+    <script>
+        // Test functions
+        let testLogElement;
+        let alertsElement;
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            testLogElement = document.getElementById('test-log');
+            alertsElement = document.getElementById('recent-alerts');
+            
+            log('Performance monitoring test page loaded');
+            
+            // Wait for systems to initialize
+            setTimeout(() => {
+                checkSystemStatus();
+                startMetricsUpdating();
+                setupAlertListening();
+            }, 2000);
+        });
+        
+        function log(message) {
+            const timestamp = new Date().toLocaleTimeString();
+            testLogElement.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+            testLogElement.scrollTop = testLogElement.scrollHeight;
+            console.log(`[TEST] ${message}`);
+        }
+        
+        function checkSystemStatus() {
+            const systems = {
+                'Core Web Vitals Optimizer': window.coreWebVitalsOptimizer,
+                'Performance Monitor': window.performanceMonitor,
+                'Performance Alerts System': window.performanceAlertsSystem,
+                'Uptime Monitor': window.uptimeMonitor,
+                'Error Tracking System': window.errorTrackingSystem,
+                'Performance Reports Generator': window.performanceReportsGenerator,
+                'Performance Monitoring Dashboard': window.performanceMonitoringDashboard
+            };
+            
+            let statusHtml = '';
+            let allSystemsReady = true;
+            
+            Object.entries(systems).forEach(([name, system]) => {
+                const status = system ? '✅ Ready' : '❌ Not Ready';
+                const statusClass = system ? 'good' : 'critical';
+                statusHtml += `<div class="${statusClass}">${name}: ${status}</div>`;
+                
+                if (!system) {
+                    allSystemsReady = false;
+                    log(`System not ready: ${name}`);
+                }
+            });
+            
+            document.getElementById('system-status').innerHTML = statusHtml;
+            
+            if (allSystemsReady) {
+                log('All monitoring systems initialized successfully');
+            } else {
+                log('Some monitoring systems failed to initialize');
+            }
+        }
+        
+        function startMetricsUpdating() {
+            setInterval(() => {
+                updateMetricsDisplay();
+            }, 2000);
+        }
+        
+        function updateMetricsDisplay() {
+            // Core Web Vitals
+            if (window.coreWebVitalsOptimizer) {
+                const metrics = window.coreWebVitalsOptimizer.getMetrics();
+                
+                updateMetric('lcp', metrics.lcp);
+                updateMetric('fid', metrics.fid);
+                updateMetric('cls', metrics.cls);
+            }
+            
+            // System health
+            if (window.uptimeMonitor) {
+                const status = window.uptimeMonitor.getStatus();
+                document.getElementById('uptime-value').textContent = status.uptimePercentage.toFixed(1) + '%';
+                
+                const avgResponse = window.uptimeMonitor.getAverageResponseTime();
+                if (avgResponse) {
+                    document.getElementById('response-value').textContent = Math.round(avgResponse) + 'ms';
+                }
+            }
+            
+            if (window.errorTrackingSystem) {
+                const stats = window.errorTrackingSystem.getErrorStats();
+                document.getElementById('errors-value').textContent = stats.totalErrors;
+            }
+        }
+        
+        function updateMetric(name, value) {
+            const element = document.getElementById(`${name}-metric`);
+            const valueElement = document.getElementById(`${name}-value`);
+            
+            if (value === null || value === undefined) {
+                valueElement.textContent = '-';
+                element.className = 'metric-display';
+                return;
+            }
+            
+            // Format value
+            let formattedValue;
+            if (name === 'cls') {
+                formattedValue = value.toFixed(3);
+            } else {
+                formattedValue = Math.round(value) + 'ms';
+            }
+            
+            valueElement.textContent = formattedValue;
+            
+            // Get status
+            const status = getMetricStatus(name, value);
+            element.className = `metric-display ${status}`;
+        }
+        
+        function getMetricStatus(metric, value) {
+            const thresholds = {
+                lcp: { good: 2500, poor: 4000 },
+                fid: { good: 100, poor: 300 },
+                cls: { good: 0.1, poor: 0.25 }
+            };
+            
+            const threshold = thresholds[metric];
+            if (!threshold) return '';
+            
+            if (value <= threshold.good) return 'good';
+            if (value <= threshold.poor) return 'warning';
+            return 'critical';
+        }
+        
+        function setupAlertListening() {
+            if (window.performanceAlertsSystem) {
+                // Override alert display to show in our test interface
+                const originalTriggerAlert = window.performanceAlertsSystem.triggerAlert.bind(window.performanceAlertsSystem);
+                
+                window.performanceAlertsSystem.triggerAlert = function(alert) {
+                    originalTriggerAlert(alert);
+                    
+                    // Show in test interface
+                    const alertHtml = `
+                        <div class="${alert.severity}">
+                            [${new Date().toLocaleTimeString()}] ${alert.metric.toUpperCase()}: ${alert.message}
+                        </div>
+                    `;
+                    
+                    alertsElement.innerHTML = alertHtml + alertsElement.innerHTML;
+                    
+                    // Keep only last 5 alerts
+                    const alerts = alertsElement.children;
+                    while (alerts.length > 5) {
+                        alertsElement.removeChild(alerts[alerts.length - 1]);
+                    }
+                    
+                    log(`Alert triggered: ${alert.metric} - ${alert.severity}`);
+                };
+            }
+        }
+        
+        // Test functions
+        function toggleDashboard() {
+            if (window.performanceMonitoringDashboard) {
+                window.performanceMonitoringDashboard.toggle();
+                log('Dashboard toggled');
+            } else {
+                log('Dashboard not available');
+            }
+        }
+        
+        function showPerformanceMonitor() {
+            if (window.performanceMonitor) {
+                window.performanceMonitor.show();
+                log('Performance monitor shown');
+            } else {
+                log('Performance monitor not available');
+            }
+        }
+        
+        function triggerJSError() {
+            log('Triggering JavaScript error...');
+            setTimeout(() => {
+                // This will trigger an error
+                nonExistentFunction();
+            }, 100);
+        }
+        
+        function triggerNetworkError() {
+            log('Triggering network error...');
+            fetch('/non-existent-endpoint')
+                .catch(error => {
+                    log('Network error triggered successfully');
+                });
+        }
+        
+        function triggerMemoryIssue() {
+            log('Simulating memory issue...');
+            
+            if (window.errorTrackingSystem) {
+                window.errorTrackingSystem.reportCustomError('High memory usage detected', {
+                    type: 'memory',
+                    usage: 95,
+                    threshold: 90
+                });
+            }
+        }
+        
+        function simulateSlowTask() {
+            log('Simulating slow task...');
+            
+            const start = performance.now();
+            
+            // Simulate heavy computation
+            let result = 0;
+            for (let i = 0; i < 10000000; i++) {
+                result += Math.random();
+            }
+            
+            const duration = performance.now() - start;
+            log(`Slow task completed in ${duration.toFixed(2)}ms`);
+        }
+        
+        function triggerLayoutShift() {
+            log('Triggering layout shift...');
+            
+            // Create an element that will cause layout shift
+            const element = document.createElement('div');
+            element.style.height = '100px';
+            element.style.background = '#00ff00';
+            element.style.margin = '20px 0';
+            element.textContent = 'This element causes layout shift';
+            
+            document.querySelector('.container').insertBefore(element, document.querySelector('.container').firstChild);
+            
+            // Remove it after 2 seconds
+            setTimeout(() => {
+                element.remove();
+                log('Layout shift element removed');
+            }, 2000);
+        }
+        
+        function loadHeavyResource() {
+            log('Loading heavy resource...');
+            
+            // Create a large image to simulate heavy resource loading
+            const img = new Image();
+            img.onload = () => {
+                log('Heavy resource loaded successfully');
+            };
+            img.onerror = () => {
+                log('Heavy resource failed to load');
+            };
+            
+            // Use a large image URL (this will likely fail, which is good for testing)
+            img.src = 'https://httpbin.org/delay/3';
+        }
+        
+        function generateTestReport() {
+            log('Generating test report...');
+            
+            if (window.performanceReportsGenerator) {
+                window.performanceReportsGenerator.generateCustomReport(3600000)
+                    .then(report => {
+                        log(`Test report generated: ${report.id}`);
+                        log(`Report status: ${report.analysis?.overall || 'Unknown'}`);
+                    })
+                    .catch(error => {
+                        log(`Failed to generate report: ${error.message}`);
+                    });
+            } else {
+                log('Performance reports generator not available');
+            }
+        }
+        
+        function exportTestData() {
+            log('Exporting test data...');
+            
+            const testData = {
+                timestamp: new Date().toISOString(),
+                systems: {
+                    coreWebVitals: window.coreWebVitalsOptimizer?.getMetrics() || null,
+                    uptime: window.uptimeMonitor?.getStatus() || null,
+                    errors: window.errorTrackingSystem?.getErrorStats() || null,
+                    alerts: window.performanceAlertsSystem?.getAlertSummary() || null
+                },
+                testLog: testLogElement.innerHTML
+            };
+            
+            const blob = new Blob([JSON.stringify(testData, null, 2)], {
+                type: 'application/json'
+            });
+            
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `performance-test-data-${Date.now()}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            log('Test data exported successfully');
+        }
+        
+        function clearAllData() {
+            log('Clearing all monitoring data...');
+            
+            if (window.errorTrackingSystem) {
+                window.errorTrackingSystem.clearErrors();
+            }
+            
+            if (window.performanceMonitor) {
+                window.performanceMonitor.clearData();
+            }
+            
+            // Clear localStorage
+            ['performance_errors', 'performance_alert_history', 'uptime_monitor_data', 'performance_report_history'].forEach(key => {
+                localStorage.removeItem(key);
+            });
+            
+            // Clear test interface
+            alertsElement.innerHTML = 'No alerts yet...';
+            testLogElement.innerHTML = 'Test log cleared...<br>';
+            
+            log('All monitoring data cleared');
+        }
+        
+        // Funções de configuração de alertas
+        function enableAlerts() {
+            if (window.performanceConfig) {
+                window.performanceConfig.enableAllFeatures();
+                log('All alerts and features enabled');
+            } else {
+                log('Performance config not available');
+            }
+        }
+        
+        function disableAlerts() {
+            if (window.performanceConfig) {
+                window.performanceConfig.setSilentMode();
+                log('Silent mode enabled - monitoring continues without alerts');
+            } else {
+                log('Performance config not available');
+            }
+        }
+        
+        function showConfigHelp() {
+            if (window.performanceConfig) {
+                window.performanceConfig.showHelp();
+                log('Configuration help displayed in console');
+            } else {
+                log('Performance config not available');
+            }
+        }
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.shiftKey) {
+                switch (e.key) {
+                    case 'T':
+                        e.preventDefault();
+                        triggerJSError();
+                        break;
+                    case 'N':
+                        e.preventDefault();
+                        triggerNetworkError();
+                        break;
+                    case 'S':
+                        e.preventDefault();
+                        simulateSlowTask();
+                        break;
+                    case 'L':
+                        e.preventDefault();
+                        triggerLayoutShift();
+                        break;
+                    case 'R':
+                        e.preventDefault();
+                        generateTestReport();
+                        break;
+                    case 'E':
+                        e.preventDefault();
+                        exportTestData();
+                        break;
+                }
+            }
+        });
+        
+        // Show keyboard shortcuts
+        setTimeout(() => {
+            log('Keyboard shortcuts available:');
+            log('Ctrl+Shift+M: Toggle Dashboard');
+            log('Ctrl+Shift+P: Show Performance Monitor');
+            log('Ctrl+Shift+T: Trigger JS Error');
+            log('Ctrl+Shift+N: Trigger Network Error');
+            log('Ctrl+Shift+S: Simulate Slow Task');
+            log('Ctrl+Shift+L: Trigger Layout Shift');
+            log('Ctrl+Shift+R: Generate Report');
+            log('Ctrl+Shift+E: Export Data');
+        }, 3000);
+    </script>
+</body>
+</html>

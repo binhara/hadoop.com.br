@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="matrix-theme">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Otimização de Imagens - Portal Big Data</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Matrix Theme CSS -->
+    <link rel="stylesheet" href="assets/css/matrix-theme.css">
+    <link rel="stylesheet" href="assets/css/image-optimization.css">
+</head>
+<body class="matrix-theme">
+    <div class="container py-5">
+        <h1 class="text-center mb-5">Teste de Otimização de Imagens</h1>
+        
+        <!-- Lazy Loading Test -->
+        <section class="mb-5">
+            <h2 class="text-success mb-3">Lazy Loading</h2>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <div class="img-container aspect-16-9">
+                        <img data-src="assets/images/morpheus-pills.png" 
+                             alt="Morpheus Pills" 
+                             class="img-fluid">
+                    </div>
+                    <p class="text-center mt-2">Lazy Loading Image</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="img-container aspect-16-9">
+                        <img data-src="assets/images/morpheus.png" 
+                             alt="Morpheus" 
+                             class="img-fluid">
+                    </div>
+                    <p class="text-center mt-2">Lazy Loading Image 2</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <div class="img-container aspect-16-9">
+                        <img data-src="assets/images/banners/dssbr-banner.jpg" 
+                             alt="DSSBR Banner" 
+                             class="img-fluid banner-img">
+                    </div>
+                    <p class="text-center mt-2">Banner com Lazy Loading</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Placeholder Test -->
+        <section class="mb-5">
+            <h2 class="text-success mb-3">Placeholders Dinâmicos</h2>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <img data-placeholder="tech-logo" 
+                         data-text="Spark" 
+                         data-width="100" 
+                         data-height="100" 
+                         alt="Apache Spark Logo" 
+                         class="img-fluid tech-logo">
+                    <p class="text-center mt-2">Tech Logo Placeholder</p>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <img data-placeholder="banner" 
+                         data-text="Hadoop" 
+                         data-width="300" 
+                         data-height="150" 
+                         alt="Hadoop Banner" 
+                         class="img-fluid banner-img">
+                    <p class="text-center mt-2">Banner Placeholder</p>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <img data-placeholder="article" 
+                         data-width="300" 
+                         data-height="200" 
+                         alt="Article Image" 
+                         class="img-fluid">
+                    <p class="text-center mt-2">Article Placeholder</p>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <img data-placeholder="loading" 
+                         data-width="300" 
+                         data-height="200" 
+                         alt="Loading" 
+                         class="img-fluid">
+                    <p class="text-center mt-2">Loading Placeholder</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Responsive Images Test -->
+        <section class="mb-5">
+            <h2 class="text-success mb-3">Imagens Responsivas</h2>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <picture>
+                        <source type="image/avif" srcset="assets/images/morpheus-pills.avif">
+                        <source type="image/webp" srcset="assets/images/morpheus-pills.webp">
+                        <img src="assets/images/morpheus-pills.png" 
+                             alt="Morpheus Pills - Responsive" 
+                             class="img-fluid"
+                             loading="lazy">
+                    </picture>
+                    <p class="text-center mt-2">Picture Element com Múltiplos Formatos</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <img src="assets/images/morpheus.png" 
+                         srcset="assets/images/morpheus-320w.png 320w,
+                                 assets/images/morpheus-640w.png 640w,
+                                 assets/images/morpheus-960w.png 960w"
+                         sizes="(max-width: 320px) 320px, (max-width: 640px) 640px, 960px"
+                         alt="Morpheus - Responsive Srcset" 
+                         class="img-fluid"
+                         loading="lazy">
+                    <p class="text-center mt-2">Srcset Responsivo</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Error Handling Test -->
+        <section class="mb-5">
+            <h2 class="text-success mb-3">Tratamento de Erros</h2>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <img src="assets/images/non-existent-image.jpg" 
+                         alt="Imagem que não existe" 
+                         class="img-fluid">
+                    <p class="text-center mt-2">Imagem Inexistente (Fallback)</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <img src="https://invalid-cdn.example.com/image.jpg" 
+                         alt="CDN indisponível" 
+                         class="img-fluid">
+                    <p class="text-center mt-2">CDN Indisponível (Fallback)</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <img data-src="assets/images/broken-link.jpg" 
+                         alt="Link quebrado" 
+                         class="img-fluid">
+                    <p class="text-center mt-2">Link Quebrado (Placeholder)</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Performance Stats -->
+        <section class="mb-5">
+            <h2 class="text-success mb-3">Estatísticas de Performance</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card bg-dark border-success">
+                        <div class="card-body">
+                            <h5 class="card-title text-success">Métricas de Otimização</h5>
+                            <div id="performance-stats" class="text-light">
+                                <p>Carregando estatísticas...</p>
+                            </div>
+                            <button class="btn btn-success" onclick="updateStats()">Atualizar Estatísticas</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/cdn-config.js"></script>
+    <script src="assets/js/asset-compression.js"></script>
+    <script src="assets/js/placeholder-generator.js"></script>
+    <script src="assets/js/image-optimization.js"></script>
+    <script src="assets/js/main.js"></script>
+    
+    <script>
+        // Update performance statistics
+        function updateStats() {
+            const statsContainer = document.getElementById('performance-stats');
+            
+            let stats = {
+                totalImages: document.querySelectorAll('img').length,
+                lazyImages: document.querySelectorAll('img[data-src]').length,
+                loadedImages: document.querySelectorAll('img.loaded').length,
+                placeholderImages: document.querySelectorAll('img.placeholder-image').length,
+                optimizedImages: document.querySelectorAll('img[data-optimized]').length
+            };
+            
+            // Get compression stats if available
+            if (window.assetCompressor) {
+                const compressionStats = window.assetCompressor.getCompressionStats();
+                stats = { ...stats, ...compressionStats };
+            }
+            
+            // Get CDN stats if available
+            if (window.cdnManager) {
+                stats.cdnActive = window.cdnManager.activeCDN || 'Local';
+            }
+            
+            const statsHTML = `
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li><strong>Total de Imagens:</strong> ${stats.totalImages}</li>
+                            <li><strong>Lazy Loading:</strong> ${stats.lazyImages}</li>
+                            <li><strong>Carregadas:</strong> ${stats.loadedImages}</li>
+                            <li><strong>Placeholders:</strong> ${stats.placeholderImages}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-unstyled">
+                            <li><strong>Otimizadas:</strong> ${stats.optimizedImages}</li>
+                            <li><strong>Taxa de Otimização:</strong> ${stats.optimizationRate || 0}%</li>
+                            <li><strong>CDN Ativo:</strong> ${stats.cdnActive || 'N/A'}</li>
+                            <li><strong>Última Atualização:</strong> ${new Date().toLocaleTimeString()}</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+            
+            statsContainer.innerHTML = statsHTML;
+        }
+        
+        // Auto-update stats every 5 seconds
+        setInterval(updateStats, 5000);
+        
+        // Initial stats update
+        setTimeout(updateStats, 2000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Power BI - Visualização | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Microsoft Power BI - Visualização | Portal Big Data">
+    <meta name="description" content="Microsoft Power BI: plataforma de business intelligence integrada ao ecossistema Microsoft. Guia completo, recursos e casos de uso empresariais.">
+    <meta name="keywords" content="power bi, microsoft, business intelligence, dashboard, visualização de dados, office 365, azure">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/visualizacao/power-bi">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/visualizacao/power-bi">
+    <meta property="og:title" content="Microsoft Power BI - Visualização | Portal Big Data">
+    <meta property="og:description" content="Microsoft Power BI: plataforma de business intelligence integrada ao ecossistema Microsoft.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/og/power-bi-og.jpg">
+    <meta property="og:site_name" content="Portal Big Data">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/tecnologias/visualizacao/power-bi">
+    <meta property="twitter:title" content="Microsoft Power BI - Visualização | Portal Big Data">
+    <meta property="twitter:description" content="Microsoft Power BI: plataforma de business intelligence integrada ao ecossistema Microsoft.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/power-bi-twitter.jpg">
+    <meta property="twitter:site" content="@portalbigdata">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Microsoft Power BI",
+        "description": "Plataforma de business intelligence integrada ao ecossistema Microsoft",
+        "url": "https://powerbi.microsoft.com",
+        "applicationCategory": "Business Intelligence",
+        "operatingSystem": "Windows, Web, iOS, Android",
+        "programmingLanguage": "C#, DAX, M",
+        "license": "Proprietary",
+        "version": "2024.12",
+        "datePublished": "2011-01-01",
+        "dateModified": "2024-12-01",
+        "author": {
+            "@type": "Organization",
+            "name": "Microsoft Corporation"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "10",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        }
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="/">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Visualização</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Microsoft Power BI</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Technology Header -->
+                <div class="tech-header d-flex align-items-center mb-4">
+                    <img src="../../../assets/images/logos/power-bi-logo.png" alt="Power BI Logo" class="tech-logo me-3" style="width: 80px; height: 80px;">
+                    <div>
+                        <h1 class="mb-2">Microsoft Power BI</h1>
+                        <div class="tech-badges">
+                            <span class="badge bg-primary">Comercial</span>
+                            <span class="badge bg-info">Microsoft</span>
+                            <span class="badge bg-warning text-dark">Visualização</span>
+                            <span class="badge bg-success">Custo-Benefício</span>
+                        </div>
+                        <p class="lead mt-2 mb-0">Plataforma de business intelligence integrada ao ecossistema Microsoft</p>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs nav-fill mb-4" id="techTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            Visão Geral
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">
+                            Recursos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="use-cases-tab" data-bs-toggle="tab" data-bs-target="#use-cases" type="button" role="tab">
+                            Casos de Uso
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="examples-tab" data-bs-toggle="tab" data-bs-target="#examples" type="button" role="tab">
+                            Exemplos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button" role="tab">
+                            Comparações
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="techTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>O que é Microsoft Power BI?</h3>
+                                <p>Microsoft Power BI é uma plataforma de business intelligence que permite aos usuários conectar, modelar e visualizar dados de forma intuitiva. Lançado em 2011 como parte do Office 365, Power BI evoluiu para se tornar uma das principais ferramentas de BI do mercado, oferecendo excelente custo-benefício e integração nativa com o ecossistema Microsoft.</p>
+                                
+                                <h4>História</h4>
+                                <p>Power BI começou como um conjunto de add-ins para Excel (Power Query, Power Pivot, Power View) em 2011. Em 2015, Microsoft lançou o Power BI como serviço independente na nuvem. Desde então, tem recebido atualizações mensais e se tornou uma das ferramentas de BI que mais cresce no mercado, competindo diretamente com Tableau e QlikView.</p>
+                                
+                                <h4>Arquitetura</h4>
+                                <p>Power BI é construído sobre tecnologias Microsoft: Azure para cloud, .NET para aplicações desktop, e DAX (Data Analysis Expressions) para modelagem de dados. A arquitetura inclui Power BI Desktop (ferramenta de autoria), Power BI Service (cloud), Power BI Mobile (apps móveis) e Power BI Gateway (conectividade on-premise).</p>
+                                
+                                <h4>Vantagens</h4>
+                                <ul>
+                                    <li><strong>Custo-Benefício:</strong> Preço competitivo comparado a outras ferramentas enterprise</li>
+                                    <li><strong>Integração Microsoft:</strong> Nativa com Office 365, Azure, SQL Server</li>
+                                    <li><strong>Facilidade de Uso:</strong> Interface intuitiva similar ao Office</li>
+                                    <li><strong>Atualizações Frequentes:</strong> Novos recursos mensalmente</li>
+                                    <li><strong>Conectividade:</strong> 100+ conectores de dados nativos</li>
+                                    <li><strong>Self-Service BI:</strong> Permite usuários de negócio criarem próprios relatórios</li>
+                                    <li><strong>Mobile First:</strong> Apps móveis nativas para iOS e Android</li>
+                                    <li><strong>Escalabilidade:</strong> Desde usuários individuais até enterprise</li>
+                                </ul>
+                                
+                                <h4>Desvantagens</h4>
+                                <ul>
+                                    <li><strong>Limitações de Customização:</strong> Menos flexível que ferramentas programáticas</li>
+                                    <li><strong>Dependência Microsoft:</strong> Melhor performance em ambiente Microsoft</li>
+                                    <li><strong>Limitações de Volume:</strong> Restrições em datasets muito grandes</li>
+                                    <li><strong>Visualizações Limitadas:</strong> Menos opções que Tableau</li>
+                                    <li><strong>Governança:</strong> Controles de governança menos robustos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane fade" id="features" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Principais Recursos</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🎨 Drag-and-Drop Interface</h5>
+                                            <p>Interface visual intuitiva para criação de relatórios e dashboards sem programação.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🔍 Q&A Natural Language</h5>
+                                            <p>Consultas em linguagem natural para gerar visualizações automaticamente.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>📊 Custom Visuals</h5>
+                                            <p>Marketplace com centenas de visualizações customizadas da comunidade.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🔄 Real-time Dashboards</h5>
+                                            <p>Dashboards em tempo real com streaming datasets e refresh automático.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>📱 Power BI Mobile</h5>
+                                            <p>Apps móveis nativas com dashboards otimizados para dispositivos móveis.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🤖 AI Insights</h5>
+                                            <p>Insights automáticos com machine learning e detecção de anomalias.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4>Componentes do Power BI</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Power BI Desktop:</strong></td>
+                                                <td>Aplicação Windows para criação de relatórios</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Power BI Service:</strong></td>
+                                                <td>Plataforma cloud para compartilhamento e colaboração</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Power BI Mobile:</strong></td>
+                                                <td>Apps para iOS, Android e Windows</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Power BI Gateway:</strong></td>
+                                                <td>Conectividade segura com dados on-premise</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Power BI Embedded:</strong></td>
+                                                <td>APIs para embedding em aplicações customizadas</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Power BI Report Server:</strong></td>
+                                                <td>Versão on-premise do Power BI Service</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Tab -->
+                    <div class="tab-pane fade" id="use-cases" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Casos de Uso</h3>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>📈 Relatórios Financeiros</h5>
+                                    <p>Dashboards financeiros com P&L, fluxo de caixa, orçamento vs real e análise de variações.</p>
+                                    <div class="alert alert-info">
+                                        <strong>Exemplo:</strong> Dashboard CFO com métricas financeiras integradas ao ERP via SQL Server.
+                                    </div>
+                                </div>
+
+                                <div class="use-case mb-4">
+                                    <h5>🛒 Sales Performance</h5>
+                                    <p>Análise de vendas, performance de equipes, pipeline e previsões integradas ao CRM.</p>
+                                    <div class="alert alert-info">
+                                        <strong>Exemplo:</strong> Dashboard de vendas conectado ao Dynamics 365 com análise geográfica.
+                                    </div>
+                                </div>
+
+                                <div class="use-case mb-4">
+                                    <h5>👥 HR Analytics</h5>
+                                    <p>Análise de RH com turnover, performance, recrutamento e engagement de funcionários.</p>
+                                    <div class="alert alert-info">
+                                        <strong>Exemplo:</strong> Dashboard de RH com dados do Active Directory e sistemas de RH.
+                                    </div>
+                                </div>
+
+                                <div class="use-case mb-4">
+                                    <h5>🏭 Operations Dashboard</h5>
+                                    <p>Monitoramento operacional com KPIs de produção, qualidade e eficiência.</p>
+                                    <div class="alert alert-info">
+                                        <strong>Exemplo:</strong> Dashboard de manufatura com dados IoT via Azure IoT Hub.
+                                    </div>
+                                </div>
+
+                                <div class="use-case mb-4">
+                                    <h5>🎯 Marketing Analytics</h5>
+                                    <p>Análise de campanhas, ROI de marketing, customer journey e attribution.</p>
+                                    <div class="alert alert-info">
+                                        <strong>Exemplo:</strong> Dashboard de marketing digital integrado ao Google Analytics e Facebook Ads.
+                                    </div>
+                                </div>
+                                
+                                <h4>Quando Usar Power BI</h4>
+                                <div class="alert alert-success">
+                                    <h5>✅ Recomendado para:</h5>
+                                    <ul class="mb-0">
+                                        <li>Organizações que usam ecossistema Microsoft</li>
+                                        <li>Orçamento limitado para BI (melhor custo-benefício)</li>
+                                        <li>Usuários familiarizados com Office/Excel</li>
+                                        <li>Necessidade de self-service BI</li>
+                                        <li>Integração com Office 365 e Azure</li>
+                                        <li>Pequenas e médias empresas</li>
+                                        <li>Departamentos que precisam de autonomia em BI</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <h5>⚠️ Considere alternativas se:</h5>
+                                    <ul class="mb-0">
+                                        <li>Ambiente não-Microsoft (considere Tableau/Superset)</li>
+                                        <li>Necessita visualizações muito avançadas (Tableau)</li>
+                                        <li>Volumes de dados extremamente grandes</li>
+                                        <li>Customização total é necessária (Superset)</li>
+                                        <li>Foco em monitoramento operacional (Grafana)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples Tab -->
+                    <div class="tab-pane fade" id="examples" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Exemplos Práticos</h3>
+                                
+                                <h4>Conectando ao SQL Server</h4>
+                                <div class="code-example">
+                                    <pre><code># No Power BI Desktop:
+1. Get Data > SQL Server
+2. Server: localhost\SQLEXPRESS
+3. Database: AdventureWorks
+4. Data Connectivity mode: Import/DirectQuery
+5. Advanced options:
+   - SQL statement: SELECT * FROM Sales.SalesOrderHeader
+   - Command timeout: 30 minutes
+
+# Connection String exemplo:
+Server=myServerAddress;Database=myDataBase;Trusted_Connection=True;</code></pre>
+                                </div>
+                                
+                                <h4>Fórmulas DAX Essenciais</h4>
+                                <div class="code-example">
+                                    <pre><code># Total Sales (Measure)
+Total Sales = SUM(Sales[Amount])
+
+# Sales YTD (Year to Date)
+Sales YTD = TOTALYTD([Total Sales], Calendar[Date])
+
+# Sales Previous Year
+Sales PY = CALCULATE([Total Sales], SAMEPERIODLASTYEAR(Calendar[Date]))
+
+# Growth %
+Growth % = DIVIDE([Total Sales] - [Sales PY], [Sales PY], 0)
+
+# Top 10 Products
+Top 10 Products = 
+CALCULATE(
+    [Total Sales],
+    TOPN(10, ALL(Product[ProductName]), [Total Sales])
+)
+
+# Running Total
+Running Total = 
+CALCULATE(
+    [Total Sales],
+    FILTER(
+        ALLSELECTED(Calendar[Date]),
+        Calendar[Date] <= MAX(Calendar[Date])
+    )
+)</code></pre>
+                                </div>
+                                
+                                <h4>Power Query (M Language)</h4>
+                                <div class="code-example">
+                                    <pre><code># Transformação de dados básica
+let
+    Source = Sql.Database("localhost", "AdventureWorks"),
+    Sales = Source{[Schema="Sales",Item="SalesOrderHeader"]}[Data],
+    FilteredRows = Table.SelectRows(Sales, each [OrderDate] >= #date(2023, 1, 1)),
+    AddedColumn = Table.AddColumn(FilteredRows, "Year", each Date.Year([OrderDate])),
+    GroupedRows = Table.Group(AddedColumn, {"Year"}, {{"Total Sales", each List.Sum([TotalDue]), type number}})
+in
+    GroupedRows
+
+# Conectar a API REST
+let
+    Source = Json.Document(Web.Contents("https://api.example.com/sales")),
+    ConvertedToTable = Table.FromRecords(Source),
+    ExpandedColumns = Table.ExpandRecordColumn(ConvertedToTable, "data", {"id", "amount", "date"})
+in
+    ExpandedColumns</code></pre>
+                                </div>
+
+                                <h4>Power BI REST API</h4>
+                                <div class="code-example">
+                                    <pre><code># Autenticação
+curl -X POST https://login.microsoftonline.com/{tenant-id}/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials&client_id={client-id}&client_secret={client-secret}&resource=https://analysis.windows.net/powerbi/api"
+
+# Listar workspaces
+curl -X GET https://api.powerbi.com/v1.0/myorg/groups \
+  -H "Authorization: Bearer {access-token}"
+
+# Refresh dataset
+curl -X POST https://api.powerbi.com/v1.0/myorg/datasets/{dataset-id}/refreshes \
+  -H "Authorization: Bearer {access-token}" \
+  -H "Content-Type: application/json"
+
+# Export report
+curl -X POST https://api.powerbi.com/v1.0/myorg/reports/{report-id}/ExportTo \
+  -H "Authorization: Bearer {access-token}" \
+  -H "Content-Type: application/json" \
+  -d '{"format": "PDF"}'</code></pre>
+                                </div>
+                                
+                                <h4>Tutoriais Relacionados</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h6>🚀 Power BI Fundamentals</h6>
+                                                <p>Curso completo para iniciantes em Power BI Desktop e Service.</p>
+                                                <a href="#" class="btn btn-sm btn-outline-primary">Ver Tutorial</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h6>📊 DAX Avançado</h6>
+                                                <p>Fórmulas DAX avançadas para análises complexas.</p>
+                                                <a href="#" class="btn btn-sm btn-outline-primary">Ver Tutorial</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Tab -->
+                    <div class="tab-pane fade" id="comparison" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Comparações</h3>
+                                
+                                <h4>Power BI vs Principais Concorrentes</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Critério</th>
+                                                <th>Power BI</th>
+                                                <th>Tableau</th>
+                                                <th>Qlik Sense</th>
+                                                <th>Apache Superset</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Preço (por usuário/mês)</strong></td>
+                                                <td><span class="badge bg-success">$10</span></td>
+                                                <td><span class="badge bg-danger">$70</span></td>
+                                                <td><span class="badge bg-warning">$30</span></td>
+                                                <td><span class="badge bg-success">Gratuito</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Facilidade de Uso</strong></td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Integração Microsoft</strong></td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐</td>
+                                                <td>⭐⭐⭐</td>
+                                                <td>⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Visualizações Avançadas</strong></td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Performance</strong></td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Custo-Benefício</strong></td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐</td>
+                                                <td>⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h4>Análise de TCO (Total Cost of Ownership)</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-header bg-success">
+                                                <h6>💰 Custos Power BI (100 usuários)</h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <ul class="mb-0">
+                                                    <li><strong>Pro:</strong> $1,000/mês</li>
+                                                    <li><strong>Premium:</strong> $5,000/mês</li>
+                                                    <li><strong>Treinamento:</strong> $500-1,000</li>
+                                                    <li><strong>Implementação:</strong> $2,000-5,000</li>
+                                                    <li><strong>Total Ano 1:</strong> $15,000-65,000</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-header bg-warning">
+                                                <h6>📊 Comparação Tableau (100 usuários)</h6>
+                                            </div>
+                                            <div class="card-body">
+                                                <ul class="mb-0">
+                                                    <li><strong>Creator:</strong> $7,000/mês</li>
+                                                    <li><strong>Explorer:</strong> $4,200/mês</li>
+                                                    <li><strong>Viewer:</strong> $1,500/mês</li>
+                                                    <li><strong>Treinamento:</strong> $5,000-10,000</li>
+                                                    <li><strong>Total Ano 1:</strong> $150,000-200,000</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4>Matriz de Decisão</h4>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <div class="alert alert-success">
+                                            <h5>✅ Escolha Power BI se:</h5>
+                                            <ul class="mb-0">
+                                                <li>Usa ecossistema Microsoft (Office 365, Azure)</li>
+                                                <li>Orçamento limitado para BI</li>
+                                                <li>Usuários familiarizados com Excel</li>
+                                                <li>Necessita de self-service BI</li>
+                                                <li>Pequena/média empresa</li>
+                                                <li>Integração com Dynamics 365</li>
+                                                <li>Implementação rápida é prioridade</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="alert alert-warning">
+                                            <h5>⚠️ Considere alternativas se:</h5>
+                                            <ul class="mb-0">
+                                                <li>Ambiente não-Microsoft</li>
+                                                <li>Visualizações muito complexas (Tableau)</li>
+                                                <li>Volumes extremamente grandes</li>
+                                                <li>Customização total (Superset)</li>
+                                                <li>Orçamento zero (Superset/Metabase)</li>
+                                                <li>Monitoramento operacional (Grafana)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>📊 Quick Facts</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-dark">
+                                <tr>
+                                    <td><strong>Versão Atual:</strong></td>
+                                    <td>2024.12</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Licença:</strong></td>
+                                    <td>Proprietária</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Linguagem:</strong></td>
+                                    <td>C#, DAX, M</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Primeira Release:</strong></td>
+                                    <td>2011</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Empresa:</strong></td>
+                                    <td>Microsoft</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔗 Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="https://powerbi.microsoft.com" class="btn btn-outline-success btn-sm" target="_blank">
+                                    🌐 Site Oficial
+                                </a>
+                                <a href="https://app.powerbi.com" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📊 Power BI Service
+                                </a>
+                                <a href="https://docs.microsoft.com/power-bi/" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📚 Documentação
+                                </a>
+                                <a href="https://community.powerbi.com" class="btn btn-outline-success btn-sm" target="_blank">
+                                    👥 Community
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pricing -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>💰 Preços (USD/mês)</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-dark">
+                                <tr>
+                                    <td><strong>Power BI Pro:</strong></td>
+                                    <td>$10</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Premium Per User:</strong></td>
+                                    <td>$20</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Premium Capacity:</strong></td>
+                                    <td>$5,000</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Desktop:</strong></td>
+                                    <td>Gratuito</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔄 Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="../tableau/" class="btn btn-outline-info btn-sm">Tableau</a>
+                                <a href="../qlik-sense/" class="btn btn-outline-info btn-sm">Qlik Sense</a>
+                                <a href="../apache-superset/" class="btn btn-outline-info btn-sm">Apache Superset</a>
+                                <a href="../../data-warehousing/azure-synapse/" class="btn btn-outline-info btn-sm">Azure Synapse</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Courses -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🎓 Cursos Relacionados</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group list-group-flush">
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    Power BI Fundamentals
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    DAX Avançado
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    Power BI Administration
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sponsored Content -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>💼 Conteúdo Patrocinado</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <p class="small">Espaço para conteúdo patrocinado relacionado a Power BI</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/main.js"></script>
+    <script src="../../../assets/js/technology-page.js"></script>
+    <script src="../../../assets/js/theme-toggle.js"></script>
+</body>
+</html>

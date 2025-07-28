@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparações Hadoop vs Alternativas - Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Compare Hadoop com tecnologias modernas - tabelas detalhadas, análises de performance e guias de decisão para migração.">
+    <meta name="keywords" content="hadoop comparação, hadoop vs spark, hadoop vs snowflake, hadoop vs databricks, comparativo tecnologias big data">
+</head>
+<body class="matrix-theme">
+    <!-- Navigation for "Sair do Hadoop" area -->
+    <nav class="navbar navbar-expand-lg navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="../">🔵 Sair do Hadoop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../alternativas/">Alternativas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../migracao/">Migração</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./">Comparações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../stacks-modernas/">Stacks Modernas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../casos-migracao/">Casos de Migração</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Voltar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="container mt-3">
+        <div class="breadcrumb-matrix">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../../">Portal Big Data</a></li>
+                    <li class="breadcrumb-item"><a href="../">Sair do Hadoop</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Comparações</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-4 text-center mb-4">Hadoop vs Tecnologias Modernas</h1>
+                <p class="lead text-center">Comparações detalhadas para ajudar na sua decisão de migração</p>
+            </div>
+        </div>
+
+        <!-- Comparison Categories -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">📊 Categorias de Comparação</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <div class="text-center">
+                                    <div class="btn btn-outline-primary btn-lg mb-2" onclick="showCategory('processing')">
+                                        ⚡ Processamento
+                                    </div>
+                                    <p class="small">Spark, Flink vs MapReduce</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="text-center">
+                                    <div class="btn btn-outline-info btn-lg mb-2" onclick="showCategory('storage')">
+                                        💾 Armazenamento
+                                    </div>
+                                    <p class="small">Delta Lake, Iceberg vs HDFS</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="text-center">
+                                    <div class="btn btn-outline-success btn-lg mb-2" onclick="showCategory('analytics')">
+                                        📈 Analytics
+                                    </div>
+                                    <p class="small">Trino, Snowflake vs Hive</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="text-center">
+                                    <div class="btn btn-outline-warning btn-lg mb-2" onclick="showCategory('cloud')">
+                                        ☁️ Cloud
+                                    </div>
+                                    <p class="small">Databricks, Snowflake vs On-Premise</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Comparisons -->
+        <div id="comparisonContent" class="row mt-5">
+            <!-- Processing Comparison -->
+            <div class="comparison-category" id="processing" style="display: block;">
+                <div class="col-12">
+                    <h2 class="mb-4">⚡ Processamento de Dados</h2>
+                    
+                    <!-- Hadoop vs Spark -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4 class="mb-0">Hadoop MapReduce vs Apache Spark</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-dark table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Aspecto</th>
+                                            <th>Hadoop MapReduce</th>
+                                            <th>Apache Spark</th>
+                                            <th>Vencedor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Performance</strong></td>
+                                            <td>Processamento em disco, mais lento</td>
+                                            <td>Processamento em memória, 100x mais rápido</td>
+                                            <td><span class="badge bg-success">Spark</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Facilidade de Uso</strong></td>
+                                            <td>Java/Python verboso, curva de aprendizado alta</td>
+                                            <td>APIs simples em Python, Scala, R, SQL</td>
+                                            <td><span class="badge bg-success">Spark</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Tolerância a Falhas</strong></td>
+                                            <td>Reprocessamento completo de jobs</td>
+                                            <td>RDD lineage, recuperação granular</td>
+                                            <td><span class="badge bg-success">Spark</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Uso de Recursos</strong></td>
+                                            <td>Menor uso de memória</td>
+                                            <td>Maior uso de memória, mais eficiente</td>
+                                            <td><span class="badge bg-warning">Empate</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Custo</strong></td>
+                                            <td>Menor custo de infraestrutura</td>
+                                            <td>Maior custo inicial, menor custo operacional</td>
+                                            <td><span class="badge bg-success">Spark</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="alert alert-success">
+                                <strong>Recomendação:</strong> Apache Spark é superior em praticamente todos os aspectos. Migração recomendada para 95% dos casos de uso.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hadoop vs Databricks -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4 class="mb-0">Hadoop vs Databricks</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-dark table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Aspecto</th>
+                                            <th>Hadoop</th>
+                                            <th>Databricks</th>
+                                            <th>Vencedor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Setup e Configuração</strong></td>
+                                            <td>Complexo, semanas de configuração</td>
+                                            <td>Pronto para uso em minutos</td>
+                                            <td><span class="badge bg-success">Databricks</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Machine Learning</strong></td>
+                                            <td>MLlib básico, configuração manual</td>
+                                            <td>MLflow integrado, AutoML, colaboração</td>
+                                            <td><span class="badge bg-success">Databricks</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Colaboração</strong></td>
+                                            <td>Ferramentas separadas, sem integração</td>
+                                            <td>Notebooks colaborativos integrados</td>
+                                            <td><span class="badge bg-success">Databricks</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Escalabilidade</strong></td>
+                                            <td>Manual, planejamento de capacidade</td>
+                                            <td>Auto-scaling automático</td>
+                                            <td><span class="badge bg-success">Databricks</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Custo Total</strong></td>
+                                            <td>Menor custo inicial, alto custo operacional</td>
+                                            <td>Maior custo inicial, menor custo operacional</td>
+                                            <td><span class="badge bg-success">Databricks</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="alert alert-info">
+                                <strong>Recomendação:</strong> Databricks é ideal para equipes que precisam de produtividade máxima e têm orçamento para soluções cloud premium.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Storage Comparison -->
+            <div class="comparison-category" id="storage" style="display: none;">
+                <div class="col-12">
+                    <h2 class="mb-4">💾 Armazenamento de Dados</h2>
+                    
+                    <!-- HDFS vs Delta Lake -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4 class="mb-0">HDFS vs Delta Lake</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-dark table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Aspecto</th>
+                                            <th>HDFS</th>
+                                            <th>Delta Lake</th>
+                                            <th>Vencedor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>ACID Transactions</strong></td>
+                                            <td>Não suportado</td>
+                                            <td>Suporte completo a ACID</td>
+                                            <td><span class="badge bg-success">Delta Lake</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Schema Evolution</strong></td>
+                                            <td>Manual, propenso a erros</td>
+                                            <td>Automático e seguro</td>
+                                            <td><span class="badge bg-success">Delta Lake</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Time Travel</strong></td>
+                                            <td>Não disponível</td>
+                                            <td>Versionamento automático</td>
+                                            <td><span class="badge bg-success">Delta Lake</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Performance</strong></td>
+                                            <td>Boa para leitura sequencial</td>
+                                            <td>Otimizado para leitura e escrita</td>
+                                            <td><span class="badge bg-success">Delta Lake</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Compatibilidade</strong></td>
+                                            <td>Ecossistema Hadoop específico</td>
+                                            <td>Compatível com Spark, Presto, etc.</td>
+                                            <td><span class="badge bg-success">Delta Lake</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="alert alert-success">
+                                <strong>Recomendação:</strong> Delta Lake oferece todas as vantagens do HDFS com recursos modernos essenciais. Migração altamente recomendada.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Comparison -->
+            <div class="comparison-category" id="analytics" style="display: none;">
+                <div class="col-12">
+                    <h2 class="mb-4">📈 Analytics e Consultas</h2>
+                    
+                    <!-- Hive vs Trino -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4 class="mb-0">Apache Hive vs Trino (Presto)</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-dark table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Aspecto</th>
+                                            <th>Apache Hive</th>
+                                            <th>Trino</th>
+                                            <th>Vencedor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Latência de Consulta</strong></td>
+                                            <td>Minutos para consultas complexas</td>
+                                            <td>Segundos para a maioria das consultas</td>
+                                            <td><span class="badge bg-success">Trino</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Fontes de Dados</strong></td>
+                                            <td>Principalmente HDFS</td>
+                                            <td>Múltiplas fontes (S3, PostgreSQL, etc.)</td>
+                                            <td><span class="badge bg-success">Trino</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>SQL Compliance</strong></td>
+                                            <td>SQL básico, limitações</td>
+                                            <td>SQL ANSI completo</td>
+                                            <td><span class="badge bg-success">Trino</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Escalabilidade</strong></td>
+                                            <td>Boa para batch processing</td>
+                                            <td>Excelente para consultas interativas</td>
+                                            <td><span class="badge bg-success">Trino</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Manutenção</strong></td>
+                                            <td>Configuração complexa</td>
+                                            <td>Setup e manutenção simples</td>
+                                            <td><span class="badge bg-success">Trino</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="alert alert-success">
+                                <strong>Recomendação:</strong> Trino é superior para analytics interativo. Hive ainda pode ser útil para ETL batch muito específicos.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hive vs Snowflake -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4 class="mb-0">Apache Hive vs Snowflake</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-dark table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Aspecto</th>
+                                            <th>Apache Hive</th>
+                                            <th>Snowflake</th>
+                                            <th>Vencedor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Performance</strong></td>
+                                            <td>Lenta para consultas ad-hoc</td>
+                                            <td>Extremamente rápida</td>
+                                            <td><span class="badge bg-success">Snowflake</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Concorrência</strong></td>
+                                            <td>Limitada, conflitos de recursos</td>
+                                            <td>Workloads isolados, sem conflitos</td>
+                                            <td><span class="badge bg-success">Snowflake</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Administração</strong></td>
+                                            <td>Complexa, requer DBA especializado</td>
+                                            <td>Totalmente gerenciada</td>
+                                            <td><span class="badge bg-success">Snowflake</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Custo</strong></td>
+                                            <td>Menor custo inicial</td>
+                                            <td>Pay-per-use, pode ser mais caro</td>
+                                            <td><span class="badge bg-warning">Depende</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Flexibilidade</strong></td>
+                                            <td>Open-source, customizável</td>
+                                            <td>Proprietário, menos customização</td>
+                                            <td><span class="badge bg-warning">Hive</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="alert alert-info">
+                                <strong>Recomendação:</strong> Snowflake para empresas que priorizam performance e facilidade. Hive para casos que requerem máxima customização.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cloud Comparison -->
+            <div class="comparison-category" id="cloud" style="display: none;">
+                <div class="col-12">
+                    <h2 class="mb-4">☁️ On-Premise vs Cloud</h2>
+                    
+                    <!-- Hadoop On-Premise vs Cloud Solutions -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4 class="mb-0">Hadoop On-Premise vs Soluções Cloud</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-dark table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Aspecto</th>
+                                            <th>Hadoop On-Premise</th>
+                                            <th>Soluções Cloud</th>
+                                            <th>Vencedor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Capex vs Opex</strong></td>
+                                            <td>Alto investimento inicial em hardware</td>
+                                            <td>Modelo pay-as-you-use</td>
+                                            <td><span class="badge bg-success">Cloud</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Escalabilidade</strong></td>
+                                            <td>Limitada pelo hardware físico</td>
+                                            <td>Praticamente ilimitada</td>
+                                            <td><span class="badge bg-success">Cloud</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Manutenção</strong></td>
+                                            <td>Equipe interna necessária</td>
+                                            <td>Totalmente gerenciada</td>
+                                            <td><span class="badge bg-success">Cloud</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Segurança</strong></td>
+                                            <td>Controle total, responsabilidade total</td>
+                                            <td>Segurança enterprise, compliance</td>
+                                            <td><span class="badge bg-success">Cloud</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Latência</strong></td>
+                                            <td>Baixa latência local</td>
+                                            <td>Pode ter latência de rede</td>
+                                            <td><span class="badge bg-warning">On-Premise</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Compliance</strong></td>
+                                            <td>Controle total dos dados</td>
+                                            <td>Depende do provedor</td>
+                                            <td><span class="badge bg-warning">Depende</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="alert alert-info">
+                                <strong>Recomendação:</strong> Cloud é superior na maioria dos casos. On-premise apenas para casos específicos de compliance ou latência crítica.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decision Matrix -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🎯 Matriz de Decisão</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="lead">Use esta matriz para decidir qual tecnologia é melhor para seu caso:</p>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-dark table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Cenário</th>
+                                        <th>Recomendação</th>
+                                        <th>Justificativa</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>ETL Batch Simples</td>
+                                        <td><span class="badge bg-success">Apache Spark</span></td>
+                                        <td>100x mais rápido que MapReduce, APIs simples</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Analytics Interativo</td>
+                                        <td><span class="badge bg-info">Trino + Delta Lake</span></td>
+                                        <td>Consultas em segundos, múltiplas fontes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Data Warehouse Empresarial</td>
+                                        <td><span class="badge bg-primary">Snowflake</span></td>
+                                        <td>Performance superior, zero manutenção</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Machine Learning em Escala</td>
+                                        <td><span class="badge bg-success">Databricks</span></td>
+                                        <td>MLflow integrado, colaboração, AutoML</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Streaming em Tempo Real</td>
+                                        <td><span class="badge bg-warning">Kafka + Flink</span></td>
+                                        <td>Latência sub-segundo, alta throughput</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Orçamento Limitado</td>
+                                        <td><span class="badge bg-info">Gaio Data OS + Spark</span></td>
+                                        <td>Open-source, custo-benefício excelente</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Compliance Rigoroso</td>
+                                        <td><span class="badge bg-secondary">Hadoop On-Premise</span></td>
+                                        <td>Controle total, dados não saem do ambiente</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROI Calculator -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">💰 Calculadora de ROI</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Estime o retorno sobre investimento da migração:</p>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Custos Atuais (Hadoop)</h5>
+                                <div class="mb-3">
+                                    <label class="form-label">Infraestrutura/ano ($)</label>
+                                    <input type="number" class="form-control" id="hadoopInfra" value="100000">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Licenças/ano ($)</label>
+                                    <input type="number" class="form-control" id="hadoopLicenses" value="50000">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Manutenção/ano ($)</label>
+                                    <input type="number" class="form-control" id="hadoopMaintenance" value="80000">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Custos Estimados (Nova Solução)</h5>
+                                <div class="mb-3">
+                                    <label class="form-label">Tecnologia</label>
+                                    <select class="form-select" id="newTech">
+                                        <option value="spark">Apache Spark</option>
+                                        <option value="databricks">Databricks</option>
+                                        <option value="snowflake">Snowflake</option>
+                                        <option value="gaio">Gaio Data OS</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Custo estimado/ano ($)</label>
+                                    <input type="number" class="form-control" id="newCost" value="120000">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Ganho de produtividade (%)</label>
+                                    <input type="number" class="form-control" id="productivity" value="300">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="calculateROI()">Calcular ROI</button>
+                        
+                        <div id="roiResult" class="mt-3" style="display: none;">
+                            <div class="alert alert-success">
+                                <h5>Resultado do ROI:</h5>
+                                <p id="roiText"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/theme-toggle.js"></script>
+    
+    <!-- Custom CSS for better table contrast -->
+    <style>
+        /* Melhorar contraste das tabelas no tema Matrix */
+        .matrix-theme .table-dark {
+            background-color: #001100 !important;
+            border-color: #00ff00 !important;
+        }
+        
+        .matrix-theme .table-dark th {
+            background-color: #003300 !important;
+            border-color: #00ff00 !important;
+            color: #00ff00 !important;
+            font-weight: bold;
+        }
+        
+        .matrix-theme .table-dark td {
+            background-color: #001100 !important;
+            border-color: #00aa00 !important;
+            color: #00dd00 !important;
+        }
+        
+        .matrix-theme .table-striped tbody tr:nth-of-type(odd) td {
+            background-color: #002200 !important;
+            color: #00ff00 !important;
+        }
+        
+        .matrix-theme .table-striped tbody tr:nth-of-type(even) td {
+            background-color: #001100 !important;
+            color: #00dd00 !important;
+        }
+        
+        .matrix-theme .table tbody tr:hover td {
+            background-color: #004400 !important;
+            color: #00ff00 !important;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+        }
+        
+        /* Melhorar badges nas tabelas */
+        .matrix-theme .table .badge {
+            font-weight: bold;
+            text-shadow: none;
+        }
+        
+        .matrix-theme .table .badge.bg-success {
+            background-color: #00aa00 !important;
+            color: #ffffff !important;
+        }
+        
+        .matrix-theme .table .badge.bg-warning {
+            background-color: #ffaa00 !important;
+            color: #000000 !important;
+        }
+        
+        /* Tabela da matriz de decisão */
+        .matrix-theme .table-bordered {
+            border-color: #00ff00 !important;
+        }
+        
+        .matrix-theme .table-bordered th,
+        .matrix-theme .table-bordered td {
+            border-color: #00aa00 !important;
+        }
+        
+        .matrix-theme .table-dark.table-bordered {
+            background-color: #001100 !important;
+        }
+        
+        .matrix-theme .table-dark.table-bordered thead th {
+            background-color: #004400 !important;
+            color: #00ff00 !important;
+            border-color: #00ff00 !important;
+        }
+    </style>
+    
+    <script>
+        // Show specific comparison category
+        function showCategory(category) {
+            // Hide all categories
+            document.querySelectorAll('.comparison-category').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Show selected category
+            document.getElementById(category).style.display = 'block';
+            
+            // Scroll to content
+            document.getElementById('comparisonContent').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ROI Calculator
+        function calculateROI() {
+            const hadoopInfra = parseFloat(document.getElementById('hadoopInfra').value) || 0;
+            const hadoopLicenses = parseFloat(document.getElementById('hadoopLicenses').value) || 0;
+            const hadoopMaintenance = parseFloat(document.getElementById('hadoopMaintenance').value) || 0;
+            const newCost = parseFloat(document.getElementById('newCost').value) || 0;
+            const productivity = parseFloat(document.getElementById('productivity').value) || 0;
+            
+            const currentTotal = hadoopInfra + hadoopLicenses + hadoopMaintenance;
+            const savings = currentTotal - newCost;
+            const productivityGain = (currentTotal * productivity / 100);
+            const totalBenefit = savings + productivityGain;
+            const roi = ((totalBenefit / currentTotal) * 100).toFixed(1);
+            
+            const resultText = `
+                <strong>Custo atual:</strong> $${currentTotal.toLocaleString()}/ano<br>
+                <strong>Novo custo:</strong> $${newCost.toLocaleString()}/ano<br>
+                <strong>Economia:</strong> $${savings.toLocaleString()}/ano<br>
+                <strong>Ganho de produtividade:</strong> $${productivityGain.toLocaleString()}/ano<br>
+                <strong>ROI:</strong> ${roi}% ao ano<br>
+                <strong>Payback:</strong> ${(newCost / totalBenefit * 12).toFixed(1)} meses
+            `;
+            
+            document.getElementById('roiText').innerHTML = resultText;
+            document.getElementById('roiResult').style.display = 'block';
+        }
+
+        // Update cost estimates based on technology selection
+        document.getElementById('newTech').addEventListener('change', function() {
+            const tech = this.value;
+            const costInput = document.getElementById('newCost');
+            const productivityInput = document.getElementById('productivity');
+            
+            switch(tech) {
+                case 'spark':
+                    costInput.value = 120000;
+                    productivityInput.value = 300;
+                    break;
+                case 'databricks':
+                    costInput.value = 180000;
+                    productivityInput.value = 500;
+                    break;
+                case 'snowflake':
+                    costInput.value = 200000;
+                    productivityInput.value = 400;
+                    break;
+                case 'gaio':
+                    costInput.value = 80000;
+                    productivityInput.value = 250;
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orquestração de Dados | Portal Big Data</title>
+    <meta name="description" content="Explore as principais ferramentas de orquestração de dados: Apache Airflow, Prefect, Dagster, Kubernetes e mais. Guias completos e comparações.">
+    <meta name="keywords" content="orquestração dados, apache airflow, prefect, dagster, kubernetes, docker, workflow, pipeline">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Orquestração de Dados | Portal Big Data">
+    <meta property="og:description" content="Explore as principais ferramentas de orquestração de dados: Apache Airflow, Prefect, Dagster, Kubernetes e mais.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/orquestracao/">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/css/matrix-theme.css" rel="stylesheet">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/orquestracao/">
+</head>
+<body class="matrix-theme">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand matrix-brand" href="../../index.html">
+                <span class="matrix-text">Portal Big Data</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../cursos/">Cursos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../">Tecnologias</a></li>
+                <li class="breadcrumb-item active">Orquestração</li>
+            </ol>
+        </nav>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="hero-section text-center mb-5">
+                    <h1 class="display-4 matrix-text mb-3">🔄 Orquestração de Dados</h1>
+                    <p class="lead">Ferramentas para automatizar, agendar e monitorar pipelines de dados complexos</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-md-8">
+                <div class="content-section">
+                    <h2>O que é Orquestração de Dados?</h2>
+                    <p>A orquestração de dados é o processo de automatizar, coordenar e gerenciar fluxos de trabalho complexos de dados. Essas ferramentas permitem definir, agendar e monitorar pipelines que podem incluir extração, transformação, carregamento e análise de dados.</p>
+                    
+                    <h3>Principais Características</h3>
+                    <ul>
+                        <li><strong>Agendamento:</strong> Execução automática baseada em tempo ou eventos</li>
+                        <li><strong>Dependências:</strong> Gerenciamento de relações entre tarefas</li>
+                        <li><strong>Monitoramento:</strong> Visibilidade do status e performance</li>
+                        <li><strong>Recuperação:</strong> Tratamento de falhas e retry automático</li>
+                        <li><strong>Escalabilidade:</strong> Distribuição de cargas de trabalho</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="sidebar-info">
+                    <div class="card bg-dark border-success">
+                        <div class="card-header">
+                            <h5>Categorias de Orquestração</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li>🔧 <strong>Workflow Engines</strong></li>
+                                <li>📦 <strong>Container Orchestration</strong></li>
+                                <li>☁️ <strong>Cloud-Native Tools</strong></li>
+                                <li>🏢 <strong>Enterprise Solutions</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <h2 class="mb-4">Ferramentas de Orquestração</h2>
+            </div>
+        </div>
+
+        <!-- Workflow Engines -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h3 class="text-success mb-3">🔧 Workflow Engines</h3>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card technology-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="../../assets/images/logos/airflow-logo.png" alt="Apache Airflow" class="tech-logo me-3" style="width: 48px; height: 48px;">
+                            <div>
+                                <h5 class="card-title mb-1">Apache Airflow</h5>
+                                <span class="badge bg-primary">Open Source</span>
+                                <span class="badge bg-success">Popular</span>
+                            </div>
+                        </div>
+                        <p class="card-text">Plataforma de orquestração de workflows mais popular, com interface web rica e suporte extensivo a integrações.</p>
+                        <div class="mt-auto">
+                            <a href="apache-airflow/" class="btn btn-outline-success btn-sm">Ver Detalhes</a>
+                            <a href="https://airflow.apache.org" class="btn btn-outline-primary btn-sm" target="_blank">Site Oficial</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card technology-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="../../assets/images/logos/prefect-logo.png" alt="Prefect" class="tech-logo me-3" style="width: 48px; height: 48px;">
+                            <div>
+                                <h5 class="card-title mb-1">Prefect</h5>
+                                <span class="badge bg-primary">Open Source</span>
+                                <span class="badge bg-warning">Moderno</span>
+                            </div>
+                        </div>
+                        <p class="card-text">Plataforma moderna de orquestração com foco em simplicidade, observabilidade e experiência do desenvolvedor.</p>
+                        <div class="mt-auto">
+                            <a href="prefect/" class="btn btn-outline-success btn-sm">Ver Detalhes</a>
+                            <a href="https://prefect.io" class="btn btn-outline-primary btn-sm" target="_blank">Site Oficial</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card technology-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="../../assets/images/logos/dagster-logo.png" alt="Dagster" class="tech-logo me-3" style="width: 48px; height: 48px;">
+                            <div>
+                                <h5 class="card-title mb-1">Dagster</h5>
+                                <span class="badge bg-primary">Open Source</span>
+                                <span class="badge bg-info">Data-Centric</span>
+                            </div>
+                        </div>
+                        <p class="card-text">Sistema de orquestração focado em dados com forte tipagem, testes e observabilidade de assets de dados.</p>
+                        <div class="mt-auto">
+                            <a href="dagster/" class="btn btn-outline-success btn-sm">Ver Detalhes</a>
+                            <a href="https://dagster.io" class="btn btn-outline-primary btn-sm" target="_blank">Site Oficial</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legacy Tools -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h3 class="text-warning mb-3">🏛️ Ferramentas Tradicionais</h3>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card technology-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="../../assets/images/logos/luigi-logo.png" alt="Luigi" class="tech-logo me-3" style="width: 48px; height: 48px;">
+                            <div>
+                                <h5 class="card-title mb-1">Luigi</h5>
+                                <span class="badge bg-primary">Open Source</span>
+                                <span class="badge bg-secondary">Legacy</span>
+                            </div>
+                        </div>
+                        <p class="card-text">Framework Python para construção de pipelines de dados complexos, desenvolvido pelo Spotify.</p>
+                        <div class="mt-auto">
+                            <a href="luigi/" class="btn btn-outline-success btn-sm">Ver Detalhes</a>
+                            <a href="https://luigi.readthedocs.io" class="btn btn-outline-primary btn-sm" target="_blank">Documentação</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card technology-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="../../assets/images/logos/oozie-logo.png" alt="Apache Oozie" class="tech-logo me-3" style="width: 48px; height: 48px;">
+                            <div>
+                                <h5 class="card-title mb-1">Apache Oozie</h5>
+                                <span class="badge bg-primary">Open Source</span>
+                                <span class="badge bg-danger">Hadoop Era</span>
+                            </div>
+                        </div>
+                        <p class="card-text">Sistema de orquestração de workflows para jobs Hadoop, parte do ecossistema tradicional.</p>
+                        <div class="mt-auto">
+                            <a href="apache-oozie/" class="btn btn-outline-success btn-sm">Ver Detalhes</a>
+                            <a href="https://oozie.apache.org" class="btn btn-outline-primary btn-sm" target="_blank">Site Oficial</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Container Orchestration -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h3 class="text-info mb-3">📦 Orquestração de Containers</h3>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card technology-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="../../assets/images/logos/kubernetes-logo.png" alt="Kubernetes" class="tech-logo me-3" style="width: 48px; height: 48px;">
+                            <div>
+                                <h5 class="card-title mb-1">Kubernetes</h5>
+                                <span class="badge bg-primary">Open Source</span>
+                                <span class="badge bg-success">Industry Standard</span>
+                            </div>
+                        </div>
+                        <p class="card-text">Plataforma de orquestração de containers que se tornou padrão para deployment e gerenciamento de aplicações.</p>
+                        <div class="mt-auto">
+                            <a href="kubernetes/" class="btn btn-outline-success btn-sm">Ver Detalhes</a>
+                            <a href="https://kubernetes.io" class="btn btn-outline-primary btn-sm" target="_blank">Site Oficial</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card technology-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="../../assets/images/logos/docker-logo.png" alt="Docker" class="tech-logo me-3" style="width: 48px; height: 48px;">
+                            <div>
+                                <h5 class="card-title mb-1">Docker</h5>
+                                <span class="badge bg-primary">Open Source</span>
+                                <span class="badge bg-success">Fundamental</span>
+                            </div>
+                        </div>
+                        <p class="card-text">Plataforma de containerização que revolucionou o deployment de aplicações e é base para orquestração moderna.</p>
+                        <div class="mt-auto">
+                            <a href="docker/" class="btn btn-outline-success btn-sm">Ver Detalhes</a>
+                            <a href="https://docker.com" class="btn btn-outline-primary btn-sm" target="_blank">Site Oficial</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card technology-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="../../assets/images/logos/docker-logo.png" alt="Docker" class="tech-logo me-3" style="width: 48px; height: 48px;">
+                            <div>
+                                <h5 class="card-title mb-1">Docker</h5>
+                                <span class="badge bg-primary">Open Source</span>
+                                <span class="badge bg-success">Fundamental</span>
+                            </div>
+                        </div>
+                        <p class="card-text">Plataforma de containerização que revolucionou o deployment de aplicações e é base para orquestração moderna.</p>
+                        <div class="mt-auto">
+                            <a href="docker/" class="btn btn-outline-success btn-sm">Ver Detalhes</a>
+                            <a href="https://docker.com" class="btn btn-outline-primary btn-sm" target="_blank">Site Oficial</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legacy Container Orchestration -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h3 class="text-secondary mb-3">🏛️ Orquestração Legacy</h3>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card technology-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="../../assets/images/logos/mesos-logo.png" alt="Apache Mesos" class="tech-logo me-3" style="width: 48px; height: 48px;">
+                            <div>
+                                <h5 class="card-title mb-1">Apache Mesos</h5>
+                                <span class="badge bg-primary">Open Source</span>
+                                <span class="badge bg-secondary">Legacy</span>
+                            </div>
+                        </div>
+                        <p class="card-text">Sistema de orquestração de recursos distribuídos, precursor do Kubernetes em muitos aspectos.</p>
+                        <div class="mt-auto">
+                            <a href="apache-mesos/" class="btn btn-outline-success btn-sm">Ver Detalhes</a>
+                            <a href="https://mesos.apache.org" class="btn btn-outline-primary btn-sm" target="_blank">Site Oficial</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Section -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="mb-4">Comparação de Ferramentas</h2>
+                <div class="table-responsive">
+                    <table class="table table-dark table-striped">
+                        <thead>
+                            <tr>
+                                <th>Ferramenta</th>
+                                <th>Tipo</th>
+                                <th>Linguagem</th>
+                                <th>Interface</th>
+                                <th>Curva de Aprendizado</th>
+                                <th>Casos de Uso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Apache Airflow</strong></td>
+                                <td>Workflow Engine</td>
+                                <td>Python</td>
+                                <td>Web UI Rica</td>
+                                <td>Média</td>
+                                <td>ETL, ML Pipelines</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prefect</strong></td>
+                                <td>Workflow Engine</td>
+                                <td>Python</td>
+                                <td>Web UI Moderna</td>
+                                <td>Baixa</td>
+                                <td>Data Engineering</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dagster</strong></td>
+                                <td>Data Orchestrator</td>
+                                <td>Python</td>
+                                <td>Web UI + IDE</td>
+                                <td>Média-Alta</td>
+                                <td>Data Assets</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kubernetes</strong></td>
+                                <td>Container Orchestrator</td>
+                                <td>YAML/Go</td>
+                                <td>CLI + Dashboard</td>
+                                <td>Alta</td>
+                                <td>Microservices</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Docker</strong></td>
+                                <td>Container Platform</td>
+                                <td>Dockerfile</td>
+                                <td>CLI + Desktop</td>
+                                <td>Baixa-Média</td>
+                                <td>Containerização</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Apache Mesos</strong></td>
+                                <td>Resource Manager</td>
+                                <td>C++/Python</td>
+                                <td>Web UI + API</td>
+                                <td>Alta</td>
+                                <td>Cluster Management</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Portal Big Data</h5>
+                    <p>Seu guia completo para tecnologias de Big Data</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2024 Portal Big Data. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

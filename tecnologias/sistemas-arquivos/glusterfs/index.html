@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlusterFS - Sistema de Arquivos Distribuído | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="GlusterFS - Sistema de Arquivos Distribuído | Portal Big Data">
+    <meta name="description" content="GlusterFS - Sistema de arquivos distribuído escalável que agrega storage de múltiplos servidores. Guia completo, casos de uso e comparações.">
+    <meta name="keywords" content="GlusterFS, sistema arquivos distribuído, network storage, big data, red hat, open source">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/sistemas-arquivos/glusterfs">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/sistemas-arquivos/glusterfs">
+    <meta property="og:title" content="GlusterFS - Sistema de Arquivos Distribuído | Portal Big Data">
+    <meta property="og:description" content="GlusterFS - Sistema de arquivos distribuído escalável que agrega storage de múltiplos servidores.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/og/glusterfs-og.jpg">
+    <meta property="og:site_name" content="Portal Big Data">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/tecnologias/sistemas-arquivos/glusterfs">
+    <meta property="twitter:title" content="GlusterFS - Sistema de Arquivos Distribuído | Portal Big Data">
+    <meta property="twitter:description" content="GlusterFS - Sistema de arquivos distribuído escalável que agrega storage de múltiplos servidores.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/glusterfs-twitter.jpg">
+    <meta property="twitter:site" content="@portalbigdata">
+    
+    <!-- Structured Data for Software Application -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "GlusterFS",
+        "description": "Sistema de arquivos distribuído escalável que agrega storage de múltiplos servidores em um namespace global",
+        "url": "https://www.gluster.org/",
+        "applicationCategory": "Sistemas de Arquivos Distribuídos",
+        "operatingSystem": "Linux",
+        "programmingLanguage": "C",
+        "license": "GPL v2/LGPL v3",
+        "version": "11.1",
+        "datePublished": "2005-01-01",
+        "dateModified": "2024-01-15",
+        "author": {
+            "@type": "Organization",
+            "name": "Red Hat",
+            "url": "https://www.redhat.com"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        },
+        "featureList": [
+            "Namespace global unificado",
+            "Escalabilidade linear",
+            "Replicação e distribuição",
+            "Interface POSIX completa"
+        ],
+        "requirements": "Linux, Network connectivity"
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="../../../">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../../">Início</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Sistemas de Arquivos Distribuídos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">GlusterFS</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Technology Header -->
+                <div class="tech-header d-flex align-items-center mb-4">
+                    <img src="../../../assets/images/logos/glusterfs-logo.png" alt="GlusterFS Logo" class="tech-logo me-4" style="width: 80px; height: 80px;">
+                    <div>
+                        <h1 class="mb-2">GlusterFS</h1>
+                        <div class="tech-badges">
+                            <span class="badge bg-primary">Open Source</span>
+                            <span class="badge bg-info">Network Storage</span>
+                            <span class="badge bg-warning text-dark">Sistemas de Arquivos</span>
+                        </div>
+                        <p class="lead mt-2 mb-0">Sistema de arquivos distribuído escalável que agrega storage de múltiplos servidores em um namespace global unificado.</p>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs nav-fill mb-4" id="techTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            Visão Geral
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">
+                            Recursos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="use-cases-tab" data-bs-toggle="tab" data-bs-target="#use-cases" type="button" role="tab">
+                            Casos de Uso
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="examples-tab" data-bs-toggle="tab" data-bs-target="#examples" type="button" role="tab">
+                            Exemplos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button" role="tab">
+                            Comparações
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="techTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>O que é GlusterFS?</h3>
+                                <p>GlusterFS é um sistema de arquivos distribuído de código aberto que pode escalar para vários petabytes e lidar com milhares de clientes. Ele agrega storage de múltiplos servidores em um namespace global unificado, fornecendo uma interface POSIX completa para aplicações.</p>
+                                
+                                <h4>História</h4>
+                                <p>GlusterFS foi originalmente desenvolvido pela Gluster Inc. em 2005 e posteriormente adquirido pela Red Hat em 2011. É mantido como projeto open source e integrado ao Red Hat Storage Server. O projeto continua ativo com contribuições da comunidade global.</p>
+                                
+                                <h4>Arquitetura</h4>
+                                <p>GlusterFS usa uma arquitetura sem metadados centralizados, onde os dados são distribuídos usando algoritmos de hash. Cada servidor (brick) armazena dados e metadados localmente, eliminando pontos únicos de falha. Os clientes se conectam diretamente aos servidores de storage.</p>
+                                
+                                <h4>Vantagens</h4>
+                                <ul>
+                                    <li>Sem metadados centralizados - elimina pontos únicos de falha</li>
+                                    <li>Interface POSIX completa - compatível com aplicações existentes</li>
+                                    <li>Escalabilidade linear - adicione servidores conforme necessário</li>
+                                    <li>Múltiplos tipos de volume (distribuído, replicado, striped)</li>
+                                    <li>Self-healing automático de dados corrompidos</li>
+                                    <li>Suporte a snapshots e geo-replicação</li>
+                                </ul>
+                                
+                                <h4>Desvantagens</h4>
+                                <ul>
+                                    <li>Performance pode ser impactada por latência de rede</li>
+                                    <li>Complexidade de configuração para cenários avançados</li>
+                                    <li>Overhead de rede para operações de metadados</li>
+                                    <li>Limitações com arquivos muito pequenos</li>
+                                    <li>Requer planejamento cuidadoso da topologia de rede</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane fade" id="features" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Principais Recursos</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Tipos de Volume</h6>
+                                                <p class="card-text small">Suporte a volumes distribuídos, replicados, striped e combinações híbridas.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Self-Healing</h6>
+                                                <p class="card-text small">Detecção e correção automática de inconsistências de dados.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Geo-Replicação</h6>
+                                                <p class="card-text small">Replicação assíncrona entre sites geograficamente distribuídos.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Snapshots</h6>
+                                                <p class="card-text small">Criação de snapshots point-in-time para backup e recovery.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4>Especificações Técnicas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Capacidade Máxima:</strong></td>
+                                                <td>Vários petabytes</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Número Máximo de Clientes:</strong></td>
+                                                <td>Milhares</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Protocolos Suportados:</strong></td>
+                                                <td>NFS, SMB/CIFS, Native</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Sistemas de Arquivos:</strong></td>
+                                                <td>XFS, EXT4, ZFS</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Replicação:</strong></td>
+                                                <td>Síncrona e assíncrona</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Tab -->
+                    <div class="tab-pane fade" id="use-cases" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Casos de Uso</h3>
+                                
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Storage Unificado</h6>
+                                        <p class="card-text">Consolidação de storage de múltiplos servidores em um namespace único.</p>
+                                        <small class="text-muted">Exemplo: Empresas consolidam storage de diferentes departamentos em uma infraestrutura unificada.</small>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Backup e Arquivamento</h6>
+                                        <p class="card-text">Armazenamento distribuído para sistemas de backup e arquivamento de longo prazo.</p>
+                                        <small class="text-muted">Exemplo: Backup de dados corporativos com replicação geográfica.</small>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Content Distribution</h6>
+                                        <p class="card-text">Distribuição de conteúdo estático para aplicações web e CDNs.</p>
+                                        <small class="text-muted">Exemplo: Armazenamento de imagens e vídeos para plataformas de mídia.</small>
+                                    </div>
+                                </div>
+                                
+                                <h4>Quando Usar GlusterFS</h4>
+                                <div class="alert alert-success">
+                                    <h5>✅ Recomendado para:</h5>
+                                    <ul>
+                                        <li>Necessidade de namespace global unificado</li>
+                                        <li>Aplicações que requerem interface POSIX</li>
+                                        <li>Cenários de backup e arquivamento</li>
+                                        <li>Ambientes que precisam de geo-replicação</li>
+                                        <li>Consolidação de storage distribuído</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <h5>⚠️ Considere alternativas se:</h5>
+                                    <ul>
+                                        <li>Você precisa de performance extremamente alta</li>
+                                        <li>Trabalha principalmente com arquivos muito pequenos</li>
+                                        <li>Tem limitações de largura de banda de rede</li>
+                                        <li>Precisa de compatibilidade com object storage APIs</li>
+                                        <li>Requer baixa latência para acesso aleatório</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples Tab -->
+                    <div class="tab-pane fade" id="examples" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Exemplos Práticos</h3>
+                                
+                                <h4>Instalação</h4>
+                                <div class="code-example">
+                                    <pre><code># Ubuntu/Debian
+sudo apt update
+sudo apt install glusterfs-server
+
+# CentOS/RHEL
+sudo yum install centos-release-gluster
+sudo yum install glusterfs-server
+
+# Iniciar serviço
+sudo systemctl start glusterd
+sudo systemctl enable glusterd</code></pre>
+                                </div>
+                                
+                                <h4>Configuração Básica</h4>
+                                <div class="code-example">
+                                    <pre><code># Adicionar peers ao cluster
+sudo gluster peer probe server2.example.com
+sudo gluster peer probe server3.example.com
+
+# Verificar status do cluster
+sudo gluster peer status
+
+# Criar diretórios para bricks
+sudo mkdir -p /data/brick1/gv0
+
+# Criar volume distribuído
+sudo gluster volume create gv0 replica 2 \
+    server1:/data/brick1/gv0 \
+    server2:/data/brick1/gv0 \
+    server3:/data/brick1/gv0 \
+    server4:/data/brick1/gv0
+
+# Iniciar volume
+sudo gluster volume start gv0</code></pre>
+                                </div>
+                                
+                                <h4>Exemplo de Uso</h4>
+                                <div class="code-example">
+                                    <pre><code># Montar volume no cliente
+sudo mkdir /mnt/glusterfs
+sudo mount -t glusterfs server1:/gv0 /mnt/glusterfs
+
+# Configuração permanente no /etc/fstab
+server1:/gv0 /mnt/glusterfs glusterfs defaults,_netdev 0 0
+
+# Comandos de gerenciamento
+sudo gluster volume info
+sudo gluster volume status
+sudo gluster volume heal gv0 info
+
+# Criar snapshot
+sudo gluster snapshot create snap1 gv0
+
+# Expandir volume
+sudo gluster volume add-brick gv0 server5:/data/brick1/gv0
+sudo gluster volume rebalance gv0 start</code></pre>
+                                </div>
+                                
+                                <h4>Tutoriais Relacionados</h4>
+                                <div class="card mb-2">
+                                    <div class="card-body py-2">
+                                        <h6 class="card-title mb-1">Configurando Cluster GlusterFS</h6>
+                                        <small class="text-muted">Nível: Intermediário</small>
+                                        <a href="../../../blog/configurando-cluster-glusterfs/" class="btn btn-sm btn-outline-success ms-2">Ver Tutorial</a>
+                                    </div>
+                                </div>
+                                <div class="card mb-2">
+                                    <div class="card-body py-2">
+                                        <h6 class="card-title mb-1">GlusterFS Geo-Replication</h6>
+                                        <small class="text-muted">Nível: Avançado</small>
+                                        <a href="../../../blog/glusterfs-geo-replication/" class="btn btn-sm btn-outline-success ms-2">Ver Tutorial</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Tab -->
+                    <div class="tab-pane fade" id="comparison" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Comparações</h3>
+                                
+                                <h4>Alternativas Similares</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Tecnologia</th>
+                                                <th>Performance</th>
+                                                <th>Facilidade de Uso</th>
+                                                <th>Comunidade</th>
+                                                <th>Licença</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>GlusterFS</strong></td>
+                                                <td><span class="text-warning">★★★☆☆</span></td>
+                                                <td><span class="text-warning">★★★☆☆</span></td>
+                                                <td><span class="text-warning">★★★☆☆</span></td>
+                                                <td><span class="badge bg-info">GPL/LGPL</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Ceph</strong></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                                <td><span class="text-warning">★★☆☆☆</span></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                                <td><span class="badge bg-info">LGPL</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>HDFS</strong></td>
+                                                <td><span class="text-warning">★★★☆☆</span></td>
+                                                <td><span class="text-warning">★★☆☆☆</span></td>
+                                                <td><span class="text-warning">★★★★★</span></td>
+                                                <td><span class="badge bg-info">Apache 2.0</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>MinIO</strong></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                                <td><span class="text-warning">★★★☆☆</span></td>
+                                                <td><span class="badge bg-info">Apache 2.0</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h4>Matriz de Decisão</h4>
+                                <div class="alert alert-info">
+                                    <h6>💡 Dica de Escolha:</h6>
+                                    <p>Escolha GlusterFS se você precisa de um sistema de arquivos distribuído com interface POSIX completa e namespace global unificado. É ideal para consolidação de storage e cenários que requerem compatibilidade com aplicações tradicionais.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>📊 Quick Facts</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-dark">
+                                <tr>
+                                    <td><strong>Versão Atual:</strong></td>
+                                    <td>11.1</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Licença:</strong></td>
+                                    <td>GPL v2/LGPL v3</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Linguagem:</strong></td>
+                                    <td>C</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Primeira Release:</strong></td>
+                                    <td>2005</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Última Atualização:</strong></td>
+                                    <td>Janeiro 2024</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔗 Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="https://www.gluster.org/" class="btn btn-outline-success btn-sm" target="_blank">
+                                    🌐 Site Oficial
+                                </a>
+                                <a href="https://github.com/gluster/glusterfs" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📁 GitHub
+                                </a>
+                                <a href="https://docs.gluster.org/" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📚 Documentação
+                                </a>
+                                <a href="https://www.gluster.org/community/" class="btn btn-outline-success btn-sm" target="_blank">
+                                    👥 Comunidade
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔄 Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="../ceph/" class="btn btn-outline-info btn-sm">Ceph</a>
+                                <a href="../hdfs/" class="btn btn-outline-info btn-sm">HDFS</a>
+                                <a href="../minio/" class="btn btn-outline-info btn-sm">MinIO</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Courses -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🎓 Cursos Relacionados</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="card mb-2">
+                                <div class="card-body py-2">
+                                    <h6 class="card-title mb-1">Storage Distribuído Fundamentals</h6>
+                                    <small class="text-muted">Iniciante</small>
+                                    <a href="../../../cursos/storage-distribuido-fundamentals/" class="btn btn-sm btn-outline-success ms-2">Ver Curso</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sponsored Content -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>💼 Conteúdo Patrocinado</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <p class="small">Espaço disponível para parceiros</p>
+                                <a href="mailto:contato@hadoop.com.br" class="btn btn-outline-warning btn-sm">Anunciar Aqui</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/main.js"></script>
+    <script src="../../../assets/js/technology-page.js"></script>
+    <script src="../../../assets/js/theme-toggle.js"></script>
+</body>
+</html>

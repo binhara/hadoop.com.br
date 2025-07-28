@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novidades e Tendências Big Data | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- News and Trends Specific CSS -->
+    <link href="../../assets/css/news-trends.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Novidades e Tendências Big Data | Portal Big Data">
+    <meta name="description" content="Últimas novidades, tendências e atualizações do mundo Big Data. Feed automatizado de notícias, tecnologias trending e eventos importantes.">
+    <meta name="keywords" content="big data news, hadoop trends, apache spark news, data engineering trends, tecnologias emergentes">
+    <link rel="canonical" href="https://hadoop.com.br/blog/novidades/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hadoop.com.br/blog/novidades/">
+    <meta property="og:title" content="Novidades e Tendências Big Data | Portal Big Data">
+    <meta property="og:description" content="Últimas novidades, tendências e atualizações do mundo Big Data.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/blog/news-trends-og.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/blog/novidades/">
+    <meta property="twitter:title" content="Novidades e Tendências Big Data | Portal Big Data">
+    <meta property="twitter:description" content="Últimas novidades, tendências e atualizações do mundo Big Data.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/blog/news-trends-twitter.jpg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Novidades e Tendências Big Data",
+        "description": "Últimas novidades, tendências e atualizações do mundo Big Data",
+        "url": "https://hadoop.com.br/blog/novidades/",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Portal Big Data",
+            "url": "https://hadoop.com.br"
+        },
+        "mainEntity": {
+            "@type": "ItemList",
+            "name": "Big Data News Feed",
+            "description": "Feed automatizado de notícias sobre Big Data"
+        }
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="/">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../tecnologias/">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="../../blog/">Blog</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Novidades</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="hero-section text-center mb-5">
+                    <h1 class="display-4 mb-3">
+                        <i class="fas fa-rss me-3"></i>Novidades e Tendências
+                    </h1>
+                    <p class="lead">Últimas notícias, tecnologias trending e eventos do mundo Big Data</p>
+                    <div class="hero-stats mt-4">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="stat-card">
+                                    <h3 id="total-news">0</h3>
+                                    <p>Notícias</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-card">
+                                    <h3 id="trending-techs">0</h3>
+                                    <p>Tecnologias Trending</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-card">
+                                    <h3 id="upcoming-events">0</h3>
+                                    <p>Eventos</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-card">
+                                    <h3 id="newsletter-subscribers">1.2k</h3>
+                                    <p>Assinantes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- News Feed Tabs -->
+                <div class="news-tabs mb-4">
+                    <ul class="nav nav-pills nav-fill" id="news-tabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="breaking-tab" data-bs-toggle="pill" data-bs-target="#breaking-news" type="button" role="tab">
+                                <i class="fas fa-bolt me-2"></i>Breaking News
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="trending-tab" data-bs-toggle="pill" data-bs-target="#trending-tech" type="button" role="tab">
+                                <i class="fas fa-fire me-2"></i>Trending Tech
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="events-tab" data-bs-toggle="pill" data-bs-target="#events-conferences" type="button" role="tab">
+                                <i class="fas fa-calendar me-2"></i>Eventos
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="releases-tab" data-bs-toggle="pill" data-bs-target="#tech-releases" type="button" role="tab">
+                                <i class="fas fa-rocket me-2"></i>Releases
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="news-content">
+                    <!-- Breaking News Tab -->
+                    <div class="tab-pane fade show active" id="breaking-news" role="tabpanel">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h3><i class="fas fa-bolt text-warning me-2"></i>Últimas Notícias</h3>
+                            <button class="btn btn-outline-primary btn-sm" onclick="refreshNewsFeed()">
+                                <i class="fas fa-sync-alt me-1"></i>Atualizar
+                            </button>
+                        </div>
+                        <div id="breaking-news-feed" class="news-feed">
+                            <!-- Breaking news will be loaded dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Trending Technologies Tab -->
+                    <div class="tab-pane fade" id="trending-tech" role="tabpanel">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h3><i class="fas fa-fire text-danger me-2"></i>Tecnologias em Alta</h3>
+                            <div class="trending-period">
+                                <select class="form-select form-select-sm" id="trending-period" onchange="updateTrendingPeriod()">
+                                    <option value="week">Esta semana</option>
+                                    <option value="month">Este mês</option>
+                                    <option value="quarter">Este trimestre</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="trending-technologies" class="trending-grid">
+                            <!-- Trending technologies will be loaded dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Events and Conferences Tab -->
+                    <div class="tab-pane fade" id="events-conferences" role="tabpanel">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h3><i class="fas fa-calendar text-info me-2"></i>Eventos e Conferências</h3>
+                            <div class="event-filters">
+                                <select class="form-select form-select-sm" id="event-type-filter" onchange="filterEvents()">
+                                    <option value="all">Todos os tipos</option>
+                                    <option value="conference">Conferências</option>
+                                    <option value="webinar">Webinars</option>
+                                    <option value="workshop">Workshops</option>
+                                    <option value="meetup">Meetups</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="events-list" class="events-container">
+                            <!-- Events will be loaded dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Technology Releases Tab -->
+                    <div class="tab-pane fade" id="tech-releases" role="tabpanel">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h3><i class="fas fa-rocket text-success me-2"></i>Novos Releases</h3>
+                            <div class="release-filters">
+                                <select class="form-select form-select-sm" id="release-category" onchange="filterReleases()">
+                                    <option value="all">Todas as categorias</option>
+                                    <option value="processing">Processamento</option>
+                                    <option value="storage">Armazenamento</option>
+                                    <option value="streaming">Streaming</option>
+                                    <option value="ml">Machine Learning</option>
+                                    <option value="orchestration">Orquestração</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="tech-releases-list" class="releases-container">
+                            <!-- Technology releases will be loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="text-center mt-4">
+                    <button class="btn btn-outline-primary me-2" id="load-more-btn" onclick="loadMoreContent()">
+                        <i class="fas fa-plus me-2"></i>Carregar Mais
+                    </button>
+                    <button class="btn btn-outline-success" id="generate-newsletter-btn" onclick="generateNewsletterManually()">
+                        <i class="fas fa-envelope me-2"></i>Gerar Newsletter
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Newsletter Signup -->
+                <div class="card mb-4 newsletter-card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-envelope me-2"></i>Newsletter Semanal
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Receba um resumo semanal das principais novidades do Big Data</p>
+                        <form id="weekly-newsletter-form" onsubmit="subscribeWeeklyNewsletter(event)">
+                            <div class="mb-3">
+                                <input type="email" class="form-control matrix-input" placeholder="Seu e-mail" required>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="breaking-news-alerts" checked>
+                                    <label class="form-check-label" for="breaking-news-alerts">
+                                        Alertas de notícias importantes
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="trending-tech-alerts">
+                                    <label class="form-check-label" for="trending-tech-alerts">
+                                        Tecnologias em alta
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="event-reminders">
+                                    <label class="form-check-label" for="event-reminders">
+                                        Lembretes de eventos
+                                    </label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="fas fa-paper-plane me-2"></i>Inscrever-se
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Trending Topics -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-hashtag me-2"></i>Tópicos em Alta</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="trending-topics">
+                            <!-- Trending topics will be loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-chart-line me-2"></i>Estatísticas</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="quick-stats">
+                            <!-- Quick stats will be loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-clock me-2"></i>Atividade Recente</h5>
+                    </div>
+                    <div class="list-group list-group-flush" id="recent-activity">
+                        <!-- Recent activity will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Partner Banner -->
+                <div class="banner-sidebar-news"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/theme-toggle.js"></script>
+    <script src="../../assets/js/banner-system.js"></script>
+    <script src="../../assets/js/news-automation-config.js"></script>
+    <script src="../../assets/js/news-trends-system.js"></script>
+    <script src="../../assets/js/newsletter-generator.js"></script>
+</body>
+</html>

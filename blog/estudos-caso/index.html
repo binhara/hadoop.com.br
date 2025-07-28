@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudos de Caso - Portal Big Data</title>
+    <meta name="description" content="Estudos de caso reais de implementações de Big Data em diferentes indústrias. Veja resultados, métricas e recursos para download.">
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Matrix Theme CSS -->
+    <link rel="stylesheet" href="../../assets/css/matrix-theme.css">
+    
+    <!-- Case Studies CSS -->
+    <link rel="stylesheet" href="../../assets/css/case-studies.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand text-success" href="../../index.html">
+                <i class="fas fa-database"></i> Portal Big Data
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../tecnologias/">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Blog
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="../index.html">Artigos</a></li>
+                            <li><a class="dropdown-item" href="../tutoriais/">Tutoriais</a></li>
+                            <li><a class="dropdown-item active" href="index.html">Estudos de Caso</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../buscar.html">
+                            <i class="fas fa-search"></i> Buscar
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../index.html">Blog</a></li>
+                <li class="breadcrumb-item active">Estudos de Caso</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Header -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-header text-center mb-5">
+                    <h1 class="display-4 text-success mb-3">
+                        <i class="fas fa-chart-line"></i> Estudos de Caso
+                    </h1>
+                    <p class="lead text-light">
+                        Implementações reais de Big Data em diferentes indústrias com resultados mensuráveis
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filters Section -->
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="card bg-dark border-success">
+                    <div class="card-header bg-success text-dark">
+                        <h5 class="mb-0">
+                            <i class="fas fa-filter"></i> Filtros
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="industryFilter" class="form-label text-success">Indústria</label>
+                                <select class="form-select bg-dark text-success border-success" id="industryFilter">
+                                    <option value="">Todas as Indústrias</option>
+                                    <option value="financeiro">Financeiro</option>
+                                    <option value="varejo">Varejo</option>
+                                    <option value="saude">Saúde</option>
+                                    <option value="telecomunicacoes">Telecomunicações</option>
+                                    <option value="energia">Energia</option>
+                                    <option value="manufatura">Manufatura</option>
+                                    <option value="governo">Governo</option>
+                                    <option value="educacao">Educação</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="technologyFilter" class="form-label text-success">Tecnologia Principal</label>
+                                <select class="form-select bg-dark text-success border-success" id="technologyFilter">
+                                    <option value="">Todas as Tecnologias</option>
+                                    <option value="hadoop">Hadoop</option>
+                                    <option value="spark">Apache Spark</option>
+                                    <option value="kafka">Apache Kafka</option>
+                                    <option value="flink">Apache Flink</option>
+                                    <option value="snowflake">Snowflake</option>
+                                    <option value="databricks">Databricks</option>
+                                    <option value="delta-lake">Delta Lake</option>
+                                    <option value="clickhouse">ClickHouse</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="sizeFilter" class="form-label text-success">Tamanho da Empresa</label>
+                                <select class="form-select bg-dark text-success border-success" id="sizeFilter">
+                                    <option value="">Todos os Tamanhos</option>
+                                    <option value="startup">Startup</option>
+                                    <option value="pequena">Pequena (< 100 funcionários)</option>
+                                    <option value="media">Média (100-1000 funcionários)</option>
+                                    <option value="grande">Grande (> 1000 funcionários)</option>
+                                    <option value="enterprise">Enterprise (> 10000 funcionários)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <button class="btn btn-success me-2" onclick="applyFilters()">
+                                    <i class="fas fa-search"></i> Aplicar Filtros
+                                </button>
+                                <button class="btn btn-outline-success" onclick="clearFilters()">
+                                    <i class="fas fa-times"></i> Limpar Filtros
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Case Studies Grid -->
+    <div class="container">
+        <div class="row" id="caseStudiesGrid">
+            <!-- Case studies will be loaded here by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div class="container text-center my-5" id="loadingIndicator">
+        <div class="spinner-border text-success" role="status">
+            <span class="visually-hidden">Carregando...</span>
+        </div>
+        <p class="text-success mt-2">Carregando estudos de caso...</p>
+    </div>
+
+    <!-- No Results Message -->
+    <div class="container text-center my-5 d-none" id="noResultsMessage">
+        <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            Nenhum estudo de caso encontrado com os filtros selecionados.
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-success py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Portal Big Data</h5>
+                    <p>Seu hub completo para tecnologias de Big Data</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2024 Portal Big Data. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Case Studies JavaScript -->
+    <script src="../../assets/js/case-studies.js"></script>
+</body>
+</html>

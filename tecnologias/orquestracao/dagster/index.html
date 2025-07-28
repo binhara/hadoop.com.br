@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dagster - Orquestração Focada em Dados | Portal Big Data</title>
+    <meta name="description" content="Guia completo do Dagster: sistema de orquestração focado em dados com forte tipagem, testes e observabilidade de assets de dados.">
+    <meta name="keywords" content="dagster, data orchestration, data assets, python, data pipeline, software-defined assets">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Dagster - Orquestração Focada em Dados | Portal Big Data">
+    <meta property="og:description" content="Guia completo do Dagster: sistema de orquestração focado em dados com forte tipagem e observabilidade.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/orquestracao/dagster/">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/orquestracao/dagster/">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Dagster",
+        "description": "Data orchestrator for machine learning, analytics, and ETL",
+        "url": "https://dagster.io",
+        "applicationCategory": "Data Orchestration",
+        "operatingSystem": "Linux, macOS, Windows",
+        "programmingLanguage": "Python",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand matrix-brand" href="../../../index.html">
+                <span class="matrix-text">Portal Big Data</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Orquestração</a></li>
+                <li class="breadcrumb-item active">Dagster</li>
+            </ol>
+        </nav>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="tech-header mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="../../../assets/images/logos/dagster-logo.png" alt="Dagster" class="tech-logo me-3" style="width: 64px; height: 64px;">
+                        <div>
+                            <h1 class="mb-2">Dagster</h1>
+                            <div class="tech-badges">
+                                <span class="badge bg-primary">Open Source</span>
+                                <span class="badge bg-info">Data-Centric</span>
+                                <span class="badge bg-success">Type-Safe</span>
+                                <span class="badge bg-warning">Asset-Based</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="lead">Sistema de orquestração focado em dados com forte tipagem e observabilidade de assets</p>
+                </div>
+
+                <div class="content-section">
+                    <h2>Visão Geral</h2>
+                    <p>Dagster é um sistema de orquestração de dados que coloca os dados no centro do desenvolvimento. Diferente de outras ferramentas que focam em tarefas, o Dagster organiza pipelines em torno de "assets de dados" - as tabelas, arquivos e modelos de ML que seus pipelines produzem e mantêm.</p>
+
+                    <h3>Principais Características</h3>
+                    <ul>
+                        <li><strong>Software-Defined Assets:</strong> Foco em dados, não em tarefas</li>
+                        <li><strong>Type System:</strong> Sistema de tipos robusto para dados</li>
+                        <li><strong>Testing Framework:</strong> Testes integrados para pipelines</li>
+                        <li><strong>Observabilidade:</strong> Lineage e monitoramento de dados</li>
+                        <li><strong>Development Tools:</strong> IDE integrado e debugging</li>
+                        <li><strong>Multi-Environment:</strong> Dev, staging e produção</li>
+                    </ul>
+
+                    <h3>Conceitos Fundamentais</h3>
+                    <ul>
+                        <li><strong>Assets:</strong> Objetos de dados persistentes (tabelas, arquivos)</li>
+                        <li><strong>Ops:</strong> Unidades de computação que transformam dados</li>
+                        <li><strong>Jobs:</strong> Seleção de assets para executar</li>
+                        <li><strong>Resources:</strong> Conexões externas (databases, APIs)</li>
+                        <li><strong>Sensors:</strong> Monitoram mudanças externas</li>
+                        <li><strong>Schedules:</strong> Execução baseada em tempo</li>
+                    </ul>
+
+                    <h3>Exemplo de Software-Defined Assets</h3>
+                    <div class="code-example">
+                        <pre><code class="language-python">import pandas as pd
+from dagster import asset, AssetIn, Config
+from typing import List
+
+class DatabaseConfig(Config):
+    connection_string: str
+    table_name: str
+
+@asset
+def raw_sales_data(config: DatabaseConfig) -> pd.DataFrame:
+    """Extrai dados brutos de vendas do banco de dados"""
+    # Simulação de extração de dados
+    return pd.DataFrame({
+        'date': ['2024-01-01', '2024-01-02', '2024-01-03'],
+        'product': ['A', 'B', 'A'],
+        'sales': [100, 150, 200],
+        'region': ['North', 'South', 'North']
+    })
+
+@asset(deps=[raw_sales_data])
+def cleaned_sales_data(raw_sales_data: pd.DataFrame) -> pd.DataFrame:
+    """Limpa e valida os dados de vendas"""
+    # Limpeza de dados
+    cleaned = raw_sales_data.copy()
+    cleaned['date'] = pd.to_datetime(cleaned['date'])
+    cleaned = cleaned.dropna()
+    
+    # Validação
+    assert len(cleaned) > 0, "Dataset não pode estar vazio"
+    assert cleaned['sales'].min() >= 0, "Vendas não podem ser negativas"
+    
+    return cleaned
+
+@asset(deps=[cleaned_sales_data])
+def sales_summary(cleaned_sales_data: pd.DataFrame) -> pd.DataFrame:
+    """Cria resumo de vendas por região"""
+    summary = cleaned_sales_data.groupby('region').agg({
+        'sales': ['sum', 'mean', 'count']
+    }).round(2)
+    
+    summary.columns = ['total_sales', 'avg_sales', 'transaction_count']
+    return summary.reset_index()
+
+@asset(deps=[sales_summary])
+def sales_report(sales_summary: pd.DataFrame) -> str:
+    """Gera relatório de vendas"""
+    report = f"""
+    Sales Report Generated: {pd.Timestamp.now()}
+    
+    Regional Performance:
+    {sales_summary.to_string(index=False)}
+    
+    Total Revenue: ${sales_summary['total_sales'].sum():,.2f}
+    """
+    
+    # Salvar relatório
+    with open('/tmp/sales_report.txt', 'w') as f:
+        f.write(report)
+    
+    return report</code></pre>
+                    </div>
+
+                    <h3>Configuração e Resources</h3>
+                    <div class="code-example">
+                        <pre><code class="language-python">from dagster import Definitions, resource
+import psycopg2
+
+@resource
+def postgres_connection(config):
+    """Resource para conexão PostgreSQL"""
+    conn = psycopg2.connect(
+        host=config["host"],
+        database=config["database"],
+        user=config["user"],
+        password=config["password"]
+    )
+    try:
+        yield conn
+    finally:
+        conn.close()
+
+@resource  
+def s3_client(config):
+    """Resource para cliente S3"""
+    import boto3
+    return boto3.client(
+        's3',
+        aws_access_key_id=config["access_key"],
+        aws_secret_access_key=config["secret_key"],
+        region_name=config["region"]
+    )
+
+# Definições do projeto
+defs = Definitions(
+    assets=[raw_sales_data, cleaned_sales_data, sales_summary, sales_report],
+    resources={
+        "postgres": postgres_connection.configured({
+            "host": "localhost",
+            "database": "sales_db",
+            "user": "user",
+            "password": "password"
+        }),
+        "s3": s3_client.configured({
+            "access_key": "your_access_key",
+            "secret_key": "your_secret_key", 
+            "region": "us-east-1"
+        })
+    }
+)</code></pre>
+                    </div>
+
+                    <h3>Jobs e Schedules</h3>
+                    <div class="code-example">
+                        <pre><code class="language-python">from dagster import (
+    define_asset_job, 
+    ScheduleDefinition,
+    AssetSelection,
+    DefaultSensorContext,
+    sensor,
+    RunRequest
+)
+
+# Job para processar dados diários
+daily_sales_job = define_asset_job(
+    name="daily_sales_processing",
+    selection=AssetSelection.assets(
+        raw_sales_data, 
+        cleaned_sales_data, 
+        sales_summary
+    ),
+    tags={"team": "data", "env": "prod"}
+)
+
+# Schedule para execução diária
+daily_schedule = ScheduleDefinition(
+    job=daily_sales_job,
+    cron_schedule="0 2 * * *",  # 2h da manhã
+    tags={"schedule": "daily"}
+)
+
+# Sensor para detectar novos arquivos
+@sensor(job=daily_sales_job)
+def new_file_sensor(context: DefaultSensorContext):
+    """Sensor que detecta novos arquivos de dados"""
+    import os
+    
+    data_dir = "/data/incoming"
+    if os.path.exists(data_dir):
+        files = os.listdir(data_dir)
+        new_files = [f for f in files if f.endswith('.csv')]
+        
+        if new_files:
+            return RunRequest(
+                run_key=f"new_files_{len(new_files)}",
+                tags={"trigger": "file_sensor", "files": str(len(new_files))}
+            )
+    
+    return None</code></pre>
+                    </div>
+
+                    <h3>Testing Framework</h3>
+                    <div class="code-example">
+                        <pre><code class="language-python">from dagster import materialize, AssetMaterialization
+import pytest
+
+def test_cleaned_sales_data():
+    """Testa a limpeza de dados de vendas"""
+    # Dados de teste
+    test_raw_data = pd.DataFrame({
+        'date': ['2024-01-01', '2024-01-02', None],
+        'product': ['A', 'B', 'C'],
+        'sales': [100, 150, -50],  # Valor negativo para testar validação
+        'region': ['North', 'South', 'East']
+    })
+    
+    # Executar asset com dados de teste
+    with pytest.raises(AssertionError, match="Vendas não podem ser negativas"):
+        result = materialize(
+            [cleaned_sales_data],
+            resources={"raw_sales_data": test_raw_data}
+        )
+
+def test_sales_pipeline_integration():
+    """Teste de integração do pipeline completo"""
+    result = materialize([
+        raw_sales_data,
+        cleaned_sales_data, 
+        sales_summary,
+        sales_report
+    ])
+    
+    assert result.success
+    
+    # Verificar se todos os assets foram materializados
+    materialized_assets = [
+        event.asset_key for event in result.events_for_node("sales_report")
+        if event.event_type_value == "ASSET_MATERIALIZATION"
+    ]
+    
+    assert len(materialized_assets) > 0</code></pre>
+                    </div>
+
+                    <h3>Dagster UI e Observabilidade</h3>
+                    <p>O Dagster oferece uma interface web rica com recursos avançados:</p>
+                    <ul>
+                        <li><strong>Asset Lineage:</strong> Visualização de dependências entre dados</li>
+                        <li><strong>Run History:</strong> Histórico detalhado de execuções</li>
+                        <li><strong>Asset Catalog:</strong> Catálogo de todos os assets de dados</li>
+                        <li><strong>Performance Metrics:</strong> Métricas de tempo e recursos</li>
+                        <li><strong>Data Quality:</strong> Monitoramento de qualidade dos dados</li>
+                    </ul>
+
+                    <h3>Deployment com Docker</h3>
+                    <div class="code-example">
+                        <pre><code class="language-dockerfile"># Dockerfile
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY . .
+
+# Expor porta do Dagster UI
+EXPOSE 3000
+
+# Comando para iniciar Dagster
+CMD ["dagster", "dev", "--host", "0.0.0.0", "--port", "3000"]</code></pre>
+                    </div>
+
+                    <div class="code-example">
+                        <pre><code class="language-yaml"># docker-compose.yml
+version: '3.8'
+
+services:
+  dagster:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DAGSTER_POSTGRES_USER=dagster
+      - DAGSTER_POSTGRES_PASSWORD=dagster
+      - DAGSTER_POSTGRES_DB=dagster
+    depends_on:
+      - postgres
+    volumes:
+      - ./dagster_home:/opt/dagster/dagster_home
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: dagster
+      POSTGRES_PASSWORD: dagster
+      POSTGRES_DB: dagster
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:</code></pre>
+                    </div>
+
+                    <h3>Integração com dbt</h3>
+                    <div class="code-example">
+                        <pre><code class="language-python">from dagster_dbt import DbtCliResource, dbt_assets
+from dagster import AssetExecutionContext
+
+dbt_resource = DbtCliResource(project_dir="/path/to/dbt/project")
+
+@dbt_assets(manifest="/path/to/dbt/target/manifest.json")
+def dbt_analytics_assets(context: AssetExecutionContext, dbt: DbtCliResource):
+    """Assets gerados a partir de modelos dbt"""
+    yield from dbt.cli(["build"], context=context).stream()
+
+# Combinar com assets Python
+@asset(deps=[dbt_analytics_assets])
+def ml_features(dbt_analytics_assets) -> pd.DataFrame:
+    """Criar features para ML a partir de dados dbt"""
+    # Lógica para criar features
+    pass</code></pre>
+                    </div>
+
+                    <h3>Casos de Uso</h3>
+                    <ul>
+                        <li><strong>Data Engineering:</strong> Pipelines ETL/ELT robustos</li>
+                        <li><strong>Analytics Engineering:</strong> Integração com dbt</li>
+                        <li><strong>ML Operations:</strong> Pipelines de ML com lineage</li>
+                        <li><strong>Data Quality:</strong> Monitoramento e validação</li>
+                        <li><strong>Data Governance:</strong> Catalogação e lineage</li>
+                    </ul>
+
+                    <h3>Vantagens</h3>
+                    <ul>
+                        <li>Foco em dados e assets</li>
+                        <li>Sistema de tipos robusto</li>
+                        <li>Framework de testes integrado</li>
+                        <li>Observabilidade superior</li>
+                        <li>Desenvolvimento local facilitado</li>
+                        <li>Integração nativa com ferramentas modernas</li>
+                    </ul>
+
+                    <h3>Desvantagens</h3>
+                    <ul>
+                        <li>Curva de aprendizado inicial</li>
+                        <li>Conceitos únicos (assets vs tasks)</li>
+                        <li>Ecossistema menor</li>
+                        <li>Overhead para casos simples</li>
+                        <li>Documentação ainda em evolução</li>
+                    </ul>
+
+                    <h3>Dagster vs Outras Ferramentas</h3>
+                    <div class="table-responsive">
+                        <table class="table table-dark table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Aspecto</th>
+                                    <th>Dagster</th>
+                                    <th>Airflow</th>
+                                    <th>Prefect</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Paradigma</td>
+                                    <td>Asset-based</td>
+                                    <td>Task-based</td>
+                                    <td>Flow-based</td>
+                                </tr>
+                                <tr>
+                                    <td>Type System</td>
+                                    <td>Forte</td>
+                                    <td>Fraco</td>
+                                    <td>Médio</td>
+                                </tr>
+                                <tr>
+                                    <td>Testing</td>
+                                    <td>Nativo</td>
+                                    <td>Manual</td>
+                                    <td>Manual</td>
+                                </tr>
+                                <tr>
+                                    <td>Observabilidade</td>
+                                    <td>Excelente</td>
+                                    <td>Boa</td>
+                                    <td>Boa</td>
+                                </tr>
+                                <tr>
+                                    <td>Desenvolvimento</td>
+                                    <td>IDE Integrado</td>
+                                    <td>Externo</td>
+                                    <td>Externo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="sidebar-info">
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header">
+                            <h5>Informações Técnicas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><strong>Linguagem:</strong> Python</li>
+                                <li><strong>Licença:</strong> Apache 2.0</li>
+                                <li><strong>Primeira Release:</strong> 2019</li>
+                                <li><strong>Versão Atual:</strong> 1.5</li>
+                                <li><strong>Desenvolvedor:</strong> Elementl</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card bg-dark border-info mb-4">
+                        <div class="card-header">
+                            <h5>Links Úteis</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="https://dagster.io" target="_blank">Site Oficial</a></li>
+                                <li><a href="https://docs.dagster.io" target="_blank">Documentação</a></li>
+                                <li><a href="https://github.com/dagster-io/dagster" target="_blank">GitHub</a></li>
+                                <li><a href="https://dagster.io/slack" target="_blank">Slack Community</a></li>
+                                <li><a href="https://dagster.io/cloud" target="_blank">Dagster Cloud</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card bg-dark border-warning mb-4">
+                        <div class="card-header">
+                            <h5>Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="../apache-airflow/">Apache Airflow</a> - Alternativa task-based</li>
+                                <li><a href="../prefect/">Prefect</a> - Alternativa moderna</li>
+                                <li><a href="../../data-warehousing/dbt/">dbt</a> - Analytics Engineering</li>
+                                <li><a href="../kubernetes/">Kubernetes</a> - Deployment</li>
+                                <li><a href="../../processamento/apache-spark/">Apache Spark</a> - Processamento</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card bg-dark border-primary">
+                        <div class="card-header">
+                            <h5>Cursos Relacionados</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="../../../cursos/dagster-fundamentals/">Dagster Fundamentals</a></li>
+                                <li><a href="../../../cursos/data-asset-management/">Data Asset Management</a></li>
+                                <li><a href="../../../cursos/modern-data-stack/">Modern Data Stack</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Portal Big Data</h5>
+                    <p>Seu guia completo para tecnologias de Big Data</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2024 Portal Big Data. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../assets/js/technology-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<svg width="300" height="120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="oworkshopGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ef4444;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="300" height="120" fill="url(#oworkshopGradient)" rx="8"/>
+  <text x="150" y="45" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="white">O Workshop</text>
+  <text x="150" y="70" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#fecaca">Eventos &amp; Treinamentos</text>
+  <text x="150" y="90" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#fca5a5">Tecnologia em Ação</text>
+  <rect x="25" y="25" width="10" height="10" fill="#00ff00" opacity="0.8"/>
+  <rect x="265" y="85" width="8" height="8" fill="#00ff00" opacity="0.6"/>
+</svg>

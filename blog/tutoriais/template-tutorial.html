@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[TUTORIAL_TITLE] | Tutoriais Big Data | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Prism.js for Code Highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="[TUTORIAL_TITLE] | Tutoriais Big Data | Portal Big Data">
+    <meta name="description" content="[TUTORIAL_DESCRIPTION]">
+    <meta name="keywords" content="[TUTORIAL_TAGS], tutorial, passo a passo, big data, hadoop">
+    <link rel="canonical" href="https://hadoop.com.br/blog/tutoriais/[TUTORIAL_SLUG]/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/blog/tutoriais/[TUTORIAL_SLUG]/">
+    <meta property="og:title" content="[TUTORIAL_TITLE] | Tutoriais Big Data">
+    <meta property="og:description" content="[TUTORIAL_DESCRIPTION]">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/tutorials/[TUTORIAL_SLUG]-og.jpg">
+    <meta property="og:site_name" content="Portal Big Data">
+    <meta property="article:author" content="[TUTORIAL_AUTHOR]">
+    <meta property="article:published_time" content="[PUBLISHED_DATE]">
+    <meta property="article:modified_time" content="[MODIFIED_DATE]">
+    <meta property="article:section" content="Tutorial">
+    <meta property="article:tag" content="[TUTORIAL_TAGS]">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/blog/tutoriais/[TUTORIAL_SLUG]/">
+    <meta property="twitter:title" content="[TUTORIAL_TITLE] | Tutoriais Big Data">
+    <meta property="twitter:description" content="[TUTORIAL_DESCRIPTION]">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/tutorials/[TUTORIAL_SLUG]-twitter.jpg">
+    <meta property="twitter:site" content="@portalbigdata">
+    
+    <!-- Structured Data for HowTo -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "[TUTORIAL_TITLE]",
+        "description": "[TUTORIAL_DESCRIPTION]",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://hadoop.com.br/assets/images/tutorials/[TUTORIAL_SLUG]-og.jpg",
+            "width": 1200,
+            "height": 630
+        },
+        "author": {
+            "@type": "Person",
+            "name": "[TUTORIAL_AUTHOR]",
+            "url": "[AUTHOR_URL]"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Portal Big Data",
+            "url": "https://hadoop.com.br",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://hadoop.com.br/assets/images/logo.png",
+                "width": 200,
+                "height": 60
+            }
+        },
+        "datePublished": "[PUBLISHED_DATE]",
+        "dateModified": "[MODIFIED_DATE]",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://hadoop.com.br/blog/tutoriais/[TUTORIAL_SLUG]/"
+        },
+        "url": "https://hadoop.com.br/blog/tutoriais/[TUTORIAL_SLUG]/",
+        "totalTime": "[TUTORIAL_DURATION]",
+        "estimatedCost": {
+            "@type": "MonetaryAmount",
+            "currency": "BRL",
+            "value": "0"
+        },
+        "supply": [
+            {
+                "@type": "HowToSupply",
+                "name": "[PREREQUISITE_1]"
+            },
+            {
+                "@type": "HowToSupply",
+                "name": "[PREREQUISITE_2]"
+            }
+        ],
+        "tool": [
+            {
+                "@type": "HowToTool",
+                "name": "[TOOL_1]"
+            },
+            {
+                "@type": "HowToTool",
+                "name": "[TOOL_2]"
+            }
+        ],
+        "step": [
+            {
+                "@type": "HowToStep",
+                "name": "[STEP_1_TITLE]",
+                "text": "[STEP_1_DESCRIPTION]",
+                "url": "https://hadoop.com.br/blog/tutoriais/[TUTORIAL_SLUG]/#step-1"
+            },
+            {
+                "@type": "HowToStep",
+                "name": "[STEP_2_TITLE]",
+                "text": "[STEP_2_DESCRIPTION]",
+                "url": "https://hadoop.com.br/blog/tutoriais/[TUTORIAL_SLUG]/#step-2"
+            }
+        ],
+        "about": [
+            {
+                "@type": "Thing",
+                "name": "[TECHNOLOGY_1]"
+            },
+            {
+                "@type": "Thing",
+                "name": "[TECHNOLOGY_2]"
+            }
+        ],
+        "teaches": "[TUTORIAL_LEARNING_OUTCOME]",
+        "educationalLevel": "[TUTORIAL_DIFFICULTY]",
+        "inLanguage": "pt-BR"
+    }
+    </script>
+    
+    <!-- Theme Color for Mobile Browsers -->
+    <meta name="theme-color" content="#000000">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+</head>
+<body class="matrix-theme tutorial-page">
+    <!-- Navigation - Bootstrap Standard Component -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="/">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../tecnologias/">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb - Bootstrap Standard Component -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="../">Blog</a></li>
+                <li class="breadcrumb-item"><a href="./">Tutoriais</a></li>
+                <li class="breadcrumb-item active" aria-current="page">[TUTORIAL_TITLE]</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Tutorial Header - Bootstrap Components -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="tutorial-header mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h1 class="display-5 mb-3">[TUTORIAL_TITLE]</h1>
+                            <p class="lead">[TUTORIAL_DESCRIPTION]</p>
+                            
+                            <!-- Tutorial Meta - Bootstrap Badges -->
+                            <div class="tutorial-meta mb-3">
+                                <span class="badge bg-primary me-2">
+                                    <i class="fas fa-layer-group me-1"></i>[TUTORIAL_DIFFICULTY]
+                                </span>
+                                <span class="badge bg-success me-2">
+                                    <i class="fas fa-clock me-1"></i>[TUTORIAL_DURATION]
+                                </span>
+                                <span class="badge bg-info me-2">
+                                    <i class="fas fa-code me-1"></i>[TUTORIAL_TECHNOLOGY]
+                                </span>
+                                <span class="badge bg-warning text-dark">
+                                    <i class="fas fa-calendar me-1"></i>[PUBLISHED_DATE_FORMATTED]
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <img src="../../assets/images/tutorials/[TUTORIAL_SLUG]-featured.jpg" alt="[TUTORIAL_TITLE]" class="img-fluid rounded">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content - Bootstrap Grid System -->
+    <div class="container">
+        <div class="row">
+            <!-- Tutorial Content - Bootstrap Column -->
+            <div class="col-lg-8">
+                <!-- Prerequisites - Bootstrap Alert -->
+                <div class="alert alert-info mb-4" role="alert">
+                    <h5 class="alert-heading">
+                        <i class="fas fa-list-check me-2"></i>Pré-requisitos
+                    </h5>
+                    <ul class="mb-0" id="prerequisites-list">
+                        <!-- Prerequisites will be populated dynamically -->
+                    </ul>
+                </div>
+
+                <!-- What You'll Learn - Bootstrap Card -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-graduation-cap me-2"></i>O que você vai aprender</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul id="learning-outcomes">
+                            <!-- Learning outcomes will be populated dynamically -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tutorial Progress - Bootstrap Progress -->
+                <div class="tutorial-progress mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h6>Progresso do Tutorial</h6>
+                        <span class="badge bg-primary" id="progress-percentage">0%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress-bar"></div>
+                    </div>
+                </div>
+
+                <!-- Tutorial Steps - Bootstrap Accordion -->
+                <div class="accordion" id="tutorial-steps">
+                    <!-- Steps will be populated dynamically -->
+                </div>
+
+                <!-- Tutorial Completion - Bootstrap Card -->
+                <div class="card mt-4 d-none" id="completion-card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
+                        <h4>Parabéns! Tutorial Concluído</h4>
+                        <p class="text-muted">Você completou com sucesso este tutorial.</p>
+                        <div class="mt-3">
+                            <button class="btn btn-success me-2" onclick="downloadCertificate()">
+                                <i class="fas fa-certificate me-1"></i>Baixar Certificado
+                            </button>
+                            <button class="btn btn-outline-primary" onclick="shareCompletion()">
+                                <i class="fas fa-share me-1"></i>Compartilhar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tutorial Rating - Bootstrap Card -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-star me-2"></i>Avalie este Tutorial</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="rating-stars mb-3" id="tutorial-rating">
+                                    <i class="fas fa-star" data-rating="1"></i>
+                                    <i class="fas fa-star" data-rating="2"></i>
+                                    <i class="fas fa-star" data-rating="3"></i>
+                                    <i class="fas fa-star" data-rating="4"></i>
+                                    <i class="fas fa-star" data-rating="5"></i>
+                                </div>
+                                <p class="small text-muted">Clique nas estrelas para avaliar</p>
+                            </div>
+                            <div class="col-md-6">
+                                <textarea class="form-control matrix-input" placeholder="Deixe seu feedback (opcional)" rows="3" id="tutorial-feedback"></textarea>
+                                <button class="btn btn-primary btn-sm mt-2" onclick="submitRating()">
+                                    <i class="fas fa-paper-plane me-1"></i>Enviar Avaliação
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Tutorials - Bootstrap Cards -->
+                <section class="related-tutorials mt-5">
+                    <h3 class="mb-4">Tutoriais Relacionados</h3>
+                    <div class="row" id="related-tutorials">
+                        <!-- Related tutorials will be populated dynamically -->
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar - Bootstrap Column -->
+            <div class="col-lg-4">
+                <!-- Tutorial Navigation - Bootstrap Card -->
+                <div class="card mb-4 position-sticky" style="top: 20px;">
+                    <div class="card-header">
+                        <h5><i class="fas fa-list me-2"></i>Navegação</h5>
+                    </div>
+                    <div class="card-body">
+                        <nav id="tutorial-navigation">
+                            <!-- Navigation will be generated dynamically -->
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- Code Playground - Bootstrap Card -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-play me-2"></i>Playground</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text small">Teste o código diretamente no navegador</p>
+                        <button class="btn btn-outline-primary btn-sm w-100" onclick="openPlayground()">
+                            <i class="fas fa-external-link-alt me-1"></i>Abrir Playground
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Download Resources - Bootstrap Card -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5><i class="fas fa-download me-2"></i>Recursos</h5>
+                    </div>
+                    <div class="list-group list-group-flush" id="tutorial-resources">
+                        <!-- Resources will be populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Help & Support - Bootstrap Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-question-circle me-2"></i>Precisa de Ajuda?</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text small">Encontrou algum problema ou tem dúvidas?</p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#helpModal">
+                                <i class="fas fa-comments me-1"></i>Fazer Pergunta
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm" onclick="reportIssue()">
+                                <i class="fas fa-bug me-1"></i>Reportar Problema
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Modal - Bootstrap Modal -->
+    <div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="helpModalLabel">
+                        <i class="fas fa-question-circle me-2"></i>Fazer Pergunta
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="help-form">
+                        <div class="mb-3">
+                            <label for="question-step" class="form-label">Em qual passo você está?</label>
+                            <select class="form-select matrix-input" id="question-step">
+                                <option value="">Selecione o passo</option>
+                                <!-- Steps will be populated dynamically -->
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="question-text" class="form-label">Sua pergunta</label>
+                            <textarea class="form-control matrix-input" id="question-text" rows="4" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="question-email" class="form-label">E-mail (opcional)</label>
+                            <input type="email" class="form-control matrix-input" id="question-email" placeholder="Para receber a resposta">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="submitQuestion()">
+                        <i class="fas fa-paper-plane me-1"></i>Enviar Pergunta
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Prism.js for Code Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    
+    <!-- Custom JS - Simple and Bootstrap Studio Compatible -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/theme-toggle.js"></script>
+    <script src="../../assets/js/tutorial-engine.js"></script>
+    
+    <!-- Tutorial Data and Initialization -->
+    <script>
+        // Tutorial data will be injected here
+        window.tutorialData = {
+            id: '[TUTORIAL_ID]',
+            title: '[TUTORIAL_TITLE]',
+            description: '[TUTORIAL_DESCRIPTION]',
+            difficulty: '[TUTORIAL_DIFFICULTY]',
+            duration: '[TUTORIAL_DURATION]',
+            technology: '[TUTORIAL_TECHNOLOGY]',
+            prerequisites: '[TUTORIAL_PREREQUISITES]'.split(','),
+            learningOutcomes: '[TUTORIAL_LEARNING_OUTCOMES]'.split(','),
+            steps: [
+                // Steps will be populated from tutorial content
+            ],
+            resources: [
+                // Resources will be populated from tutorial content
+            ]
+        };
+        
+        // Initialize tutorial when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeTutorial();
+        });
+    </script>
+</body>
+</html>

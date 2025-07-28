@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker - Containerização | Portal Big Data</title>
+    <meta name="description" content="Guia completo do Docker: containerização, Dockerfile, Docker Compose, orquestração e melhores práticas para desenvolvimento e produção.">
+    <meta name="keywords" content="docker, containerização, dockerfile, docker compose, containers, devops, microservices">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Docker - Containerização | Portal Big Data">
+    <meta property="og:description" content="Guia completo do Docker: containerização, Dockerfile, Docker Compose, orquestração e melhores práticas.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/orquestracao/docker/">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/orquestracao/docker/">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Docker",
+        "description": "Platform for developing, shipping, and running applications using containerization",
+        "url": "https://docker.com",
+        "applicationCategory": "Containerization Platform",
+        "operatingSystem": "Linux, macOS, Windows",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand matrix-brand" href="../../../index.html">
+                <span class="matrix-text">Portal Big Data</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Orquestração</a></li>
+                <li class="breadcrumb-item active">Docker</li>
+            </ol>
+        </nav>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="tech-header mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="../../../assets/images/logos/docker-logo.png" alt="Docker" class="tech-logo me-3" style="width: 64px; height: 64px;">
+                        <div>
+                            <h1 class="mb-2">Docker</h1>
+                            <div class="tech-badges">
+                                <span class="badge bg-primary">Open Source</span>
+                                <span class="badge bg-success">Fundamental</span>
+                                <span class="badge bg-info">Containerization</span>
+                                <span class="badge bg-warning">DevOps</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="lead">Plataforma para desenvolver, distribuir e executar aplicações usando containerização</p>
+                </div>
+
+                <div class="content-section">
+                    <h2>Visão Geral</h2>
+                    <p>Docker é uma plataforma de containerização que revolucionou o desenvolvimento e deployment de aplicações. Criado em 2013, permite empacotar aplicações e suas dependências em containers leves e portáveis, garantindo consistência entre ambientes de desenvolvimento, teste e produção.</p>
+
+                    <h3>Principais Características</h3>
+                    <ul>
+                        <li><strong>Containerização:</strong> Isolamento de aplicações em containers leves</li>
+                        <li><strong>Portabilidade:</strong> "Build once, run anywhere"</li>
+                        <li><strong>Eficiência:</strong> Menor overhead que VMs tradicionais</li>
+                        <li><strong>Escalabilidade:</strong> Fácil escalonamento horizontal</li>
+                        <li><strong>Versionamento:</strong> Controle de versões de imagens</li>
+                        <li><strong>Ecosystem:</strong> Docker Hub com milhões de imagens</li>
+                    </ul>
+
+                    <h3>Arquitetura Docker</h3>
+                    <p>O Docker utiliza uma arquitetura cliente-servidor:</p>
+                    <ul>
+                        <li><strong>Docker Client:</strong> Interface de linha de comando</li>
+                        <li><strong>Docker Daemon:</strong> Gerencia containers, imagens e redes</li>
+                        <li><strong>Docker Images:</strong> Templates read-only para containers</li>
+                        <li><strong>Docker Containers:</strong> Instâncias executáveis de imagens</li>
+                        <li><strong>Docker Registry:</strong> Repositório de imagens (Docker Hub)</li>
+                    </ul>
+
+                    <h3>Exemplo de Dockerfile</h3>
+                    <div class="code-example">
+                        <pre><code class="language-dockerfile"># Dockerfile para aplicação Python
+FROM python:3.11-slim
+
+# Define diretório de trabalho
+WORKDIR /app
+
+# Copia arquivos de dependências
+COPY requirements.txt .
+
+# Instala dependências
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copia código da aplicação
+COPY . .
+
+# Expõe porta da aplicação
+EXPOSE 8000
+
+# Define usuário não-root
+RUN useradd -m appuser && chown -R appuser:appuser /app
+USER appuser
+
+# Comando para iniciar aplicação
+CMD ["python", "app.py"]</code></pre>
+                    </div>
+
+                    <h3>Docker Compose para Orquestração</h3>
+                    <div class="code-example">
+                        <pre><code class="language-yaml"># docker-compose.yml para stack de dados
+version: '3.8'
+
+services:
+  # Aplicação principal
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://user:pass@db:5432/mydb
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - ./data:/app/data
+    networks:
+      - app-network
+
+  # Banco de dados PostgreSQL
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app-network
+
+  # Cache Redis
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    networks:
+      - app-network
+
+  # Processamento de dados com Spark
+  spark-master:
+    image: bitnami/spark:3.5
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    networks:
+      - app-network
+
+  spark-worker:
+    image: bitnami/spark:3.5
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=2G
+      - SPARK_WORKER_CORES=2
+    depends_on:
+      - spark-master
+    networks:
+      - app-network
+
+  # Monitoramento
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - app-network
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+  redis_data:
+  grafana_data:
+
+networks:
+  app-network:
+    driver: bridge</code></pre>
+                    </div>
+
+                    <h3>Comandos Docker Essenciais</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Gerenciamento de Imagens</h4>
+                            <div class="code-example">
+                                <pre><code class="language-bash"># Construir imagem
+docker build -t myapp:latest .
+
+# Listar imagens
+docker images
+
+# Baixar imagem
+docker pull ubuntu:20.04
+
+# Remover imagem
+docker rmi myapp:latest
+
+# Limpar imagens não utilizadas
+docker image prune</code></pre>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Gerenciamento de Containers</h4>
+                            <div class="code-example">
+                                <pre><code class="language-bash"># Executar container
+docker run -d -p 8000:8000 myapp
+
+# Listar containers
+docker ps -a
+
+# Parar container
+docker stop container_id
+
+# Remover container
+docker rm container_id
+
+# Logs do container
+docker logs container_id</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Multi-stage Builds</h3>
+                    <div class="code-example">
+                        <pre><code class="language-dockerfile"># Multi-stage build para aplicação Go
+# Estágio de build
+FROM golang:1.21-alpine AS builder
+
+WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
+
+COPY . .
+RUN CGO_ENABLED=0 GOOS=linux go build -o main .
+
+# Estágio de produção
+FROM alpine:latest
+
+RUN apk --no-cache add ca-certificates
+WORKDIR /root/
+
+# Copia apenas o binário do estágio anterior
+COPY --from=builder /app/main .
+
+CMD ["./main"]</code></pre>
+                    </div>
+
+                    <h3>Docker para Big Data</h3>
+                    <p>Docker é amplamente usado em ambientes de Big Data para:</p>
+                    <ul>
+                        <li><strong>Spark Clusters:</strong> Deploy distribuído de aplicações Spark</li>
+                        <li><strong>Kafka Clusters:</strong> Orquestração de brokers Kafka</li>
+                        <li><strong>Hadoop Ecosystem:</strong> Containerização de componentes Hadoop</li>
+                        <li><strong>ML Pipelines:</strong> Isolamento de ambientes de ML</li>
+                        <li><strong>Data Processing:</strong> Jobs de processamento escaláveis</li>
+                    </ul>
+
+                    <h3>Exemplo: Cluster Kafka com Docker</h3>
+                    <div class="code-example">
+                        <pre><code class="language-yaml"># docker-compose.yml para Kafka
+version: '3.8'
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.0
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  kafka1:
+    image: confluentinc/cp-kafka:7.4.0
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 3
+
+  kafka2:
+    image: confluentinc/cp-kafka:7.4.0
+    depends_on:
+      - zookeeper
+    ports:
+      - "9093:9093"
+    environment:
+      KAFKA_BROKER_ID: 2
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9093
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 3
+
+  kafka3:
+    image: confluentinc/cp-kafka:7.4.0
+    depends_on:
+      - zookeeper
+    ports:
+      - "9094:9094"
+    environment:
+      KAFKA_BROKER_ID: 3
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9094
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 3</code></pre>
+                    </div>
+
+                    <h3>Melhores Práticas</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Segurança</h4>
+                            <ul>
+                                <li>Use imagens oficiais e verificadas</li>
+                                <li>Mantenha imagens atualizadas</li>
+                                <li>Execute como usuário não-root</li>
+                                <li>Escaneie vulnerabilidades</li>
+                                <li>Use secrets para dados sensíveis</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Performance</h4>
+                            <ul>
+                                <li>Otimize camadas do Dockerfile</li>
+                                <li>Use .dockerignore</li>
+                                <li>Minimize tamanho das imagens</li>
+                                <li>Configure limites de recursos</li>
+                                <li>Use multi-stage builds</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Casos de Uso</h3>
+                    <ul>
+                        <li><strong>Microservices:</strong> Arquiteturas distribuídas</li>
+                        <li><strong>CI/CD:</strong> Pipelines de integração contínua</li>
+                        <li><strong>Development:</strong> Ambientes consistentes</li>
+                        <li><strong>Big Data:</strong> Processamento distribuído</li>
+                        <li><strong>ML/AI:</strong> Isolamento de modelos</li>
+                    </ul>
+
+                    <h3>Vantagens</h3>
+                    <ul>
+                        <li>Portabilidade entre ambientes</li>
+                        <li>Isolamento de aplicações</li>
+                        <li>Eficiência de recursos</li>
+                        <li>Facilidade de deployment</li>
+                        <li>Ecossistema rico</li>
+                    </ul>
+
+                    <h3>Desvantagens</h3>
+                    <ul>
+                        <li>Curva de aprendizado inicial</li>
+                        <li>Overhead de gerenciamento</li>
+                        <li>Complexidade em produção</li>
+                        <li>Questões de persistência</li>
+                        <li>Segurança adicional necessária</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="sidebar-info">
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header">
+                            <h5>Informações Técnicas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><strong>Linguagem:</strong> Go</li>
+                                <li><strong>Licença:</strong> Apache 2.0</li>
+                                <li><strong>Primeira Release:</strong> 2013</li>
+                                <li><strong>Versão Atual:</strong> 24.0</li>
+                                <li><strong>Desenvolvedor:</strong> Docker Inc.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card bg-dark border-info mb-4">
+                        <div class="card-header">
+                            <h5>Links Úteis</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="https://docker.com" target="_blank">Site Oficial</a></li>
+                                <li><a href="https://docs.docker.com" target="_blank">Documentação</a></li>
+                                <li><a href="https://hub.docker.com" target="_blank">Docker Hub</a></li>
+                                <li><a href="https://github.com/docker" target="_blank">GitHub</a></li>
+                                <li><a href="https://docs.docker.com/compose/" target="_blank">Docker Compose</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card bg-dark border-warning mb-4">
+                        <div class="card-header">
+                            <h5>Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="../kubernetes/">Kubernetes</a> - Orquestração</li>
+                                <li><a href="../apache-airflow/">Apache Airflow</a> - Workflows</li>
+                                <li><a href="../apache-mesos/">Apache Mesos</a> - Cluster Manager</li>
+                                <li><a href="../../processamento/apache-spark/">Apache Spark</a> - Processamento</li>
+                                <li><a href="../../streaming/apache-kafka/">Apache Kafka</a> - Streaming</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card bg-dark border-primary">
+                        <div class="card-header">
+                            <h5>Cursos Relacionados</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="../../../cursos/docker-fundamentals/">Docker Fundamentals</a></li>
+                                <li><a href="../../../cursos/container-orchestration/">Container Orchestration</a></li>
+                                <li><a href="../../../cursos/microservices-architecture/">Microservices Architecture</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Portal Big Data</h5>
+                    <p>Seu guia completo para tecnologias de Big Data</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2024 Portal Big Data. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../assets/js/technology-page.js"></script>
+</body>
+</html>

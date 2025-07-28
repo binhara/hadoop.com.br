@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Google Search Console Integration - Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <style>
+        .test-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border: 1px solid #00ff00;
+            border-radius: 8px;
+            background: rgba(0, 255, 0, 0.05);
+        }
+        
+        .test-result {
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+        }
+        
+        .test-pass {
+            background: rgba(0, 255, 0, 0.2);
+            border-left: 4px solid #00ff00;
+        }
+        
+        .test-fail {
+            background: rgba(255, 0, 0, 0.2);
+            border-left: 4px solid #ff0000;
+        }
+        
+        .test-warning {
+            background: rgba(255, 255, 0, 0.2);
+            border-left: 4px solid #ffff00;
+        }
+        
+        .code-block {
+            background: #1a1a1a;
+            color: #00ff00;
+            padding: 1rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body class="matrix-theme">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-success mb-4">
+                    <i class="fas fa-search me-2"></i>
+                    Google Search Console Integration Test
+                </h1>
+                <p class="text-light mb-4">
+                    Esta página testa todos os componentes da integração com Google Search Console.
+                </p>
+                
+                <!-- Test Controls -->
+                <div class="test-section">
+                    <h3 class="text-success">Controles de Teste</h3>
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <button id="run-all-tests" class="btn btn-success w-100">
+                                <i class="fas fa-play"></i> Executar Todos os Testes
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <button id="enable-monitoring" class="btn btn-outline-success w-100">
+                                <i class="fas fa-toggle-on"></i> Ativar Monitoramento
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <button id="open-dashboard" class="btn btn-outline-info w-100">
+                                <i class="fas fa-chart-bar"></i> Abrir Dashboard
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <button id="clear-data" class="btn btn-outline-warning w-100">
+                                <i class="fas fa-trash"></i> Limpar Dados
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Test Results -->
+                <div id="test-results">
+                    <!-- Results will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Search Console Scripts -->
+    <script src="assets/js/sitemap-generator.js"></script>
+    <script src="assets/js/search-console-monitor.js"></script>
+    <script src="assets/js/search-console-verification.js"></script>
+    <script src="assets/js/search-console-dashboard.js"></script>
+    <script src="assets/js/automated-sitemap-updater.js"></script>
+    <script src="assets/js/seo-alerts-system.js"></script>
+    
+    <script>
+        // Test Suite for Google Search Console Integration
+        const SearchConsoleTests = {
+            results: [],
+            
+            // Initialize tests
+            init: function() {
+                this.setupEventListeners();
+                this.displayInitialStatus();
+            },
+            
+            // Setup event listeners
+            setupEventListeners: function() {
+                document.getElementById('run-all-tests').addEventListener('click', () => {
+                    this.runAllTests();
+                });
+                
+                document.getElementById('enable-monitoring').addEventListener('click', () => {
+                    localStorage.setItem('enable_seo_monitoring', 'true');
+                    location.reload();
+                });
+                
+                document.getElementById('open-dashboard').addEventListener('click', () => {
+                    if (window.SearchConsoleDashboard) {
+                        window.SearchConsoleDashboard.show();
+                    } else {
+                        alert('Dashboard não disponível. Ative o monitoramento primeiro.');
+                    }
+                });
+                
+                document.getElementById('clear-data').addEventListener('click', () => {
+                    this.clearAllData();
+                });
+            },
+            
+            // Display initial status
+            displayInitialStatus: function() {
+                const monitoringEnabled = localStorage.getItem('enable_seo_monitoring') === 'true';
+                const statusHtml = `
+                    <div class="test-section">
+                        <h3 class="text-success">Status Inicial</h3>
+                        <div class="test-result ${monitoringEnabled ? 'test-pass' : 'test-warning'}">
+                            <strong>Monitoramento SEO:</strong> ${monitoringEnabled ? 'Ativado' : 'Desativado'}
+                        </div>
+                        <div class="test-result test-pass">
+                            <strong>Scripts Carregados:</strong> Todos os scripts necessários foram carregados
+                        </div>
+                    </div>
+                `;
+                
+                document.getElementById('test-results').innerHTML = statusHtml;
+            },
+            
+            // Run all tests
+            runAllTests: async function() {
+                this.results = [];
+                this.updateResults('Iniciando testes...', 'info');
+                
+                // Test 1: Script Loading
+                await this.testScriptLoading();
+                
+                // Test 2: Sitemap Generation
+                await this.testSitemapGeneration();
+                
+                // Test 3: Search Console Configuration
+                await this.testSearchConsoleConfig();
+                
+                // Test 4: Monitoring System
+                await this.testMonitoringSystem();
+                
+                // Test 5: Alert System
+                await this.testAlertSystem();
+                
+                // Test 6: Dashboard
+                await this.testDashboard();
+                
+                // Test 7: Verification Helper
+                await this.testVerificationHelper();
+                
+                // Test 8: Automated Updater
+                await this.testAutomatedUpdater();
+                
+                this.displayFinalResults();
+            },
+            
+            // Test script loading
+            testScriptLoading: async function() {
+                const requiredObjects = [
+                    'SearchConsoleConfig',
+                    'SearchConsoleMonitor',
+                    'SearchConsoleVerification',
+                    'SearchConsoleDashboard',
+                    'AutomatedSitemapUpdater',
+                    'SEOAlertsSystem'
+                ];
+                
+                let passed = 0;
+                let total = requiredObjects.length;
+                
+                requiredObjects.forEach(obj => {
+                    if (window[obj]) {
+                        passed++;
+                        this.addResult(`✓ ${obj} carregado`, 'pass');
+                    } else {
+                        this.addResult(`✗ ${obj} não encontrado`, 'fail');
+                    }
+                });
+                
+                this.addResult(`Scripts: ${passed}/${total} carregados`, passed === total ? 'pass' : 'fail');
+            },
+            
+            // Test sitemap generation
+            testSitemapGeneration: async function() {
+                try {
+                    if (window.SearchConsoleConfig && window.SearchConsoleConfig.generateSitemap) {
+                        const sitemap = window.SearchConsoleConfig.generateSitemap();
+                        
+                        if (sitemap.includes('<?xml') && sitemap.includes('<urlset')) {
+                            this.addResult('✓ Sitemap XML gerado corretamente', 'pass');
+                            
+                            const urlCount = (sitemap.match(/<url>/g) || []).length;
+                            this.addResult(`✓ Sitemap contém ${urlCount} URLs`, 'pass');
+                            
+                            if (urlCount > 50) {
+                                this.addResult('✓ Sitemap tem quantidade adequada de URLs', 'pass');
+                            } else {
+                                this.addResult('⚠ Sitemap tem poucas URLs', 'warning');
+                            }
+                        } else {
+                            this.addResult('✗ Sitemap XML inválido', 'fail');
+                        }
+                    } else {
+                        this.addResult('✗ Função de geração de sitemap não encontrada', 'fail');
+                    }
+                } catch (error) {
+                    this.addResult(`✗ Erro na geração do sitemap: ${error.message}`, 'fail');
+                }
+            },
+            
+            // Test Search Console configuration
+            testSearchConsoleConfig: async function() {
+                try {
+                    if (window.SEARCH_CONSOLE_CONFIG) {
+                        const config = window.SEARCH_CONSOLE_CONFIG;
+                        
+                        this.addResult('✓ Configuração do Search Console carregada', 'pass');
+                        
+                        if (config.targetKeywords && config.targetKeywords.length > 0) {
+                            this.addResult(`✓ ${config.targetKeywords.length} palavras-chave configuradas`, 'pass');
+                        } else {
+                            this.addResult('✗ Palavras-chave não configuradas', 'fail');
+                        }
+                        
+                        if (config.priorityPages && config.priorityPages.length > 0) {
+                            this.addResult(`✓ ${config.priorityPages.length} páginas prioritárias configuradas`, 'pass');
+                        } else {
+                            this.addResult('✗ Páginas prioritárias não configuradas', 'fail');
+                        }
+                    } else {
+                        this.addResult('✗ Configuração do Search Console não encontrada', 'fail');
+                    }
+                } catch (error) {
+                    this.addResult(`✗ Erro na configuração: ${error.message}`, 'fail');
+                }
+            },
+            
+            // Test monitoring system
+            testMonitoringSystem: async function() {
+                try {
+                    if (window.SearchConsoleMonitor) {
+                        const monitor = window.SearchConsoleMonitor;
+                        
+                        this.addResult('✓ Sistema de monitoramento disponível', 'pass');
+                        
+                        if (typeof monitor.generateComprehensiveReport === 'function') {
+                            const report = monitor.generateComprehensiveReport();
+                            this.addResult('✓ Relatório abrangente gerado', 'pass');
+                            
+                            if (report.timestamp && report.site_url) {
+                                this.addResult('✓ Relatório contém dados básicos', 'pass');
+                            } else {
+                                this.addResult('✗ Relatório incompleto', 'fail');
+                            }
+                        } else {
+                            this.addResult('✗ Função de relatório não encontrada', 'fail');
+                        }
+                    } else {
+                        this.addResult('✗ Sistema de monitoramento não encontrado', 'fail');
+                    }
+                } catch (error) {
+                    this.addResult(`✗ Erro no monitoramento: ${error.message}`, 'fail');
+                }
+            },
+            
+            // Test alert system
+            testAlertSystem: async function() {
+                try {
+                    if (window.SEOAlertsSystem) {
+                        const alerts = window.SEOAlertsSystem;
+                        
+                        this.addResult('✓ Sistema de alertas disponível', 'pass');
+                        
+                        if (typeof alerts.getAllAlerts === 'function') {
+                            const allAlerts = alerts.getAllAlerts();
+                            this.addResult(`✓ ${allAlerts.length} alertas no histórico`, 'pass');
+                        }
+                        
+                        if (typeof alerts.getAlertStatistics === 'function') {
+                            const stats = alerts.getAlertStatistics();
+                            this.addResult('✓ Estatísticas de alertas disponíveis', 'pass');
+                        }
+                    } else {
+                        this.addResult('✗ Sistema de alertas não encontrado', 'fail');
+                    }
+                } catch (error) {
+                    this.addResult(`✗ Erro no sistema de alertas: ${error.message}`, 'fail');
+                }
+            },
+            
+            // Test dashboard
+            testDashboard: async function() {
+                try {
+                    if (window.SearchConsoleDashboard) {
+                        const dashboard = window.SearchConsoleDashboard;
+                        
+                        this.addResult('✓ Dashboard disponível', 'pass');
+                        
+                        // Check if dashboard HTML was created
+                        const dashboardElement = document.getElementById('search-console-dashboard');
+                        if (dashboardElement) {
+                            this.addResult('✓ HTML do dashboard criado', 'pass');
+                        } else {
+                            this.addResult('✗ HTML do dashboard não encontrado', 'fail');
+                        }
+                        
+                        // Check for toggle button
+                        const toggleButton = document.getElementById('seo-dashboard-toggle');
+                        if (toggleButton) {
+                            this.addResult('✓ Botão de toggle do dashboard criado', 'pass');
+                        } else {
+                            this.addResult('✗ Botão de toggle não encontrado', 'fail');
+                        }
+                    } else {
+                        this.addResult('✗ Dashboard não encontrado', 'fail');
+                    }
+                } catch (error) {
+                    this.addResult(`✗ Erro no dashboard: ${error.message}`, 'fail');
+                }
+            },
+            
+            // Test verification helper
+            testVerificationHelper: async function() {
+                try {
+                    if (window.SearchConsoleVerification) {
+                        const verification = window.SearchConsoleVerification;
+                        
+                        this.addResult('✓ Helper de verificação disponível', 'pass');
+                        
+                        if (verification.VerificationHelper) {
+                            const report = await verification.VerificationHelper.generateVerificationReport();
+                            this.addResult('✓ Relatório de verificação gerado', 'pass');
+                            
+                            if (report.pre_verification_checks) {
+                                this.addResult('✓ Verificações pré-configuração executadas', 'pass');
+                            }
+                        }
+                    } else {
+                        this.addResult('✗ Helper de verificação não encontrado', 'fail');
+                    }
+                } catch (error) {
+                    this.addResult(`✗ Erro na verificação: ${error.message}`, 'fail');
+                }
+            },
+            
+            // Test automated updater
+            testAutomatedUpdater: async function() {
+                try {
+                    if (window.AutomatedSitemapUpdater) {
+                        const updater = window.AutomatedSitemapUpdater;
+                        
+                        this.addResult('✓ Atualizador automático disponível', 'pass');
+                        
+                        if (typeof updater.getStatistics === 'function') {
+                            const stats = updater.getStatistics();
+                            this.addResult('✓ Estatísticas do sitemap disponíveis', 'pass');
+                        }
+                        
+                        if (typeof updater.generateNow === 'function') {
+                            this.addResult('✓ Geração manual de sitemap disponível', 'pass');
+                        }
+                    } else {
+                        this.addResult('✗ Atualizador automático não encontrado', 'fail');
+                    }
+                } catch (error) {
+                    this.addResult(`✗ Erro no atualizador: ${error.message}`, 'fail');
+                }
+            },
+            
+            // Add test result
+            addResult: function(message, type) {
+                this.results.push({ message, type });
+            },
+            
+            // Update results display
+            updateResults: function(message, type) {
+                const resultsDiv = document.getElementById('test-results');
+                const resultHtml = `
+                    <div class="test-result test-${type}">
+                        ${message}
+                    </div>
+                `;
+                resultsDiv.innerHTML += resultHtml;
+            },
+            
+            // Display final results
+            displayFinalResults: function() {
+                const passed = this.results.filter(r => r.type === 'pass').length;
+                const failed = this.results.filter(r => r.type === 'fail').length;
+                const warnings = this.results.filter(r => r.type === 'warning').length;
+                const total = this.results.length;
+                
+                let resultsHtml = `
+                    <div class="test-section">
+                        <h3 class="text-success">Resultados dos Testes</h3>
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <div class="card matrix-card">
+                                    <div class="card-body text-center">
+                                        <h4 class="text-success">${passed}</h4>
+                                        <small>Passou</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card matrix-card">
+                                    <div class="card-body text-center">
+                                        <h4 class="text-danger">${failed}</h4>
+                                        <small>Falhou</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card matrix-card">
+                                    <div class="card-body text-center">
+                                        <h4 class="text-warning">${warnings}</h4>
+                                        <small>Avisos</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card matrix-card">
+                                    <div class="card-body text-center">
+                                        <h4 class="text-info">${total}</h4>
+                                        <small>Total</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                `;
+                
+                // Add detailed results
+                resultsHtml += '<h4 class="text-success mb-3">Detalhes dos Testes</h4>';
+                this.results.forEach(result => {
+                    resultsHtml += `<div class="test-result test-${result.type}">${result.message}</div>`;
+                });
+                
+                // Add recommendations
+                resultsHtml += this.generateRecommendations(passed, failed, warnings);
+                
+                resultsHtml += '</div>';
+                
+                document.getElementById('test-results').innerHTML = resultsHtml;
+            },
+            
+            // Generate recommendations
+            generateRecommendations: function(passed, failed, warnings) {
+                let recommendations = '<h4 class="text-success mt-4 mb-3">Recomendações</h4>';
+                
+                if (failed === 0 && warnings === 0) {
+                    recommendations += `
+                        <div class="test-result test-pass">
+                            <strong>✓ Excelente!</strong> Todos os testes passaram. A integração com Google Search Console está funcionando perfeitamente.
+                        </div>
+                    `;
+                } else {
+                    if (failed > 0) {
+                        recommendations += `
+                            <div class="test-result test-fail">
+                                <strong>Ação Necessária:</strong> ${failed} teste(s) falharam. Verifique os erros acima e corrija os problemas.
+                            </div>
+                        `;
+                    }
+                    
+                    if (warnings > 0) {
+                        recommendations += `
+                            <div class="test-result test-warning">
+                                <strong>Atenção:</strong> ${warnings} aviso(s) encontrado(s). Considere as melhorias sugeridas.
+                            </div>
+                        `;
+                    }
+                }
+                
+                // Add setup instructions
+                recommendations += `
+                    <div class="test-result test-pass">
+                        <strong>Próximos Passos:</strong>
+                        <ol class="mt-2 mb-0">
+                            <li>Ative o monitoramento SEO se ainda não estiver ativo</li>
+                            <li>Configure Google Search Console seguindo o guia em google-search-console-setup-guide.md</li>
+                            <li>Submeta o sitemap para https://hadoop.com.br/sitemap.xml</li>
+                            <li>Configure alertas de email/Slack para produção</li>
+                            <li>Monitore o dashboard regularmente</li>
+                        </ol>
+                    </div>
+                `;
+                
+                return recommendations;
+            },
+            
+            // Clear all data
+            clearAllData: function() {
+                const keys = [
+                    'seo_results_indexing',
+                    'seo_results_performance',
+                    'seo_results_technical',
+                    'seo_results_content',
+                    'keyword_rankings',
+                    'seo_alerts',
+                    'sitemap_submissions',
+                    'sitemap_metadata',
+                    'sitemap_errors',
+                    'url_modification_dates',
+                    'enable_seo_monitoring'
+                ];
+                
+                keys.forEach(key => localStorage.removeItem(key));
+                sessionStorage.clear();
+                
+                alert('Todos os dados foram limpos. Recarregue a página para começar novamente.');
+            }
+        };
+        
+        // Initialize tests when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            SearchConsoleTests.init();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Blob Storage - Object Storage | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Azure Blob Storage - Object Storage | Portal Big Data">
+    <meta name="description" content="Azure Blob Storage - Serviço de object storage da Microsoft Azure otimizado para grandes quantidades de dados não estruturados. Guia completo.">
+    <meta name="keywords" content="Azure Blob Storage, Microsoft Azure, object storage, big data, enterprise, cloud storage">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/sistemas-arquivos/azure-blob-storage">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/sistemas-arquivos/azure-blob-storage">
+    <meta property="og:title" content="Azure Blob Storage - Object Storage | Portal Big Data">
+    <meta property="og:description" content="Azure Blob Storage - Serviço de object storage da Microsoft Azure otimizado para grandes quantidades de dados não estruturados.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/og/azure-blob-og.jpg">
+    <meta property="og:site_name" content="Portal Big Data">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/tecnologias/sistemas-arquivos/azure-blob-storage">
+    <meta property="twitter:title" content="Azure Blob Storage - Object Storage | Portal Big Data">
+    <meta property="twitter:description" content="Azure Blob Storage - Serviço de object storage da Microsoft Azure otimizado para grandes quantidades de dados não estruturados.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/azure-blob-twitter.jpg">
+    <meta property="twitter:site" content="@portalbigdata">
+    
+    <!-- Structured Data for Software Application -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Azure Blob Storage",
+        "description": "Serviço de object storage da Microsoft Azure otimizado para armazenar grandes quantidades de dados não estruturados",
+        "url": "https://azure.microsoft.com/services/storage/blobs/",
+        "applicationCategory": "Object Storage",
+        "operatingSystem": "Cloud Service",
+        "programmingLanguage": "REST API",
+        "license": "Commercial",
+        "version": "Current",
+        "datePublished": "2010-02-01",
+        "dateModified": "2024-01-15",
+        "author": {
+            "@type": "Organization",
+            "name": "Microsoft Azure",
+            "url": "https://azure.microsoft.com"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "Pay-as-you-use",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        },
+        "featureList": [
+            "Integração com ecossistema Microsoft",
+            "Múltiplas camadas de acesso",
+            "Segurança enterprise",
+            "Disaster recovery integrado"
+        ],
+        "requirements": "Conta Microsoft Azure"
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="../../../">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../../">Início</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Sistemas de Arquivos Distribuídos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Azure Blob Storage</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Technology Header -->
+                <div class="tech-header d-flex align-items-center mb-4">
+                    <img src="../../../assets/images/logos/azure-blob-logo.png" alt="Azure Blob Storage Logo" class="tech-logo me-4" style="width: 80px; height: 80px;">
+                    <div>
+                        <h1 class="mb-2">Azure Blob Storage</h1>
+                        <div class="tech-badges">
+                            <span class="badge bg-warning text-dark">Commercial</span>
+                            <span class="badge bg-info">Enterprise</span>
+                            <span class="badge bg-warning text-dark">Object Storage</span>
+                        </div>
+                        <p class="lead mt-2 mb-0">Serviço de object storage da Microsoft Azure otimizado para armazenar grandes quantidades de dados não estruturados.</p>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs nav-fill mb-4" id="techTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            Visão Geral
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">
+                            Recursos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="use-cases-tab" data-bs-toggle="tab" data-bs-target="#use-cases" type="button" role="tab">
+                            Casos de Uso
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="examples-tab" data-bs-toggle="tab" data-bs-target="#examples" type="button" role="tab">
+                            Exemplos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button" role="tab">
+                            Comparações
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="techTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>O que é Azure Blob Storage?</h3>
+                                <p>Azure Blob Storage é o serviço de object storage da Microsoft Azure, projetado para armazenar grandes quantidades de dados não estruturados. Oferece armazenamento massivamente escalável para dados como documentos, imagens, vídeos, backups e dados de analytics.</p>
+                                
+                                <h4>História</h4>
+                                <p>Lançado em 2010 como parte da plataforma Azure, o Blob Storage evoluiu para se tornar uma das principais ofertas de storage da Microsoft. Integra-se profundamente com o ecossistema Microsoft e oferece recursos enterprise robustos.</p>
+                                
+                                <h4>Arquitetura</h4>
+                                <p>Azure Blob Storage organiza dados em containers (equivalentes a buckets) dentro de storage accounts. Oferece três tipos de blobs: Block blobs para dados gerais, Append blobs para logs, e Page blobs para discos de VMs. A replicação pode ser local, zonal ou geográfica.</p>
+                                
+                                <h4>Vantagens</h4>
+                                <ul>
+                                    <li>Integração nativa com ecossistema Microsoft</li>
+                                    <li>Recursos enterprise robustos de segurança</li>
+                                    <li>Múltiplas opções de replicação e disaster recovery</li>
+                                    <li>Suporte a Azure Active Directory</li>
+                                    <li>Camadas de acesso otimizadas para custos</li>
+                                    <li>Integração com Power BI e Azure Synapse</li>
+                                    <li>Compliance com padrões enterprise</li>
+                                </ul>
+                                
+                                <h4>Desvantagens</h4>
+                                <ul>
+                                    <li>Ecossistema menor comparado à AWS</li>
+                                    <li>Curva de aprendizado para conceitos Azure-específicos</li>
+                                    <li>Algumas limitações de performance em cenários específicos</li>
+                                    <li>Vendor lock-in com Microsoft Azure</li>
+                                    <li>Preços podem ser complexos de calcular</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane fade" id="features" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Principais Recursos</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Access Tiers</h6>
+                                                <p class="card-text small">Hot, Cool e Archive tiers para otimização de custos baseada em padrões de acesso.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Azure AD Integration</h6>
+                                                <p class="card-text small">Autenticação e autorização integradas com Azure Active Directory.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Geo-Redundancy</h6>
+                                                <p class="card-text small">Replicação automática entre regiões para disaster recovery.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Change Feed</h6>
+                                                <p class="card-text small">Log de mudanças para auditoria e processamento de eventos.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4>Especificações Técnicas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Tamanho Máximo de Blob:</strong></td>
+                                                <td>4.75 TB (Block blob)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Durabilidade:</strong></td>
+                                                <td>99.999999999% (11 9's)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Tipos de Replicação:</strong></td>
+                                                <td>LRS, ZRS, GRS, RA-GRS, GZRS</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Regiões:</strong></td>
+                                                <td>60+ regiões globalmente</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>SLA Disponibilidade:</strong></td>
+                                                <td>99.9% - 99.99%</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Tab -->
+                    <div class="tab-pane fade" id="use-cases" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Casos de Uso</h3>
+                                
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Enterprise Data Lakes</h6>
+                                        <p class="card-text">Armazenamento central para analytics empresariais com integração ao Azure Synapse.</p>
+                                        <small class="text-muted">Exemplo: Empresas Fortune 500 usam para consolidar dados de múltiplas fontes.</small>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Backup e Disaster Recovery</h6>
+                                        <p class="card-text">Armazenamento seguro com replicação geográfica para continuidade de negócios.</p>
+                                        <small class="text-muted">Exemplo: Backup de sistemas críticos com RTO/RPO empresariais.</small>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Media e Content Storage</h6>
+                                        <p class="card-text">Hospedagem de conteúdo multimídia com CDN integrado.</p>
+                                        <small class="text-muted">Exemplo: Plataformas de streaming armazenam vídeos e metadados.</small>
+                                    </div>
+                                </div>
+                                
+                                <h4>Quando Usar Azure Blob Storage</h4>
+                                <div class="alert alert-success">
+                                    <h5>✅ Recomendado para:</h5>
+                                    <ul>
+                                        <li>Ambientes enterprise com foco em Microsoft</li>
+                                        <li>Integração com Office 365 e Power Platform</li>
+                                        <li>Requisitos rigorosos de compliance</li>
+                                        <li>Disaster recovery entre regiões</li>
+                                        <li>Workloads híbridos on-premises/cloud</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <h5>⚠️ Considere alternativas se:</h5>
+                                    <ul>
+                                        <li>Você não usa outros serviços Microsoft</li>
+                                        <li>Precisa de compatibilidade S3 nativa</li>
+                                        <li>Tem requisitos de performance extrema</li>
+                                        <li>Orçamento é limitado para storage</li>
+                                        <li>Equipe não tem experiência com Azure</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples Tab -->
+                    <div class="tab-pane fade" id="examples" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Exemplos Práticos</h3>
+                                
+                                <h4>Azure CLI</h4>
+                                <div class="code-example">
+                                    <pre><code># Instalar Azure CLI
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+# Login
+az login
+
+# Criar storage account
+az storage account create \
+    --name mystorageaccount \
+    --resource-group myresourcegroup \
+    --location eastus \
+    --sku Standard_LRS
+
+# Criar container
+az storage container create \
+    --name mycontainer \
+    --account-name mystorageaccount
+
+# Upload de arquivo
+az storage blob upload \
+    --file local-file.txt \
+    --container-name mycontainer \
+    --name remote-file.txt \
+    --account-name mystorageaccount</code></pre>
+                                </div>
+                                
+                                <h4>Python SDK</h4>
+                                <div class="code-example">
+                                    <pre><code>from azure.storage.blob import BlobServiceClient
+
+# Criar cliente
+connection_string = "DefaultEndpointsProtocol=https;AccountName=..."
+blob_service_client = BlobServiceClient.from_connection_string(connection_string)
+
+# Criar container
+container_client = blob_service_client.create_container("mycontainer")
+
+# Upload de arquivo
+with open("local-file.txt", "rb") as data:
+    blob_client = blob_service_client.get_blob_client(
+        container="mycontainer", 
+        blob="remote-file.txt"
+    )
+    blob_client.upload_blob(data, overwrite=True)
+
+# Download de arquivo
+download_stream = blob_client.download_blob()
+with open("downloaded-file.txt", "wb") as file:
+    file.write(download_stream.readall())
+
+# Listar blobs
+container_client = blob_service_client.get_container_client("mycontainer")
+for blob in container_client.list_blobs():
+    print(blob.name)</code></pre>
+                                </div>
+                                
+                                <h4>ARM Template</h4>
+                                <div class="code-example">
+                                    <pre><code>{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-04-01",
+      "name": "mystorageaccount",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "accessTier": "Hot",
+        "supportsHttpsTrafficOnly": true,
+        "minimumTlsVersion": "TLS1_2"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2021-04-01",
+      "name": "mystorageaccount/default/mycontainer",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', 'mystorageaccount')]"
+      ],
+      "properties": {
+        "publicAccess": "None"
+      }
+    }
+  ]
+}</code></pre>
+                                </div>
+                                
+                                <h4>Tutoriais Relacionados</h4>
+                                <div class="card mb-2">
+                                    <div class="card-body py-2">
+                                        <h6 class="card-title mb-1">Azure Data Lake com Synapse</h6>
+                                        <small class="text-muted">Nível: Intermediário</small>
+                                        <a href="../../../blog/azure-data-lake-synapse/" class="btn btn-sm btn-outline-success ms-2">Ver Tutorial</a>
+                                    </div>
+                                </div>
+                                <div class="card mb-2">
+                                    <div class="card-body py-2">
+                                        <h6 class="card-title mb-1">Blob Storage Security Best Practices</h6>
+                                        <small class="text-muted">Nível: Avançado</small>
+                                        <a href="../../../blog/blob-storage-security/" class="btn btn-sm btn-outline-success ms-2">Ver Tutorial</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Tab -->
+                    <div class="tab-pane fade" id="comparison" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Comparações</h3>
+                                
+                                <h4>Alternativas Similares</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Tecnologia</th>
+                                                <th>Performance</th>
+                                                <th>Enterprise Features</th>
+                                                <th>Facilidade de Uso</th>
+                                                <th>Preço</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Azure Blob Storage</strong></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                                <td><span class="text-warning">★★★★★</span></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                                <td><span class="text-warning">★★★☆☆</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Amazon S3</strong></td>
+                                                <td><span class="text-warning">★★★★★</span></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                                <td><span class="text-warning">★★★★★</span></td>
+                                                <td><span class="text-warning">★★★☆☆</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Google Cloud Storage</strong></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                                <td><span class="text-warning">★★★☆☆</span></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>MinIO</strong></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                                <td><span class="text-warning">★★☆☆☆</span></td>
+                                                <td><span class="text-warning">★★★☆☆</span></td>
+                                                <td><span class="text-warning">★★★★★</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h4>Matriz de Decisão</h4>
+                                <div class="alert alert-info">
+                                    <h6>💡 Dica de Escolha:</h6>
+                                    <p>Escolha Azure Blob Storage se você já usa o ecossistema Microsoft ou precisa de recursos enterprise robustos. É especialmente forte para cenários híbridos e integração com Office 365/Power Platform.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>📊 Quick Facts</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-dark">
+                                <tr>
+                                    <td><strong>Lançamento:</strong></td>
+                                    <td>Fevereiro 2010</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Licença:</strong></td>
+                                    <td>Commercial</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Durabilidade:</strong></td>
+                                    <td>99.999999999%</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SLA:</strong></td>
+                                    <td>99.9% - 99.99%</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Regiões:</strong></td>
+                                    <td>60+ globalmente</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔗 Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="https://azure.microsoft.com/services/storage/blobs/" class="btn btn-outline-success btn-sm" target="_blank">
+                                    🌐 Site Oficial
+                                </a>
+                                <a href="https://docs.microsoft.com/azure/storage/blobs/" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📚 Documentação
+                                </a>
+                                <a href="https://azure.microsoft.com/pricing/details/storage/blobs/" class="btn btn-outline-success btn-sm" target="_blank">
+                                    💰 Preços
+                                </a>
+                                <a href="https://portal.azure.com/" class="btn btn-outline-success btn-sm" target="_blank">
+                                    🎛️ Portal
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔄 Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="../amazon-s3/" class="btn btn-outline-info btn-sm">Amazon S3</a>
+                                <a href="../google-cloud-storage/" class="btn btn-outline-info btn-sm">Google Cloud Storage</a>
+                                <a href="../../data-warehousing/azure-synapse/" class="btn btn-outline-info btn-sm">Azure Synapse</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Courses -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🎓 Cursos Relacionados</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="card mb-2">
+                                <div class="card-body py-2">
+                                    <h6 class="card-title mb-1">Azure Storage Fundamentals</h6>
+                                    <small class="text-muted">Iniciante</small>
+                                    <a href="../../../cursos/azure-storage-fundamentals/" class="btn btn-sm btn-outline-success ms-2">Ver Curso</a>
+                                </div>
+                            </div>
+                            <div class="card mb-2">
+                                <div class="card-body py-2">
+                                    <h6 class="card-title mb-1">Azure Data Engineering</h6>
+                                    <small class="text-muted">Intermediário</small>
+                                    <a href="../../../cursos/azure-data-engineering/" class="btn btn-sm btn-outline-success ms-2">Ver Curso</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sponsored Content -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>💼 Conteúdo Patrocinado</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <p class="small">Espaço disponível para parceiros</p>
+                                <a href="mailto:contato@hadoop.com.br" class="btn btn-outline-warning btn-sm">Anunciar Aqui</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/main.js"></script>
+    <script src="../../../assets/js/technology-page.js"></script>
+    <script src="../../../assets/js/theme-toggle.js"></script>
+</body>
+</html>

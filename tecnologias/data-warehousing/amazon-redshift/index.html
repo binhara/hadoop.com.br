@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Redshift - Data Warehousing | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Amazon Redshift - Data Warehousing | Portal Big Data">
+    <meta name="description" content="Amazon Redshift: data warehouse totalmente gerenciado na AWS. Performance otimizada, escalabilidade automática e integração com ecossistema AWS.">
+    <meta name="keywords" content="amazon redshift, aws data warehouse, columnar storage, petabyte scale, sql analytics">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/data-warehousing/amazon-redshift">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Amazon Redshift",
+        "description": "Fast, simple, cost-effective data warehousing service",
+        "url": "https://aws.amazon.com/redshift/",
+        "applicationCategory": "Data Warehousing",
+        "operatingSystem": "Cloud",
+        "programmingLanguage": "SQL",
+        "license": "Commercial",
+        "datePublished": "2012-02-15",
+        "dateModified": "2024-01-15"
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="/">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Data Warehousing</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Amazon Redshift</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Technology Header -->
+                <div class="tech-header d-flex align-items-center mb-4">
+                    <img src="../../../assets/images/logos/amazon-redshift-logo.png" alt="Amazon Redshift Logo" class="tech-logo me-3" style="width: 80px; height: 80px;">
+                    <div>
+                        <h1 class="mb-2">Amazon Redshift</h1>
+                        <div class="tech-badges">
+                            <span class="badge bg-warning text-dark">AWS</span>
+                            <span class="badge bg-success">Managed</span>
+                            <span class="badge bg-info">Columnar</span>
+                            <span class="badge bg-primary">Data Warehousing</span>
+                        </div>
+                        <p class="lead mt-2 mb-0">Data warehouse totalmente gerenciado e otimizado para analytics em petabytes</p>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs nav-fill mb-4" id="techTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            Visão Geral
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">
+                            Recursos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="use-cases-tab" data-bs-toggle="tab" data-bs-target="#use-cases" type="button" role="tab">
+                            Casos de Uso
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="examples-tab" data-bs-toggle="tab" data-bs-target="#examples" type="button" role="tab">
+                            Exemplos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button" role="tab">
+                            Comparações
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="techTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>O que é Amazon Redshift?</h3>
+                                <p>Amazon Redshift é um serviço de data warehouse totalmente gerenciado na nuvem AWS, projetado para análises de dados em escala de petabytes. Utiliza armazenamento colunar e processamento paralelo massivo (MPP) para entregar performance rápida e consistente.</p>
+                                
+                                <h4>Arquitetura MPP</h4>
+                                <p>Redshift utiliza arquitetura de processamento paralelo massivo:</p>
+                                <ul>
+                                    <li><strong>Leader Node:</strong> Coordena consultas e distribui trabalho</li>
+                                    <li><strong>Compute Nodes:</strong> Executam consultas em paralelo</li>
+                                    <li><strong>Node Slices:</strong> Partições de dados para processamento</li>
+                                    <li><strong>Columnar Storage:</strong> Armazenamento otimizado por colunas</li>
+                                </ul>
+                                
+                                <h4>Vantagens</h4>
+                                <ul>
+                                    <li>Performance otimizada para analytics</li>
+                                    <li>Integração nativa com ecossistema AWS</li>
+                                    <li>Escalabilidade de petabytes</li>
+                                    <li>Backup e recuperação automáticos</li>
+                                    <li>Compressão avançada de dados</li>
+                                    <li>Redshift Serverless disponível</li>
+                                </ul>
+                                
+                                <h4>Casos de Uso Ideais</h4>
+                                <ul>
+                                    <li>Business Intelligence e relatórios</li>
+                                    <li>Analytics de dados históricos</li>
+                                    <li>Data warehousing empresarial</li>
+                                    <li>Análises de big data</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane fade" id="features" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Principais Recursos</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card bg-dark">
+                                            <div class="card-body">
+                                                <h5>🚀 Redshift Serverless</h5>
+                                                <p>Execução sem gerenciamento de clusters</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card bg-dark">
+                                            <div class="card-body">
+                                                <h5>📊 Spectrum</h5>
+                                                <p>Consultas diretas em S3 data lakes</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card bg-dark">
+                                            <div class="card-body">
+                                                <h5>🤖 ML Integrado</h5>
+                                                <p>Machine learning com Amazon SageMaker</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card bg-dark">
+                                            <div class="card-body">
+                                                <h5>🔄 Concurrency Scaling</h5>
+                                                <p>Escalabilidade automática para consultas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Tab -->
+                    <div class="tab-pane fade" id="use-cases" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Casos de Uso</h3>
+                                
+                                <div class="alert alert-success">
+                                    <h5>✅ Recomendado para:</h5>
+                                    <ul>
+                                        <li>Organizações que usam AWS</li>
+                                        <li>Analytics de dados estruturados</li>
+                                        <li>Business Intelligence tradicional</li>
+                                        <li>Workloads batch regulares</li>
+                                        <li>Integração com ferramentas AWS</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples Tab -->
+                    <div class="tab-pane fade" id="examples" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Exemplos Práticos</h3>
+                                
+                                <h4>Criação de Tabela Otimizada</h4>
+                                <div class="code-example">
+                                    <pre><code>CREATE TABLE sales (
+    sale_id INTEGER NOT NULL,
+    product_id INTEGER NOT NULL,
+    customer_id INTEGER NOT NULL,
+    sale_date DATE NOT NULL,
+    amount DECIMAL(10,2)
+)
+DISTKEY(customer_id)
+SORTKEY(sale_date);</code></pre>
+                                </div>
+                                
+                                <h4>Consulta com Redshift Spectrum</h4>
+                                <div class="code-example">
+                                    <pre><code>-- Consulta combinando dados do Redshift e S3
+SELECT 
+    r.customer_id,
+    r.total_purchases,
+    s.web_activity
+FROM redshift_table r
+JOIN spectrum.web_logs s 
+    ON r.customer_id = s.customer_id
+WHERE r.purchase_date >= '2024-01-01';</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Tab -->
+                    <div class="tab-pane fade" id="comparison" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Comparações</h3>
+                                
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Aspecto</th>
+                                                <th>Redshift</th>
+                                                <th>Snowflake</th>
+                                                <th>BigQuery</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Cloud</strong></td>
+                                                <td>AWS Only</td>
+                                                <td>Multi-cloud</td>
+                                                <td>GCP Only</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Performance</strong></td>
+                                                <td>⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                                <td>⭐⭐⭐⭐⭐</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Custo</strong></td>
+                                                <td>Médio</td>
+                                                <td>Alto</td>
+                                                <td>Médio-Alto</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>📊 Quick Facts</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-dark">
+                                <tr>
+                                    <td><strong>Lançamento:</strong></td>
+                                    <td>2012</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Licença:</strong></td>
+                                    <td>Comercial</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Cloud:</strong></td>
+                                    <td>AWS</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Arquitetura:</strong></td>
+                                    <td>MPP Columnar</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔗 Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="https://aws.amazon.com/redshift/" class="btn btn-outline-success btn-sm" target="_blank">
+                                    🌐 Site Oficial
+                                </a>
+                                <a href="https://docs.aws.amazon.com/redshift/" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📚 Documentação
+                                </a>
+                                <a href="https://console.aws.amazon.com/redshift/" class="btn btn-outline-primary btn-sm" target="_blank">
+                                    🚀 Console AWS
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔄 Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="../snowflake/" class="btn btn-outline-primary btn-sm">Snowflake</a>
+                                <a href="../google-bigquery/" class="btn btn-outline-primary btn-sm">Google BigQuery</a>
+                                <a href="../../sistemas-arquivos/amazon-s3/" class="btn btn-outline-primary btn-sm">Amazon S3</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/main.js"></script>
+</body>
+</html>

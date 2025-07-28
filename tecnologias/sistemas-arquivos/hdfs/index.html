@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HDFS - Hadoop Distributed File System | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="HDFS - Hadoop Distributed File System | Portal Big Data">
+    <meta name="description" content="HDFS (Hadoop Distributed File System) - Sistema de arquivos distribuído do Apache Hadoop. Guia completo, casos de uso, instalação e comparações.">
+    <meta name="keywords" content="HDFS, Hadoop Distributed File System, big data, sistemas arquivos distribuídos, apache hadoop, namenode, datanode">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/sistemas-arquivos/hdfs">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/sistemas-arquivos/hdfs">
+    <meta property="og:title" content="HDFS - Hadoop Distributed File System | Portal Big Data">
+    <meta property="og:description" content="HDFS - Sistema de arquivos distribuído do Apache Hadoop. Guia completo, casos de uso, instalação e comparações.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/og/hdfs-og.jpg">
+    <meta property="og:site_name" content="Portal Big Data">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/tecnologias/sistemas-arquivos/hdfs">
+    <meta property="twitter:title" content="HDFS - Hadoop Distributed File System | Portal Big Data">
+    <meta property="twitter:description" content="HDFS - Sistema de arquivos distribuído do Apache Hadoop. Guia completo, casos de uso, instalação e comparações.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/hdfs-twitter.jpg">
+    <meta property="twitter:site" content="@portalbigdata">
+    
+    <!-- Structured Data for Software Application -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "HDFS",
+        "description": "Sistema de arquivos distribuído do Apache Hadoop projetado para armazenar grandes volumes de dados",
+        "url": "https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html",
+        "applicationCategory": "Sistemas de Arquivos Distribuídos",
+        "operatingSystem": "Linux, Windows, macOS",
+        "programmingLanguage": "Java",
+        "license": "Apache License 2.0",
+        "version": "3.3.6",
+        "datePublished": "2006-04-01",
+        "dateModified": "2024-01-15",
+        "author": {
+            "@type": "Organization",
+            "name": "Apache Software Foundation",
+            "url": "https://apache.org"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "@type": "Offer",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        },
+        "featureList": [
+            "Armazenamento distribuído",
+            "Tolerância a falhas",
+            "Escalabilidade horizontal",
+            "Replicação automática de dados"
+        ],
+        "requirements": "Java 8+, Cluster de servidores Linux"
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="../../../">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../../">Início</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Sistemas de Arquivos Distribuídos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">HDFS</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Technology Header -->
+                <div class="tech-header d-flex align-items-center mb-4">
+                    <img src="../../../assets/images/logos/hdfs-logo.png" alt="HDFS Logo" class="tech-logo me-4" style="width: 80px; height: 80px;">
+                    <div>
+                        <h1 class="mb-2">HDFS</h1>
+                        <div class="tech-badges">
+                            <span class="badge bg-primary">Open Source</span>
+                            <span class="badge bg-info">Tradicional</span>
+                            <span class="badge bg-warning text-dark">Sistemas de Arquivos</span>
+                        </div>
+                        <p class="lead mt-2 mb-0">Sistema de arquivos distribuído do Apache Hadoop projetado para armazenar grandes volumes de dados em clusters de commodity hardware.</p>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs nav-fill mb-4" id="techTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            Visão Geral
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">
+                            Recursos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="use-cases-tab" data-bs-toggle="tab" data-bs-target="#use-cases" type="button" role="tab">
+                            Casos de Uso
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="examples-tab" data-bs-toggle="tab" data-bs-target="#examples" type="button" role="tab">
+                            Exemplos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button" role="tab">
+                            Comparações
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="techTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>O que é HDFS?</h3>
+                                <p>O HDFS (Hadoop Distributed File System) é o sistema de arquivos distribuído do Apache Hadoop, projetado para armazenar grandes volumes de dados de forma confiável em clusters de commodity hardware. É otimizado para throughput alto e funciona melhor com arquivos grandes, sendo tolerante a falhas de hardware.</p>
+                                
+                                <h4>História</h4>
+                                <p>O HDFS foi inspirado no Google File System (GFS) e foi desenvolvido como parte do projeto Apache Hadoop em 2006. Foi criado por Doug Cutting e Mike Cafarella para suportar o processamento distribuído de grandes datasets. Desde então, tornou-se o padrão de facto para armazenamento distribuído no ecossistema Hadoop.</p>
+                                
+                                <h4>Arquitetura</h4>
+                                <p>O HDFS segue uma arquitetura master/slave com um NameNode (master) que gerencia os metadados do sistema de arquivos e múltiplos DataNodes (slaves) que armazenam os dados reais. Os arquivos são divididos em blocos (padrão 128MB) e replicados em múltiplos DataNodes para garantir tolerância a falhas.</p>
+                                
+                                <h4>Vantagens</h4>
+                                <ul>
+                                    <li>Tolerância a falhas através de replicação automática</li>
+                                    <li>Escalabilidade horizontal - adicione mais nós conforme necessário</li>
+                                    <li>Alto throughput para leitura sequencial de grandes arquivos</li>
+                                    <li>Funciona bem com commodity hardware</li>
+                                    <li>Integração nativa com o ecossistema Hadoop</li>
+                                    <li>Suporte a arquivos muito grandes (petabytes)</li>
+                                </ul>
+                                
+                                <h4>Desvantagens</h4>
+                                <ul>
+                                    <li>Não otimizado para arquivos pequenos</li>
+                                    <li>Latência alta para acesso aleatório</li>
+                                    <li>NameNode é ponto único de falha (até Hadoop 2.x)</li>
+                                    <li>Não suporta modificações de arquivos (apenas append)</li>
+                                    <li>Overhead de Java pode impactar performance</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane fade" id="features" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Principais Recursos</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Replicação Automática</h6>
+                                                <p class="card-text small">Replica automaticamente blocos de dados em múltiplos DataNodes para garantir durabilidade.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Detecção de Falhas</h6>
+                                                <p class="card-text small">Monitora constantemente a saúde dos DataNodes e recupera automaticamente de falhas.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Balanceamento de Carga</h6>
+                                                <p class="card-text small">Distribui dados uniformemente pelo cluster para otimizar utilização de storage.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="card-title">Snapshots</h6>
+                                                <p class="card-text small">Permite criar snapshots point-in-time do sistema de arquivos para backup e recovery.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4>Especificações Técnicas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Tamanho de Bloco Padrão:</strong></td>
+                                                <td>128 MB</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Fator de Replicação Padrão:</strong></td>
+                                                <td>3</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Tamanho Máximo de Arquivo:</strong></td>
+                                                <td>Limitado apenas pelo espaço disponível</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Número Máximo de Arquivos:</strong></td>
+                                                <td>Limitado pela memória do NameNode</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Protocolos Suportados:</strong></td>
+                                                <td>HTTP, RPC, WebHDFS</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Tab -->
+                    <div class="tab-pane fade" id="use-cases" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Casos de Uso</h3>
+                                
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Data Lakes</h6>
+                                        <p class="card-text">Armazenamento central para grandes volumes de dados estruturados e não estruturados.</p>
+                                        <small class="text-muted">Exemplo: Empresas armazenam logs, dados de sensores e arquivos de mídia para análise posterior.</small>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Processamento Batch</h6>
+                                        <p class="card-text">Base de armazenamento para jobs MapReduce e Spark que processam grandes datasets.</p>
+                                        <small class="text-muted">Exemplo: ETL de dados de vendas diárias para relatórios mensais.</small>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Backup e Arquivamento</h6>
+                                        <p class="card-text">Armazenamento de longo prazo para dados históricos e backups de sistemas críticos.</p>
+                                        <small class="text-muted">Exemplo: Bancos armazenam transações históricas para compliance regulatório.</small>
+                                    </div>
+                                </div>
+                                
+                                <h4>Quando Usar HDFS</h4>
+                                <div class="alert alert-success">
+                                    <h5>✅ Recomendado para:</h5>
+                                    <ul>
+                                        <li>Armazenamento de arquivos grandes (>100MB)</li>
+                                        <li>Workloads de leitura sequencial</li>
+                                        <li>Processamento batch com MapReduce/Spark</li>
+                                        <li>Cenários onde tolerância a falhas é crítica</li>
+                                        <li>Clusters com commodity hardware</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <h5>⚠️ Considere alternativas se:</h5>
+                                    <ul>
+                                        <li>Você precisa de baixa latência para acesso aleatório</li>
+                                        <li>Trabalha principalmente com arquivos pequenos</li>
+                                        <li>Precisa de modificações frequentes de arquivos</li>
+                                        <li>Requer compatibilidade POSIX completa</li>
+                                        <li>Tem requisitos de real-time processing</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples Tab -->
+                    <div class="tab-pane fade" id="examples" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Exemplos Práticos</h3>
+                                
+                                <h4>Instalação</h4>
+                                <div class="code-example">
+                                    <pre><code># Download Hadoop
+wget https://downloads.apache.org/hadoop/common/hadoop-3.3.6/hadoop-3.3.6.tar.gz
+tar -xzf hadoop-3.3.6.tar.gz
+cd hadoop-3.3.6
+
+# Configurar variáveis de ambiente
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+export HADOOP_HOME=/opt/hadoop-3.3.6
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin</code></pre>
+                                </div>
+                                
+                                <h4>Configuração Básica</h4>
+                                <div class="code-example">
+                                    <pre><code># core-site.xml
+&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;fs.defaultFS&lt;/name&gt;
+        &lt;value&gt;hdfs://namenode:9000&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
+
+# hdfs-site.xml
+&lt;configuration&gt;
+    &lt;property&gt;
+        &lt;name&gt;dfs.replication&lt;/name&gt;
+        &lt;value&gt;3&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;
+        &lt;value&gt;/opt/hadoop/data/namenode&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+        &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;
+        &lt;value&gt;/opt/hadoop/data/datanode&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;</code></pre>
+                                </div>
+                                
+                                <h4>Exemplo de Uso</h4>
+                                <div class="code-example">
+                                    <pre><code># Formatar o NameNode (apenas primeira vez)
+hdfs namenode -format
+
+# Iniciar HDFS
+start-dfs.sh
+
+# Comandos básicos
+hdfs dfs -mkdir /user/data
+hdfs dfs -put local-file.txt /user/data/
+hdfs dfs -ls /user/data/
+hdfs dfs -cat /user/data/local-file.txt
+hdfs dfs -get /user/data/local-file.txt downloaded-file.txt
+
+# Verificar saúde do cluster
+hdfs dfsadmin -report
+hdfs fsck /user/data/ -files -blocks</code></pre>
+                                </div>
+                                
+                                <h4>Tutoriais Relacionados</h4>
+                                <div class="card mb-2">
+                                    <div class="card-body py-2">
+                                        <h6 class="card-title mb-1">Configurando um Cluster HDFS</h6>
+                                        <small class="text-muted">Nível: Intermediário</small>
+                                        <a href="../../../blog/configurando-cluster-hdfs/" class="btn btn-sm btn-outline-success ms-2">Ver Tutorial</a>
+                                    </div>
+                                </div>
+                                <div class="card mb-2">
+                                    <div class="card-body py-2">
+                                        <h6 class="card-title mb-1">HDFS High Availability com QJM</h6>
+                                        <small class="text-muted">Nível: Avançado</small>
+                                        <a href="../../../blog/hdfs-high-availability/" class="btn btn-sm btn-outline-success ms-2">Ver Tutorial</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Tab -->
+                    <div class="tab-pane fade" id="comparison" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Comparações</h3>
+                                
+                                <h4>Alternativas Similares</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Tecnologia</th>
+                                                <th>Performance</th>
+                                                <th>Facilidade de Uso</th>
+                                                <th>Comunidade</th>
+                                                <th>Licença</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>HDFS</strong></td>
+                                                <td><span class="text-warning">★★★☆☆</span></td>
+                                                <td><span class="text-warning">★★☆☆☆</span></td>
+                                                <td><span class="text-warning">★★★★★</span></td>
+                                                <td><span class="badge bg-info">Apache 2.0</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>MinIO</strong></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                                <td><span class="text-warning">★★★☆☆</span></td>
+                                                <td><span class="badge bg-info">Apache 2.0</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Ceph</strong></td>
+                                                <td><span class="text-warning">★★★★☆</span></td>
+                                                <td><span class="text-warning">★★☆☆☆</span></td>
+                                                <td><span class="text-warning">★★★☆☆</span></td>
+                                                <td><span class="badge bg-info">LGPL</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Amazon S3</strong></td>
+                                                <td><span class="text-warning">★★★★★</span></td>
+                                                <td><span class="text-warning">★★★★★</span></td>
+                                                <td><span class="text-warning">★★★★★</span></td>
+                                                <td><span class="badge bg-warning text-dark">Commercial</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h4>Matriz de Decisão</h4>
+                                <div class="alert alert-info">
+                                    <h6>💡 Dica de Escolha:</h6>
+                                    <p>Escolha HDFS se você já tem um ecossistema Hadoop estabelecido e precisa de armazenamento distribuído para processamento batch. Para novos projetos, considere alternativas mais modernas como MinIO ou soluções cloud-native.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>📊 Quick Facts</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-dark">
+                                <tr>
+                                    <td><strong>Versão Atual:</strong></td>
+                                    <td>3.3.6</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Licença:</strong></td>
+                                    <td>Apache 2.0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Linguagem:</strong></td>
+                                    <td>Java</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Primeira Release:</strong></td>
+                                    <td>2006</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Última Atualização:</strong></td>
+                                    <td>Janeiro 2024</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔗 Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html" class="btn btn-outline-success btn-sm" target="_blank">
+                                    🌐 Site Oficial
+                                </a>
+                                <a href="https://github.com/apache/hadoop" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📁 GitHub
+                                </a>
+                                <a href="https://hadoop.apache.org/docs/current/" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📚 Documentação
+                                </a>
+                                <a href="https://hadoop.apache.org/mailing_lists.html" class="btn btn-outline-success btn-sm" target="_blank">
+                                    👥 Comunidade
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔄 Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <a href="../../processamento/apache-spark/" class="btn btn-outline-success btn-sm mb-2 me-2">Apache Spark</a>
+                            <a href="../../data-warehousing/apache-hive/" class="btn btn-outline-success btn-sm mb-2 me-2">Apache Hive</a>
+                            <a href="../delta-lake/" class="btn btn-outline-success btn-sm mb-2 me-2">Delta Lake</a>
+                            <a href="../../orquestracao/apache-airflow/" class="btn btn-outline-success btn-sm mb-2 me-2">Apache Airflow</a>
+                        </div>
+                    </div>
+
+                    <!-- Courses -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🎓 Cursos Relacionados</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="card mb-2">
+                                <div class="card-body py-2">
+                                    <h6 class="card-title mb-1">Hadoop Fundamentals</h6>
+                                    <small class="text-muted">Iniciante • 20h</small>
+                                    <a href="../../../cursos/hadoop-fundamentals/" class="btn btn-sm btn-primary mt-1">Ver Curso</a>
+                                </div>
+                            </div>
+                            <div class="card mb-2">
+                                <div class="card-body py-2">
+                                    <h6 class="card-title mb-1">HDFS Administration</h6>
+                                    <small class="text-muted">Intermediário • 30h</small>
+                                    <a href="../../../cursos/hdfs-administration/" class="btn btn-sm btn-primary mt-1">Ver Curso</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sponsored Content -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>💼 Conteúdo Patrocinado</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <p class="small mb-2">Aprenda mais sobre Big Data:</p>
+                                <a href="https://dssbr.com.br" target="_blank" class="btn btn-warning btn-sm mb-2 d-block">
+                                    📊 Data Science & Big Data
+                                </a>
+                                <a href="https://gubigdata.com.br" target="_blank" class="btn btn-warning btn-sm mb-2 d-block">
+                                    🎓 Cursos Especializados
+                                </a>
+                                <a href="https://oworkshop.com.br" target="_blank" class="btn btn-warning btn-sm d-block">
+                                    🛠️ Workshops Práticos
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/main.js"></script>
+    <script src="../../../assets/js/technology-page.js"></script>
+</body>
+</html>

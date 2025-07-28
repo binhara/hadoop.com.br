@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H2O.ai - AutoML Platform | Portal Big Data</title>
+    <meta name="description" content="H2O.ai: plataforma de AutoML e machine learning. Aprenda sobre H2O-3, Driverless AI e democratização do ML.">
+    <meta name="keywords" content="h2o.ai, automl, machine learning, driverless ai, automated machine learning, open source">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="H2O.ai - AutoML Platform | Portal Big Data">
+    <meta property="og:description" content="Plataforma de AutoML para democratizar machine learning">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/machine-learning/h2o-ai/">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/matrix-theme.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "H2O.ai",
+        "description": "Open-source AutoML platform",
+        "url": "https://h2o.ai",
+        "applicationCategory": "AutoML Platform",
+        "operatingSystem": "Linux, Windows, macOS",
+        "programmingLanguage": ["Python", "R", "Java", "Scala"],
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "H2O.ai"
+        }
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand text-success" href="../../../index.html">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../../index.html" class="text-success">Home</a></li>
+                <li class="breadcrumb-item"><a href="../../" class="text-success">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../" class="text-success">Machine Learning</a></li>
+                <li class="breadcrumb-item active text-light">H2O.ai</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Technology Header -->
+                <div class="tech-header mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="https://h2o.ai/content/experience-fragments/h2o/us/en/site/header/master/_jcr_content/root/header/logo.coreimg.svg/1696007565253/h2o-logo.svg" alt="H2O.ai Logo" class="tech-logo me-3" style="height: 80px;">
+                        <div>
+                            <h1 class="text-success mb-2">H2O.ai</h1>
+                            <div class="tech-badges">
+                                <span class="badge bg-primary">Open Source</span>
+                                <span class="badge bg-success">AutoML</span>
+                                <span class="badge bg-warning text-dark">Enterprise</span>
+                                <span class="badge bg-info">Multi-language</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Overview -->
+                <section class="mb-5">
+                    <h2 class="text-success">Visão Geral</h2>
+                    <p class="text-light">
+                        H2O.ai é uma plataforma de machine learning open-source que democratiza a IA através 
+                        de AutoML (Automated Machine Learning). A empresa oferece tanto soluções open-source 
+                        quanto produtos empresariais para acelerar a adoção de ML.
+                    </p>
+                    <p class="text-light">
+                        Com foco em facilitar o uso de machine learning para usuários não-especialistas, 
+                        H2O.ai oferece ferramentas que automatizam muitas das tarefas complexas do 
+                        desenvolvimento de modelos ML.
+                    </p>
+                </section>
+
+                <!-- Products -->
+                <section class="mb-5">
+                    <h2 class="text-success">Produtos Principais</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">H2O-3</h5>
+                                    <p class="text-light small">Plataforma open-source de machine learning distribuído</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Driverless AI</h5>
+                                    <p class="text-light small">AutoML empresarial com interpretabilidade</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">H2O Wave</h5>
+                                    <p class="text-light small">Framework para aplicações ML em tempo real</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">H2O MLOps</h5>
+                                    <p class="text-light small">Plataforma para operacionalização de modelos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Key Features -->
+                <section class="mb-5">
+                    <h2 class="text-success">Principais Características</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="text-light">
+                                <li><strong>AutoML:</strong> Machine learning automatizado</li>
+                                <li><strong>Distributed:</strong> Processamento distribuído</li>
+                                <li><strong>Multi-language:</strong> Python, R, Java, Scala</li>
+                                <li><strong>Interpretability:</strong> Modelos explicáveis</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="text-light">
+                                <li><strong>Feature Engineering:</strong> Engenharia automática</li>
+                                <li><strong>Model Selection:</strong> Seleção automática</li>
+                                <li><strong>Hyperparameter Tuning:</strong> Otimização automática</li>
+                                <li><strong>Enterprise Ready:</strong> Pronto para produção</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Use Cases -->
+                <section class="mb-5">
+                    <h2 class="text-success">Casos de Uso</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Citizen Data Science</h5>
+                                    <p class="text-light small">Democratização do ML para não-especialistas</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Financial Services</h5>
+                                    <p class="text-light small">Detecção de fraude, credit scoring, risk management</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Healthcare</h5>
+                                    <p class="text-light small">Diagnóstico médico, descoberta de medicamentos</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card bg-dark border-success">
+                                <div class="card-body">
+                                    <h5 class="text-success">Marketing</h5>
+                                    <p class="text-light small">Customer segmentation, churn prediction</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Code Example -->
+                <section class="mb-5">
+                    <h2 class="text-success">Exemplo Prático</h2>
+                    <p class="text-light">Exemplo de AutoML com H2O-3:</p>
+                    <pre class="bg-dark p-3 rounded border border-success"><code class="text-success">import h2o
+from h2o.automl import H2OAutoML
+import pandas as pd
+
+# Inicializar H2O
+h2o.init()
+
+# Carregar dados
+data = h2o.import_file("https://s3.amazonaws.com/h2o-public-test-data/smalldata/iris/iris_wheader.csv")
+
+# Definir features e target
+x = data.columns[:-1]  # todas as colunas exceto a última
+y = data.columns[-1]   # última coluna (target)
+
+# Dividir dados
+train, test = data.split_frame(ratios=[0.8], seed=42)
+
+# Configurar AutoML
+aml = H2OAutoML(
+    max_models=20,
+    max_runtime_secs=300,  # 5 minutos
+    seed=42,
+    project_name="iris_classification"
+)
+
+# Treinar modelos automaticamente
+aml.train(x=x, y=y, training_frame=train)
+
+# Ver leaderboard
+print("Leaderboard:")
+print(aml.leaderboard.head())
+
+# Melhor modelo
+best_model = aml.leader
+print(f"\nMelhor modelo: {best_model.model_id}")
+
+# Fazer predições
+predictions = best_model.predict(test)
+print("\nPrimeiras predições:")
+print(predictions.head())
+
+# Avaliar performance
+performance = best_model.model_performance(test)
+print(f"\nAUC: {performance.auc()[0][0]:.4f}")
+print(f"Accuracy: {performance.accuracy()[0][0]:.4f}")
+
+# Explicabilidade do modelo
+explainer = h2o.explain(best_model, test)
+
+# Salvar modelo
+model_path = h2o.save_model(best_model, path="./models/", force=True)
+print(f"\nModelo salvo em: {model_path}")
+
+# Shutdown H2O
+h2o.shutdown(prompt=False)
+</code></pre>
+                </section>
+
+                <!-- Tutorial Links -->
+                <section class="mb-5">
+                    <h2 class="text-success">Tutoriais e Recursos</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="text-success">Tutoriais Oficiais</h5>
+                            <ul class="text-light">
+                                <li><a href="https://docs.h2o.ai/h2o/latest-stable/h2o-docs/getting-started.html" class="text-success" target="_blank">Getting Started</a></li>
+                                <li><a href="https://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html" class="text-success" target="_blank">AutoML Guide</a></li>
+                                <li><a href="https://docs.h2o.ai/" class="text-success" target="_blank">Documentation</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="text-success">Recursos da Comunidade</h5>
+                            <ul class="text-light">
+                                <li><a href="https://github.com/h2oai/h2o-3" class="text-success" target="_blank">GitHub Repository</a></li>
+                                <li><a href="https://h2o.ai/community/" class="text-success" target="_blank">Community</a></li>
+                                <li><a href="https://stackoverflow.com/questions/tagged/h2o" class="text-success" target="_blank">Stack Overflow</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-md-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Informações Rápidas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled text-light">
+                                <li><strong>Desenvolvedor:</strong> H2O.ai Inc.</li>
+                                <li><strong>Primeira Versão:</strong> 2011</li>
+                                <li><strong>Linguagem:</strong> Java, Python, R</li>
+                                <li><strong>Licença:</strong> Apache 2.0</li>
+                                <li><strong>Versão Atual:</strong> 3.44+</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="../scikit-learn/" class="text-success">Scikit-learn</a></li>
+                                <li><a href="../mlflow/" class="text-success">MLflow</a></li>
+                                <li><a href="../kubeflow/" class="text-success">Kubeflow</a></li>
+                                <li><a href="../spark-mllib/" class="text-success">Spark MLlib</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card bg-dark border-success">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li><a href="https://h2o.ai" class="text-success" target="_blank">Site Oficial</a></li>
+                                <li><a href="https://github.com/h2oai/h2o-3" class="text-success" target="_blank">GitHub</a></li>
+                                <li><a href="https://docs.h2o.ai/" class="text-success" target="_blank">Documentation</a></li>
+                                <li><a href="https://h2o.ai/community/" class="text-success" target="_blank">Community</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2024 Portal Big Data. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="../../../contato/" class="text-success">Contato</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

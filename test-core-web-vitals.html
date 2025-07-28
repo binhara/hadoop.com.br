@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Core Web Vitals - Portal Big Data</title>
+    
+    <!-- Critical CSS inline -->
+    <style>
+        /* Critical above-the-fold styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', monospace;
+            background: #1a1a1a;
+            color: #00ff00;
+            line-height: 1.6;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px #00ff00;
+        }
+        
+        .loading {
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+        
+        .loaded {
+            opacity: 1;
+        }
+    </style>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="assets/css/matrix-theme.css" as="style">
+    <link rel="preload" href="assets/css/performance-monitor.css" as="style">
+    <link rel="preload" href="assets/js/core-web-vitals.js" as="script">
+    <link rel="preload" href="assets/images/morpheus-pills.png" as="image">
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- DNS prefetch for performance -->
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    
+    <!-- Load critical CSS -->
+    <link rel="stylesheet" href="assets/css/matrix-theme.css" data-critical>
+    <link rel="stylesheet" href="assets/css/performance-monitor.css" data-critical>
+    
+    <!-- Load fonts with display swap -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap">
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="Teste de otimização Core Web Vitals para o Portal Big Data">
+    <meta name="keywords" content="core web vitals, performance, optimization, big data">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Teste Core Web Vitals - Portal Big Data">
+    <meta property="og:description" content="Teste de otimização Core Web Vitals para o Portal Big Data">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hadoop.com.br/test-core-web-vitals.html">
+    
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Teste Core Web Vitals",
+        "description": "Página de teste para otimizações Core Web Vitals",
+        "url": "https://hadoop.com.br/test-core-web-vitals.html"
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Hero section (LCP candidate) -->
+    <section class="hero">
+        <div class="container">
+            <h1>Core Web Vitals Test</h1>
+            <p>Testando otimizações de performance</p>
+            
+            <!-- LCP candidate image with proper dimensions -->
+            <img 
+                src="assets/images/morpheus-pills.png" 
+                alt="Morpheus oferecendo pílulas vermelha e azul"
+                width="600" 
+                height="400"
+                loading="eager"
+                fetchpriority="high"
+                style="max-width: 100%; height: auto; aspect-ratio: 3/2;"
+            >
+            
+            <!-- Interactive elements for FID testing -->
+            <div class="interactive-section" style="margin-top: 2rem;">
+                <button id="test-button" class="btn btn-primary">Teste FID</button>
+                <input type="text" id="test-input" placeholder="Digite algo para testar FID" style="margin: 1rem;">
+                <select id="test-select">
+                    <option value="">Selecione uma opção</option>
+                    <option value="hadoop">Hadoop</option>
+                    <option value="spark">Apache Spark</option>
+                    <option value="kafka">Apache Kafka</option>
+                </select>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Content sections for CLS testing -->
+    <section class="content-section" style="padding: 2rem;">
+        <div class="container">
+            <h2>Seção de Conteúdo</h2>
+            
+            <!-- Reserved space for dynamic content to prevent CLS -->
+            <div class="banner-container" style="min-height: 250px; background: rgba(0,255,0,0.1); margin: 1rem 0; display: flex; align-items: center; justify-content: center;">
+                <p>Espaço reservado para banner (previne CLS)</p>
+            </div>
+            
+            <!-- Images with proper dimensions -->
+            <div class="image-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin: 2rem 0;">
+                <img 
+                    src="assets/images/hadoop-logo.png" 
+                    alt="Logo Hadoop"
+                    width="300" 
+                    height="200"
+                    loading="lazy"
+                    style="width: 100%; height: auto; aspect-ratio: 3/2;"
+                >
+                <img 
+                    src="assets/images/spark-logo.png" 
+                    alt="Logo Apache Spark"
+                    width="300" 
+                    height="200"
+                    loading="lazy"
+                    style="width: 100%; height: auto; aspect-ratio: 3/2;"
+                >
+                <img 
+                    src="assets/images/kafka-logo.png" 
+                    alt="Logo Apache Kafka"
+                    width="300" 
+                    height="200"
+                    loading="lazy"
+                    style="width: 100%; height: auto; aspect-ratio: 3/2;"
+                >
+            </div>
+            
+            <!-- Dynamic content that could cause CLS -->
+            <div id="dynamic-content" style="min-height: 200px;">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Performance metrics display -->
+    <section class="metrics-section" style="padding: 2rem; background: rgba(0,0,0,0.5);">
+        <div class="container">
+            <h2>Métricas de Performance</h2>
+            <div id="metrics-display" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <!-- Metrics will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Load optimization configuration first -->
+    <script src="assets/js/optimization-config.js"></script>
+    
+    <!-- Load Core Web Vitals optimizer -->
+    <script src="assets/js/core-web-vitals.js" data-critical></script>
+    
+    <!-- Load performance monitor -->
+    <script src="assets/js/performance-monitor.js"></script>
+    
+    <!-- Test script -->
+    <script>
+        // Test Core Web Vitals optimizations
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎯 Core Web Vitals Test Page Loaded');
+            
+            // Test FID optimization
+            document.getElementById('test-button').addEventListener('click', function(e) {
+                const startTime = performance.now();
+                
+                // Simulate some processing
+                setTimeout(() => {
+                    const endTime = performance.now();
+                    const duration = endTime - startTime;
+                    
+                    console.log(`Button click processed in ${duration}ms`);
+                    this.textContent = `Processado em ${Math.round(duration)}ms`;
+                    
+                    setTimeout(() => {
+                        this.textContent = 'Teste FID';
+                    }, 2000);
+                }, 10);
+            });
+            
+            // Test input responsiveness
+            document.getElementById('test-input').addEventListener('input', function(e) {
+                // Debounced input handling
+                clearTimeout(this.inputTimeout);
+                this.inputTimeout = setTimeout(() => {
+                    console.log('Input processed:', e.target.value);
+                }, 100);
+            });
+            
+            // Load dynamic content after a delay to test CLS
+            setTimeout(() => {
+                const dynamicContent = document.getElementById('dynamic-content');
+                dynamicContent.innerHTML = `
+                    <h3>Conteúdo Dinâmico Carregado</h3>
+                    <p>Este conteúdo foi carregado dinamicamente, mas o espaço foi reservado para evitar CLS.</p>
+                    <div style="background: rgba(0,255,0,0.1); padding: 1rem; border-radius: 8px;">
+                        <p>Informações sobre Big Data e tecnologias relacionadas.</p>
+                    </div>
+                `;
+            }, 2000);
+            
+            // Display current metrics
+            function updateMetricsDisplay() {
+                if (!window.coreWebVitalsOptimizer) return;
+                
+                const metrics = window.coreWebVitalsOptimizer.getMetrics();
+                const metricsDisplay = document.getElementById('metrics-display');
+                
+                metricsDisplay.innerHTML = Object.entries(metrics).map(([name, value]) => {
+                    const status = value !== null ? window.coreWebVitalsOptimizer.getMetricStatus(name) : 'measuring';
+                    const displayValue = value !== null ? 
+                        (name === 'cls' ? value.toFixed(3) : Math.round(value) + 'ms') : 
+                        'Medindo...';
+                    
+                    return `
+                        <div class="metric-card" style="background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; border: 1px solid #333;">
+                            <h4 style="margin: 0 0 0.5rem 0; text-transform: uppercase;">${name.toUpperCase()}</h4>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: ${getStatusColor(status)};">${displayValue}</div>
+                            <div style="font-size: 0.8rem; text-transform: uppercase; color: ${getStatusColor(status)};">${status}</div>
+                        </div>
+                    `;
+                }).join('');
+            }
+            
+            function getStatusColor(status) {
+                switch(status) {
+                    case 'good': return '#00ff00';
+                    case 'needs-improvement': return '#ffaa00';
+                    case 'poor': return '#ff0000';
+                    default: return '#666666';
+                }
+            }
+            
+            // Update metrics display every 2 seconds
+            setInterval(updateMetricsDisplay, 2000);
+            updateMetricsDisplay();
+            
+            // Log performance information
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    const navigation = performance.getEntriesByType('navigation')[0];
+                    console.log('📊 Navigation Timing:', {
+                        'DNS Lookup': navigation.domainLookupEnd - navigation.domainLookupStart,
+                        'TCP Connection': navigation.connectEnd - navigation.connectStart,
+                        'TLS Handshake': navigation.secureConnectionStart > 0 ? navigation.connectEnd - navigation.secureConnectionStart : 0,
+                        'Request': navigation.responseStart - navigation.requestStart,
+                        'Response': navigation.responseEnd - navigation.responseStart,
+                        'DOM Processing': navigation.domContentLoadedEventStart - navigation.responseEnd,
+                        'Load Event': navigation.loadEventEnd - navigation.loadEventStart
+                    });
+                }, 1000);
+            });
+            
+            // Test long task detection
+            if ('PerformanceObserver' in window) {
+                const longTaskObserver = new PerformanceObserver((list) => {
+                    list.getEntries().forEach((entry) => {
+                        console.warn('⚠️ Long Task Detected:', {
+                            duration: entry.duration,
+                            startTime: entry.startTime,
+                            name: entry.name
+                        });
+                    });
+                });
+                
+                longTaskObserver.observe({ entryTypes: ['longtask'] });
+            }
+        });
+        
+        // Simulate a long task for testing (remove in production)
+        function simulateLongTask() {
+            const start = performance.now();
+            while (performance.now() - start < 100) {
+                // Busy wait for 100ms
+            }
+        }
+        
+        // Test long task after page load
+        setTimeout(simulateLongTask, 3000);
+        
+        // Test CLS prevention
+        setTimeout(() => {
+            testCLSPrevention();
+        }, 4000);
+        
+        // Test FID optimization
+        setTimeout(() => {
+            testFIDOptimization();
+        }, 5000);
+    });
+    
+    // Test CLS prevention
+    function testCLSPrevention() {
+        console.log('🧪 Testing CLS prevention...');
+        
+        // Add content that could cause layout shift
+        const testContainer = document.createElement('div');
+        testContainer.style.cssText = 'min-height: 100px; background: rgba(0,255,0,0.1); margin: 1rem 0; padding: 1rem;';
+        testContainer.innerHTML = '<p>This content was added dynamically but space was reserved to prevent CLS.</p>';
+        
+        const dynamicContent = document.getElementById('dynamic-content');
+        dynamicContent.appendChild(testContainer);
+    }
+    
+    // Test FID optimization
+    function testFIDOptimization() {
+        console.log('🧪 Testing FID optimization...');
+        
+        // Create multiple interactive elements
+        const testButtons = document.createElement('div');
+        testButtons.innerHTML = `
+            <h4>FID Test Buttons</h4>
+            <button class="btn btn-success me-2" onclick="testInteraction(this, 'fast')">Fast Response</button>
+            <button class="btn btn-warning me-2" onclick="testInteraction(this, 'slow')">Slow Response</button>
+            <button class="btn btn-info" onclick="testInteraction(this, 'optimized')">Optimized Response</button>
+        `;
+        
+        document.querySelector('.metrics-section .container').appendChild(testButtons);
+    }
+    
+    // Test different interaction response times
+    function testInteraction(button, type) {
+        const startTime = performance.now();
+        
+        switch(type) {
+            case 'fast':
+                // Immediate response
+                button.textContent = 'Clicked!';
+                setTimeout(() => button.textContent = 'Fast Response', 1000);
+                break;
+                
+            case 'slow':
+                // Simulate slow processing
+                const slowStart = performance.now();
+                while (performance.now() - slowStart < 200) {
+                    // Busy wait
+                }
+                button.textContent = 'Slow Click!';
+                setTimeout(() => button.textContent = 'Slow Response', 1000);
+                break;
+                
+            case 'optimized':
+                // Optimized with immediate feedback and deferred processing
+                button.textContent = 'Processing...';
+                setTimeout(() => {
+                    // Deferred heavy processing
+                    const processStart = performance.now();
+                    while (performance.now() - processStart < 100) {
+                        // Simulate processing
+                    }
+                    button.textContent = 'Optimized!';
+                    setTimeout(() => button.textContent = 'Optimized Response', 1000);
+                }, 0);
+                break;
+        }
+        
+        const endTime = performance.now();
+        console.log(`${type} interaction took ${endTime - startTime}ms`);
+    }
+    
+    // Track JavaScript errors that could affect Core Web Vitals
+    window.errorCount = 0;
+    window.lastError = null;
+    
+    window.addEventListener('error', (event) => {
+        window.errorCount++;
+        window.lastError = {
+            message: event.message,
+            filename: event.filename,
+            lineno: event.lineno,
+            colno: event.colno,
+            timestamp: Date.now()
+        };
+        
+        console.error('JavaScript Error tracked:', window.lastError);
+    });
+    
+    window.addEventListener('unhandledrejection', (event) => {
+        window.errorCount++;
+        window.lastError = {
+            message: 'Unhandled Promise Rejection: ' + event.reason,
+            timestamp: Date.now()
+        };
+        
+        console.error('Promise Rejection tracked:', window.lastError);
+    });
+    </script>
+    
+    <!-- Non-critical CSS loaded asynchronously -->
+    <link rel="stylesheet" href="assets/css/image-optimization.css" media="print" onload="this.media='all'">
+    
+    <!-- Non-critical JavaScript loaded with defer -->
+    <script src="assets/js/image-optimization.js" defer></script>
+    <script src="assets/js/asset-compression.js" defer></script>
+</body>
+</html>

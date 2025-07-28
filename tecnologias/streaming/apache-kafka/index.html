@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Kafka - Streaming | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Apache Kafka - Streaming | Portal Big Data">
+    <meta name="description" content="Apache Kafka: plataforma distribuída de streaming para processamento de eventos em tempo real. Guia completo, casos de uso, instalação e comparações.">
+    <meta name="keywords" content="apache kafka, streaming, big data, eventos, mensageria, real-time, distributed streaming">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/streaming/apache-kafka">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/streaming/apache-kafka">
+    <meta property="og:title" content="Apache Kafka - Streaming | Portal Big Data">
+    <meta property="og:description" content="Apache Kafka: plataforma distribuída de streaming para processamento de eventos em tempo real. Guia completo, casos de uso, instalação e comparações.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/og/apache-kafka-og.jpg">
+    <meta property="og:site_name" content="Portal Big Data">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/tecnologias/streaming/apache-kafka">
+    <meta property="twitter:title" content="Apache Kafka - Streaming | Portal Big Data">
+    <meta property="twitter:description" content="Apache Kafka: plataforma distribuída de streaming para processamento de eventos em tempo real. Guia completo, casos de uso, instalação e comparações.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/apache-kafka-twitter.jpg">
+    <meta property="twitter:site" content="@portalbigdata">
+    
+    <!-- Structured Data for Software Application -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Apache Kafka",
+        "description": "Plataforma distribuída de streaming para processamento de eventos em tempo real com alta throughput",
+        "url": "https://kafka.apache.org",
+        "applicationCategory": "Streaming Platform",
+        "operatingSystem": "Linux, Windows, macOS",
+        "programmingLanguage": ["Java", "Scala"],
+        "license": "Apache License 2.0",
+        "version": "3.6.0",
+        "datePublished": "2011-01-01",
+        "dateModified": "2024-01-15",
+        "author": {
+            "@type": "Organization",
+            "name": "Apache Software Foundation",
+            "url": "https://apache.org"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        },
+        "featureList": [
+            "High-throughput messaging",
+            "Distributed architecture",
+            "Fault tolerance",
+            "Stream processing",
+            "Real-time analytics"
+        ],
+        "requirements": "Java 8+, ZooKeeper (for older versions)",
+        "downloadUrl": "https://kafka.apache.org/downloads"
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="/">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Streaming</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Apache Kafka</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Technology Header -->
+                <div class="tech-header d-flex align-items-center mb-4">
+                    <img src="../../../assets/images/logos/apache-kafka-logo.png" alt="Apache Kafka Logo" class="tech-logo">
+                    <div>
+                        <h1 class="mb-2">Apache Kafka</h1>
+                        <div class="tech-badges">
+                            <span class="badge bg-primary">Open Source</span>
+                            <span class="badge bg-success">2024 Trending</span>
+                            <span class="badge bg-info">Mature</span>
+                            <span class="badge bg-warning text-dark">Streaming</span>
+                        </div>
+                        <p class="lead mt-2 mb-0">Plataforma distribuída de streaming para processamento de eventos em tempo real com alta throughput</p>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs nav-fill mb-4" id="techTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            Visão Geral
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">
+                            Recursos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="use-cases-tab" data-bs-toggle="tab" data-bs-target="#use-cases" type="button" role="tab">
+                            Casos de Uso
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="examples-tab" data-bs-toggle="tab" data-bs-target="#examples" type="button" role="tab">
+                            Exemplos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button" role="tab">
+                            Comparações
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="techTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>O que é Apache Kafka?</h3>
+                                <p>Apache Kafka é uma plataforma distribuída de streaming de eventos open-source desenvolvida pela Apache Software Foundation. Originalmente criado pelo LinkedIn, Kafka é projetado para lidar com feeds de dados em tempo real de alta throughput, fornecendo uma arquitetura distribuída, tolerante a falhas e altamente escalável.</p>
+                                
+                                <p>Kafka funciona como um sistema de mensageria publish-subscribe distribuído que pode processar trilhões de eventos por dia. Ele armazena streams de registros em categorias chamadas tópicos, permitindo que produtores publiquem dados e consumidores se inscrevam para receber esses dados em tempo real.</p>
+                                
+                                <h4>História</h4>
+                                <p>Desenvolvido inicialmente pelo LinkedIn em 2010 para lidar com seus requisitos de dados em tempo real, o Kafka foi doado para a Apache Software Foundation em 2011. Desde então, tornou-se uma das tecnologias de streaming mais populares, sendo adotado por empresas como Netflix, Uber, Spotify, Airbnb e muitas outras para casos de uso críticos de missão.</p>
+                                
+                                <h4>Arquitetura</h4>
+                                <p>A arquitetura do Kafka é baseada em alguns conceitos fundamentais:</p>
+                                <ul>
+                                    <li><strong>Brokers:</strong> Servidores que armazenam e servem dados</li>
+                                    <li><strong>Topics:</strong> Categorias de mensagens organizadas em partições</li>
+                                    <li><strong>Partitions:</strong> Unidades de paralelismo e escalabilidade</li>
+                                    <li><strong>Producers:</strong> Aplicações que publicam dados nos tópicos</li>
+                                    <li><strong>Consumers:</strong> Aplicações que leem dados dos tópicos</li>
+                                    <li><strong>ZooKeeper/KRaft:</strong> Coordenação de cluster (KRaft é a nova alternativa)</li>
+                                </ul>
+                                
+                                <h4>Vantagens</h4>
+                                <ul>
+                                    <li>Alta throughput (milhões de mensagens por segundo)</li>
+                                    <li>Baixa latência para processamento em tempo real</li>
+                                    <li>Escalabilidade horizontal automática</li>
+                                    <li>Durabilidade e tolerância a falhas</li>
+                                    <li>Replicação de dados entre brokers</li>
+                                    <li>Suporte a múltiplas linguagens de programação</li>
+                                    <li>Ecossistema rico com Kafka Connect e Kafka Streams</li>
+                                </ul>
+                                
+                                <h4>Desvantagens</h4>
+                                <ul>
+                                    <li>Complexidade de configuração e operação</li>
+                                    <li>Requer conhecimento especializado para otimização</li>
+                                    <li>Consumo significativo de recursos (CPU, memória, disco)</li>
+                                    <li>Dependência do ZooKeeper (em versões mais antigas)</li>
+                                    <li>Curva de aprendizado íngreme para iniciantes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane fade" id="features" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Principais Recursos</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-item">
+                                            <h5>🚀 Alta Performance</h5>
+                                            <p>Throughput de milhões de mensagens por segundo com latência sub-milissegundo</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-item">
+                                            <h5>📈 Escalabilidade</h5>
+                                            <p>Escalabilidade horizontal automática adicionando brokers ao cluster</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-item">
+                                            <h5>🔄 Replicação</h5>
+                                            <p>Replicação automática de dados entre brokers para alta disponibilidade</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-item">
+                                            <h5>💾 Persistência</h5>
+                                            <p>Armazenamento durável em disco com configuração de retenção flexível</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-item">
+                                            <h5>🔌 Kafka Connect</h5>
+                                            <p>Framework para integração com sistemas externos (bancos, sistemas de arquivos)</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-item">
+                                            <h5>🌊 Kafka Streams</h5>
+                                            <p>Biblioteca para processamento de streams em tempo real</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4>Especificações Técnicas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Versão Atual</strong></td>
+                                                <td>3.6.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Linguagem Principal</strong></td>
+                                                <td>Java, Scala</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Protocolos</strong></td>
+                                                <td>TCP, HTTP, HTTPS</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Serialização</strong></td>
+                                                <td>Avro, JSON, Protobuf, String</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Retenção</strong></td>
+                                                <td>Configurável (tempo ou tamanho)</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Throughput</strong></td>
+                                                <td>Milhões de mensagens/segundo</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Tab -->
+                    <div class="tab-pane fade" id="use-cases" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Casos de Uso</h3>
+                                
+                                <div class="use-case-item mb-4">
+                                    <h5>🔄 Event Sourcing</h5>
+                                    <p>Armazenamento de todos os eventos que alteram o estado de uma aplicação, permitindo reconstrução do estado a qualquer momento.</p>
+                                </div>
+                                
+                                <div class="use-case-item mb-4">
+                                    <h5>📊 Real-time Analytics</h5>
+                                    <p>Processamento de dados em tempo real para dashboards, alertas e tomada de decisões instantâneas.</p>
+                                </div>
+                                
+                                <div class="use-case-item mb-4">
+                                    <h5>🔗 Microservices Communication</h5>
+                                    <p>Comunicação assíncrona entre microserviços com garantias de entrega e ordem.</p>
+                                </div>
+                                
+                                <div class="use-case-item mb-4">
+                                    <h5>📱 Activity Tracking</h5>
+                                    <p>Rastreamento de atividades de usuários em aplicações web e mobile para análise comportamental.</p>
+                                </div>
+                                
+                                <div class="use-case-item mb-4">
+                                    <h5>🏗️ Data Pipeline</h5>
+                                    <p>Construção de pipelines de dados robustos para ETL e integração entre sistemas.</p>
+                                </div>
+                                
+                                <h4>Quando Usar Apache Kafka</h4>
+                                <div class="alert alert-success">
+                                    <h5>✅ Recomendado para:</h5>
+                                    <ul>
+                                        <li>Aplicações que requerem alta throughput (>100k mensagens/segundo)</li>
+                                        <li>Sistemas que precisam de processamento em tempo real</li>
+                                        <li>Arquiteturas de microserviços com comunicação assíncrona</li>
+                                        <li>Pipelines de dados complexos com múltiplos consumidores</li>
+                                        <li>Sistemas que requerem durabilidade e replicação de dados</li>
+                                        <li>Event sourcing e CQRS patterns</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <h5>⚠️ Considere alternativas se:</h5>
+                                    <ul>
+                                        <li>Volume de dados é baixo (<1k mensagens/segundo)</li>
+                                        <li>Equipe não tem experiência com sistemas distribuídos</li>
+                                        <li>Recursos de infraestrutura são limitados</li>
+                                        <li>Necessita de mensageria simples request-response</li>
+                                        <li>Orçamento para operação e manutenção é restrito</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples Tab -->
+                    <div class="tab-pane fade" id="examples" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Exemplos Práticos</h3>
+                                
+                                <h4>Instalação</h4>
+                                <div class="code-example">
+                                    <pre><code># Download e extração
+wget https://downloads.apache.org/kafka/2.13-3.6.0/kafka_2.13-3.6.0.tgz
+tar -xzf kafka_2.13-3.6.0.tgz
+cd kafka_2.13-3.6.0
+
+# Iniciar Kafka com KRaft (sem ZooKeeper)
+KAFKA_CLUSTER_ID="$(bin/kafka-storage.sh random-uuid)"
+bin/kafka-storage.sh format -t $KAFKA_CLUSTER_ID -c config/kraft/server.properties
+bin/kafka-server-start.sh config/kraft/server.properties</code></pre>
+                                </div>
+                                
+                                <h4>Configuração Básica</h4>
+                                <div class="code-example">
+                                    <pre><code># server.properties
+broker.id=1
+listeners=PLAINTEXT://localhost:9092
+log.dirs=/tmp/kafka-logs
+num.network.threads=3
+num.io.threads=8
+socket.send.buffer.bytes=102400
+socket.receive.buffer.bytes=102400
+socket.request.max.bytes=104857600
+num.partitions=1
+num.recovery.threads.per.data.dir=1
+offsets.topic.replication.factor=1
+transaction.state.log.replication.factor=1
+transaction.state.log.min.isr=1
+log.retention.hours=168
+log.segment.bytes=1073741824
+log.retention.check.interval.ms=300000</code></pre>
+                                </div>
+                                
+                                <h4>Exemplo Producer (Java)</h4>
+                                <div class="code-example">
+                                    <pre><code>import org.apache.kafka.clients.producer.*;
+import java.util.Properties;
+
+public class SimpleProducer {
+    public static void main(String[] args) {
+        Properties props = new Properties();
+        props.put("bootstrap.servers", "localhost:9092");
+        props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        
+        Producer<String, String> producer = new KafkaProducer<>(props);
+        
+        for (int i = 0; i < 100; i++) {
+            ProducerRecord<String, String> record = 
+                new ProducerRecord<>("my-topic", "key-" + i, "message-" + i);
+            
+            producer.send(record, (metadata, exception) -> {
+                if (exception != null) {
+                    exception.printStackTrace();
+                } else {
+                    System.out.printf("Sent message to topic %s partition %d offset %d%n",
+                        metadata.topic(), metadata.partition(), metadata.offset());
+                }
+            });
+        }
+        
+        producer.close();
+    }
+}</code></pre>
+                                </div>
+                                
+                                <h4>Exemplo Consumer (Java)</h4>
+                                <div class="code-example">
+                                    <pre><code>import org.apache.kafka.clients.consumer.*;
+import java.time.Duration;
+import java.util.Arrays;
+import java.util.Properties;
+
+public class SimpleConsumer {
+    public static void main(String[] args) {
+        Properties props = new Properties();
+        props.put("bootstrap.servers", "localhost:9092");
+        props.put("group.id", "my-consumer-group");
+        props.put("enable.auto.commit", "true");
+        props.put("auto.commit.interval.ms", "1000");
+        props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        
+        KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
+        consumer.subscribe(Arrays.asList("my-topic"));
+        
+        while (true) {
+            ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
+            for (ConsumerRecord<String, String> record : records) {
+                System.out.printf("Received message: key=%s, value=%s, offset=%d, partition=%d%n",
+                    record.key(), record.value(), record.offset(), record.partition());
+            }
+        }
+    }
+}</code></pre>
+                                </div>
+                                
+                                <h4>Comandos CLI Úteis</h4>
+                                <div class="code-example">
+                                    <pre><code># Criar tópico
+bin/kafka-topics.sh --create --topic my-topic --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+
+# Listar tópicos
+bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+
+# Descrever tópico
+bin/kafka-topics.sh --describe --topic my-topic --bootstrap-server localhost:9092
+
+# Producer via console
+bin/kafka-console-producer.sh --topic my-topic --bootstrap-server localhost:9092
+
+# Consumer via console
+bin/kafka-console-consumer.sh --topic my-topic --from-beginning --bootstrap-server localhost:9092
+
+# Verificar consumer groups
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list
+bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group my-consumer-group</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Tab -->
+                    <div class="tab-pane fade" id="comparison" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Comparações</h3>
+                                
+                                <h4>Kafka vs Alternativas de Streaming</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Tecnologia</th>
+                                                <th>Throughput</th>
+                                                <th>Latência</th>
+                                                <th>Durabilidade</th>
+                                                <th>Complexidade</th>
+                                                <th>Ecossistema</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Apache Kafka</strong></td>
+                                                <td><span class="badge bg-success">Muito Alta</span></td>
+                                                <td><span class="badge bg-warning text-dark">Baixa</span></td>
+                                                <td><span class="badge bg-success">Excelente</span></td>
+                                                <td><span class="badge bg-danger">Alta</span></td>
+                                                <td><span class="badge bg-success">Rico</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Apache Pulsar</strong></td>
+                                                <td><span class="badge bg-success">Alta</span></td>
+                                                <td><span class="badge bg-success">Muito Baixa</span></td>
+                                                <td><span class="badge bg-success">Excelente</span></td>
+                                                <td><span class="badge bg-warning text-dark">Moderada</span></td>
+                                                <td><span class="badge bg-warning text-dark">Crescendo</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Amazon Kinesis</strong></td>
+                                                <td><span class="badge bg-info">Alta</span></td>
+                                                <td><span class="badge bg-info">Baixa</span></td>
+                                                <td><span class="badge bg-info">Boa</span></td>
+                                                <td><span class="badge bg-success">Baixa</span></td>
+                                                <td><span class="badge bg-info">AWS</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>RabbitMQ</strong></td>
+                                                <td><span class="badge bg-warning text-dark">Moderada</span></td>
+                                                <td><span class="badge bg-success">Muito Baixa</span></td>
+                                                <td><span class="badge bg-info">Boa</span></td>
+                                                <td><span class="badge bg-info">Baixa</span></td>
+                                                <td><span class="badge bg-info">Maduro</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h4>Matriz de Decisão</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="decision-card">
+                                            <h5>🎯 Escolha Kafka se:</h5>
+                                            <ul>
+                                                <li>Precisa de throughput muito alto (>1M msgs/sec)</li>
+                                                <li>Requer durabilidade e replicação</li>
+                                                <li>Tem equipe experiente em sistemas distribuídos</li>
+                                                <li>Precisa de processamento de streams complexo</li>
+                                                <li>Quer ecossistema rico (Connect, Streams)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="decision-card">
+                                            <h5>🔄 Considere alternativas se:</h5>
+                                            <ul>
+                                                <li>Volume de dados é baixo</li>
+                                                <li>Precisa de latência ultra-baixa</li>
+                                                <li>Equipe prefere soluções gerenciadas</li>
+                                                <li>Orçamento para operação é limitado</li>
+                                                <li>Casos de uso simples de mensageria</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>📊 Quick Facts</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-dark">
+                                <tr>
+                                    <td><strong>Versão Atual:</strong></td>
+                                    <td>3.6.0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Licença:</strong></td>
+                                    <td>Apache 2.0</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Linguagem:</strong></td>
+                                    <td>Java, Scala</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Primeira Release:</strong></td>
+                                    <td>2011</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Última Atualização:</strong></td>
+                                    <td>Janeiro 2024</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔗 Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="https://kafka.apache.org" class="btn btn-outline-success btn-sm" target="_blank">
+                                    🌐 Site Oficial
+                                </a>
+                                <a href="https://github.com/apache/kafka" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📁 GitHub
+                                </a>
+                                <a href="https://kafka.apache.org/documentation/" class="btn btn-outline-success btn-sm" target="_blank">
+                                    📚 Documentação
+                                </a>
+                                <a href="https://kafka.apache.org/community" class="btn btn-outline-success btn-sm" target="_blank">
+                                    👥 Comunidade
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🔄 Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="../apache-pulsar/" class="btn btn-outline-info btn-sm">Apache Pulsar</a>
+                                <a href="../confluent/" class="btn btn-outline-info btn-sm">Confluent Platform</a>
+                                <a href="../../processamento/kafka-streams/" class="btn btn-outline-info btn-sm">Kafka Streams</a>
+                                <a href="../apache-nifi/" class="btn btn-outline-info btn-sm">Apache NiFi</a>
+                                <a href="../../processamento/apache-flink/" class="btn btn-outline-info btn-sm">Apache Flink</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Courses -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>🎓 Cursos Relacionados</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="../../../cursos/apache-kafka-fundamentals/" class="btn btn-outline-warning btn-sm">Kafka Fundamentals</a>
+                                <a href="../../../cursos/kafka-streams-processing/" class="btn btn-outline-warning btn-sm">Kafka Streams</a>
+                                <a href="../../../cursos/real-time-analytics/" class="btn btn-outline-warning btn-sm">Real-time Analytics</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sponsored Content -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>💼 Conteúdo Patrocinado</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="sponsored-content">
+                                <p><small class="text-muted">Conteúdo Patrocinado</small></p>
+                                <h6>Confluent Cloud</h6>
+                                <p class="small">Kafka como serviço totalmente gerenciado na nuvem.</p>
+                                <a href="https://confluent.io" class="btn btn-sm btn-outline-primary" target="_blank">Saiba Mais</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/main.js"></script>
+    <script src="../../../assets/js/technology-page.js"></script>
+    <script src="../../../assets/js/theme-toggle.js"></script>
+</body>
+</html>

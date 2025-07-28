@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Kubernetes - Orquestração de Containers | Portal Big Data</title>
+    <meta name="title" content="Kubernetes - Orquestração de Containers | Portal Big Data">
+    <meta name="description" content="Guia completo do Kubernetes: orquestração de containers, deployment de aplicações Big Data, configuração de clusters e exemplos práticos.">
+    <meta name="keywords" content="kubernetes, container orchestration, big data, docker, microservices, cloud native, k8s">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/orquestracao/kubernetes">
+    <meta property="og:title" content="Kubernetes - Orquestração de Containers | Portal Big Data">
+    <meta property="og:description" content="Guia completo do Kubernetes: orquestração de containers, deployment de aplicações Big Data, configuração de clusters e exemplos práticos.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/og/kubernetes-og.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/tecnologias/orquestracao/kubernetes">
+    <meta property="twitter:title" content="Kubernetes - Orquestração de Containers | Portal Big Data">
+    <meta property="twitter:description" content="Guia completo do Kubernetes: orquestração de containers, deployment de aplicações Big Data, configuração de clusters e exemplos práticos.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/kubernetes-twitter.jpg">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/orquestracao/kubernetes">
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-success">
+        <div class="container">
+            <a class="navbar-brand text-success" href="../../../index.html">
+                <span class="matrix-text">Portal Big Data</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../tecnologias/index.html">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/index.html">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/index.html">Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent">
+                <li class="breadcrumb-item"><a href="../../../index.html" class="text-success">Home</a></li>
+                <li class="breadcrumb-item"><a href="../../../tecnologias/index.html" class="text-success">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../index.html" class="text-success">Orquestração</a></li>
+                <li class="breadcrumb-item active text-light">Kubernetes</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container technology-page">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Technology Header -->
+                <div class="tech-header mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="../../../assets/images/logos/kubernetes-logo.png" alt="Kubernetes Logo" class="tech-logo me-3" style="width: 80px; height: 80px;">
+                        <div>
+                            <h1 class="text-success mb-2">Kubernetes</h1>
+                            <p class="lead text-light">Sistema de orquestração de containers para automação de deployment, scaling e gerenciamento</p>
+                        </div>
+                    </div>
+                    <div class="tech-badges mb-3">
+                        <span class="badge bg-primary me-2">Open Source</span>
+                        <span class="badge bg-success me-2">Cloud Native</span>
+                        <span class="badge bg-info me-2">Container Orchestration</span>
+                        <span class="badge bg-warning">Production Ready</span>
+                    </div>
+                </div>
+
+                <!-- Overview -->
+                <section class="mb-5">
+                    <h2 class="text-success mb-3">Visão Geral</h2>
+                    <p>Kubernetes (K8s) é uma plataforma open-source para automação de deployment, scaling e gerenciamento de aplicações containerizadas. Originalmente desenvolvido pelo Google e baseado em sua experiência com sistemas internos como Borg e Omega, Kubernetes se tornou o padrão da indústria para orquestração de containers.</p>
+                    
+                    <p>O Kubernetes fornece um framework para executar sistemas distribuídos de forma resiliente, cuidando do scaling, failover, deployment patterns e muito mais para suas aplicações.</p>
+                </section>
+
+                <!-- Key Features -->
+                <section class="mb-5">
+                    <h2 class="text-success mb-3">Principais Características</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="text-success">✓</i> Orquestração automática de containers</li>
+                                <li class="mb-2"><i class="text-success">✓</i> Auto-scaling horizontal e vertical</li>
+                                <li class="mb-2"><i class="text-success">✓</i> Service discovery e load balancing</li>
+                                <li class="mb-2"><i class="text-success">✓</i> Rolling updates e rollbacks</li>
+                                <li class="mb-2"><i class="text-success">✓</i> Self-healing (restart, replace, kill)</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="text-success">✓</i> Gerenciamento de configuração e secrets</li>
+                                <li class="mb-2"><i class="text-success">✓</i> Storage orchestration</li>
+                                <li class="mb-2"><i class="text-success">✓</i> Batch execution</li>
+                                <li class="mb-2"><i class="text-success">✓</i> Multi-cloud e hybrid cloud</li>
+                                <li class="mb-2"><i class="text-success">✓</i> Extensibilidade via APIs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Architecture -->
+                <section class="mb-5">
+                    <h2 class="text-success mb-3">Arquitetura Kubernetes</h2>
+                    <p>Kubernetes utiliza uma arquitetura master-worker com os seguintes componentes:</p>
+                    
+                    <h4 class="text-info mb-3">Control Plane (Master)</h4>
+                    <ul>
+                        <li><strong>kube-apiserver:</strong> API server que expõe a API do Kubernetes</li>
+                        <li><strong>etcd:</strong> Armazenamento key-value para dados do cluster</li>
+                        <li><strong>kube-scheduler:</strong> Agenda pods para nodes</li>
+                        <li><strong>kube-controller-manager:</strong> Executa controllers</li>
+                        <li><strong>cloud-controller-manager:</strong> Interage com APIs de cloud providers</li>
+                    </ul>
+
+                    <h4 class="text-info mb-3">Worker Nodes</h4>
+                    <ul>
+                        <li><strong>kubelet:</strong> Agente que executa nos nodes</li>
+                        <li><strong>kube-proxy:</strong> Proxy de rede para services</li>
+                        <li><strong>Container Runtime:</strong> Docker, containerd, CRI-O</li>
+                    </ul>
+                </section>
+
+                <!-- Basic Example -->
+                <section class="mb-5">
+                    <h2 class="text-success mb-3">Exemplo Básico - Deployment</h2>
+                    <p>Exemplo de um deployment simples de uma aplicação web:</p>
+                    
+                    <div class="code-example">
+                        <h5 class="text-info mb-3">deployment.yaml</h5>
+                        <pre class="bg-black p-3 rounded"><code class="text-light">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+  labels:
+    app: web-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+      - name: web-app
+        image: nginx:1.21
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-app-service
+spec:
+  selector:
+    app: web-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer</code></pre>
+                    </div>
+
+                    <div class="code-example mt-4">
+                        <h5 class="text-info mb-3">Comandos kubectl</h5>
+                        <pre class="bg-black p-3 rounded"><code class="text-light"># Aplicar configuração
+kubectl apply -f deployment.yaml
+
+# Verificar status do deployment
+kubectl get deployments
+
+# Verificar pods
+kubectl get pods
+
+# Verificar services
+kubectl get services
+
+# Escalar deployment
+kubectl scale deployment web-app --replicas=5
+
+# Ver logs
+kubectl logs -l app=web-app
+
+# Executar comando em pod
+kubectl exec -it <pod-name> -- /bin/bash</code></pre>
+                    </div>
+                </section>
+
+                <!-- Big Data Example -->
+                <section class="mb-5">
+                    <h2 class="text-success mb-3">Kubernetes para Big Data</h2>
+                    <p>Exemplo de deployment do Apache Spark no Kubernetes:</p>
+                    
+                    <div class="code-example">
+                        <h5 class="text-info mb-3">spark-cluster.yaml</h5>
+                        <pre class="bg-black p-3 rounded"><code class="text-light">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spark-master
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spark-master
+  template:
+    metadata:
+      labels:
+        app: spark-master
+    spec:
+      containers:
+      - name: spark-master
+        image: bitnami/spark:3.5
+        env:
+        - name: SPARK_MODE
+          value: "master"
+        - name: SPARK_RPC_AUTHENTICATION_ENABLED
+          value: "no"
+        - name: SPARK_RPC_ENCRYPTION_ENABLED
+          value: "no"
+        ports:
+        - containerPort: 8080
+        - containerPort: 7077
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spark-master-service
+spec:
+  selector:
+    app: spark-master
+  ports:
+  - name: web-ui
+    port: 8080
+    targetPort: 8080
+  - name: spark
+    port: 7077
+    targetPort: 7077
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spark-worker
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: spark-worker
+  template:
+    metadata:
+      labels:
+        app: spark-worker
+    spec:
+      containers:
+      - name: spark-worker
+        image: bitnami/spark:3.5
+        env:
+        - name: SPARK_MODE
+          value: "worker"
+        - name: SPARK_MASTER_URL
+          value: "spark://spark-master-service:7077"
+        - name: SPARK_WORKER_MEMORY
+          value: "2G"
+        - name: SPARK_WORKER_CORES
+          value: "2"
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "1000m"
+          limits:
+            memory: "4Gi"
+            cpu: "2000m"</code></pre>
+                    </div>
+                </section>
+
+                <!-- ConfigMaps and Secrets -->
+                <section class="mb-5">
+                    <h2 class="text-success mb-3">ConfigMaps e Secrets</h2>
+                    <p>Gerenciamento de configurações e dados sensíveis:</p>
+                    
+                    <div class="code-example">
+                        <h5 class="text-info mb-3">configmap-secret.yaml</h5>
+                        <pre class="bg-black p-3 rounded"><code class="text-light">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  database.host: "postgres-service"
+  database.port: "5432"
+  database.name: "myapp"
+  log.level: "INFO"
+  app.properties: |
+    server.port=8080
+    spring.datasource.url=jdbc:postgresql://postgres-service:5432/myapp
+    logging.level.root=INFO
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secrets
+type: Opaque
+data:
+  database.username: dXNlcm5hbWU=  # base64 encoded
+  database.password: cGFzc3dvcmQ=  # base64 encoded
+  api.key: YWJjZGVmZ2hpams=        # base64 encoded
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-with-config
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: app-with-config
+  template:
+    metadata:
+      labels:
+        app: app-with-config
+    spec:
+      containers:
+      - name: app
+        image: myapp:latest
+        env:
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: database.host
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: database.username
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: app-secrets
+              key: database.password
+        volumeMounts:
+        - name: config-volume
+          mountPath: /app/config
+        - name: secret-volume
+          mountPath: /app/secrets
+          readOnly: true
+      volumes:
+      - name: config-volume
+        configMap:
+          name: app-config
+      - name: secret-volume
+        secret:
+          secretName: app-secrets</code></pre>
+                    </div>
+                </section>
+
+                <!-- Persistent Volumes -->
+                <section class="mb-5">
+                    <h2 class="text-success mb-3">Persistent Volumes</h2>
+                    <p>Gerenciamento de armazenamento persistente:</p>
+                    
+                    <div class="code-example">
+                        <h5 class="text-info mb-3">persistent-storage.yaml</h5>
+                        <pre class="bg-black p-3 rounded"><code class="text-light">apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: data-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: fast-ssd
+  hostPath:
+    path: /data/volumes/pv1
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: fast-ssd
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: database
+spec:
+  serviceName: database-service
+  replicas: 1
+  selector:
+    matchLabels:
+      app: database
+  template:
+    metadata:
+      labels:
+        app: database
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:15
+        env:
+        - name: POSTGRES_DB
+          value: "mydb"
+        - name: POSTGRES_USER
+          value: "user"
+        - name: POSTGRES_PASSWORD
+          value: "password"
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - name: data-volume
+          mountPath: /var/lib/postgresql/data
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+      volumes:
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: data-pvc</code></pre>
+                    </div>
+                </section>
+
+                <!-- Monitoring -->
+                <section class="mb-5">
+                    <h2 class="text-success mb-3">Monitoramento e Observabilidade</h2>
+                    <p>Stack de monitoramento com Prometheus e Grafana:</p>
+                    
+                    <div class="code-example">
+                        <h5 class="text-info mb-3">monitoring-stack.yaml</h5>
+                        <pre class="bg-black p-3 rounded"><code class="text-light">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - name: prometheus
+        image: prom/prometheus:latest
+        ports:
+        - containerPort: 9090
+        volumeMounts:
+        - name: prometheus-config
+          mountPath: /etc/prometheus
+        - name: prometheus-data
+          mountPath: /prometheus
+        args:
+          - '--config.file=/etc/prometheus/prometheus.yml'
+          - '--storage.tsdb.path=/prometheus'
+          - '--web.console.libraries=/etc/prometheus/console_libraries'
+          - '--web.console.templates=/etc/prometheus/consoles'
+      volumes:
+      - name: prometheus-config
+        configMap:
+          name: prometheus-config
+      - name: prometheus-data
+        emptyDir: {}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 15s
+    scrape_configs:
+    - job_name: 'kubernetes-pods'
+      kubernetes_sd_configs:
+      - role: pod
+      relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+        action: keep
+        regex: true
+    - job_name: 'kubernetes-nodes'
+      kubernetes_sd_configs:
+      - role: node
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      containers:
+      - name: grafana
+        image: grafana/grafana:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: GF_SECURITY_ADMIN_PASSWORD
+          value: "admin"
+        volumeMounts:
+        - name: grafana-data
+          mountPath: /var/lib/grafana
+      volumes:
+      - name: grafana-data
+        emptyDir: {}</code></pre>
+                    </div>
+                </section>
+
+                <!-- Use Cases -->
+                <section class="mb-5">
+                    <h2 class="text-success mb-3">Casos de Uso em Big Data</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card bg-dark border-success mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title text-success">Spark Clusters</h5>
+                                    <p class="card-text">Deploy e scaling automático de clusters Apache Spark para processamento distribuído.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-dark border-success mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title text-success">Kafka Streaming</h5>
+                                    <p class="card-text">Orquestração de clusters Kafka para processamento de streams em tempo real.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-dark border-success mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title text-success">ML Pipelines</h5>
+                                    <p class="card-text">Execução de pipelines de Machine Learning com Kubeflow e MLflow.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-dark border-success mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title text-success">Data Lakes</h5>
+                                    <p class="card-text">Gerenciamento de componentes de Data Lake como MinIO, Trino e Hive.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Best Practices -->
+                <section class="mb-5">
+                    <h2 class="text-success mb-3">Melhores Práticas</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="text-info">Segurança</h4>
+                            <ul>
+                                <li>Use RBAC (Role-Based Access Control)</li>
+                                <li>Configure Network Policies</li>
+                                <li>Escaneie imagens por vulnerabilidades</li>
+                                <li>Use Pod Security Standards</li>
+                                <li>Implemente secrets management</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="text-info">Performance</h4>
+                            <ul>
+                                <li>Configure resource requests e limits</li>
+                                <li>Use Horizontal Pod Autoscaler</li>
+                                <li>Implemente health checks</li>
+                                <li>Otimize imagens de container</li>
+                                <li>Configure node affinity</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-md-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Informações Rápidas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><strong>Tipo:</strong> Container Orchestration</li>
+                                <li><strong>Licença:</strong> Apache 2.0</li>
+                                <li><strong>Linguagem:</strong> Go</li>
+                                <li><strong>Primeira Versão:</strong> 2014</li>
+                                <li><strong>Desenvolvedor:</strong> CNCF</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="https://kubernetes.io/" class="text-success" target="_blank">Site Oficial</a></li>
+                                <li><a href="https://kubernetes.io/docs/" class="text-success" target="_blank">Documentação</a></li>
+                                <li><a href="https://github.com/kubernetes/kubernetes" class="text-success" target="_blank">GitHub</a></li>
+                                <li><a href="https://kubernetes.io/training/" class="text-success" target="_blank">Training</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="../docker/index.html" class="text-success">Docker</a></li>
+                                <li><a href="../apache-airflow/index.html" class="text-success">Apache Airflow</a></li>
+                                <li><a href="../../processamento/apache-spark/index.html" class="text-success">Apache Spark</a></li>
+                                <li><a href="../../streaming/apache-kafka/index.html" class="text-success">Apache Kafka</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Courses -->
+                    <div class="card bg-dark border-success">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Cursos Relacionados</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="../../../cursos/kubernetes-fundamentals/index.html" class="text-success">Kubernetes Fundamentals</a></li>
+                                <li><a href="../../../cursos/container-orchestration/index.html" class="text-success">Container Orchestration</a></li>
+                                <li><a href="../../../cursos/cloud-native-big-data/index.html" class="text-success">Cloud Native Big Data</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black border-top border-success mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-success mb-0">&copy; 2024 Portal Big Data. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="../../../index.html" class="text-success me-3">Home</a>
+                    <a href="../../../tecnologias/index.html" class="text-success me-3">Tecnologias</a>
+                    <a href="../../../cursos/index.html" class="text-success">Cursos</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../assets/js/technology-page.js"></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Kubernetes",
+        "description": "Sistema de orquestração de containers para automação de deployment, scaling e gerenciamento",
+        "url": "https://kubernetes.io/",
+        "applicationCategory": "Container Orchestration",
+        "operatingSystem": "Linux, macOS, Windows",
+        "programmingLanguage": "Go",
+        "license": "https://www.apache.org/licenses/LICENSE-2.0",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Cloud Native Computing Foundation"
+        }
+    }
+    </script>
+</body>
+</html>

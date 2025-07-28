@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache Samza - Distributed Stream Processing | Portal Big Data</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Apache Samza - Distributed Stream Processing | Portal Big Data">
+    <meta name="description" content="Apache Samza: framework distribuído para processamento de streams. Guia completo, casos de uso e comparações com outras tecnologias.">
+    <meta name="keywords" content="apache samza, stream processing, kafka, yarn, distributed systems, real-time">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/processamento/apache-samza">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/processamento/apache-samza">
+    <meta property="og:title" content="Apache Samza - Distributed Stream Processing | Portal Big Data">
+    <meta property="og:description" content="Apache Samza: framework distribuído para processamento de streams. Guia completo, casos de uso e comparações com outras tecnologias.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/og/apache-samza-og.jpg">
+    <meta property="og:site_name" content="Portal Big Data">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/tecnologias/processamento/apache-samza">
+    <meta property="twitter:title" content="Apache Samza - Distributed Stream Processing | Portal Big Data">
+    <meta property="twitter:description" content="Apache Samza: framework distribuído para processamento de streams. Guia completo, casos de uso e comparações com outras tecnologias.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/apache-samza-twitter.jpg">
+    <meta property="twitter:site" content="@portalbigdata">
+    
+    <!-- Structured Data for Software Application -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Apache Samza",
+        "description": "Distributed stream processing framework",
+        "url": "https://samza.apache.org",
+        "applicationCategory": "Stream Processing",
+        "operatingSystem": "Linux, Unix",
+        "programmingLanguage": ["Java", "Scala"],
+        "license": "Apache License 2.0",
+        "version": "1.9.0",
+        "datePublished": "2013-07-16",
+        "dateModified": "2024-12-01",
+        "author": {
+            "@type": "Organization",
+            "name": "Apache Software Foundation",
+            "url": "https://apache.org"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        },
+        "featureList": [
+            "Stateful stream processing",
+            "Fault tolerance",
+            "Pluggable architecture",
+            "YARN integration",
+            "Kafka integration",
+            "Local state management"
+        ],
+        "requirements": "Java 8+, Apache Kafka, YARN or standalone"
+    }
+    </script>
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-matrix-blue">
+        <div class="container">
+            <a class="navbar-brand" href="/">Portal Big Data</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../entrar-hadoop/">Entrar no Hadoop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../sair-hadoop/">Sair do Hadoop</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb" class="breadcrumb-matrix">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Início</a></li>
+                <li class="breadcrumb-item"><a href="../../">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../">Processamento</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Apache Samza</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Main Content Area -->
+            <div class="col-lg-8">
+                <!-- Technology Header -->
+                <div class="tech-header d-flex align-items-center mb-4">
+                    <div class="tech-logo-placeholder bg-success text-white rounded me-3 d-flex align-items-center justify-content-center" style="width: 80px; height: 80px; font-size: 24px;">
+                        🔄
+                    </div>
+                    <div>
+                        <h1 class="mb-2">Apache Samza</h1>
+                        <div class="tech-badges">
+                            <span class="badge bg-primary">Open Source</span>
+                            <span class="badge bg-info">Stream Processing</span>
+                            <span class="badge bg-warning text-dark">Java</span>
+                            <span class="badge bg-success">Stateful</span>
+                        </div>
+                        <p class="lead mt-2 mb-0">Framework distribuído para processamento de streams com estado</p>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <ul class="nav nav-tabs nav-fill mb-4" id="techTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab">
+                            Visão Geral
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button" role="tab">
+                            Recursos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="use-cases-tab" data-bs-toggle="tab" data-bs-target="#use-cases" type="button" role="tab">
+                            Casos de Uso
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="examples-tab" data-bs-toggle="tab" data-bs-target="#examples" type="button" role="tab">
+                            Exemplos
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison" type="button" role="tab">
+                            Comparações
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content" id="techTabsContent">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>O que é Apache Samza?</h3>
+                                <p>Apache Samza é um framework distribuído de processamento de streams que permite construir aplicações stateful para processar dados em tempo real. Desenvolvido originalmente no LinkedIn, Samza é projetado para trabalhar com Apache Kafka como sistema de mensageria e YARN como gerenciador de recursos, oferecendo processamento confiável e escalável de streams de dados.</p>
+                                
+                                <h4>História</h4>
+                                <p>Apache Samza foi desenvolvido no LinkedIn em 2013 para atender às necessidades de processamento de streams em larga escala da empresa. Foi open-sourced e doado para a Apache Software Foundation no mesmo ano. O projeto foi criado para superar limitações de outras soluções de stream processing da época, focando especialmente em processamento stateful e integração nativa com Kafka.</p>
+                                
+                                <h4>Arquitetura</h4>
+                                <p>Samza utiliza uma arquitetura baseada em jobs que são executados como containers YARN ou processos standalone. Cada job processa uma ou mais partições de tópicos Kafka, mantendo estado local usando key-value stores. A arquitetura é pluggável, permitindo diferentes sistemas de mensageria, gerenciadores de recursos e sistemas de armazenamento de estado.</p>
+                                
+                                <h4>Vantagens</h4>
+                                <ul>
+                                    <li><strong>Processamento stateful:</strong> Gerenciamento nativo de estado local com checkpointing</li>
+                                    <li><strong>Fault tolerance:</strong> Recuperação automática de falhas com reprocessamento</li>
+                                    <li><strong>Arquitetura pluggável:</strong> Suporte a diferentes sistemas de mensageria e storage</li>
+                                    <li><strong>Integração com Kafka:</strong> Otimizado para trabalhar com Apache Kafka</li>
+                                    <li><strong>Isolamento de processos:</strong> Jobs executam em containers isolados</li>
+                                    <li><strong>Flexibilidade:</strong> Suporte a diferentes padrões de deployment</li>
+                                </ul>
+                                
+                                <h4>Desvantagens</h4>
+                                <ul>
+                                    <li><strong>Complexidade operacional:</strong> Requer conhecimento de YARN e Kafka</li>
+                                    <li><strong>Comunidade menor:</strong> Menos ativa comparada a Spark ou Flink</li>
+                                    <li><strong>Documentação limitada:</strong> Menos recursos de aprendizado disponíveis</li>
+                                    <li><strong>Curva de aprendizado:</strong> Conceitos específicos do framework</li>
+                                    <li><strong>Dependências:</strong> Forte acoplamento com ecossistema Hadoop/Kafka</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Tab -->
+                    <div class="tab-pane fade" id="features" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Principais Recursos</h3>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🗃️ Stateful Processing</h5>
+                                            <p>Gerenciamento nativo de estado local com key-value stores e checkpointing.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🔌 Pluggable Architecture</h5>
+                                            <p>Arquitetura modular com suporte a diferentes sistemas de mensageria e storage.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🛡️ Fault Tolerance</h5>
+                                            <p>Recuperação automática de falhas com reprocessamento e checkpointing.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>📊 Kafka Integration</h5>
+                                            <p>Integração nativa e otimizada com Apache Kafka para mensageria.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>🏗️ YARN Support</h5>
+                                            <p>Execução nativa em clusters YARN com isolamento de recursos.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="feature-card p-3 border rounded">
+                                            <h5>⚖️ Load Balancing</h5>
+                                            <p>Distribuição automática de carga entre instâncias de processamento.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h4>Especificações Técnicas</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Versão Atual</strong></td>
+                                                <td>1.9.0</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Linguagens Suportadas</strong></td>
+                                                <td>Java, Scala</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Sistemas de Mensageria</strong></td>
+                                                <td>Apache Kafka (principal), pluggable</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Gerenciadores de Recursos</strong></td>
+                                                <td>YARN, Standalone</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>State Stores</strong></td>
+                                                <td>RocksDB, In-memory, pluggable</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Requisitos Mínimos</strong></td>
+                                                <td>Java 8+, Kafka cluster</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Use Cases Tab -->
+                    <div class="tab-pane fade" id="use-cases" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Casos de Uso</h3>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>🔄 ETL em Tempo Real</h5>
+                                    <p>Transformação e enriquecimento de dados em tempo real entre diferentes sistemas com manutenção de estado.</p>
+                                </div>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>📊 Stream Analytics</h5>
+                                    <p>Análise contínua de streams de dados com agregações complexas e janelas de tempo.</p>
+                                </div>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>🔍 Event Processing</h5>
+                                    <p>Processamento de eventos complexos com correlação entre múltiplos streams e manutenção de contexto.</p>
+                                </div>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>🎯 Personalization</h5>
+                                    <p>Sistemas de personalização em tempo real baseados no comportamento do usuário e histórico.</p>
+                                </div>
+                                
+                                <div class="use-case mb-4">
+                                    <h5>🚨 Monitoring e Alertas</h5>
+                                    <p>Monitoramento contínuo de métricas e geração de alertas baseados em padrões complexos.</p>
+                                </div>
+                                
+                                <h4>Quando Usar Apache Samza</h4>
+                                <div class="alert alert-success">
+                                    <h5>✅ Recomendado para:</h5>
+                                    <ul>
+                                        <li>Processamento stateful complexo</li>
+                                        <li>Integração forte com ecossistema Kafka</li>
+                                        <li>Necessidade de isolamento de processos</li>
+                                        <li>Workloads que requerem checkpointing frequente</li>
+                                        <li>Ambientes com YARN já estabelecido</li>
+                                        <li>Aplicações que precisam de controle granular sobre estado</li>
+                                        <li>Processamento de eventos com correlação temporal</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="alert alert-warning">
+                                    <h5>⚠️ Considere alternativas se:</h5>
+                                    <ul>
+                                        <li>Você precisa de uma comunidade mais ativa</li>
+                                        <li>Quer simplicidade operacional (considere Kafka Streams)</li>
+                                        <li>Necessita de suporte a múltiplas linguagens</li>
+                                        <li>Requer processamento de baixíssima latência</li>
+                                        <li>Não usa Kafka como sistema principal de mensageria</li>
+                                        <li>Prefere soluções com mais recursos de aprendizado</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Examples Tab -->
+                    <div class="tab-pane fade" id="examples" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Exemplos Práticos</h3>
+                                
+                                <h4>Configuração Maven</h4>
+                                <div class="code-example mb-4">
+                                    <pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.samza&lt;/groupId&gt;
+    &lt;artifactId&gt;samza-api&lt;/artifactId&gt;
+    &lt;version&gt;1.9.0&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.samza&lt;/groupId&gt;
+    &lt;artifactId&gt;samza-core_2.12&lt;/artifactId&gt;
+    &lt;version&gt;1.9.0&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.samza&lt;/groupId&gt;
+    &lt;artifactId&gt;samza-kafka_2.12&lt;/artifactId&gt;
+    &lt;version&gt;1.9.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+                                </div>
+                                
+                                <h4>Exemplo Básico - Stream Task</h4>
+                                <div class="code-example mb-4">
+                                    <pre><code>import org.apache.samza.application.StreamApplication;
+import org.apache.samza.application.descriptors.StreamApplicationDescriptor;
+import org.apache.samza.operators.MessageStream;
+import org.apache.samza.operators.OutputStream;
+import org.apache.samza.serializers.JsonSerdeV2;
+import org.apache.samza.system.kafka.descriptors.KafkaInputDescriptor;
+import org.apache.samza.system.kafka.descriptors.KafkaOutputDescriptor;
+import org.apache.samza.system.kafka.descriptors.KafkaSystemDescriptor;
+
+public class WordCountApplication implements StreamApplication {
+    
+    @Override
+    public void describe(StreamApplicationDescriptor appDescriptor) {
+        // Configurar sistema Kafka
+        KafkaSystemDescriptor kafkaSystemDescriptor = 
+            new KafkaSystemDescriptor("kafka")
+                .withConsumerZkConnect("localhost:2181")
+                .withProducerBootstrapServers("localhost:9092");
+        
+        // Input stream
+        KafkaInputDescriptor&lt;String&gt; inputDescriptor = 
+            kafkaSystemDescriptor.getInputDescriptor("input-topic", 
+                new JsonSerdeV2&lt;&gt;(String.class));
+        
+        // Output stream
+        KafkaOutputDescriptor&lt;WordCount&gt; outputDescriptor = 
+            kafkaSystemDescriptor.getOutputDescriptor("word-count-output", 
+                new JsonSerdeV2&lt;&gt;(WordCount.class));
+        
+        // Definir streams
+        MessageStream&lt;String&gt; inputStream = appDescriptor.getInputStream(inputDescriptor);
+        OutputStream&lt;WordCount&gt; outputStream = appDescriptor.getOutputStream(outputDescriptor);
+        
+        // Processamento
+        inputStream
+            .flatMap(text -&gt; Arrays.asList(text.toLowerCase().split("\\s+")))
+            .filter(word -&gt; !word.isEmpty())
+            .map(word -&gt; new WordCount(word, 1))
+            .partitionBy(WordCount::getWord, new JsonSerdeV2&lt;&gt;(String.class))
+            .window(Windows.keyedSessionWindow(Duration.ofMinutes(5)), 
+                    new JsonSerdeV2&lt;&gt;(WordCount.class))
+            .aggregate(WordCount::new, 
+                      (message, aggregate) -&gt; {
+                          aggregate.setCount(aggregate.getCount() + message.getCount());
+                          return aggregate;
+                      })
+            .map(windowPane -&gt; windowPane.getMessage())
+            .sendTo(outputStream);
+    }
+    
+    public static class WordCount {
+        private String word;
+        private int count;
+        
+        public WordCount() {}
+        
+        public WordCount(String word, int count) {
+            this.word = word;
+            this.count = count;
+        }
+        
+        // getters and setters
+        public String getWord() { return word; }
+        public void setWord(String word) { this.word = word; }
+        public int getCount() { return count; }
+        public void setCount(int count) { this.count = count; }
+    }
+}</code></pre>
+                                </div>
+                                
+                                <h4>Exemplo com Estado - User Session Tracking</h4>
+                                <div class="code-example mb-4">
+                                    <pre><code>import org.apache.samza.operators.functions.MapFunction;
+import org.apache.samza.storage.kv.KeyValueStore;
+import org.apache.samza.context.Context;
+
+public class SessionTrackingApplication implements StreamApplication {
+    
+    @Override
+    public void describe(StreamApplicationDescriptor appDescriptor) {
+        // Configurar state store
+        KVSerde&lt;String, UserSession&gt; sessionSerde = 
+            KVSerde.of(new StringSerde(), new JsonSerdeV2&lt;&gt;(UserSession.class));
+        
+        appDescriptor.withDefaultSystem(kafkaSystemDescriptor);
+        
+        MessageStream&lt;UserEvent&gt; events = appDescriptor
+            .getInputStream(inputDescriptor)
+            .map(new JsonSerdeV2&lt;&gt;(UserEvent.class));
+        
+        // Processar eventos com estado
+        events
+            .partitionBy(UserEvent::getUserId, new StringSerde())
+            .map(new SessionProcessor())
+            .sendTo(outputStream);
+    }
+    
+    private static class SessionProcessor implements MapFunction&lt;UserEvent, SessionUpdate&gt; {
+        private KeyValueStore&lt;String, UserSession&gt; sessionStore;
+        
+        @Override
+        public void init(Context context) {
+            this.sessionStore = (KeyValueStore&lt;String, UserSession&gt;) 
+                context.getTaskContext().getStore("session-store");
+        }
+        
+        @Override
+        public SessionUpdate apply(UserEvent event) {
+            String userId = event.getUserId();
+            UserSession session = sessionStore.get(userId);
+            
+            if (session == null) {
+                session = new UserSession(userId, event.getTimestamp());
+            }
+            
+            // Atualizar sessão
+            session.addEvent(event);
+            session.setLastActivity(event.getTimestamp());
+            
+            // Verificar se sessão expirou
+            if (isSessionExpired(session, event.getTimestamp())) {
+                SessionUpdate update = new SessionUpdate(session, "EXPIRED");
+                sessionStore.delete(userId);
+                return update;
+            } else {
+                sessionStore.put(userId, session);
+                return new SessionUpdate(session, "ACTIVE");
+            }
+        }
+        
+        private boolean isSessionExpired(UserSession session, long currentTime) {
+            return (currentTime - session.getLastActivity()) &gt; Duration.ofMinutes(30).toMillis();
+        }
+    }
+    
+    public static class UserSession {
+        private String userId;
+        private long startTime;
+        private long lastActivity;
+        private List&lt;UserEvent&gt; events;
+        
+        public UserSession() {
+            this.events = new ArrayList&lt;&gt;();
+        }
+        
+        public UserSession(String userId, long startTime) {
+            this.userId = userId;
+            this.startTime = startTime;
+            this.lastActivity = startTime;
+            this.events = new ArrayList&lt;&gt;();
+        }
+        
+        public void addEvent(UserEvent event) {
+            this.events.add(event);
+        }
+        
+        // getters and setters
+    }
+}</code></pre>
+                                </div>
+                                
+                                <h4>Configuração de Job</h4>
+                                <div class="code-example mb-4">
+                                    <pre><code># job.properties
+job.factory.class=org.apache.samza.job.yarn.YarnJobFactory
+job.name=word-count-job
+
+# Kafka system
+systems.kafka.samza.factory=org.apache.samza.system.kafka.KafkaSystemFactory
+systems.kafka.consumer.zookeeper.connect=localhost:2181
+systems.kafka.producer.bootstrap.servers=localhost:9092
+
+# Input stream
+task.inputs=kafka.input-topic
+
+# Output stream
+streams.word-count-output.samza.system=kafka
+
+# Serializers
+serializers.registry.json.class=org.apache.samza.serializers.JsonSerdeFactory
+
+# State store
+stores.session-store.factory=org.apache.samza.storage.kv.RocksDbKeyValueStorageEngineFactory
+stores.session-store.key.serde=string
+stores.session-store.msg.serde=json
+
+# YARN configuration
+yarn.package.path=file:///path/to/samza-job-package.tgz
+yarn.container.memory.mb=1024
+yarn.container.cpu.cores=1
+
+# Task configuration
+task.class=com.example.WordCountTask
+task.checkpoint.factory=org.apache.samza.checkpoint.kafka.KafkaCheckpointManagerFactory</code></pre>
+                                </div>
+                                
+                                <h4>Deployment Script</h4>
+                                <div class="code-example mb-4">
+                                    <pre><code>#!/bin/bash
+
+# Build do projeto
+mvn clean package
+
+# Criar package para deployment
+mkdir -p deploy/lib
+cp target/*.jar deploy/lib/
+cp -r config deploy/
+
+# Criar tarball
+tar -czf samza-job-package.tgz -C deploy .
+
+# Upload para HDFS (se usando YARN)
+hdfs dfs -put samza-job-package.tgz /samza/
+
+# Executar job
+./deploy/bin/run-job.sh \
+    --config-factory=org.apache.samza.config.factories.PropertiesConfigFactory \
+    --config-path=file://$PWD/deploy/config/job.properties
+
+# Monitorar job
+yarn application -list -appStates RUNNING | grep word-count-job</code></pre>
+                                </div>
+                                
+                                <h4>Tutoriais Relacionados</h4>
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <h6>Apache Samza Fundamentals</h6>
+                                        <small>Introdução ao framework de stream processing</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <h6>Stateful Stream Processing with Samza</h6>
+                                        <small>Gerenciamento de estado em aplicações de streaming</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <h6>Samza on YARN Deployment</h6>
+                                        <small>Deploy e operação de jobs Samza em clusters YARN</small>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comparison Tab -->
+                    <div class="tab-pane fade" id="comparison" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Comparações</h3>
+                                
+                                <h4>Alternativas Similares</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Tecnologia</th>
+                                                <th>Complexidade</th>
+                                                <th>Estado</th>
+                                                <th>Comunidade</th>
+                                                <th>Integração Kafka</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><strong>Apache Samza</strong></td>
+                                                <td><span class="badge bg-warning">Alta</span></td>
+                                                <td><span class="badge bg-success">Excelente</span></td>
+                                                <td><span class="badge bg-warning">Pequena</span></td>
+                                                <td><span class="badge bg-success">Nativa</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Kafka Streams</td>
+                                                <td><span class="badge bg-success">Baixa</span></td>
+                                                <td><span class="badge bg-success">Excelente</span></td>
+                                                <td><span class="badge bg-success">Grande</span></td>
+                                                <td><span class="badge bg-success">Nativa</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Apache Flink</td>
+                                                <td><span class="badge bg-warning">Média</span></td>
+                                                <td><span class="badge bg-success">Excelente</span></td>
+                                                <td><span class="badge bg-success">Grande</span></td>
+                                                <td><span class="badge bg-info">Boa</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Apache Storm</td>
+                                                <td><span class="badge bg-warning">Média</span></td>
+                                                <td><span class="badge bg-warning">Limitado</span></td>
+                                                <td><span class="badge bg-info">Média</span></td>
+                                                <td><span class="badge bg-info">Boa</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Spark Streaming</td>
+                                                <td><span class="badge bg-info">Média</span></td>
+                                                <td><span class="badge bg-info">Boa</span></td>
+                                                <td><span class="badge bg-success">Grande</span></td>
+                                                <td><span class="badge bg-info">Boa</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h4>Quando Escolher Samza vs Alternativas</h4>
+                                <div class="comparison-section">
+                                    <h5>Samza vs Kafka Streams</h5>
+                                    <p><strong>Escolha Samza se:</strong> Você precisa de isolamento de processos, deployment em YARN, ou controle granular sobre recursos.</p>
+                                    <p><strong>Escolha Kafka Streams se:</strong> Você quer simplicidade, facilidade de deployment, ou está construindo microserviços.</p>
+                                </div>
+                                
+                                <div class="comparison-section">
+                                    <h5>Samza vs Apache Flink</h5>
+                                    <p><strong>Escolha Samza se:</strong> Você tem forte integração com Kafka e precisa de processamento stateful simples.</p>
+                                    <p><strong>Escolha Flink se:</strong> Você precisa de baixa latência, processamento de eventos complexos, ou suporte a múltiplas fontes.</p>
+                                </div>
+                                
+                                <div class="comparison-section">
+                                    <h5>Samza vs Spark Streaming</h5>
+                                    <p><strong>Escolha Samza se:</strong> Você precisa de processamento verdadeiramente contínuo e estado local otimizado.</p>
+                                    <p><strong>Escolha Spark Streaming se:</strong> Você quer unificar batch e streaming, ou precisa de um ecossistema mais amplo.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Quick Facts -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Informações Rápidas</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li><strong>Tipo:</strong> Stream Processing Framework</li>
+                            <li><strong>Licença:</strong> Apache 2.0</li>
+                            <li><strong>Primeira Versão:</strong> 2013</li>
+                            <li><strong>Linguagens:</strong> Java, Scala</li>
+                            <li><strong>Dependências:</strong> Kafka, YARN</li>
+                            <li><strong>Categoria:</strong> Stateful Stream Processing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Official Links -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Links Oficiais</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <a href="https://samza.apache.org" class="btn btn-outline-primary btn-sm" target="_blank">
+                                🌐 Site Oficial
+                            </a>
+                            <a href="https://samza.apache.org/learn/documentation/" class="btn btn-outline-info btn-sm" target="_blank">
+                                📚 Documentação
+                            </a>
+                            <a href="https://github.com/apache/samza" class="btn btn-outline-success btn-sm" target="_blank">
+                                💻 GitHub
+                            </a>
+                            <a href="https://samza.apache.org/startup/download/" class="btn btn-outline-warning btn-sm" target="_blank">
+                                📥 Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Technologies -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Tecnologias Relacionadas</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap gap-2">
+                            <a href="../../streaming/apache-kafka/" class="badge bg-primary text-decoration-none">Apache Kafka</a>
+                            <a href="../kafka-streams/" class="badge bg-success text-decoration-none">Kafka Streams</a>
+                            <a href="../apache-flink/" class="badge bg-info text-decoration-none">Apache Flink</a>
+                            <a href="../apache-storm/" class="badge bg-warning text-decoration-none">Apache Storm</a>
+                            <a href="../../orquestracao/apache-yarn/" class="badge bg-danger text-decoration-none">Apache YARN</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Courses -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Cursos Relacionados</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <h6 class="mb-1">Apache Samza Fundamentals</h6>
+                                <small>Introdução ao stream processing</small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <h6 class="mb-1">Stateful Stream Processing</h6>
+                                <small>Gerenciamento de estado em streams</small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <h6 class="mb-1">Kafka Ecosystem Deep Dive</h6>
+                                <small>Ecossistema completo do Kafka</small>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Portal Big Data</h5>
+                    <p>Seu guia completo para tecnologias de Big Data</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2024 Portal Big Data. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/technology-page.js"></script>
+</body>
+</html>

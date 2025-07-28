@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Apache Oozie - Orquestração de Workflows Hadoop | Portal Big Data</title>
+    <meta name="title" content="Apache Oozie - Orquestração de Workflows Hadoop | Portal Big Data">
+    <meta name="description" content="Guia completo do Apache Oozie: orquestração de workflows Hadoop, configuração, exemplos de workflows e integração com ecossistema Hadoop.">
+    <meta name="keywords" content="apache oozie, hadoop workflow, orquestração, big data, workflow scheduler, hadoop ecosystem">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hadoop.com.br/tecnologias/orquestracao/apache-oozie">
+    <meta property="og:title" content="Apache Oozie - Orquestração de Workflows Hadoop | Portal Big Data">
+    <meta property="og:description" content="Guia completo do Apache Oozie: orquestração de workflows Hadoop, configuração, exemplos de workflows e integração com ecossistema Hadoop.">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/og/apache-oozie-og.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br/tecnologias/orquestracao/apache-oozie">
+    <meta property="twitter:title" content="Apache Oozie - Orquestração de Workflows Hadoop | Portal Big Data">
+    <meta property="twitter:description" content="Guia completo do Apache Oozie: orquestração de workflows Hadoop, configuração, exemplos de workflows e integração com ecossistema Hadoop.">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/apache-oozie-twitter.jpg">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    <link rel="canonical" href="https://hadoop.com.br/tecnologias/orquestracao/apache-oozie">
+</head>
+<body class="matrix-theme">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-success">
+        <div class="container">
+            <a class="navbar-brand text-success" href="../../../index.html">
+                <span class="matrix-text">Portal Big Data</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../tecnologias/index.html">Tecnologias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../cursos/index.html">Cursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../blog/index.html">Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent">
+                <li class="breadcrumb-item"><a href="../../../index.html" class="text-success">Home</a></li>
+                <li class="breadcrumb-item"><a href="../../../tecnologias/index.html" class="text-success">Tecnologias</a></li>
+                <li class="breadcrumb-item"><a href="../index.html" class="text-success">Orquestração</a></li>
+                <li class="breadcrumb-item active text-light">Apache Oozie</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="container technology-page">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Technology Header -->
+                <div class="tech-header mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="../../../assets/images/logos/oozie-logo.png" alt="Apache Oozie Logo" class="tech-logo me-3" style="width: 80px; height: 80px;">
+                        <div>
+                            <h1 class="text-success mb-2">Apache Oozie</h1>
+                            <p class="lead text-light">Sistema de orquestração de workflows para Hadoop</p>
+                        </div>
+                    </div>
+                    <div class="tech-badges mb-3">
+                        <span class="badge bg-primary me-2">Open Source</span>
+                        <span class="badge bg-warning me-2">Hadoop Ecosystem</span>
+                        <span class="badge bg-info me-2">Workflow Scheduler</span>
+                        <span class="badge bg-secondary">XML-based</span>
+                    </div>
+                </div>
+
+                <!-- Overview -->
+                <section class="mb-5">
+                    <h2 class="text-success mb-3">Visão Geral</h2>
+                    <p>Apache Oozie é um sistema de orquestração de workflows para gerenciar jobs do Apache Hadoop. Permite coordenar múltiplos jobs MapReduce, Pig, Hive e outros componentes do ecossistema Hadoop em workflows complexos.</p>
+                    
+                    <p>Desenvolvido pelo Yahoo! e posteriormente doado à Apache Software Foundation, Oozie é especialmente útil para pipelines de dados que requerem execução sequencial ou paralela de múltiplas tarefas Hadoop.</p>
+
+                    <div class="alert alert-warning mt-3">
+                        <strong>Status:</strong> Apache Oozie está em modo de manutenção. Para novos projetos, considere alternativas modernas como Apache Airflow ou Prefect.
+                    </div>
+                </section>
+
+                <!-- Key Features -->
+                <section class="mb-5">
+                    <h2 class="text-success mb-3">Principais Características</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="text-success">✓</i> Orquestração de workflows Hadoop</li>
+                                <li class="mb-2"><i class="text-success">✓</i> Suporte a MapReduce, Pig, Hive</li>
+                                <li class="mb-2"><i class="text-success">✓</i> Workflows baseados em XML</li>
+                                <li class="mb-2"><i class="text-success">✓</i> Execução condicional</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="text-success">✓</i> Agendamento de jobs</li>
+                                <li class="mb-2"><i class="text-success">✓</i> Monitoramento via web UI</li>
+                                <li class="mb-2"><i class="text-success">✓</i> Integração com HDFS</li>
+                                <li class="mb-2"><i class="text-success">✓</i> Recuperação de falhas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Workflow Example -->
+                <section class="mb-5">
+                    <h2 class="text-success mb-3">Exemplo de Workflow</h2>
+                    <p>Exemplo de um workflow Oozie simples que executa um job MapReduce:</p>
+                    
+                    <div class="code-example">
+                        <h5 class="text-info mb-3">workflow.xml</h5>
+                        <pre class="bg-black p-3 rounded"><code class="text-light">&lt;workflow-app xmlns="uri:oozie:workflow:0.5" name="sample-workflow"&gt;
+    &lt;start to="mapreduce-job"/&gt;
+    
+    &lt;action name="mapreduce-job"&gt;
+        &lt;map-reduce&gt;
+            &lt;job-tracker&gt;${jobTracker}&lt;/job-tracker&gt;
+            &lt;name-node&gt;${nameNode}&lt;/name-node&gt;
+            &lt;configuration&gt;
+                &lt;property&gt;
+                    &lt;name&gt;mapred.mapper.class&lt;/name&gt;
+                    &lt;value&gt;org.apache.hadoop.examples.WordCount$TokenizerMapper&lt;/value&gt;
+                &lt;/property&gt;
+                &lt;property&gt;
+                    &lt;name&gt;mapred.reducer.class&lt;/name&gt;
+                    &lt;value&gt;org.apache.hadoop.examples.WordCount$IntSumReducer&lt;/value&gt;
+                &lt;/property&gt;
+                &lt;property&gt;
+                    &lt;name&gt;mapred.input.dir&lt;/name&gt;
+                    &lt;value&gt;${inputDir}&lt;/value&gt;
+                &lt;/property&gt;
+                &lt;property&gt;
+                    &lt;name&gt;mapred.output.dir&lt;/name&gt;
+                    &lt;value&gt;${outputDir}&lt;/value&gt;
+                &lt;/property&gt;
+            &lt;/configuration&gt;
+        &lt;/map-reduce&gt;
+        &lt;ok to="end"/&gt;
+        &lt;error to="fail"/&gt;
+    &lt;/action&gt;
+    
+    &lt;kill name="fail"&gt;
+        &lt;message&gt;Workflow failed, error message[${wf:errorMessage(wf:lastErrorNode())}]&lt;/message&gt;
+    &lt;/kill&gt;
+    
+    &lt;end name="end"/&gt;
+&lt;/workflow-app&gt;</code></pre>
+                    </div>
+
+                    <div class="code-example mt-4">
+                        <h5 class="text-info mb-3">job.properties</h5>
+                        <pre class="bg-black p-3 rounded"><code class="text-light">nameNode=hdfs://localhost:9000
+jobTracker=localhost:9001
+queueName=default
+examplesRoot=examples
+
+oozie.wf.application.path=${nameNode}/user/${user.name}/${examplesRoot}/apps/map-reduce
+inputDir=${nameNode}/user/${user.name}/${examplesRoot}/input-data/text
+outputDir=${nameNode}/user/${user.name}/${examplesRoot}/output-data/${outputDir}</code></pre>
+                    </div>
+                </section>
+
+                <!-- Coordinator Example -->
+                <section class="mb-5">
+                    <h2 class="text-success mb-3">Exemplo de Coordinator</h2>
+                    <p>Oozie Coordinator permite agendar workflows para execução periódica:</p>
+                    
+                    <div class="code-example">
+                        <h5 class="text-info mb-3">coordinator.xml</h5>
+                        <pre class="bg-black p-3 rounded"><code class="text-light">&lt;coordinator-app name="daily-workflow" 
+                 frequency="${coord:days(1)}"
+                 start="${start}" end="${end}" 
+                 timezone="UTC"
+                 xmlns="uri:oozie:coordinator:0.4"&gt;
+    
+    &lt;datasets&gt;
+        &lt;dataset name="input-data" frequency="${coord:days(1)}"
+                 initial-instance="2024-01-01T00:00Z" timezone="UTC"&gt;
+            &lt;uri-template&gt;${nameNode}/data/input/${YEAR}/${MONTH}/${DAY}&lt;/uri-template&gt;
+        &lt;/dataset&gt;
+        
+        &lt;dataset name="output-data" frequency="${coord:days(1)}"
+                 initial-instance="2024-01-01T00:00Z" timezone="UTC"&gt;
+            &lt;uri-template&gt;${nameNode}/data/output/${YEAR}/${MONTH}/${DAY}&lt;/uri-template&gt;
+        &lt;/dataset&gt;
+    &lt;/datasets&gt;
+    
+    &lt;input-events&gt;
+        &lt;data-in name="input" dataset="input-data"&gt;
+            &lt;instance&gt;${coord:current(0)}&lt;/instance&gt;
+        &lt;/data-in&gt;
+    &lt;/input-events&gt;
+    
+    &lt;output-events&gt;
+        &lt;data-out name="output" dataset="output-data"&gt;
+            &lt;instance&gt;${coord:current(0)}&lt;/instance&gt;
+        &lt;/data-out&gt;
+    &lt;/output-events&gt;
+    
+    &lt;action&gt;
+        &lt;workflow&gt;
+            &lt;app-path&gt;${workflowAppUri}&lt;/app-path&gt;
+            &lt;configuration&gt;
+                &lt;property&gt;
+                    &lt;name&gt;inputDir&lt;/name&gt;
+                    &lt;value&gt;${coord:dataIn('input')}&lt;/value&gt;
+                &lt;/property&gt;
+                &lt;property&gt;
+                    &lt;name&gt;outputDir&lt;/name&gt;
+                    &lt;value&gt;${coord:dataOut('output')}&lt;/value&gt;
+                &lt;/property&gt;
+            &lt;/configuration&gt;
+        &lt;/workflow&gt;
+    &lt;/action&gt;
+&lt;/coordinator-app&gt;</code></pre>
+                    </div>
+                </section>
+
+                <!-- Use Cases -->
+                <section class="mb-5">
+                    <h2 class="text-success mb-3">Casos de Uso</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card bg-dark border-success mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title text-success">ETL Pipelines</h5>
+                                    <p class="card-text">Orquestração de pipelines ETL complexos com múltiplas etapas de transformação.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-dark border-success mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title text-success">Data Processing</h5>
+                                    <p class="card-text">Processamento batch de grandes volumes de dados com dependências.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-dark border-success mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title text-success">Scheduled Jobs</h5>
+                                    <p class="card-text">Agendamento de jobs recorrentes baseados em tempo ou disponibilidade de dados.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card bg-dark border-success mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title text-success">Workflow Management</h5>
+                                    <p class="card-text">Gerenciamento de workflows complexos com múltiplas dependências.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Alternatives -->
+                <section class="mb-5">
+                    <h2 class="text-success mb-3">Alternativas Modernas</h2>
+                    <div class="alert alert-info">
+                        <p><strong>Recomendação:</strong> Para novos projetos, considere estas alternativas mais modernas:</p>
+                        <ul class="mb-0">
+                            <li><a href="../apache-airflow/index.html" class="text-info">Apache Airflow</a> - Orquestração moderna com Python</li>
+                            <li><a href="../prefect/index.html" class="text-info">Prefect</a> - Orquestração de workflows moderna</li>
+                            <li><a href="../dagster/index.html" class="text-info">Dagster</a> - Orquestração orientada a dados</li>
+                            <li><a href="../kubernetes/index.html" class="text-info">Kubernetes</a> - Orquestração de containers</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-md-4">
+                <div class="tech-sidebar">
+                    <!-- Quick Facts -->
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Informações Rápidas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><strong>Tipo:</strong> Workflow Scheduler</li>
+                                <li><strong>Licença:</strong> Apache 2.0</li>
+                                <li><strong>Linguagem:</strong> Java</li>
+                                <li><strong>Status:</strong> Manutenção</li>
+                                <li><strong>Primeira Versão:</strong> 2012</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Official Links -->
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Links Oficiais</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="https://oozie.apache.org/" class="text-success" target="_blank">Site Oficial</a></li>
+                                <li><a href="https://oozie.apache.org/docs/5.2.1/" class="text-success" target="_blank">Documentação</a></li>
+                                <li><a href="https://github.com/apache/oozie" class="text-success" target="_blank">GitHub</a></li>
+                                <li><a href="https://cwiki.apache.org/confluence/display/OOZIE" class="text-success" target="_blank">Wiki</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Related Technologies -->
+                    <div class="card bg-dark border-success mb-4">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Tecnologias Relacionadas</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="../../sistemas-arquivos/hdfs/index.html" class="text-success">HDFS</a></li>
+                                <li><a href="../../processamento/apache-spark/index.html" class="text-success">Apache Spark</a></li>
+                                <li><a href="../../data-warehousing/apache-hive/index.html" class="text-success">Apache Hive</a></li>
+                                <li><a href="../apache-airflow/index.html" class="text-success">Apache Airflow</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Courses -->
+                    <div class="card bg-dark border-success">
+                        <div class="card-header bg-success text-dark">
+                            <h5 class="mb-0">Cursos Relacionados</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="../../../cursos/hadoop-ecosystem-overview/index.html" class="text-success">Hadoop Ecosystem Overview</a></li>
+                                <li><a href="../../../cursos/apache-airflow-fundamentals/index.html" class="text-success">Apache Airflow Fundamentals</a></li>
+                                <li><a href="../../../cursos/workflow-orchestration-modern/index.html" class="text-success">Modern Workflow Orchestration</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black border-top border-success mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-success mb-0">&copy; 2024 Portal Big Data. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="../../../index.html" class="text-success me-3">Home</a>
+                    <a href="../../../tecnologias/index.html" class="text-success me-3">Tecnologias</a>
+                    <a href="../../../cursos/index.html" class="text-success">Cursos</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../assets/js/technology-page.js"></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Apache Oozie",
+        "description": "Sistema de orquestração de workflows para gerenciar jobs do Apache Hadoop",
+        "url": "https://oozie.apache.org/",
+        "applicationCategory": "Workflow Orchestration",
+        "operatingSystem": "Linux, Unix",
+        "programmingLanguage": "Java",
+        "license": "https://www.apache.org/licenses/LICENSE-2.0",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Apache Software Foundation"
+        }
+    }
+    </script>
+</body>
+</html>
