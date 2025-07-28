@@ -4,10 +4,9 @@
   "description": "Portal Big Data - Hub completo para Hadoop e tecnologias Big Data",
   "main": "index.html",
   "scripts": {
-    "build": "echo 'Static site deployed successfully'",
-    "dev": "echo 'Development mode - use local server'",
-    "validate-css": "node validate-css.js",
-    "build-vercel": "node build-vercel.js"
+    "build": "echo 'Static site - no build needed'",
+    "dev": "echo 'Development server not needed for static deployment'",
+    "validate-css": "node validate-css.js"
   },
   "keywords": [
     "hadoop",

@@ -1,0 +1,42 @@
+# Development files
+node_modules/
+.git/
+.gitignore
+
+# Build tools
+build-vercel.js
+validate-css.js
+package-vercel.json
+
+# Test files
+test-*.html
+
+# Documentation
+*.md
+!README.md
+
+# Reports and logs
+reports/
+*.log
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+
+# Scripts
+scripts/
+
+# Development configs
+postcss.config.js
+.kiro/
+
+# Large files that aren't needed
+assets/images/morpheus.png
