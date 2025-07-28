@@ -17,7 +17,10 @@
     "test:seo": "npm run validate && npm run lighthouse",
     "test:optimization": "live-server --port=3001 --open=test-image-optimization.html",
     "analyze:images": "node scripts/analyze-images.js",
-    "compress:all": "npm run optimize:images && npm run generate:webp && npm run generate:avif"
+    "compress:all": "npm run optimize:images && npm run generate:webp && npm run generate:avif",
+    "validate-css": "node validate-css.js",
+    "build-vercel": "node build-vercel.js",
+    "prebuild": "npm run validate-css"
   },
   "keywords": [
     "hadoop",
@@ -30,8 +33,9 @@
   "author": "Portal Big Data Team",
   "license": "MIT",
   "devDependencies": {
-    "autoprefixer": "^10.4.16",
-    "cssnano": "^6.0.1",
+    "autoprefixer": "^10.4.21",
+    "css-tree": "^3.1.0",
+    "cssnano": "^6.1.2",
     "html-validate": "^8.7.4",
     "imagemin": "^8.0.1",
     "imagemin-avif": "^0.1.6",
@@ -40,8 +44,8 @@
     "imagemin-webp": "^8.0.0",
     "lighthouse": "^11.4.0",
     "live-server": "^1.2.2",
-    "postcss": "^8.4.32",
-    "postcss-cli": "^11.0.0",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
     "sharp": "^0.33.0",
     "terser": "^5.26.0"
   },
