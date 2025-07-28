@@ -3011,8 +3011,8 @@
         transition: none;
     }
 }
-/
-* Technology Alternatives Page Styles */
+
+/* Technology Alternatives Page Styles */
 .technology-map-container {
     background: rgba(0, 20, 0, 0.8);
     border-radius: 10px;
@@ -3458,8 +3458,9 @@
         transform: translateX(0);
         opacity: 1;
     }
-}/
-* Modern Stacks Specific Styles */
+}
+
+/* Modern Stacks Specific Styles */
 
 /* Stack Architecture Styles */
 .stack-architecture {
@@ -4324,8 +4325,9 @@
 .alert-info.position-fixed {
     border-color: #00aaff;
     color: #00aaff;
-}/
-* Image Optimization Integration with Matrix Theme */
+}
+
+/* Image Optimization Integration with Matrix Theme */
 .matrix-theme img.loading {
     background: linear-gradient(90deg, #000000 25%, #1a1a1a 50%, #000000 75%);
     border: 1px solid #00ff00;
