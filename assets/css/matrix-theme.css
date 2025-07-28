@@ -2230,8 +2230,8 @@
 .light-theme .badge.bg-danger {
     background-color: #e74c3c !important;
 }
-/
-* Timeline Styles for Introduction Page */
+
+/* Timeline Styles for Introduction Page */
 .timeline-container {
     position: relative;
     max-width: 1000px;
