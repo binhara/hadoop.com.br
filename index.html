@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Big Data - hadoop.com.br</title>
+    <title>Hadoop.com.br - Hub Completo de Big Data e Hadoop</title>
     
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -18,38 +18,38 @@
     <link href="assets/css/banner-styles.css" rel="stylesheet">
     
     <!-- Primary Meta Tags -->
-    <meta name="title" content="Portal Big Data - hadoop.com.br | Hub Completo de Big Data e Hadoop">
-    <meta name="description" content="Portal Big Data - Seu hub completo para Hadoop, distribuições, tecnologias modernas e alternativas. Escolha entre entrar no Hadoop ou explorar soluções modernas de Big Data.">
-    <meta name="keywords" content="hadoop, big data, apache spark, data processing, distribuições hadoop, tecnologias big data, portal big data">
+    <meta name="title" content="Hadoop.com.br - Hub Completo de Big Data e Hadoop">
+    <meta name="description" content="Seu hub completo para Hadoop, distribuições, tecnologias modernas e alternativas. Escolha entre entrar no Hadoop ou explorar soluções modernas de Big Data.">
+    <meta name="keywords" content="hadoop, big data, apache spark, data processing, distribuições hadoop, tecnologias big data">
     <link rel="canonical" href="https://hadoop.com.br">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hadoop.com.br">
-    <meta property="og:title" content="Portal Big Data - hadoop.com.br | Hub Completo de Big Data e Hadoop">
+    <meta property="og:title" content="Hadoop.com.br - Hub Completo de Big Data e Hadoop">
     <meta property="og:description" content="Seu hub completo para Hadoop, distribuições, tecnologias modernas e alternativas">
     <meta property="og:image" content="https://hadoop.com.br/assets/images/og/homepage-og.jpg">
-    <meta property="og:site_name" content="Portal Big Data">
+    <meta property="og:site_name" content="Hadoop.com.br">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://hadoop.com.br">
-    <meta property="twitter:title" content="Portal Big Data - hadoop.com.br | Hub Completo de Big Data e Hadoop">
+    <meta property="twitter:title" content="Hadoop.com.br - Hub Completo de Big Data e Hadoop">
     <meta property="twitter:description" content="Seu hub completo para Hadoop, distribuições, tecnologias modernas e alternativas">
     <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/homepage-twitter.jpg">
-    <meta property="twitter:site" content="@portalbigdata">
+    <meta property="twitter:site" content="@hadoopbr">
     
     <!-- Structured Data for Website -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "Portal Big Data",
+        "name": "Hadoop.com.br",
         "url": "https://hadoop.com.br",
         "description": "Hub completo para Hadoop, distribuições, tecnologias modernas e alternativas de Big Data",
         "publisher": {
             "@type": "Organization",
-            "name": "Portal Big Data",
+            "name": "Hadoop.com.br",
             "url": "https://hadoop.com.br"
         },
         "potentialAction": {
@@ -65,6 +65,240 @@
     
     <!-- Theme Color for Mobile Browsers -->
     <meta name="theme-color" content="#000000">
+    
+    <style>
+        /* Matrix Terminal Boxes Styles */
+        .matrix-terminal-box {
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #00FF41;
+            border-radius: 10px;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: #00FF41;
+            height: 150px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .matrix-terminal-box:hover {
+            border-color: #00FFFF;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            transform: scale(1.05);
+            color: #00FF41;
+            text-decoration: none;
+        }
+        
+        .matrix-terminal-box:active {
+            transform: scale(0.98);
+        }
+        
+        .matrix-terminal-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00FF41, transparent);
+            animation: scan-top 2s linear infinite;
+        }
+        
+        @keyframes scan-top {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .terminal-header {
+            color: #00FFFF;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .terminal-content {
+            line-height: 1.2;
+            animation: matrix-typing 4s linear infinite;
+        }
+        
+        @keyframes matrix-typing {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+        
+        .terminal-cursor {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .hadoop-matrix-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .hadoop-matrix-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.4);
+            z-index: 2;
+            position: relative;
+        }
+        
+        .terminal-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr 400px 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            gap: 0.8rem;
+            padding: 1rem;
+            z-index: 1;
+        }
+        
+        /* Posições ao redor da imagem */
+        .terminal-top-left {
+            grid-column: 1;
+            grid-row: 1;
+            align-self: start;
+            justify-self: end;
+            margin-right: 1rem;
+        }
+        
+        .terminal-top-center {
+            grid-column: 3;
+            grid-row: 1;
+            align-self: start;
+            justify-self: center;
+            margin-top: -0.5rem;
+        }
+        
+        .terminal-top-right {
+            grid-column: 5;
+            grid-row: 1;
+            align-self: start;
+            justify-self: start;
+            margin-left: 1rem;
+        }
+        
+        .terminal-middle-left {
+            grid-column: 1;
+            grid-row: 2;
+            align-self: center;
+            justify-self: end;
+            margin-right: 1rem;
+        }
+        
+        .terminal-middle-right {
+            grid-column: 5;
+            grid-row: 2;
+            align-self: center;
+            justify-self: start;
+            margin-left: 1rem;
+        }
+        
+        .terminal-bottom-left {
+            grid-column: 2;
+            grid-row: 3;
+            align-self: end;
+            justify-self: end;
+            margin-right: 0.5rem;
+        }
+        
+        .terminal-bottom-center {
+            grid-column: 3;
+            grid-row: 3;
+            align-self: end;
+            justify-self: center;
+            margin-bottom: -0.5rem;
+        }
+        
+        .terminal-bottom-right {
+            grid-column: 4;
+            grid-row: 3;
+            align-self: end;
+            justify-self: start;
+            margin-left: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .terminal-grid {
+                display: none;
+            }
+            
+            .hadoop-matrix-image {
+                max-width: 300px;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .terminal-grid {
+                grid-template-columns: 1fr 1fr 350px 1fr 1fr;
+                gap: 0.6rem;
+            }
+            
+            .hadoop-matrix-image {
+                max-width: 350px;
+            }
+            
+            .matrix-terminal-box {
+                font-size: 0.7rem;
+                height: 120px;
+                padding: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .terminal-grid {
+                grid-template-columns: 1fr 300px 1fr;
+                grid-template-rows: 1fr 1fr;
+            }
+            
+            .terminal-top-center,
+            .terminal-middle-left,
+            .terminal-middle-right,
+            .terminal-bottom-center {
+                display: none;
+            }
+            
+            .terminal-top-left {
+                grid-column: 1;
+                grid-row: 1;
+            }
+            
+            .terminal-top-right {
+                grid-column: 3;
+                grid-row: 1;
+            }
+            
+            .terminal-bottom-left {
+                grid-column: 1;
+                grid-row: 2;
+            }
+            
+            .terminal-bottom-right {
+                grid-column: 3;
+                grid-row: 2;
+            }
+        }
+    </style>
 </head>
 <body class="matrix-theme">
     <!-- Matrix Landing Page with Dual Navigation -->
@@ -74,18 +308,117 @@
             <div class="container-fluid">
                 <div class="row min-vh-100 align-items-center justify-content-center">
                     <div class="col-12 text-center">
-                        <h1 class="display-4 text-success mb-2">Portal Big Data</h1>
+                        <h1 class="display-4 text-success mb-2">Hadoop.com.br</h1>
                         <p class="text-light mb-2 small">Escolha sua jornada no universo Big Data</p>
                         
-                        <!-- Morpheus Image - Maximized -->
-                        <div class="mb-2">
-                            <img src="assets/images/morpheus.png" alt="Morpheus" class="img-fluid morpheus-maximized">
-                            <p class="text-success mt-1 fst-italic" style="font-size: 0.9rem;">
-                                "Esta é sua última chance. Depois não há como voltar atrás."
-                            </p>
+                        <!-- Hadoop Matrix Image with Terminal Boxes -->
+                        <div class="hadoop-matrix-container">
+                            <!-- Central Image -->
+                            <img src="images/imagem-hadoop-matrix.png" alt="Hadoop Matrix" class="hadoop-matrix-image">
+                            
+                            <!-- Terminal Boxes Grid -->
+                            <div class="terminal-grid">
+                                <!-- Top Left Terminal - Hadoop Status -->
+                                <a href="entrar-hadoop/" class="matrix-terminal-box terminal-top-left">
+                                    <div class="terminal-header">$ hadoop status</div>
+                                    <div class="terminal-content">
+                                        > Cluster: ONLINE<br>
+                                        > Nodes: 50+ active<br>
+                                        > Technologies: 50+<br>
+                                        > Distributions: 8+<br>
+                                        > Status: READY<span class="terminal-cursor">_</span>
+                                    </div>
+                                </a>
+                                
+                                <!-- Top Center Terminal - Tecnologias -->
+                                <a href="tecnologias/" class="matrix-terminal-box terminal-top-center">
+                                    <div class="terminal-header">$ tech --scan</div>
+                                    <div class="terminal-content">
+                                        > Apache Spark: ACTIVE<br>
+                                        > Apache Kafka: ACTIVE<br>
+                                        > Delta Lake: ACTIVE<br>
+                                        > ClickHouse: ACTIVE<br>
+                                        > 50+ technologies<span class="terminal-cursor">_</span>
+                                    </div>
+                                </a>
+                                
+                                <!-- Top Right Terminal - Cursos -->
+                                <a href="cursos/" class="matrix-terminal-box terminal-top-right">
+                                    <div class="terminal-header">$ courses --list</div>
+                                    <div class="terminal-content">
+                                        > Hadoop Fundamentals<br>
+                                        > Spark Advanced<br>
+                                        > Kafka Streaming<br>
+                                        > Delta Lake Essentials<br>
+                                        > 15+ courses available<span class="terminal-cursor">_</span>
+                                    </div>
+                                </a>
+                                
+                                <!-- Middle Left Terminal - Distribuições -->
+                                <a href="entrar-hadoop/distribuicoes/" class="matrix-terminal-box terminal-middle-left">
+                                    <div class="terminal-header">$ distributions</div>
+                                    <div class="terminal-content">
+                                        > Cloudera: VERIFIED<br>
+                                        > Amazon EMR: VERIFIED<br>
+                                        > Google Dataproc: VERIFIED<br>
+                                        > Azure HDInsight: VERIFIED<br>
+                                        > 8+ distributions<span class="terminal-cursor">_</span>
+                                    </div>
+                                </a>
+                                
+                                <!-- Middle Right Terminal - Alternativas -->
+                                <a href="sair-hadoop/alternativas/" class="matrix-terminal-box terminal-middle-right">
+                                    <div class="terminal-header">$ alternatives</div>
+                                    <div class="terminal-content">
+                                        > Modern Stack: READY<br>
+                                        > Spark + Delta Lake<br>
+                                        > Kafka + Flink<br>
+                                        > Trino + Iceberg<br>
+                                        > Migration guides<span class="terminal-cursor">_</span>
+                                    </div>
+                                </a>
+                                
+                                <!-- Bottom Left Terminal - Blog -->
+                                <a href="blog/" class="matrix-terminal-box terminal-bottom-left">
+                                    <div class="terminal-header">$ blog --latest</div>
+                                    <div class="terminal-content">
+                                        > Hadoop vs Spark 2024<br>
+                                        > Delta Lake Migration<br>
+                                        > Cloud Alternatives<br>
+                                        > New: Kafka 3.0 Guide<span class="terminal-cursor">_</span>
+                                    </div>
+                                </a>
+                                
+                                <!-- Bottom Center Terminal - Novidades -->
+                                <a href="blog/novidades/" class="matrix-terminal-box terminal-bottom-center">
+                                    <div class="terminal-header">$ news --feed</div>
+                                    <div class="terminal-content">
+                                        > Spark 3.5 Released<br>
+                                        > Kafka 3.6 Features<br>
+                                        > Delta Lake 3.0<br>
+                                        > Iceberg Updates<br>
+                                        > Breaking news<span class="terminal-cursor">_</span>
+                                    </div>
+                                </a>
+                                
+                                <!-- Bottom Right Terminal - Parceiros -->
+                                <a href="#partners" class="matrix-terminal-box terminal-bottom-right">
+                                    <div class="terminal-header">$ partners --active</div>
+                                    <div class="terminal-content">
+                                        > dssbr.com.br: ONLINE<br>
+                                        > oworkshop.com.br: ONLINE<br>
+                                        > Community: 1000+ users<br>
+                                        > Network: STABLE<span class="terminal-cursor">_</span>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                         
-                        <!-- Compact Navigation Pills -->
+                        <p class="text-success mt-3 fst-italic" style="font-size: 0.9rem;">
+                            "Esta é sua última chance. Depois não há como voltar atrás."
+                        </p>
+                        
+                        <!-- Compact Navigation Pills - Mesma posição e dimensão -->
                         <div class="row justify-content-center mt-2">
                             <div class="col-md-3 col-sm-4 col-5 mb-1">
                                 <a href="entrar-hadoop/" class="btn btn-danger btn-compact w-100">
@@ -168,7 +501,7 @@
         </section>
 
         <!-- Partners Section -->
-        <section class="partners-section py-5 bg-matrix-dark">
+        <section id="partners" class="partners-section py-5 bg-matrix-dark">
             <div class="container">
                 <div class="row text-center mb-4">
                     <div class="col-12">
@@ -177,14 +510,23 @@
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center g-4">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="banner-content-top"></div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card matrix-card text-center">
+                            <div class="card-body">
+                                <h5 class="card-title text-success">DSSBR.COM.BR</h5>
+                                <p class="card-text">Data Science e Big Data Brasil</p>
+                                <a href="https://www.dssbr.com.br" target="_blank" class="btn btn-outline-success btn-sm">Visitar</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="banner-content-middle"></div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="banner-content-bottom"></div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="card matrix-card text-center">
+                            <div class="card-body">
+                                <h5 class="card-title text-success">OWORKSHOP.COM.BR</h5>
+                                <p class="card-text">Workshops e Treinamentos Especializados</p>
+                                <a href="https://www.oworkshop.com.br" target="_blank" class="btn btn-outline-success btn-sm">Visitar</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -241,6 +583,107 @@
 
     <!-- Bootstrap 5.3 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Matrix Terminal Animation -->
+    <script>
+        // Animate terminal content
+        function animateTerminals() {
+            const terminals = document.querySelectorAll('.terminal-content');
+            
+            terminals.forEach((terminal, index) => {
+                setTimeout(() => {
+                    const lines = terminal.innerHTML.split('<br>');
+                    terminal.innerHTML = '';
+                    
+                    lines.forEach((line, lineIndex) => {
+                        setTimeout(() => {
+                            if (lineIndex > 0) terminal.innerHTML += '<br>';
+                            terminal.innerHTML += line;
+                        }, lineIndex * 500);
+                    });
+                }, index * 1000);
+            });
+        }
+        
+        // Start animation when page loads
+        window.addEventListener('load', () => {
+            setTimeout(animateTerminals, 1000);
+            // Repeat animation every 10 seconds
+            setInterval(animateTerminals, 10000);
+        });
+        
+        // Add click effects and navigation
+        function addMatrixEffect() {
+            const terminals = document.querySelectorAll('.matrix-terminal-box');
+            
+            terminals.forEach(terminal => {
+                // Hover effect
+                terminal.addEventListener('mouseenter', () => {
+                    const chars = '01';
+                    let effect = '';
+                    for (let i = 0; i < 5; i++) {
+                        effect += chars[Math.floor(Math.random() * chars.length)];
+                    }
+                    
+                    terminal.style.borderColor = '#00FFFF';
+                    terminal.style.boxShadow = '0 0 30px rgba(0, 255, 255, 0.5)';
+                });
+                
+                // Mouse leave effect
+                terminal.addEventListener('mouseleave', () => {
+                    terminal.style.borderColor = '#00FF41';
+                    terminal.style.boxShadow = '0 0 20px rgba(0, 255, 65, 0.3)';
+                });
+                
+                // Click effect
+                terminal.addEventListener('click', (e) => {
+                    // Add click animation
+                    terminal.style.transform = 'scale(0.95)';
+                    terminal.style.borderColor = '#FFFF00';
+                    terminal.style.boxShadow = '0 0 40px rgba(255, 255, 0, 0.7)';
+                    
+                    // Flash effect
+                    const content = terminal.querySelector('.terminal-content');
+                    const originalContent = content.innerHTML;
+                    content.innerHTML = '> ACCESSING...<br>> CONNECTING...<br>> REDIRECTING...<br>> SUCCESS!<span class="terminal-cursor">_</span>';
+                    
+                    setTimeout(() => {
+                        content.innerHTML = originalContent;
+                        terminal.style.transform = 'scale(1)';
+                        terminal.style.borderColor = '#00FF41';
+                        terminal.style.boxShadow = '0 0 20px rgba(0, 255, 65, 0.3)';
+                    }, 500);
+                });
+            });
+        }
+        
+        // Add terminal typing sound effect (visual)
+        function addTypingEffect() {
+            const terminals = document.querySelectorAll('.matrix-terminal-box');
+            
+            terminals.forEach(terminal => {
+                terminal.addEventListener('mouseenter', () => {
+                    const header = terminal.querySelector('.terminal-header');
+                    header.style.color = '#00FFFF';
+                    
+                    setTimeout(() => {
+                        header.style.color = '#00FFFF';
+                    }, 100);
+                });
+                
+                terminal.addEventListener('mouseleave', () => {
+                    const header = terminal.querySelector('.terminal-header');
+                    header.style.color = '#00FFFF';
+                });
+            });
+        }
+        
+        // Initialize matrix effects
+        window.addEventListener('load', () => {
+            addMatrixEffect();
+            addTypingEffect();
+        });
+    </script>
     
     <!-- Analytics Scripts -->
     <script src="assets/js/analytics-config.js"></script>
