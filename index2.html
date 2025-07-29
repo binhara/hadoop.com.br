@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadoop.com.br - Hub Completo de Big Data e Tecnologias Hadoop</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Hadoop.com.br - Hub Completo de Big Data e Tecnologias Hadoop">
+    <meta name="description" content="Seu hub completo para Hadoop, distribuições, tecnologias modernas e alternativas. Escolha entre entrar no Hadoop ou explorar soluções modernas de Big Data.">
+    <meta name="keywords" content="hadoop, big data, apache spark, data processing, distribuições hadoop, tecnologias big data">
+    <link rel="canonical" href="https://hadoop.com.br">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hadoop.com.br">
+    <meta property="og:title" content="Hadoop.com.br - Hub Completo de Big Data e Tecnologias Hadoop">
+    <meta property="og:description" content="Seu hub completo para Hadoop, distribuições, tecnologias modernas e alternativas">
+    <meta property="og:image" content="https://hadoop.com.br/assets/images/og/homepage-og.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hadoop.com.br">
+    <meta property="twitter:title" content="Hadoop.com.br - Hub Completo de Big Data e Tecnologias Hadoop">
+    <meta property="twitter:description" content="Seu hub completo para Hadoop, distribuições, tecnologias modernas e alternativas">
+    <meta property="twitter:image" content="https://hadoop.com.br/assets/images/twitter/homepage-twitter.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <meta name="theme-color" content="#000000">
+    
+    <style>
+        /* Matrix Terminal Specific Styles */
+        .matrix-terminal {
+            background: linear-gradient(135deg, #000000 0%, #001100 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.1;
+        }
+        
+        .terminal-header {
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 2px solid #00FF41;
+            padding: 1rem 0;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .terminal-menu {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .terminal-menu-item {
+            color: #00FF41;
+            text-decoration: none;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .terminal-menu-item:hover {
+            color: #000000;
+            background: #00FF41;
+            border-color: #00FF41;
+            box-shadow: 0 0 20px #00FF41;
+            text-decoration: none;
+        }
+        
+        .terminal-menu-item::before {
+            content: '> ';
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .terminal-menu-item:hover::before {
+            opacity: 1;
+        }
+        
+        .hero-terminal {
+            position: relative;
+            z-index: 5;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .terminal-title {
+            font-family: 'Courier New', monospace;
+            font-size: 3rem;
+            color: #00FF41;
+            text-shadow: 0 0 20px #00FF41;
+            margin-bottom: 1rem;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #00FF41; }
+            to { text-shadow: 0 0 30px #00FF41, 0 0 40px #00FF41; }
+        }
+        
+        .terminal-subtitle {
+            font-family: 'Courier New', monospace;
+            color: #00FF41;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+        
+        .hadoop-matrix-image {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            margin: 2rem 0;
+            border: 2px solid #00FF41;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+        }
+        
+        .matrix-pills {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .matrix-pill {
+            position: relative;
+            padding: 2rem 3rem;
+            border-radius: 50px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 3px solid;
+            min-width: 250px;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .matrix-pill::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, transparent 20%, currentColor 21%, currentColor 30%, transparent 31%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            animation: matrix-particles 3s linear infinite;
+        }
+        
+        .matrix-pill:hover::before {
+            opacity: 0.1;
+        }
+        
+        @keyframes matrix-particles {
+            0% { transform: rotate(0deg) scale(1); }
+            100% { transform: rotate(360deg) scale(1.1); }
+        }
+        
+        .pill-red {
+            background: linear-gradient(135deg, #FF0040, #CC0033);
+            border-color: #FF0040;
+            color: white;
+        }
+        
+        .pill-red:hover {
+            background: #FF0040;
+            box-shadow: 0 0 40px #FF0040;
+            transform: translateY(-5px);
+            color: white;
+        }
+        
+        .pill-blue {
+            background: linear-gradient(135deg, #0080FF, #0066CC);
+            border-color: #0080FF;
+            color: white;
+        }
+        
+        .pill-blue:hover {
+            background: #0080FF;
+            box-shadow: 0 0 40px #0080FF;
+            transform: translateY(-5px);
+            color: white;
+        }
+        
+        .quick-actions {
+            background: rgba(0, 17, 0, 0.8);
+            padding: 3rem 0;
+            position: relative;
+            z-index: 5;
+        }
+        
+        .action-card {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00FF41;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .action-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .action-card:hover::before {
+            left: 100%;
+        }
+        
+        .action-card:hover {
+            border-color: #00FFFF;
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+            transform: translateY(-10px);
+        }
+        
+        .action-icon {
+            font-size: 3rem;
+            color: #00FF41;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .action-card:hover .action-icon {
+            color: #00FFFF;
+            transform: scale(1.1);
+        }
+        
+        .action-title {
+            color: #00FF41;
+            font-family: 'Courier New', monospace;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .action-description {
+            color: #CCCCCC;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .action-btn {
+            background: transparent;
+            border: 2px solid #00FF41;
+            color: #00FF41;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .action-btn:hover {
+            background: #00FF41;
+            color: #000000;
+            box-shadow: 0 0 20px #00FF41;
+        }
+        
+        .partners-terminal {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 3rem 0;
+            border-top: 2px solid #00FF41;
+            position: relative;
+            z-index: 5;
+        }
+        
+        .partner-banner {
+            background: rgba(0, 17, 0, 0.5);
+            border: 2px solid #00FF41;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .partner-banner:hover {
+            border-color: #00FFFF;
+            box-shadow: 0 0 25px rgba(0, 255, 65, 0.4);
+            transform: translateY(-5px);
+        }
+        
+        .partner-link {
+            color: #00FF41;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .partner-link:hover {
+            color: #00FFFF;
+        }
+        
+        .partner-description {
+            color: #CCCCCC;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .terminal-title {
+                font-size: 2rem;
+            }
+            
+            .matrix-pills {
+                gap: 1rem;
+            }
+            
+            .matrix-pill {
+                min-width: 200px;
+                padding: 1.5rem 2rem;
+                font-size: 1.1rem;
+            }
+            
+            .terminal-menu {
+                gap: 1rem;
+            }
+            
+            .terminal-menu-item {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="matrix-terminal">
+    <!-- Matrix Rain Background -->
+    <canvas class="matrix-rain" id="matrixRain"></canvas>
+    
+    <!-- Terminal Header with Menu -->
+    <header class="terminal-header">
+        <div class="container">
+            <nav class="terminal-menu">
+                <a href="tecnologias/" class="terminal-menu-item">TECNOLOGIAS</a>
+                <a href="entrar-hadoop/distribuicoes/" class="terminal-menu-item">DISTRIBUIÇÕES</a>
+                <a href="cursos/" class="terminal-menu-item">CURSOS</a>
+                <a href="sair-hadoop/alternativas/" class="terminal-menu-item">ALTERNATIVAS</a>
+                <a href="blog/" class="terminal-menu-item">BLOG</a>
+                <a href="contato/" class="terminal-menu-item">CONTATO</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Terminal Section -->
+    <section class="hero-terminal">
+        <div class="container">
+            <h1 class="terminal-title">HADOOP.COM.BR</h1>
+            <p class="terminal-subtitle">$ ./escolha_sua_jornada.sh --bigdata</p>
+            
+            <!-- Hadoop Matrix Image -->
+            <div class="text-center">
+                <img src="images/imagem-hadoop-matrix.png" alt="Hadoop Matrix" class="hadoop-matrix-image">
+            </div>
+            
+            <!-- Matrix Pills -->
+            <div class="matrix-pills">
+                <a href="entrar-hadoop/" class="matrix-pill pill-red">
+                    <div>🔴 PÍLULA VERMELHA</div>
+                    <small>Entrar no Hadoop</small>
+                </a>
+                <a href="sair-hadoop/" class="matrix-pill pill-blue">
+                    <div>🔵 PÍLULA AZUL</div>
+                    <small>Sair do Hadoop</small>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Actions Grid -->
+    <section class="quick-actions">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="action-card">
+                        <i class="fas fa-database action-icon"></i>
+                        <h3 class="action-title">TECNOLOGIAS</h3>
+                        <p class="action-description">Explore 50+ tecnologias de Big Data modernas</p>
+                        <a href="tecnologias/" class="action-btn">EXPLORAR</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="action-card">
+                        <i class="fas fa-server action-icon"></i>
+                        <h3 class="action-title">DISTRIBUIÇÕES</h3>
+                        <p class="action-description">Hadoop, Cloudera, EMR, Dataproc e mais</p>
+                        <a href="entrar-hadoop/distribuicoes/" class="action-btn">VER TODAS</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="action-card">
+                        <i class="fas fa-graduation-cap action-icon"></i>
+                        <h3 class="action-title">CURSOS</h3>
+                        <p class="action-description">15+ cursos especializados em Big Data</p>
+                        <a href="cursos/" class="action-btn">APRENDER</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="action-card">
+                        <i class="fas fa-rocket action-icon"></i>
+                        <h3 class="action-title">ALTERNATIVAS</h3>
+                        <p class="action-description">Spark, Delta Lake, Kafka e tecnologias modernas</p>
+                        <a href="sair-hadoop/alternativas/" class="action-btn">DESCOBRIR</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Terminal Section -->
+    <section class="partners-terminal">
+        <div class="container">
+            <div class="row text-center mb-4">
+                <div class="col-12">
+                    <h2 class="terminal-title" style="font-size: 2rem;">PARCEIROS</h2>
+                    <p class="terminal-subtitle">$ ./load_partners.sh --verified</p>
+                </div>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-6 col-md-6">
+                    <div class="partner-banner">
+                        <a href="https://www.dssbr.com.br" target="_blank" class="partner-link">
+                            DSSBR.COM.BR
+                        </a>
+                        <p class="partner-description">Data Science e Big Data Brasil</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="partner-banner">
+                        <a href="https://www.oworkshop.com.br" target="_blank" class="partner-link">
+                            OWORKSHOP.COM.BR
+                        </a>
+                        <p class="partner-description">Workshops e Treinamentos Especializados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    <!-- Blo
+g Section (Below the fold) -->
+    <section class="py-5" style="background: rgba(0, 17, 0, 0.3); position: relative; z-index: 5;">
+        <div class="container">
+            <div class="row text-center mb-4">
+                <div class="col-12">
+                    <h2 class="terminal-title" style="font-size: 2rem;">BLOG & NOVIDADES</h2>
+                    <p class="terminal-subtitle">$ ./fetch_latest_posts.sh --limit=6</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="action-card">
+                        <i class="fas fa-blog action-icon"></i>
+                        <h3 class="action-title">ARTIGOS</h3>
+                        <p class="action-description">Tutoriais e guias técnicos atualizados</p>
+                        <a href="blog/" class="action-btn">LER BLOG</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="action-card">
+                        <i class="fas fa-bolt action-icon"></i>
+                        <h3 class="action-title">NOVIDADES</h3>
+                        <p class="action-description">Últimas tendências em Big Data</p>
+                        <a href="blog/novidades/" class="action-btn">VER NOVIDADES</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="action-card">
+                        <i class="fas fa-envelope action-icon"></i>
+                        <h3 class="action-title">NEWSLETTER</h3>
+                        <p class="action-description">Receba atualizações semanais</p>
+                        <a href="#newsletter" class="action-btn">INSCREVER</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="newsletter" class="py-5" style="background: rgba(0, 0, 0, 0.9); border-top: 2px solid #00FF41; position: relative; z-index: 5;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-4">
+                        <h2 class="terminal-title" style="font-size: 2rem;">MANTENHA-SE CONECTADO</h2>
+                        <p class="terminal-subtitle">$ ./subscribe_newsletter.sh --frequency=weekly</p>
+                    </div>
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" style="background: rgba(0, 0, 0, 0.8); border: 2px solid #00FF41; color: #00FF41; font-family: 'Courier New', monospace;" placeholder="Nome" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" class="form-control" style="background: rgba(0, 0, 0, 0.8); border: 2px solid #00FF41; color: #00FF41; font-family: 'Courier New', monospace;" placeholder="E-mail" required>
+                        </div>
+                        <div class="col-12">
+                            <select class="form-select" style="background: rgba(0, 0, 0, 0.8); border: 2px solid #00FF41; color: #00FF41; font-family: 'Courier New', monospace;" required>
+                                <option value="">Área de interesse</option>
+                                <option value="hadoop">Hadoop e Distribuições</option>
+                                <option value="alternatives">Alternativas Modernas</option>
+                                <option value="courses">Cursos e Treinamentos</option>
+                                <option value="all">Todos os tópicos</option>
+                            </select>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="action-btn" style="padding: 1rem 2rem; font-size: 1.1rem;">
+                                EXECUTAR INSCRIÇÃO
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #000000; border-top: 2px solid #00FF41; padding: 2rem 0; position: relative; z-index: 5;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p style="color: #00FF41; font-family: 'Courier New', monospace; margin: 0;">
+                        © 2024 HADOOP.COM.BR - Hub de Big Data
+                    </p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <p style="color: #00FF41; font-family: 'Courier New', monospace; margin: 0;">
+                        $ ./status.sh --online
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Matrix Rain Animation -->
+    <script>
+        // Matrix Rain Effect
+        const canvas = document.getElementById('matrixRain');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+        const matrixArray = matrix.split("");
+
+        const fontSize = 10;
+        const columns = canvas.width / fontSize;
+
+        const drops = [];
+        for(let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00FF41';
+            ctx.font = fontSize + 'px monospace';
+
+            for(let i = 0; i < drops.length; i++) {
+                const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 35);
+
+        // Resize canvas on window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
