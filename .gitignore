@@ -91,4 +91,6 @@ test-theme-toggle-disabled.html
 *.backup
 
 # Local development files
-.local/
+.local/# Git 
+workflow documentation with sensitive information
+git.md

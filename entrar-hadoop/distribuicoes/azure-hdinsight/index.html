@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure HDInsight - Distribuições Hadoop</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Azure HDInsight - Serviço de analytics da Microsoft Azure para big data com Hadoop, Spark e outras ferramentas.">
+    <meta name="keywords" content="azure hdinsight, microsoft hadoop, azure big data, hdinsight hadoop, azure analytics">
+</head>
+<body class="matrix-theme">
+    <!-- Navigation for "Entrar no Hadoop" area -->
+    <nav class="navbar navbar-expand-lg navbar-matrix-red">
+        <div class="container">
+            <a class="navbar-brand" href="../../">🔴 Entrar no Hadoop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../introducao/">Introdução</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../">Distribuições</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../primeiros-passos/">Primeiros Passos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../casos-uso/">Casos de Uso</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../roadmap/">Roadmap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../">Voltar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="container mt-3">
+        <div class="breadcrumb-matrix">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../../../">Portal Big Data</a></li>
+                    <li class="breadcrumb-item"><a href="../../">Entrar no Hadoop</a></li>
+                    <li class="breadcrumb-item"><a href="../">Distribuições</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Azure HDInsight</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <!-- Header Section -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h1 class="display-4 mb-0">Azure HDInsight</h1>
+                                <p class="lead mb-0">Serviço de analytics da Microsoft Azure para big data</p>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <span class="badge bg-info fs-6 me-2">Azure Managed</span>
+                                <span class="badge bg-primary fs-6">Enterprise</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>Azure HDInsight é um serviço de analytics na nuvem totalmente gerenciado que torna mais fácil, rápido e econômico processar grandes quantidades de dados. Suporta frameworks populares de código aberto como Hadoop, Spark, Hive, LLAP, Kafka, Storm, R e muito mais.</p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card bg-dark">
+                                    <div class="card-body text-center">
+                                        <h5>Status do Serviço</h5>
+                                        <span class="badge bg-success fs-6">Ativo</span>
+                                        <hr>
+                                        <small>Última atualização: 2024</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Specifications -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h3 class="mb-0">🔧 Especificações Técnicas</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-dark table-striped">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Versão Hadoop</strong></td>
+                                    <td>2.10.x, 3.1.x</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Versão Spark</strong></td>
+                                    <td>2.4.x, 3.1.x, 3.2.x</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Azure VMs</strong></td>
+                                    <td>Todas as séries disponíveis</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Storage</strong></td>
+                                    <td>Azure Storage, Data Lake Storage</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Networking</strong></td>
+                                    <td>Virtual Network, NSG</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Spot VMs</strong></td>
+                                    <td>Suporte nativo</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Auto Scaling</strong></td>
+                                    <td>Baseado em schedule e métricas</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h3 class="mb-0">⚡ Recursos Principais</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <h5>🏢 Enterprise Security</h5>
+                                <p>Integração com Azure Active Directory, encryption e compliance enterprise.</p>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <h5>🔗 Integração Azure Nativa</h5>
+                                <p>Conectividade perfeita com Power BI, Synapse, Data Factory e outros serviços.</p>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <h5>💰 Otimização de Custos</h5>
+                                <p>Spot VMs, auto-scaling e reserved instances para redução de custos.</p>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <h5>📊 Analytics Avançado</h5>
+                                <p>Suporte nativo para R, Python, Scala e integração com Azure ML.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HDInsight Cluster Types -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🏗️ Tipos de Cluster</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <div class="card bg-dark">
+                                    <div class="card-body text-center">
+                                        <h5>Apache Hadoop</h5>
+                                        <p>Processamento batch tradicional</p>
+                                        <ul class="list-unstyled">
+                                            <li>• HDFS storage</li>
+                                            <li>• MapReduce processing</li>
+                                            <li>• Hive data warehouse</li>
+                                            <li>• Pig scripting</li>
+                                        </ul>
+                                        <span class="badge bg-primary">Batch</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card bg-dark">
+                                    <div class="card-body text-center">
+                                        <h5>Apache Spark</h5>
+                                        <p>Processamento in-memory rápido</p>
+                                        <ul class="list-unstyled">
+                                            <li>• In-memory processing</li>
+                                            <li>• Machine learning</li>
+                                            <li>• Stream processing</li>
+                                            <li>• Interactive queries</li>
+                                        </ul>
+                                        <span class="badge bg-success">Fast</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card bg-dark">
+                                    <div class="card-body text-center">
+                                        <h5>Interactive Query</h5>
+                                        <p>Analytics interativo com LLAP</p>
+                                        <ul class="list-unstyled">
+                                            <li>• Hive LLAP</li>
+                                            <li>• Sub-second queries</li>
+                                            <li>• BI integration</li>
+                                            <li>• Cached results</li>
+                                        </ul>
+                                        <span class="badge bg-info">Interactive</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card bg-dark">
+                                    <div class="card-body text-center">
+                                        <h5>Apache Kafka</h5>
+                                        <p>Streaming de dados em tempo real</p>
+                                        <ul class="list-unstyled">
+                                            <li>• Real-time streaming</li>
+                                            <li>• Message queuing</li>
+                                            <li>• Event sourcing</li>
+                                            <li>• High throughput</li>
+                                        </ul>
+                                        <span class="badge bg-warning">Streaming</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card bg-dark">
+                                    <div class="card-body text-center">
+                                        <h5>Apache HBase</h5>
+                                        <p>Database NoSQL distribuído</p>
+                                        <ul class="list-unstyled">
+                                            <li>• NoSQL database</li>
+                                            <li>• Random access</li>
+                                            <li>• Real-time reads</li>
+                                            <li>• Scalable storage</li>
+                                        </ul>
+                                        <span class="badge bg-danger">NoSQL</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card bg-dark">
+                                    <div class="card-body text-center">
+                                        <h5>ML Services</h5>
+                                        <p>Machine Learning com R e Python</p>
+                                        <ul class="list-unstyled">
+                                            <li>• R Server</li>
+                                            <li>• Python support</li>
+                                            <li>• Distributed ML</li>
+                                            <li>• Model deployment</li>
+                                        </ul>
+                                        <span class="badge bg-success">ML</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    <!-- Azure Integration -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🔗 Integração com Azure</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <h5>🗄️ Storage & Data</h5>
+                                <ul>
+                                    <li><strong>Azure Storage:</strong> Blob storage para data lakes</li>
+                                    <li><strong>Data Lake Storage:</strong> Storage otimizado para analytics</li>
+                                    <li><strong>Azure SQL:</strong> Databases relacionais</li>
+                                    <li><strong>Cosmos DB:</strong> NoSQL multi-model</li>
+                                    <li><strong>Azure Synapse:</strong> Data warehouse enterprise</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5>📊 Analytics & BI</h5>
+                                <ul>
+                                    <li><strong>Power BI:</strong> Business intelligence</li>
+                                    <li><strong>Azure ML:</strong> Machine learning platform</li>
+                                    <li><strong>Data Factory:</strong> ETL/ELT orchestration</li>
+                                    <li><strong>Stream Analytics:</strong> Real-time analytics</li>
+                                    <li><strong>Azure Databricks:</strong> Unified analytics</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enterprise Security -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🛡️ Segurança Enterprise</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <h5>🔐 Identity & Access</h5>
+                                <ul>
+                                    <li><strong>Azure AD Integration:</strong> Single sign-on</li>
+                                    <li><strong>RBAC:</strong> Role-based access control</li>
+                                    <li><strong>Multi-factor Auth:</strong> MFA support</li>
+                                    <li><strong>Conditional Access:</strong> Policy-based access</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5>🔒 Data Protection</h5>
+                                <ul>
+                                    <li><strong>Encryption at Rest:</strong> Azure Storage encryption</li>
+                                    <li><strong>Encryption in Transit:</strong> TLS/SSL</li>
+                                    <li><strong>Key Vault:</strong> Centralized key management</li>
+                                    <li><strong>Network Security:</strong> VNet isolation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Use Cases -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🎯 Casos de Uso Ideais</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>✅ Recomendado para:</h5>
+                                <ul>
+                                    <li>Empresas já no ecossistema Microsoft</li>
+                                    <li>Organizações com Azure AD</li>
+                                    <li>Integração com Power BI</li>
+                                    <li>Workloads enterprise críticos</li>
+                                    <li>Compliance rigoroso</li>
+                                    <li>Analytics com R e Python</li>
+                                    <li>Hybrid cloud scenarios</li>
+                                    <li>Machine learning em escala</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>❌ Não recomendado para:</h5>
+                                <ul>
+                                    <li>Startups com orçamento limitado</li>
+                                    <li>Ambientes puramente open-source</li>
+                                    <li>Workloads que não precisam de enterprise features</li>
+                                    <li>Projetos de curto prazo</li>
+                                    <li>Equipes sem expertise em Azure</li>
+                                    <li>Aplicações fora do Azure</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h3 class="mb-0">💰 Modelo de Preços</h3>
+                    </div>
+                    <div class="card-body">
+                        <h5>Componentes de Custo</h5>
+                        <ul>
+                            <li>Taxa HDInsight por nó/hora</li>
+                            <li>+ Custo das Azure VMs</li>
+                            <li>+ Storage (Azure Storage/ADLS)</li>
+                            <li>+ Networking (se aplicável)</li>
+                        </ul>
+                        
+                        <h5>Tipos de Nó</h5>
+                        <ul>
+                            <li><strong>Head nodes:</strong> Gerenciamento do cluster</li>
+                            <li><strong>Worker nodes:</strong> Processamento de dados</li>
+                            <li><strong>Edge nodes:</strong> Acesso e desenvolvimento</li>
+                            <li><strong>Zookeeper:</strong> Coordenação (Kafka/HBase)</li>
+                        </ul>
+                        
+                        <h5>Otimização de Custos</h5>
+                        <ul>
+                            <li>Azure Spot VMs (até 90% desconto)</li>
+                            <li>Reserved Instances</li>
+                            <li>Auto-scaling baseado em schedule</li>
+                            <li>Cluster termination automático</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h3 class="mb-0">🛠️ Suporte e Recursos</h3>
+                    </div>
+                    <div class="card-body">
+                        <h5>Documentação</h5>
+                        <ul>
+                            <li>Microsoft Docs completa</li>
+                            <li>Best practices guides</li>
+                            <li>Tutorials e quickstarts</li>
+                            <li>Sample code e ARM templates</li>
+                        </ul>
+                        
+                        <h5>Suporte Microsoft</h5>
+                        <ul>
+                            <li>Basic support (gratuito)</li>
+                            <li>Developer support</li>
+                            <li>Standard support</li>
+                            <li>Professional Direct</li>
+                            <li>Premier support</li>
+                        </ul>
+                        
+                        <h5>Comunidade</h5>
+                        <ul>
+                            <li>Microsoft Q&A</li>
+                            <li>Stack Overflow</li>
+                            <li>Azure Community</li>
+                            <li>Microsoft Tech Community</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Getting Started -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🚀 Como Começar</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <div class="card bg-dark text-center">
+                                    <div class="card-body">
+                                        <h5>1. Azure Account</h5>
+                                        <p>Crie ou acesse sua conta Microsoft Azure</p>
+                                        <a href="https://azure.microsoft.com/services/hdinsight/" target="_blank" class="btn btn-outline-danger btn-sm">Azure HDInsight</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card bg-dark text-center">
+                                    <div class="card-body">
+                                        <h5>2. Resource Group</h5>
+                                        <p>Crie resource group e configure networking</p>
+                                        <a href="https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters" target="_blank" class="btn btn-outline-danger btn-sm">Setup Guide</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card bg-dark text-center">
+                                    <div class="card-body">
+                                        <h5>3. Create Cluster</h5>
+                                        <p>Lance seu primeiro cluster HDInsight</p>
+                                        <a href="https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-create-linux-clusters-portal" target="_blank" class="btn btn-outline-danger btn-sm">Create Cluster</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card bg-dark text-center">
+                                    <div class="card-body">
+                                        <h5>4. Submit Jobs</h5>
+                                        <p>Execute seus primeiros jobs</p>
+                                        <a href="https://docs.microsoft.com/azure/hdinsight/hdinsight-submit-hadoop-jobs-programmatically" target="_blank" class="btn btn-outline-danger btn-sm">Submit Jobs</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Links and Resources -->
+        <div class="row mt-4 mb-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🔗 Links Úteis</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h5>Oficial</h5>
+                                <ul>
+                                    <li><a href="https://azure.microsoft.com/services/hdinsight/" target="_blank">Azure HDInsight</a></li>
+                                    <li><a href="https://docs.microsoft.com/azure/hdinsight/" target="_blank">Documentação</a></li>
+                                    <li><a href="https://azure.microsoft.com/pricing/details/hdinsight/" target="_blank">Preços</a></li>
+                                    <li><a href="https://azure.microsoft.com/support/legal/sla/hdinsight/" target="_blank">SLA</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Recursos</h5>
+                                <ul>
+                                    <li><a href="https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters" target="_blank">Quickstarts</a></li>
+                                    <li><a href="https://github.com/Azure-Samples/hdinsight-samples" target="_blank">Samples</a></li>
+                                    <li><a href="https://azure.microsoft.com/blog/tag/hdinsight/" target="_blank">HDInsight Blog</a></li>
+                                    <li><a href="https://docs.microsoft.com/azure/hdinsight/hdinsight-overview" target="_blank">Overview</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Comparações</h5>
+                                <ul>
+                                    <li><a href="../amazon-emr/">vs Amazon EMR</a></li>
+                                    <li><a href="../google-dataproc/">vs Google Dataproc</a></li>
+                                    <li><a href="../cloudera/">vs Cloudera</a></li>
+                                    <li><a href="../">Todas as Distribuições</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/main.js"></script>
+    <script src="../../../assets/js/theme-toggle.js"></script>
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hortonworks (Legacy) - Distribuições Hadoop</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Hortonworks (Legacy) - Distribuição open-source adquirida pela Cloudera em 2019. História e migração para Cloudera Data Platform.">
+    <meta name="keywords" content="hortonworks, hadoop distribuição, legacy, cloudera aquisição, hdp, ambari">
+</head>
+<body class="matrix-theme">
+    <!-- Navigation for "Entrar no Hadoop" area -->
+    <nav class="navbar navbar-expand-lg navbar-matrix-red">
+        <div class="container">
+            <a class="navbar-brand" href="../../">🔴 Entrar no Hadoop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../introducao/">Introdução</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../">Distribuições</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../primeiros-passos/">Primeiros Passos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../casos-uso/">Casos de Uso</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../roadmap/">Roadmap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../">Voltar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="container mt-3">
+        <div class="breadcrumb-matrix">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../../../">Portal Big Data</a></li>
+                    <li class="breadcrumb-item"><a href="../../">Entrar no Hadoop</a></li>
+                    <li class="breadcrumb-item"><a href="../">Distribuições</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Hortonworks</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <!-- Header Section with Legacy Notice -->
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-warning">
+                    <h4 class="alert-heading">⚠️ Distribuição Legacy</h4>
+                    <p class="mb-0">A Hortonworks foi adquirida pela Cloudera em janeiro de 2019. O Hortonworks Data Platform (HDP) foi descontinuado e migrado para o Cloudera Data Platform (CDP).</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h1 class="display-4 mb-0">Hortonworks Data Platform</h1>
+                                <p class="lead mb-0">Distribuição open-source pioneira (2011-2019)</p>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <span class="badge bg-secondary fs-6 me-2">Legacy</span>
+                                <span class="badge bg-danger fs-6">Descontinuada</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>A Hortonworks foi uma das pioneiras em distribuições Hadoop 100% open source. Fundada em 2011 por ex-funcionários do Yahoo!, a empresa se destacou por manter todos os componentes como open source e por criar o Apache Ambari para gerenciamento de clusters.</p>
+                                <p><strong>Em janeiro de 2019, a Cloudera adquiriu a Hortonworks por US$ 5.2 bilhões</strong>, criando a maior empresa de dados empresariais do mundo. O HDP foi oficialmente descontinuado em favor do Cloudera Data Platform (CDP).</p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card bg-dark">
+                                    <div class="card-body text-center">
+                                        <h5>Status da Distribuição</h5>
+                                        <span class="badge bg-danger fs-6">Descontinuada</span>
+                                        <hr>
+                                        <small>Última versão: HDP 3.1.5 (2019)</small>
+                                        <br>
+                                        <small>Suporte encerrado: 2021</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline of Events -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">📅 Linha do Tempo</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="timeline-container">
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <div class="card bg-dark text-center">
+                                        <div class="card-body">
+                                            <h5>2011</h5>
+                                            <p>Fundação da Hortonworks por ex-funcionários do Yahoo!</p>
+                                            <span class="badge bg-success">Início</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="card bg-dark text-center">
+                                        <div class="card-body">
+                                            <h5>2014</h5>
+                                            <p>IPO na NASDAQ, levantando US$ 84 milhões</p>
+                                            <span class="badge bg-primary">IPO</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="card bg-dark text-center">
+                                        <div class="card-body">
+                                            <h5>2018</h5>
+                                            <p>Anúncio da fusão com Cloudera</p>
+                                            <span class="badge bg-warning">Fusão</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="card bg-dark text-center">
+                                        <div class="card-body">
+                                            <h5>2019</h5>
+                                            <p>Conclusão da aquisição e descontinuação do HDP</p>
+                                            <span class="badge bg-danger">Fim</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Specifications (Historical) -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h3 class="mb-0">🔧 Especificações Técnicas (HDP 3.1.5)</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-dark table-striped">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Versão Hadoop</strong></td>
+                                    <td>3.1.1</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Versão Spark</strong></td>
+                                    <td>2.3.2</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Gerenciamento</strong></td>
+                                    <td>Apache Ambari 2.7.5</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Sistema Operacional</strong></td>
+                                    <td>RHEL, CentOS, SLES, Ubuntu</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Java</strong></td>
+                                    <td>OpenJDK 8</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Segurança</strong></td>
+                                    <td>Kerberos, Ranger</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Licença</strong></td>
+                                    <td>100% Apache License</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h3 class="mb-0">⚡ Recursos Históricos</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <h5>🔓 100% Open Source</h5>
+                                <p>Primeira distribuição a manter todos os componentes como open source, sem versões proprietárias.</p>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <h5>🎛️ Apache Ambari</h5>
+                                <p>Interface web intuitiva para instalação, configuração e monitoramento de clusters Hadoop.</p>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <h5>🛡️ Apache Ranger</h5>
+                                <p>Framework de segurança centralizada para autorização e auditoria em todo o ecossistema.</p>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <h5>📊 Apache Atlas</h5>
+                                <p>Governança de dados e descoberta de metadados para ambientes Hadoop.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Migration Path -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🔄 Caminho de Migração</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <h5>Para usuários do HDP:</h5>
+                            <p>A Cloudera oferece um caminho de migração do HDP para o CDP (Cloudera Data Platform). O processo inclui:</p>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Opções de Migração:</h5>
+                                <ul>
+                                    <li><strong>CDP Private Cloud Base</strong> - Sucessor direto do HDP</li>
+                                    <li><strong>CDP Public Cloud</strong> - Versão cloud-native</li>
+                                    <li><strong>CDP Hybrid</strong> - Combinação on-premise e cloud</li>
+                                </ul>
+                                
+                                <h5>Ferramentas de Migração:</h5>
+                                <ul>
+                                    <li>Cloudera Migration Toolkit</li>
+                                    <li>Replication Manager</li>
+                                    <li>Workload XM (otimização)</li>
+                                    <li>Professional Services</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Alternativas Open Source:</h5>
+                                <ul>
+                                    <li><a href="../open-source-data-platform/">Open Source Data Platform</a></li>
+                                    <li><a href="../apache-hadoop/">Apache Hadoop (Vanilla)</a></li>
+                                    <li><a href="../acceldata/">Acceldata Open Data Platform</a></li>
+                                </ul>
+                                
+                                <h5>Alternativas Cloud:</h5>
+                                <ul>
+                                    <li>Amazon EMR</li>
+                                    <li>Google Dataproc</li>
+                                    <li>Azure HDInsight</li>
+                                    <li><a href="../qubole/">Qubole Data Platform</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legacy Components -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🧩 Componentes do Ecossistema HDP</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h5>Core Hadoop</h5>
+                                <ul>
+                                    <li>HDFS 3.1.1</li>
+                                    <li>YARN 3.1.1</li>
+                                    <li>MapReduce 3.1.1</li>
+                                    <li>Tez 0.9.1</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Processing & Analytics</h5>
+                                <ul>
+                                    <li>Apache Spark 2.3.2</li>
+                                    <li>Apache Hive 3.1.0</li>
+                                    <li>Apache Pig 0.16.0</li>
+                                    <li>Apache Phoenix 5.0.0</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Data Management</h5>
+                                <ul>
+                                    <li>Apache HBase 2.0.2</li>
+                                    <li>Apache Kafka 2.0.0</li>
+                                    <li>Apache Storm 1.2.1</li>
+                                    <li>Apache Sqoop 1.4.7</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-4">
+                                <h5>Security & Governance</h5>
+                                <ul>
+                                    <li>Apache Ranger 1.2.0</li>
+                                    <li>Apache Atlas 1.1.0</li>
+                                    <li>Apache Knox 1.2.0</li>
+                                    <li>Kerberos Integration</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Management</h5>
+                                <ul>
+                                    <li>Apache Ambari 2.7.5</li>
+                                    <li>SmartSense (descontinuado)</li>
+                                    <li>Ambari Metrics</li>
+                                    <li>Log Search</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Integration</h5>
+                                <ul>
+                                    <li>Apache NiFi 1.9.2</li>
+                                    <li>Apache Zeppelin 0.8.0</li>
+                                    <li>Jupyter Notebooks</li>
+                                    <li>Livy 0.5.0</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Historical Impact -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🏆 Legado e Impacto</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Contribuições Importantes:</h5>
+                                <ul>
+                                    <li><strong>Apache Ambari</strong> - Simplificou drasticamente o gerenciamento de clusters</li>
+                                    <li><strong>Apache Ranger</strong> - Estabeleceu padrões de segurança para Hadoop</li>
+                                    <li><strong>Apache Atlas</strong> - Pioneiro em governança de dados</li>
+                                    <li><strong>YARN Improvements</strong> - Contribuições significativas para o YARN</li>
+                                    <li><strong>Hive LLAP</strong> - Aceleração de queries interativas</li>
+                                    <li><strong>Open Source Advocacy</strong> - Manteve tudo 100% open source</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Reconhecimentos:</h5>
+                                <ul>
+                                    <li>Líder no Gartner Magic Quadrant</li>
+                                    <li>Forrester Wave Leader</li>
+                                    <li>Mais de 1000 clientes empresariais</li>
+                                    <li>Comunidade ativa de desenvolvedores</li>
+                                    <li>Centenas de patches contribuídos ao Apache</li>
+                                    <li>Treinamento e certificação de milhares de profissionais</li>
+                                </ul>
+                                
+                                <div class="alert alert-success mt-3">
+                                    <strong>Legado:</strong> Muitos dos componentes e práticas introduzidos pela Hortonworks continuam sendo padrão na indústria hoje.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Links and Resources -->
+        <div class="row mt-4 mb-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🔗 Recursos Históricos e Migração</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h5>Documentação Legacy</h5>
+                                <ul>
+                                    <li><a href="https://docs.cloudera.com/HDPDocuments/" target="_blank">HDP Documentation Archive</a></li>
+                                    <li><a href="https://ambari.apache.org/" target="_blank">Apache Ambari</a></li>
+                                    <li><a href="https://ranger.apache.org/" target="_blank">Apache Ranger</a></li>
+                                    <li><a href="https://atlas.apache.org/" target="_blank">Apache Atlas</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Migração para CDP</h5>
+                                <ul>
+                                    <li><a href="https://www.cloudera.com/products/cdp-migration.html" target="_blank">CDP Migration Guide</a></li>
+                                    <li><a href="../cloudera/">Cloudera Data Platform</a></li>
+                                    <li><a href="https://www.cloudera.com/services/support.html" target="_blank">Migration Support</a></li>
+                                    <li><a href="https://www.cloudera.com/services/training.html" target="_blank">CDP Training</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Alternativas</h5>
+                                <ul>
+                                    <li><a href="../apache-hadoop/">Apache Hadoop (Vanilla)</a></li>
+                                    <li><a href="../open-source-data-platform/">Open Source Data Platform</a></li>
+                                    <li><a href="../acceldata/">Acceldata</a></li>
+                                    <li><a href="../">Todas as Distribuições</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/main.js"></script>
+    <script src="../../../assets/js/theme-toggle.js"></script>
+</body>
+</html>

@@ -122,6 +122,9 @@
   - [x] 6.2 Criar seção de distribuições Hadoop para iniciantes
 
 
+
+
+
     - Implementar cards comparativos das principais distribuições
     - Adicionar recomendações baseadas em casos de uso
     - Criar guias de instalação passo-a-passo

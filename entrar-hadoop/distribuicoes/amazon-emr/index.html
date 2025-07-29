@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon EMR - Distribuições Hadoop</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Amazon EMR - Elastic MapReduce, serviço gerenciado da AWS para processamento de big data com Hadoop, Spark e outras ferramentas.">
+    <meta name="keywords" content="amazon emr, aws hadoop, elastic mapreduce, cloud hadoop, aws big data">
+</head>
+<body class="matrix-theme">
+    <!-- Navigation for "Entrar no Hadoop" area -->
+    <nav class="navbar navbar-expand-lg navbar-matrix-red">
+        <div class="container">
+            <a class="navbar-brand" href="../../">🔴 Entrar no Hadoop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../introducao/">Introdução</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../">Distribuições</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../primeiros-passos/">Primeiros Passos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../casos-uso/">Casos de Uso</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../roadmap/">Roadmap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../">Voltar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="container mt-3">
+        <div class="breadcrumb-matrix">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../../../">Portal Big Data</a></li>
+                    <li class="breadcrumb-item"><a href="../../">Entrar no Hadoop</a></li>
+                    <li class="breadcrumb-item"><a href="../">Distribuições</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Amazon EMR</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <!-- Header Section -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h1 class="display-4 mb-0">Amazon EMR</h1>
+                                <p class="lead mb-0">Elastic MapReduce - Serviço gerenciado da AWS</p>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <span class="badge bg-warning fs-6 me-2">AWS Managed</span>
+                                <span class="badge bg-primary fs-6">Cloud Native</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>Amazon EMR é um serviço de nuvem gerenciado que facilita o processamento de grandes quantidades de dados usando frameworks como Hadoop, Apache Spark, HBase, Presto e Flink. O EMR elimina a complexidade de configurar, gerenciar e dimensionar clusters de big data.</p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card bg-dark">
+                                    <div class="card-body text-center">
+                                        <h5>Status do Serviço</h5>
+                                        <span class="badge bg-success fs-6">Ativo</span>
+                                        <hr>
+                                        <small>Última atualização: 2024</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Specifications -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h3 class="mb-0">🔧 Especificações Técnicas</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-dark table-striped">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Versão Hadoop</strong></td>
+                                    <td>2.10.x, 3.3.x</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Versão Spark</strong></td>
+                                    <td>3.3.x, 3.4.x</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Instâncias EC2</strong></td>
+                                    <td>Todas as famílias disponíveis</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Storage</strong></td>
+                                    <td>S3, EBS, Instance Store</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Networking</strong></td>
+                                    <td>VPC, Security Groups</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Spot Instances</strong></td>
+                                    <td>Suporte nativo</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Auto Scaling</strong></td>
+                                    <td>Baseado em métricas</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h3 class="mb-0">⚡ Recursos Principais</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <h5>🚀 Provisionamento Rápido</h5>
+                                <p>Clusters prontos em minutos com configuração automática de todos os componentes.</p>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <h5>💰 Otimização de Custos</h5>
+                                <p>Spot Instances, auto-scaling e cobrança por uso para reduzir custos significativamente.</p>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <h5>🔒 Segurança Integrada</h5>
+                                <p>IAM, VPC, encryption at rest/transit e integração com AWS security services.</p>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <h5>📊 Monitoramento Nativo</h5>
+                                <p>CloudWatch metrics, logs centralizados e alertas automáticos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EMR Deployment Options -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🏗️ Opções de Deployment</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <div class="card bg-dark">
+                                    <div class="card-body text-center">
+                                        <h5>EMR on EC2</h5>
+                                        <p>Clusters tradicionais em instâncias EC2</p>
+                                        <ul class="list-unstyled">
+                                            <li>• Controle total sobre instâncias</li>
+                                            <li>• Suporte a Spot Instances</li>
+                                            <li>• Persistent clusters</li>
+                                            <li>• Custom AMIs</li>
+                                        </ul>
+                                        <span class="badge bg-primary">Tradicional</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card bg-dark">
+                                    <div class="card-body text-center">
+                                        <h5>EMR on EKS</h5>
+                                        <p>Jobs Spark em clusters Kubernetes</p>
+                                        <ul class="list-unstyled">
+                                            <li>• Kubernetes nativo</li>
+                                            <li>• Shared infrastructure</li>
+                                            <li>• Job isolation</li>
+                                            <li>• Cost optimization</li>
+                                        </ul>
+                                        <span class="badge bg-info">Kubernetes</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card bg-dark">
+                                    <div class="card-body text-center">
+                                        <h5>EMR Serverless</h5>
+                                        <p>Execução serverless de jobs</p>
+                                        <ul class="list-unstyled">
+                                            <li>• Zero infrastructure</li>
+                                            <li>• Auto-scaling automático</li>
+                                            <li>• Pay per use</li>
+                                            <li>• Startup rápido</li>
+                                        </ul>
+                                        <span class="badge bg-success">Serverless</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Supported Applications -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🛠️ Aplicações Suportadas</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <h5>Processamento</h5>
+                                <ul>
+                                    <li>Apache Spark</li>
+                                    <li>Apache Hadoop</li>
+                                    <li>Apache Flink</li>
+                                    <li>Apache Storm</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <h5>Analytics</h5>
+                                <ul>
+                                    <li>Presto</li>
+                                    <li>Apache Hive</li>
+                                    <li>Apache Pig</li>
+                                    <li>Apache Impala</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <h5>Machine Learning</h5>
+                                <ul>
+                                    <li>Apache MXNet</li>
+                                    <li>TensorFlow</li>
+                                    <li>PyTorch</li>
+                                    <li>Spark MLlib</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <h5>Databases</h5>
+                                <ul>
+                                    <li>Apache HBase</li>
+                                    <li>Apache Phoenix</li>
+                                    <li>Apache Zeppelin</li>
+                                    <li>JupyterHub</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Use Cases -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🎯 Casos de Uso Ideais</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>✅ Recomendado para:</h5>
+                                <ul>
+                                    <li>Empresas já na AWS</li>
+                                    <li>Workloads com demanda variável</li>
+                                    <li>ETL e processamento batch</li>
+                                    <li>Analytics interativo</li>
+                                    <li>Machine learning em escala</li>
+                                    <li>Log processing</li>
+                                    <li>Data lake analytics</li>
+                                    <li>Migração de Hadoop on-premise</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>❌ Não recomendado para:</h5>
+                                <ul>
+                                    <li>Workloads com latência ultra-baixa</li>
+                                    <li>Aplicações que não estão na AWS</li>
+                                    <li>Workloads 24/7 constantes</li>
+                                    <li>Orçamentos muito limitados</li>
+                                    <li>Compliance que requer on-premise</li>
+                                    <li>Customizações profundas do Hadoop</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h3 class="mb-0">💰 Modelo de Preços</h3>
+                    </div>
+                    <div class="card-body">
+                        <h5>EMR on EC2</h5>
+                        <ul>
+                            <li>Taxa EMR por instância/hora</li>
+                            <li>+ Custo das instâncias EC2</li>
+                            <li>+ Storage (EBS/S3)</li>
+                            <li>Desconto com Reserved Instances</li>
+                        </ul>
+                        
+                        <h5>EMR Serverless</h5>
+                        <ul>
+                            <li>Pay per vCPU-hour e GB-hour</li>
+                            <li>Sem custos de infraestrutura</li>
+                            <li>Billing por segundo</li>
+                            <li>Free tier disponível</li>
+                        </ul>
+                        
+                        <h5>Otimização de Custos</h5>
+                        <ul>
+                            <li>Spot Instances (até 90% desconto)</li>
+                            <li>Auto-scaling inteligente</li>
+                            <li>S3 como storage principal</li>
+                            <li>Cluster termination automático</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h3 class="mb-0">🛠️ Suporte e Recursos</h3>
+                    </div>
+                    <div class="card-body">
+                        <h5>Documentação</h5>
+                        <ul>
+                            <li>AWS Documentation completa</li>
+                            <li>Best practices guides</li>
+                            <li>Tutorials e workshops</li>
+                            <li>Sample code e templates</li>
+                        </ul>
+                        
+                        <h5>Suporte AWS</h5>
+                        <ul>
+                            <li>Basic support (gratuito)</li>
+                            <li>Developer support</li>
+                            <li>Business support</li>
+                            <li>Enterprise support</li>
+                        </ul>
+                        
+                        <h5>Comunidade</h5>
+                        <ul>
+                            <li>AWS Forums</li>
+                            <li>Stack Overflow</li>
+                            <li>AWS User Groups</li>
+                            <li>re:Invent sessions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Getting Started -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🚀 Como Começar</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <div class="card bg-dark text-center">
+                                    <div class="card-body">
+                                        <h5>1. AWS Account</h5>
+                                        <p>Crie ou acesse sua conta AWS</p>
+                                        <a href="https://aws.amazon.com/emr/" target="_blank" class="btn btn-outline-danger btn-sm">AWS EMR</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card bg-dark text-center">
+                                    <div class="card-body">
+                                        <h5>2. IAM Setup</h5>
+                                        <p>Configure permissões e roles necessárias</p>
+                                        <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-access-iam.html" target="_blank" class="btn btn-outline-danger btn-sm">IAM Guide</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card bg-dark text-center">
+                                    <div class="card-body">
+                                        <h5>3. Create Cluster</h5>
+                                        <p>Lance seu primeiro cluster EMR</p>
+                                        <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-gs.html" target="_blank" class="btn btn-outline-danger btn-sm">Quick Start</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card bg-dark text-center">
+                                    <div class="card-body">
+                                        <h5>4. Submit Jobs</h5>
+                                        <p>Execute seus primeiros jobs Spark/Hadoop</p>
+                                        <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-work-with-steps.html" target="_blank" class="btn btn-outline-danger btn-sm">Submit Jobs</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Links and Resources -->
+        <div class="row mt-4 mb-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🔗 Links Úteis</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h5>Oficial</h5>
+                                <ul>
+                                    <li><a href="https://aws.amazon.com/emr/" target="_blank">AWS EMR</a></li>
+                                    <li><a href="https://docs.aws.amazon.com/emr/" target="_blank">Documentação</a></li>
+                                    <li><a href="https://aws.amazon.com/emr/pricing/" target="_blank">Preços</a></li>
+                                    <li><a href="https://aws.amazon.com/emr/faqs/" target="_blank">FAQ</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Recursos</h5>
+                                <ul>
+                                    <li><a href="https://aws.amazon.com/emr/getting-started/" target="_blank">Getting Started</a></li>
+                                    <li><a href="https://github.com/aws-samples/amazon-emr-samples" target="_blank">Samples</a></li>
+                                    <li><a href="https://aws.amazon.com/blogs/big-data/" target="_blank">Big Data Blog</a></li>
+                                    <li><a href="https://aws.amazon.com/emr/features/" target="_blank">Features</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Comparações</h5>
+                                <ul>
+                                    <li><a href="../google-dataproc/">vs Google Dataproc</a></li>
+                                    <li><a href="../azure-hdinsight/">vs Azure HDInsight</a></li>
+                                    <li><a href="../qubole/">vs Qubole</a></li>
+                                    <li><a href="../">Todas as Distribuições</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/main.js"></script>
+    <script src="../../../assets/js/theme-toggle.js"></script>
+</body>
+</html>

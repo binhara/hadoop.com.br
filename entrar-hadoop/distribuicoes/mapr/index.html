@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapR (HPE Ezmeral) - Distribuições Hadoop</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Custom Matrix Theme CSS -->
+    <link href="../../../assets/css/matrix-theme.css" rel="stylesheet">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="MapR (HPE Ezmeral) - Plataforma de dados convergente com sistema de arquivos nativo e alta performance.">
+    <meta name="keywords" content="mapr, hpe ezmeral, hadoop distribuição, sistema arquivos nativo, high performance">
+</head>
+<body class="matrix-theme">
+    <!-- Navigation for "Entrar no Hadoop" area -->
+    <nav class="navbar navbar-expand-lg navbar-matrix-red">
+        <div class="container">
+            <a class="navbar-brand" href="../../">🔴 Entrar no Hadoop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../introducao/">Introdução</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../">Distribuições</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../primeiros-passos/">Primeiros Passos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../casos-uso/">Casos de Uso</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../roadmap/">Roadmap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../">Voltar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="container mt-3">
+        <div class="breadcrumb-matrix">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../../../">Portal Big Data</a></li>
+                    <li class="breadcrumb-item"><a href="../../">Entrar no Hadoop</a></li>
+                    <li class="breadcrumb-item"><a href="../">Distribuições</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">MapR (HPE Ezmeral)</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <!-- Header Section -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h1 class="display-4 mb-0">MapR (HPE Ezmeral)</h1>
+                                <p class="lead mb-0">Plataforma de dados convergente com sistema de arquivos nativo</p>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <span class="badge bg-danger fs-6 me-2">Enterprise</span>
+                                <span class="badge bg-success fs-6">High Performance</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>MapR, agora parte da HPE Ezmeral Data Fabric, é uma plataforma de dados convergente que oferece um sistema de arquivos distribuído nativo (MapR-FS) com performance superior ao HDFS tradicional. Combina analytics, operacional e streaming em uma única plataforma unificada.</p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card bg-dark">
+                                    <div class="card-body text-center">
+                                        <h5>Status da Distribuição</h5>
+                                        <span class="badge bg-warning fs-6">HPE Ezmeral</span>
+                                        <hr>
+                                        <small>Adquirida pela HPE em 2019</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Specifications -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h3 class="mb-0">🔧 Especificações Técnicas</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-dark table-striped">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Sistema de Arquivos</strong></td>
+                                    <td>MapR-FS (nativo)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Versão Spark</strong></td>
+                                    <td>2.4.x, 3.1.x</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Deployment</strong></td>
+                                    <td>On-premise, Cloud, Edge</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Database</strong></td>
+                                    <td>MapR-DB (NoSQL nativo)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Streaming</strong></td>
+                                    <td>MapR Event Store</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Replicação</strong></td>
+                                    <td>Multi-master, Global</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>APIs</strong></td>
+                                    <td>POSIX, NFS, HDFS</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h3 class="mb-0">⚡ Recursos Principais</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <h5>🚀 Performance Superior</h5>
+                                <p>MapR-FS oferece performance até 5x superior ao HDFS com acesso POSIX nativo.</p>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <h5>🔄 Convergência de Workloads</h5>
+                                <p>Suporta analytics, operacional e streaming na mesma plataforma unificada.</p>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <h5>🌍 Replicação Global</h5>
+                                <p>Replicação multi-master entre datacenters com consistência eventual.</p>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <h5>🛡️ Segurança Avançada</h5>
+                                <p>Encryption wire-level, ACLs granulares e auditoria completa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MapR Core Components -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🏗️ Componentes Principais</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <div class="card bg-dark">
+                                    <div class="card-body text-center">
+                                        <h5>MapR-FS</h5>
+                                        <p>Sistema de arquivos distribuído nativo</p>
+                                        <ul class="list-unstyled">
+                                            <li>• POSIX compliance</li>
+                                            <li>• NFS access</li>
+                                            <li>• Random read/write</li>
+                                            <li>• No NameNode</li>
+                                        </ul>
+                                        <span class="badge bg-primary">Core</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card bg-dark">
+                                    <div class="card-body text-center">
+                                        <h5>MapR-DB</h5>
+                                        <p>Database NoSQL integrado</p>
+                                        <ul class="list-unstyled">
+                                            <li>• JSON documents</li>
+                                            <li>• HBase API</li>
+                                            <li>• ACID transactions</li>
+                                            <li>• Real-time updates</li>
+                                        </ul>
+                                        <span class="badge bg-info">Database</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="card bg-dark">
+                                    <div class="card-body text-center">
+                                        <h5>Event Store</h5>
+                                        <p>Streaming platform nativo</p>
+                                        <ul class="list-unstyled">
+                                            <li>• Kafka API</li>
+                                            <li>• Global replication</li>
+                                            <li>• Persistent streams</li>
+                                            <li>• Multi-tenancy</li>
+                                        </ul>
+                                        <span class="badge bg-warning">Streaming</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HPE Ezmeral Evolution -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🔄 Evolução para HPE Ezmeral</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <h5>📈 HPE Ezmeral Data Fabric</h5>
+                                <ul>
+                                    <li><strong>Unified Platform:</strong> Analytics, ML e edge computing</li>
+                                    <li><strong>Kubernetes Native:</strong> Container orchestration</li>
+                                    <li><strong>Multi-cloud:</strong> Deploy em qualquer cloud</li>
+                                    <li><strong>Edge Computing:</strong> Processamento distribuído</li>
+                                    <li><strong>AI/ML Pipeline:</strong> MLOps integrado</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5>🎯 Foco Atual</h5>
+                                <ul>
+                                    <li><strong>Enterprise Customers:</strong> Grandes corporações</li>
+                                    <li><strong>Mission Critical:</strong> Workloads críticos</li>
+                                    <li><strong>Hybrid Cloud:</strong> On-premise + cloud</li>
+                                    <li><strong>AI/ML Workloads:</strong> Machine learning em escala</li>
+                                    <li><strong>Edge Analytics:</strong> IoT e edge computing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    <!-- Use Cases -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🎯 Casos de Uso Ideais</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>✅ Recomendado para:</h5>
+                                <ul>
+                                    <li>Aplicações que precisam de alta performance</li>
+                                    <li>Workloads operacionais em tempo real</li>
+                                    <li>Ambientes multi-datacenter</li>
+                                    <li>Aplicações que precisam de POSIX</li>
+                                    <li>Convergência de analytics e operacional</li>
+                                    <li>Edge computing e IoT</li>
+                                    <li>Aplicações mission-critical</li>
+                                    <li>Ambientes com compliance rigoroso</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>❌ Não recomendado para:</h5>
+                                <ul>
+                                    <li>Startups com orçamento limitado</li>
+                                    <li>Projetos de prototipagem</li>
+                                    <li>Workloads simples de batch</li>
+                                    <li>Equipes sem expertise em MapR</li>
+                                    <li>Ambientes que precisam de 100% open source</li>
+                                    <li>Projetos de curto prazo</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance Comparison -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">⚡ Comparação de Performance</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Métrica</th>
+                                        <th>MapR-FS</th>
+                                        <th>HDFS</th>
+                                        <th>Vantagem</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Throughput</strong></td>
+                                        <td>2-5x superior</td>
+                                        <td>Baseline</td>
+                                        <td><span class="badge bg-success">MapR</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Random I/O</strong></td>
+                                        <td>Nativo</td>
+                                        <td>Limitado</td>
+                                        <td><span class="badge bg-success">MapR</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Small Files</strong></td>
+                                        <td>Otimizado</td>
+                                        <td>Problemático</td>
+                                        <td><span class="badge bg-success">MapR</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Metadata</strong></td>
+                                        <td>Distribuído</td>
+                                        <td>NameNode</td>
+                                        <td><span class="badge bg-success">MapR</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>NFS Access</strong></td>
+                                        <td>Nativo</td>
+                                        <td>Gateway</td>
+                                        <td><span class="badge bg-success">MapR</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pricing and Licensing -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h3 class="mb-0">💰 Modelo de Preços</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="pricing-tier mb-3">
+                            <h5>Community Edition</h5>
+                            <p>Para desenvolvimento e testes</p>
+                            <ul>
+                                <li>MapR-FS básico</li>
+                                <li>Até 3 nós</li>
+                                <li>Suporte da comunidade</li>
+                                <li>Sem recursos enterprise</li>
+                            </ul>
+                            <span class="badge bg-success">Gratuito</span>
+                        </div>
+                        <div class="pricing-tier mb-3">
+                            <h5>Enterprise</h5>
+                            <p>Para ambientes de produção</p>
+                            <ul>
+                                <li>Todos os recursos</li>
+                                <li>MapR-DB incluído</li>
+                                <li>Event Store incluído</li>
+                                <li>Suporte 24/7</li>
+                            </ul>
+                            <span class="badge bg-danger">Licença por nó</span>
+                        </div>
+                        <div class="pricing-tier">
+                            <h5>HPE Ezmeral</h5>
+                            <p>Plataforma completa</p>
+                            <ul>
+                                <li>Data Fabric completo</li>
+                                <li>Kubernetes integration</li>
+                                <li>ML/AI capabilities</li>
+                                <li>Professional services</li>
+                            </ul>
+                            <span class="badge bg-warning">Contato HPE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h3 class="mb-0">🛠️ Suporte e Serviços</h3>
+                    </div>
+                    <div class="card-body">
+                        <h5>Suporte HPE</h5>
+                        <ul>
+                            <li>24/7/365 support</li>
+                            <li>Dedicated support engineers</li>
+                            <li>Remote troubleshooting</li>
+                            <li>Escalation to R&D</li>
+                        </ul>
+                        
+                        <h5>Professional Services</h5>
+                        <ul>
+                            <li>Architecture design</li>
+                            <li>Implementation services</li>
+                            <li>Migration assistance</li>
+                            <li>Performance tuning</li>
+                        </ul>
+                        
+                        <h5>Treinamento</h5>
+                        <ul>
+                            <li>MapR certification program</li>
+                            <li>On-site training</li>
+                            <li>Virtual learning paths</li>
+                            <li>Best practices workshops</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Migration Path -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🔄 Migração e Futuro</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <h5>📋 Status Atual</h5>
+                                <ul>
+                                    <li><strong>MapR Legacy:</strong> Suporte até 2024</li>
+                                    <li><strong>HPE Ezmeral:</strong> Evolução da plataforma</li>
+                                    <li><strong>Migration Path:</strong> Para HPE Ezmeral Data Fabric</li>
+                                    <li><strong>New Customers:</strong> Direcionados para Ezmeral</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5>🎯 Alternativas</h5>
+                                <ul>
+                                    <li><strong>HPE Ezmeral:</strong> Evolução natural</li>
+                                    <li><strong>Cloudera:</strong> Enterprise similar</li>
+                                    <li><strong>Databricks:</strong> Para analytics</li>
+                                    <li><strong>Confluent:</strong> Para streaming</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Getting Started -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🚀 Como Começar</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <div class="card bg-dark text-center">
+                                    <div class="card-body">
+                                        <h5>1. HPE Contact</h5>
+                                        <p>Entre em contato com HPE para avaliação</p>
+                                        <a href="https://www.hpe.com/us/en/software/data-fabric.html" target="_blank" class="btn btn-outline-danger btn-sm">HPE Ezmeral</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card bg-dark text-center">
+                                    <div class="card-body">
+                                        <h5>2. Assessment</h5>
+                                        <p>Avaliação de workloads e requisitos</p>
+                                        <a href="https://www.hpe.com/us/en/services/consulting.html" target="_blank" class="btn btn-outline-danger btn-sm">Consulting</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card bg-dark text-center">
+                                    <div class="card-body">
+                                        <h5>3. POC</h5>
+                                        <p>Proof of concept com dados reais</p>
+                                        <a href="https://www.hpe.com/us/en/software/data-fabric.html" target="_blank" class="btn btn-outline-danger btn-sm">POC Request</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card bg-dark text-center">
+                                    <div class="card-body">
+                                        <h5>4. Implementation</h5>
+                                        <p>Deploy com professional services</p>
+                                        <a href="https://www.hpe.com/us/en/services.html" target="_blank" class="btn btn-outline-danger btn-sm">Services</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Links and Resources -->
+        <div class="row mt-4 mb-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🔗 Links Úteis</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h5>HPE Ezmeral</h5>
+                                <ul>
+                                    <li><a href="https://www.hpe.com/us/en/software/data-fabric.html" target="_blank">HPE Ezmeral Data Fabric</a></li>
+                                    <li><a href="https://docs.datafabric.hpe.com/" target="_blank">Documentação</a></li>
+                                    <li><a href="https://www.hpe.com/us/en/software/data-fabric.html" target="_blank">Pricing</a></li>
+                                    <li><a href="https://www.hpe.com/us/en/services/consulting.html" target="_blank">Consulting</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Legacy MapR</h5>
+                                <ul>
+                                    <li><a href="https://docs.datafabric.hpe.com/62/MapROverview/c_overview_intro.html" target="_blank">MapR Documentation</a></li>
+                                    <li><a href="https://community.hpe.com/t5/HPE-Ezmeral-Data-Fabric/ct-p/ezmeral-data-fabric" target="_blank">Community</a></li>
+                                    <li><a href="https://www.hpe.com/us/en/software/data-fabric.html" target="_blank">Migration Guide</a></li>
+                                    <li><a href="https://www.hpe.com/us/en/services.html" target="_blank">Support</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Comparações</h5>
+                                <ul>
+                                    <li><a href="../cloudera/">vs Cloudera</a></li>
+                                    <li><a href="../amazon-emr/">vs Amazon EMR</a></li>
+                                    <li><a href="../../../sair-hadoop/alternativas/">vs Alternativas</a></li>
+                                    <li><a href="../">Todas as Distribuições</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../../assets/js/main.js"></script>
+    <script src="../../../assets/js/theme-toggle.js"></script>
+</body>
+</html>

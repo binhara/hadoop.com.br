@@ -17,9 +17,9 @@
 </head>
 <body class="matrix-theme">
     <!-- Navigation for "Entrar no Hadoop" area -->
-    <nav class="navbar navbar-expand-lg navbar-matrix-green">
+    <nav class="navbar navbar-expand-lg navbar-matrix-red">
         <div class="container">
-            <a class="navbar-brand" href="../">🟢 Entrar no Hadoop</a>
+            <a class="navbar-brand" href="../">🔴 Entrar no Hadoop</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -61,12 +61,289 @@
         </div>
     </div>
 
-    <!-- Content will be implemented in task 6 -->
+    <!-- Main Content -->
     <div class="container mt-4">
         <div class="row">
             <div class="col-12">
                 <h1 class="display-4 text-center mb-4">Distribuições Hadoop</h1>
                 <p class="lead text-center">Explore as principais distribuições Hadoop e escolha a melhor para seu projeto</p>
+            </div>
+        </div>
+
+        <!-- Distribution Categories -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🏢 Distribuições Comerciais</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Cloudera -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card matrix-card h-100">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Cloudera Data Platform</h5>
+                                        <p class="card-text">Plataforma empresarial líder com suporte completo e ferramentas avançadas</p>
+                                        <div class="mb-3">
+                                            <span class="badge bg-danger me-1">Enterprise</span>
+                                            <span class="badge bg-warning">Suporte 24/7</span>
+                                        </div>
+                                        <a href="cloudera/" class="btn btn-outline-danger">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Hortonworks (agora Cloudera) -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card matrix-card h-100">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Hortonworks (Legacy)</h5>
+                                        <p class="card-text">Distribuição open-source adquirida pela Cloudera em 2019</p>
+                                        <div class="mb-3">
+                                            <span class="badge bg-secondary me-1">Legacy</span>
+                                            <span class="badge bg-info">Open Source</span>
+                                        </div>
+                                        <a href="hortonworks/" class="btn btn-outline-danger">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- MapR (agora HPE) -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card matrix-card h-100">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">MapR (HPE Ezmeral)</h5>
+                                        <p class="card-text">Plataforma de dados convergente com sistema de arquivos nativo</p>
+                                        <div class="mb-3">
+                                            <span class="badge bg-danger me-1">Enterprise</span>
+                                            <span class="badge bg-success">High Performance</span>
+                                        </div>
+                                        <a href="mapr/" class="btn btn-outline-danger">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modern Open Source Distributions -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🔓 Distribuições Open Source Modernas</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Qubole -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card matrix-card h-100">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Qubole Data Platform</h5>
+                                        <p class="card-text">Plataforma de dados na nuvem com auto-scaling e otimização automática</p>
+                                        <div class="mb-3">
+                                            <span class="badge bg-primary me-1">Cloud Native</span>
+                                            <span class="badge bg-success">Auto-scaling</span>
+                                        </div>
+                                        <a href="qubole/" class="btn btn-outline-danger">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Open Source Data Platform -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card matrix-card h-100">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Open Source Data Platform</h5>
+                                        <p class="card-text">Distribuição 100% open source com foco em simplicidade e performance</p>
+                                        <div class="mb-3">
+                                            <span class="badge bg-info me-1">100% Open Source</span>
+                                            <span class="badge bg-success">Community</span>
+                                        </div>
+                                        <a href="open-source-data-platform/" class="btn btn-outline-danger">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Acceldata Open Data Platform -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card matrix-card h-100">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Acceldata Open Data Platform</h5>
+                                        <p class="card-text">Plataforma moderna com observabilidade e otimização de dados integradas</p>
+                                        <div class="mb-3">
+                                            <span class="badge bg-warning me-1">Observability</span>
+                                            <span class="badge bg-info">Modern Stack</span>
+                                        </div>
+                                        <a href="acceldata/" class="btn btn-outline-danger">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cloud Distributions -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">☁️ Distribuições Cloud</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- Amazon EMR -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card matrix-card h-100">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Amazon EMR</h5>
+                                        <p class="card-text">Serviço gerenciado da AWS para processamento de big data</p>
+                                        <div class="mb-3">
+                                            <span class="badge bg-warning me-1">AWS</span>
+                                            <span class="badge bg-primary">Managed</span>
+                                        </div>
+                                        <a href="amazon-emr/" class="btn btn-outline-danger">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Google Dataproc -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card matrix-card h-100">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Google Dataproc</h5>
+                                        <p class="card-text">Serviço gerenciado do Google Cloud para Hadoop e Spark</p>
+                                        <div class="mb-3">
+                                            <span class="badge bg-primary me-1">GCP</span>
+                                            <span class="badge bg-success">Fast Deploy</span>
+                                        </div>
+                                        <a href="google-dataproc/" class="btn btn-outline-danger">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Azure HDInsight -->
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card matrix-card h-100">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">Azure HDInsight</h5>
+                                        <p class="card-text">Serviço de analytics da Microsoft Azure para big data</p>
+                                        <div class="mb-3">
+                                            <span class="badge bg-info me-1">Azure</span>
+                                            <span class="badge bg-primary">Enterprise</span>
+                                        </div>
+                                        <a href="azure-hdinsight/" class="btn btn-outline-danger">Ver Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">📊 Comparação de Distribuições</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-dark table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Distribuição</th>
+                                        <th>Tipo</th>
+                                        <th>Custo</th>
+                                        <th>Suporte</th>
+                                        <th>Facilidade</th>
+                                        <th>Performance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Qubole</strong></td>
+                                        <td><span class="badge bg-primary">Cloud</span></td>
+                                        <td><span class="badge bg-warning">Pay-per-use</span></td>
+                                        <td><span class="badge bg-success">24/7</span></td>
+                                        <td>⭐⭐⭐⭐⭐</td>
+                                        <td>⭐⭐⭐⭐⭐</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Open Source Data Platform</strong></td>
+                                        <td><span class="badge bg-info">Open Source</span></td>
+                                        <td><span class="badge bg-success">Gratuito</span></td>
+                                        <td><span class="badge bg-warning">Community</span></td>
+                                        <td>⭐⭐⭐⭐</td>
+                                        <td>⭐⭐⭐⭐</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Acceldata</strong></td>
+                                        <td><span class="badge bg-warning">Hybrid</span></td>
+                                        <td><span class="badge bg-info">Freemium</span></td>
+                                        <td><span class="badge bg-success">Enterprise</span></td>
+                                        <td>⭐⭐⭐⭐⭐</td>
+                                        <td>⭐⭐⭐⭐⭐</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Cloudera</strong></td>
+                                        <td><span class="badge bg-danger">Enterprise</span></td>
+                                        <td><span class="badge bg-danger">Alto</span></td>
+                                        <td><span class="badge bg-success">24/7</span></td>
+                                        <td>⭐⭐⭐</td>
+                                        <td>⭐⭐⭐⭐⭐</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Amazon EMR</strong></td>
+                                        <td><span class="badge bg-warning">Cloud</span></td>
+                                        <td><span class="badge bg-warning">Pay-per-use</span></td>
+                                        <td><span class="badge bg-success">AWS</span></td>
+                                        <td>⭐⭐⭐⭐</td>
+                                        <td>⭐⭐⭐⭐</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decision Guide -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="mb-0">🎯 Guia de Escolha</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>🚀 Para Iniciantes</h5>
+                                <ul>
+                                    <li><strong>Qubole</strong> - Mais fácil de começar</li>
+                                    <li><strong>Open Source Data Platform</strong> - Gratuito e simples</li>
+                                    <li><strong>Amazon EMR</strong> - Se já usa AWS</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>🏢 Para Empresas</h5>
+                                <ul>
+                                    <li><strong>Cloudera</strong> - Suporte enterprise completo</li>
+                                    <li><strong>Acceldata</strong> - Observabilidade avançada</li>
+                                    <li><strong>MapR/HPE</strong> - High performance</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
