@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexão Estabelecida - Matrix Tech Hub</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Conexão estabelecida com sucesso! Bem-vindo à Matrix Tech Hub.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- RD Station Tracking Code -->
+    <script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/SEU_CODIGO_RD_STATION.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Matrix Theme Base */
+        body {
+            font-family: 'Courier New', monospace;
+            background: #000000;
+            color: #00FF41;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Matrix Rain Background */
+        .matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.1;
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Success Terminal */
+        .success-terminal {
+            background: rgba(0, 0, 0, 0.9);
+            border: 3px solid #00FF41;
+            border-radius: 20px;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 255, 65, 0.3);
+        }
+        
+        .success-terminal::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, #00FF41, #00FFFF, #00FF41);
+            border-radius: 20px;
+            z-index: -1;
+            animation: border-flow 3s linear infinite;
+        }
+        
+        @keyframes border-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .success-terminal::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.1), transparent);
+            animation: scan-line 4s linear infinite;
+        }
+        
+        @keyframes scan-line {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Success Animation */
+        .success-icon {
+            font-size: 5rem;
+            color: #00FF41;
+            margin-bottom: 30px;
+            animation: success-pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes success-pulse {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 20px #00FF41; }
+            50% { transform: scale(1.1); text-shadow: 0 0 30px #00FF41, 0 0 40px #00FF41; }
+        }
+        
+        /* Typography */
+        .terminal-prompt {
+            font-size: 1.2rem;
+            color: #00FFFF;
+            margin-bottom: 20px;
+            animation: typing 2s steps(40, end);
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        .success-title {
+            font-size: 3rem;
+            color: #00FF41;
+            text-shadow: 0 0 20px #00FF41;
+            margin-bottom: 20px;
+            animation: glow-pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow-pulse {
+            0%, 100% { text-shadow: 0 0 20px #00FF41; }
+            50% { text-shadow: 0 0 30px #00FF41, 0 0 40px #00FF41; }
+        }
+        
+        .success-message {
+            font-size: 1.3rem;
+            color: #00FFFF;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        
+        /* Next Steps */
+        .next-steps {
+            background: rgba(0, 17, 0, 0.5);
+            border: 2px solid #00FFFF;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: left;
+        }
+        
+        .next-steps h3 {
+            color: #00FFFF;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .steps-list {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            border-left: 4px solid #00FF41;
+            transition: all 0.3s ease;
+        }
+        
+        .step-item:hover {
+            background: rgba(0, 17, 0, 0.3);
+            border-left-color: #00FFFF;
+        }
+        
+        .step-number {
+            background: #00FF41;
+            color: #000000;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-title {
+            color: #00FFFF;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .step-description {
+            color: #CCCCCC;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .matrix-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Courier New', monospace;
+            border: 2px solid;
+        }
+        
+        .matrix-btn.primary {
+            background: linear-gradient(135deg, #00FF41, #00CC33);
+            color: #000000;
+            border-color: #00FF41;
+        }
+        
+        .matrix-btn.secondary {
+            background: linear-gradient(135deg, #00FFFF, #0099CC);
+            color: #000000;
+            border-color: #00FFFF;
+        }
+        
+        .matrix-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .matrix-btn:hover::before {
+            left: 100%;
+        }
+        
+        .matrix-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(0, 255, 65, 0.5);
+        }
+        
+        .matrix-btn.secondary:hover {
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+        }
+        
+        /* Matrix Stats */
+        .matrix-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .stat-box {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #00FF41;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.1), transparent);
+            animation: scan-stat 5s linear infinite;
+        }
+        
+        @keyframes scan-stat {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00FFFF;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #00FF41;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .success-terminal {
+                padding: 40px 20px;
+            }
+            
+            .success-title {
+                font-size: 2.2rem;
+            }
+            
+            .success-message {
+                font-size: 1.1rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .matrix-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .matrix-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Matrix Rain Background -->
+    <canvas class="matrix-rain" id="matrixRain"></canvas>
+    
+    <div class="container">
+        <div class="success-terminal">
+            <div class="terminal-prompt">$ connection_established --status=success</div>
+            <div class="success-icon">⚡</div>
+            <h1 class="success-title">CONEXÃO ESTABELECIDA</h1>
+            <p class="success-message">
+                Bem-vindo à Matrix Tech Hub! Sua conexão foi estabelecida com sucesso.<br>
+                Você agora faz parte da rede de profissionais que moldam o futuro da tecnologia.
+            </p>
+            
+            <div class="next-steps">
+                <h3>$ ./next_steps.sh --execute</h3>
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <div class="step-title">Acesso Liberado</div>
+                            <div class="step-description">Você receberá conteúdo personalizado sobre as tecnologias do seu interesse</div>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <div class="step-title">Explore o Hub</div>
+                            <div class="step-description">Navegue pelas 50+ tecnologias disponíveis e descubra novas possibilidades</div>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <div class="step-title">Conecte-se</div>
+                            <div class="step-description">Junte-se à comunidade de profissionais e compartilhe conhecimento</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="../" class="matrix-btn primary">Explorar Hub</a>
+                <a href="../tecnologias/" class="matrix-btn secondary">Ver Tecnologias</a>
+            </div>
+            
+            <div class="matrix-stats">
+                <div class="stat-box">
+                    <div class="stat-number">ONLINE</div>
+                    <div class="stat-label">Status</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Tech Stack</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Disponível</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Possibilidades</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Matrix Rain Effect
+        const canvas = document.getElementById('matrixRain');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const matrix = "CONNECTED";
+        const matrixArray = matrix.split("");
+        const fontSize = 10;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for(let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00FF41';
+            ctx.font = fontSize + 'px monospace';
+
+            for(let i = 0; i < drops.length; i++) {
+                const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 35);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Track conversion completion
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'conversion', {
+                'send_to': 'AW-CONVERSION_ID/MATRIX_TECH_SUCCESS',
+                'value': 1.0,
+                'currency': 'BRL'
+            });
+        }
+
+        // Console success message
+        console.log(`
+        ╔═══════════════════════════════════════╗
+        ║          CONNECTION SUCCESS           ║
+        ║                                       ║
+        ║  Welcome to the Matrix Tech Hub       ║
+        ║  Status: CONNECTED                    ║
+        ║  Access Level: GRANTED                ║
+        ║  Technologies: UNLOCKED               ║
+        ║                                       ║
+        ║  Ready to explore the Matrix...       ║
+        ╚═══════════════════════════════════════╝
+        `);
+
+        // Auto-redirect after 45 seconds (optional)
+        setTimeout(() => {
+            if (confirm('$ redirect_to_hub --confirm? [y/N]')) {
+                window.location.href = '../';
+            }
+        }, 45000);
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'h' || e.key === 'H') {
+                window.location.href = '../';
+            } else if (e.key === 't' || e.key === 'T') {
+                window.location.href = '../tecnologias/';
+            }
+        });
+
+        // Show keyboard shortcuts hint
+        setTimeout(() => {
+            console.log('Keyboard shortcuts: Press "H" for Hub, "T" for Technologies');
+        }, 3000);
+    </script>
+</body>
+</html>

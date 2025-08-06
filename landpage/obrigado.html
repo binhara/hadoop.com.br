@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obrigado! - Hadoop Soluções em Tecnologia</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Obrigado por baixar nosso eBook! Confira seu e-mail e explore nossas soluções em tecnologia.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- RD Station Tracking Code -->
+    <script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/SEU_CODIGO_RD_STATION.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Matrix Theme Base */
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #000000 0%, #001100 50%, #000000 100%);
+            color: #00FF41;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Matrix Rain Background Effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 65, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 65, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 1;
+            animation: matrix-grid 20s linear infinite;
+        }
+        
+        @keyframes matrix-grid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        /* Main Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Success Box */
+        .success-box {
+            background: rgba(0, 0, 0, 0.9);
+            border: 3px solid #00FF41;
+            border-radius: 20px;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 255, 65, 0.3);
+        }
+        
+        .success-box::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, #00FF41, #00FFFF, #00FF41);
+            border-radius: 20px;
+            z-index: -1;
+            animation: border-flow 3s linear infinite;
+        }
+        
+        @keyframes border-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .success-box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.1), transparent);
+            animation: scan-line 4s linear infinite;
+        }
+        
+        @keyframes scan-line {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Success Icon */
+        .success-icon {
+            font-size: 4rem;
+            color: #28a745;
+            margin-bottom: 30px;
+            animation: pulse-success 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-success {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* Typography */
+        .success-box h1 {
+            font-size: 3rem;
+            color: #00FF41;
+            text-shadow: 0 0 20px #00FF41;
+            margin-bottom: 20px;
+            animation: glow-pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow-pulse {
+            0%, 100% { text-shadow: 0 0 20px #00FF41; }
+            50% { text-shadow: 0 0 30px #00FF41, 0 0 40px #00FF41; }
+        }
+        
+        .success-box h2 {
+            font-size: 1.5rem;
+            color: #00FFFF;
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+        
+        .success-box p {
+            font-size: 1.2rem;
+            color: #CCCCCC;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        /* Next Steps */
+        .next-steps {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(0, 17, 0, 0.5);
+            border-radius: 15px;
+            border: 2px solid #00FFFF;
+        }
+        
+        .next-steps h3 {
+            color: #00FFFF;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .steps-list {
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .step-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            border-left: 4px solid #ff4500;
+        }
+        
+        .step-number {
+            background: #ff4500;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .step-text {
+            color: #CCCCCC;
+            font-size: 1.1rem;
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .action-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .action-button.primary {
+            background: linear-gradient(135deg, #004aad, #007bff);
+            color: white;
+            border: 2px solid #007bff;
+        }
+        
+        .action-button.secondary {
+            background: linear-gradient(135deg, #ff4500, #ff6b00);
+            color: white;
+            border: 2px solid #ff4500;
+        }
+        
+        .action-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .action-button:hover::before {
+            left: 100%;
+        }
+        
+        .action-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(0, 123, 255, 0.5);
+        }
+        
+        .action-button.secondary:hover {
+            box-shadow: 0 0 25px rgba(255, 69, 0, 0.5);
+        }
+        
+        /* Social Proof */
+        .social-proof {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            border: 1px solid #00FF41;
+        }
+        
+        .social-proof p {
+            font-size: 1rem;
+            color: #00FF41;
+            margin-bottom: 10px;
+        }
+        
+        .social-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00FFFF;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #CCCCCC;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .success-box {
+                padding: 40px 20px;
+            }
+            
+            .success-box h1 {
+                font-size: 2.2rem;
+            }
+            
+            .success-box h2 {
+                font-size: 1.3rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-button {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .social-stats {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-box">
+            <div class="success-icon">✅</div>
+            <h1>Obrigado!</h1>
+            <h2>Seu eBook está a caminho</h2>
+            <p>Enviamos o eBook "Tendências em Tecnologia 2025" para o seu e-mail. Verifique sua caixa de entrada (e também o spam, só por precaução).</p>
+            
+            <div class="next-steps">
+                <h3>Próximos Passos:</h3>
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-text">Verifique seu e-mail e baixe o eBook</div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-text">Explore nossas soluções em tecnologia</div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-text">Entre em contato para uma consultoria gratuita</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="../" class="action-button primary">Explorar Soluções</a>
+                <a href="../contato/" class="action-button secondary">Falar Conosco</a>
+            </div>
+            
+            <div class="social-proof">
+                <p>Junte-se a milhares de profissionais que confiam na Hadoop:</p>
+                <div class="social-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">Clientes Ativos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Tecnologias</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Suporte</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Track conversion completion
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'conversion', {
+                'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
+                'value': 1.0,
+                'currency': 'BRL'
+            });
+        }
+
+        // Matrix rain effect
+        function createMatrixRain() {
+            const canvas = document.createElement('canvas');
+            canvas.style.position = 'fixed';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '1';
+            canvas.style.opacity = '0.1';
+            document.body.appendChild(canvas);
+
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const matrix = "OBRIGADO";
+            const matrixArray = matrix.split("");
+            const fontSize = 10;
+            const columns = canvas.width / fontSize;
+            const drops = [];
+
+            for (let x = 0; x < columns; x++) {
+                drops[x] = 1;
+            }
+
+            function draw() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.fillStyle = '#00FF41';
+                ctx.font = fontSize + 'px Courier New';
+
+                for (let i = 0; i < drops.length; i++) {
+                    const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+
+            setInterval(draw, 35);
+
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        }
+
+        window.addEventListener('load', createMatrixRain);
+
+        // Auto-redirect after 30 seconds (optional)
+        setTimeout(() => {
+            if (confirm('Gostaria de explorar nossas soluções agora?')) {
+                window.location.href = '../';
+            }
+        }, 30000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soluções em Tecnologia com a Hadoop - eBook Gratuito</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Transforme sua empresa com serviços de TI personalizados. Baixe nosso eBook gratuito sobre tendências em tecnologia!">
+    <meta name="keywords" content="hadoop, big data, tecnologia, ebook gratuito, soluções TI, tendências tecnologia">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Soluções em Tecnologia com a Hadoop - eBook Gratuito">
+    <meta property="og:description" content="Transforme sua empresa com serviços de TI personalizados. Baixe nosso eBook gratuito!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.hadoop.com.br/landpage/">
+    <meta property="og:image" content="https://www.hadoop.com.br/images/ebook-cover.jpg">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XPKF2WCGCR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        gtag('config', 'G-XPKF2WCGCR');
+    </script>
+    
+    <!-- RD Station Tracking Code -->
+    <script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/SEU_CODIGO_RD_STATION.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Matrix Theme Base */
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #000000 0%, #001100 50%, #000000 100%);
+            color: #00FF41;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Matrix Rain Background Effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 65, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 65, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 1;
+            animation: matrix-grid 20s linear infinite;
+        }
+        
+        @keyframes matrix-grid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 80px 0 60px;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00FF41, transparent);
+            animation: scan-line 3s linear infinite;
+        }
+        
+        @keyframes scan-line {
+            0% { width: 0; }
+            50% { width: 200px; }
+            100% { width: 0; }
+        }
+        
+        .header h1 {
+            font-size: 3.5rem;
+            color: #00FF41;
+            text-shadow: 0 0 20px #00FF41;
+            margin-bottom: 20px;
+            animation: glow-pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow-pulse {
+            0%, 100% { text-shadow: 0 0 20px #00FF41; }
+            50% { text-shadow: 0 0 30px #00FF41, 0 0 40px #00FF41; }
+        }
+        
+        .header h2 {
+            font-size: 1.5rem;
+            color: #00FFFF;
+            margin-bottom: 40px;
+            font-weight: normal;
+            opacity: 0.9;
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #004aad, #007bff);
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 2px solid #007bff;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            box-shadow: 0 0 30px rgba(0, 123, 255, 0.5);
+            transform: translateY(-3px);
+            color: white;
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background: rgba(0, 17, 0, 0.3);
+            margin: 60px 0;
+            border-radius: 20px;
+            border: 2px solid #00FF41;
+            position: relative;
+        }
+        
+        .benefits::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00FF41, #00FFFF, #00FF41);
+            border-radius: 20px;
+            z-index: -1;
+            animation: border-flow 3s linear infinite;
+        }
+        
+        @keyframes border-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .benefits h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #00FFFF;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .benefit-item {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #00FF41;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefit-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.1), transparent);
+            animation: scan-benefit 4s linear infinite;
+        }
+        
+        @keyframes scan-benefit {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .benefit-item:hover {
+            border-color: #00FFFF;
+            box-shadow: 0 0 25px rgba(0, 255, 65, 0.4);
+            transform: translateY(-10px);
+        }
+        
+        .benefit-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ff4500;
+        }
+        
+        .benefit-item p {
+            color: #CCCCCC;
+            font-size: 1.1rem;
+        }
+        
+        /* Form Section */
+        .form-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 255, 65, 0.2);
+            border: 3px solid #00FF41;
+            position: relative;
+        }
+        
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, #00FF41, #007bff, #ff4500, #00FF41);
+            border-radius: 20px;
+            z-index: -1;
+            animation: rainbow-border 4s linear infinite;
+        }
+        
+        @keyframes rainbow-border {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .form-container h2 {
+            color: #004aad;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: Arial, sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+        }
+        
+        .form-group input:required:invalid {
+            border-color: #ff4500;
+        }
+        
+        .form-group input:required:valid {
+            border-color: #28a745;
+        }
+        
+        /* Submit Button */
+        .submit-button {
+            background: linear-gradient(135deg, #ff4500, #ff6b00);
+            color: white;
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .submit-button:hover {
+            background: linear-gradient(135deg, #ff6b00, #ff8500);
+            box-shadow: 0 0 25px rgba(255, 69, 0, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .submit-button:active {
+            transform: translateY(0);
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 2px solid #00FF41;
+            margin-top: 60px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .footer p {
+            color: #00FF41;
+            font-size: 1rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header h2 {
+                font-size: 1.2rem;
+            }
+            
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+                margin: 0 10px;
+            }
+            
+            .form-container h2 {
+                font-size: 1.8rem;
+            }
+            
+            .benefits {
+                padding: 40px 20px;
+                margin: 30px 0;
+            }
+        }
+        
+        /* Loading Animation */
+        .loading {
+            display: none;
+            text-align: center;
+            color: #00FF41;
+        }
+        
+        .loading.show {
+            display: block;
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: rgba(40, 167, 69, 0.1);
+            border: 2px solid #28a745;
+            color: #28a745;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        /* Error Message */
+        .error-message {
+            display: none;
+            background: rgba(220, 53, 69, 0.1);
+            border: 2px solid #dc3545;
+            color: #dc3545;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1>Soluções em Tecnologia com a Hadoop</h1>
+            <h2>Transforme sua empresa com serviços de TI personalizados.<br>Baixe nosso eBook gratuito sobre tendências em tecnologia!</h2>
+            <a href="#form" class="cta-button" id="ctaButton">Quero o eBook</a>
+        </div>
+    </header>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2>Por que escolher a Hadoop?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h3>Soluções Personalizadas</h3>
+                    <p>Desenvolvemos soluções sob medida para atender às necessidades específicas da sua empresa, garantindo máxima eficiência e resultados.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Suporte 24/7</h3>
+                    <p>Nossa equipe especializada está disponível 24 horas por dia, 7 dias por semana, para garantir que seus sistemas funcionem perfeitamente.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>Inovação Constante</h3>
+                    <p>Mantemos-nos sempre atualizados com as últimas tendências tecnológicas para oferecer as melhores soluções do mercado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="form-section" id="form">
+        <div class="container">
+            <div class="form-container">
+                <h2>Preencha para Receber o eBook</h2>
+                <form id="ebookForm" method="POST" action="https://www.rdstation.com.br/api/1.2/conversions">
+                    <!-- Hidden Fields for RD Station -->
+                    <input type="hidden" name="token_rdstation" value="SEU_TOKEN_RD_STATION">
+                    <input type="hidden" name="identificador" value="landing-page-ebook-hadoop">
+                    <input type="hidden" name="redirect_to" value="https://www.hadoop.com.br/obrigado">
+                    
+                    <div class="form-group">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required placeholder="Digite seu melhor e-mail">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tamanho_empresa">Tamanho da Empresa</label>
+                        <select id="tamanho_empresa" name="tamanho_empresa" required>
+                            <option value="">Selecione o tamanho da sua empresa</option>
+                            <option value="1-10">1-10 funcionários</option>
+                            <option value="11-50">11-50 funcionários</option>
+                            <option value="51-200">51-200 funcionários</option>
+                            <option value="200+">Mais de 200 funcionários</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="submit-button" id="submitButton">
+                        Baixar eBook Agora
+                    </button>
+                    
+                    <div class="loading" id="loading">
+                        <p>Processando sua solicitação...</p>
+                    </div>
+                    
+                    <div class="success-message" id="successMessage">
+                        <p>Obrigado! Seu eBook será enviado para o e-mail informado em instantes.</p>
+                    </div>
+                    
+                    <div class="error-message" id="errorMessage">
+                        <p>Ops! Ocorreu um erro. Tente novamente ou entre em contato conosco.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 Hadoop Soluções em Tecnologia. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Smooth scroll for CTA button
+        document.getElementById('ctaButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+
+        // Form validation and submission
+        document.getElementById('ebookForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form elements
+            const form = this;
+            const submitButton = document.getElementById('submitButton');
+            const loading = document.getElementById('loading');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const emailField = document.getElementById('email');
+            
+            // Hide previous messages
+            successMessage.classList.remove('show');
+            errorMessage.classList.remove('show');
+            
+            // Basic email validation
+            const emailValue = emailField.value;
+            if (!emailValue.includes('@') || !emailValue.includes('.')) {
+                alert('Por favor, insira um e-mail válido.');
+                emailField.focus();
+                return;
+            }
+            
+            // Show loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'Enviando...';
+            loading.classList.add('show');
+            
+            // Prepare form data
+            const formData = new FormData(form);
+            
+            // Submit to RD Station
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors' // RD Station API requires this
+            })
+            .then(() => {
+                // Success - RD Station will handle the redirect
+                loading.classList.remove('show');
+                successMessage.classList.add('show');
+                form.reset();
+                
+                // Track conversion event (if Google Analytics is available)
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'conversion', {
+                        'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
+                        'value': 1.0,
+                        'currency': 'BRL'
+                    });
+                }
+                
+                // Redirect after 3 seconds
+                setTimeout(() => {
+                    window.location.href = 'https://www.hadoop.com.br/obrigado';
+                }, 3000);
+            })
+            .catch((error) => {
+                // Error handling
+                console.error('Error:', error);
+                loading.classList.remove('show');
+                errorMessage.classList.add('show');
+            })
+            .finally(() => {
+                // Reset button state
+                submitButton.disabled = false;
+                submitButton.textContent = 'Baixar eBook Agora';
+            });
+        });
+
+        // Form field enhancements
+        const formInputs = document.querySelectorAll('input, select');
+        formInputs.forEach(input => {
+            // Add focus effects
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+            
+            // Real-time validation feedback
+            if (input.type === 'email') {
+                input.addEventListener('input', function() {
+                    const value = this.value;
+                    if (value && (!value.includes('@') || !value.includes('.'))) {
+                        this.style.borderColor = '#ff4500';
+                    } else if (value) {
+                        this.style.borderColor = '#28a745';
+                    } else {
+                        this.style.borderColor = '#ddd';
+                    }
+                });
+            }
+        });
+
+        // Matrix rain effect enhancement
+        function createMatrixRain() {
+            const canvas = document.createElement('canvas');
+            canvas.style.position = 'fixed';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            canvas.style.pointerEvents = 'none';
+            canvas.style.zIndex = '1';
+            canvas.style.opacity = '0.1';
+            document.body.appendChild(canvas);
+
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const matrix = "HADOOP01";
+            const matrixArray = matrix.split("");
+            const fontSize = 10;
+            const columns = canvas.width / fontSize;
+            const drops = [];
+
+            for (let x = 0; x < columns; x++) {
+                drops[x] = 1;
+            }
+
+            function draw() {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.fillStyle = '#00FF41';
+                ctx.font = fontSize + 'px Courier New';
+
+                for (let i = 0; i < drops.length; i++) {
+                    const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+
+            setInterval(draw, 35);
+
+            // Resize canvas on window resize
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        }
+
+        // Initialize matrix rain effect
+        window.addEventListener('load', createMatrixRain);
+
+        // Track page interactions
+        document.addEventListener('click', function(e) {
+            // Track CTA clicks
+            if (e.target.id === 'ctaButton') {
+                console.log('CTA Button clicked');
+                // Add analytics tracking here if needed
+            }
+        });
+
+        // Track scroll depth
+        let maxScroll = 0;
+        window.addEventListener('scroll', function() {
+            const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+            if (scrollPercent > maxScroll) {
+                maxScroll = scrollPercent;
+                // Track scroll milestones
+                if (maxScroll >= 25 && maxScroll < 50) {
+                    console.log('25% scroll reached');
+                } else if (maxScroll >= 50 && maxScroll < 75) {
+                    console.log('50% scroll reached');
+                } else if (maxScroll >= 75) {
+                    console.log('75% scroll reached');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
