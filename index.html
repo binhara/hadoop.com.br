@@ -82,11 +82,11 @@
             background: rgba(0, 0, 0, 0.9);
             border: 2px solid #00FF41;
             border-radius: 10px;
-            padding: 1rem;
+            padding: 0.8rem;
             font-family: 'Courier New', monospace;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #00FF41;
-            height: 150px;
+            height: 130px;
             overflow: hidden;
             position: relative;
             box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
@@ -151,12 +151,172 @@
             51%, 100% { opacity: 0; }
         }
         
+        /* Optimized spacing */
+        .min-vh-80 {
+            min-height: 80vh !important;
+        }
+        
+        .hadoop-matrix-container {
+            margin: 1rem 0 !important;
+        }
+        
+        .hadoop-matrix-image {
+            max-width: 350px !important;
+        }
+        
+        @media (max-width: 1200px) {
+            .hadoop-matrix-image {
+                max-width: 300px !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .min-vh-80 {
+                min-height: 70vh !important;
+            }
+            
+            .hadoop-matrix-image {
+                max-width: 250px !important;
+            }
+        }
+        
+        /* Special Interest Button Styles */
+        .matrix-interest-highlight {
+            border: 2px solid #FFD700 !important;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.5) !important;
+            background: rgba(0, 0, 0, 0.95) !important;
+        }
+        
+        .matrix-interest-highlight:hover {
+            border-color: #FF6B35 !important;
+            box-shadow: 0 0 35px rgba(255, 107, 53, 0.7) !important;
+            transform: scale(1.08) !important;
+        }
+        
+        .matrix-interest-highlight::before {
+            background: linear-gradient(90deg, transparent, #FFD700, transparent) !important;
+            animation: scan-top-interest 1.5s linear infinite !important;
+        }
+        
+        @keyframes scan-top-interest {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .matrix-interest-highlight .terminal-header {
+            color: #FFD700 !important;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        
+        .matrix-interest-highlight .terminal-content {
+            animation: matrix-typing-interest 2s linear infinite;
+        }
+        
+        @keyframes matrix-typing-interest {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+        
+        /* Simple Interest Box Styles */
+        .interest-simple-section {
+            background: rgba(0, 17, 0, 0.3);
+        }
+        
+        .interest-simple-box {
+            background: rgba(0, 0, 0, 0.9);
+            border: 3px solid #FFD700;
+            border-radius: 15px;
+            padding: 2rem;
+            font-family: 'Courier New', monospace;
+            color: #00FF41;
+            position: relative;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            min-height: 180px;
+        }
+        
+        .interest-simple-box:hover {
+            border-color: #FF6B35;
+            box-shadow: 0 0 40px rgba(255, 107, 53, 0.8);
+            transform: scale(1.05);
+            color: #00FF41;
+            text-decoration: none;
+        }
+        
+        .interest-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .interest-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            animation: pulse-simple 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-simple {
+            0%, 100% { 
+                text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            }
+            50% { 
+                text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            }
+        }
+        
+        .interest-subtitle {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            color: #00FF41;
+        }
+        
+        .interest-cta {
+            font-size: 1.2rem;
+            font-weight: bold;
+            animation: blink-simple 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes blink-simple {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.7; }
+        }
+        
+        @media (max-width: 768px) {
+            .interest-simple-box {
+                padding: 1.5rem;
+                min-height: 150px;
+            }
+            
+            .interest-title {
+                font-size: 1.3rem;
+            }
+            
+            .interest-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .interest-cta {
+                font-size: 1.1rem;
+            }
+        }
+        
+
+        
         .hadoop-matrix-container {
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 2rem 0;
+            margin: 1rem 0;
         }
         
         .hadoop-matrix-image {
@@ -316,10 +476,10 @@
         <!-- Hero Section -->
         <section class="hero-section">
             <div class="container-fluid">
-                <div class="row min-vh-100 align-items-center justify-content-center">
+                <div class="row min-vh-80 align-items-center justify-content-center py-4">
                     <div class="col-12 text-center">
-                        <h1 class="display-4 text-success mb-2">Hadoop.com.br</h1>
-                        <p class="text-light mb-2 small">Escolha sua jornada no universo Big Data</p>
+                        <h1 class="display-4 text-success mb-1">Hadoop.com.br</h1>
+                        <p class="text-light mb-1 small">Escolha sua jornada no universo Big Data</p>
                         
                         <!-- Hadoop Matrix Image with Terminal Boxes -->
                         <div class="hadoop-matrix-container">
@@ -352,15 +512,17 @@
                                     </div>
                                 </a>
                                 
-                                <!-- Top Right Terminal - Cursos -->
-                                <a href="cursos/" class="matrix-terminal-box terminal-top-right">
-                                    <div class="terminal-header">$ courses --list</div>
+                                <!-- Top Right Terminal - Tenho Interesse -->
+                                <a href="https://eventos.gubigdata.com.br/tenhointeressebigdata" 
+                                   target="_blank" 
+                                   class="matrix-terminal-box terminal-top-right matrix-interest-highlight">
+                                    <div class="terminal-header">$ interesse --now</div>
                                     <div class="terminal-content">
-                                        > Hadoop Fundamentals<br>
-                                        > Spark Advanced<br>
-                                        > Kafka Streaming<br>
-                                        > Delta Lake Essentials<br>
-                                        > 15+ courses available<span class="terminal-cursor">_</span>
+                                        > Sistema: ATIVO<br>
+                                        > Conexão: ESTÁVEL<br>
+                                        > Status: PRONTO<br>
+                                        > <span class="text-warning">TENHO INTERESSE</span><br>
+                                        > <span class="text-info">Clique aqui</span><span class="terminal-cursor">_</span>
                                     </div>
                                 </a>
                                 
@@ -411,25 +573,26 @@
                                     </div>
                                 </a>
                                 
-                                <!-- Bottom Right Terminal - Parceiros -->
-                                <a href="#partners" class="matrix-terminal-box terminal-bottom-right">
-                                    <div class="terminal-header">$ partners --active</div>
+                                <!-- Bottom Right Terminal - Cursos -->
+                                <a href="cursos/" class="matrix-terminal-box terminal-bottom-right">
+                                    <div class="terminal-header">$ courses --list</div>
                                     <div class="terminal-content">
-                                        > dssbr.com.br: ONLINE<br>
-                                        > oworkshop.com.br: ONLINE<br>
-                                        > Community: 1000+ users<br>
-                                        > Network: STABLE<span class="terminal-cursor">_</span>
+                                        > Hadoop Fundamentals<br>
+                                        > Spark Advanced<br>
+                                        > Kafka Streaming<br>
+                                        > Delta Lake Essentials<br>
+                                        > 15+ courses available<span class="terminal-cursor">_</span>
                                     </div>
                                 </a>
                             </div>
                         </div>
                         
-                        <p class="text-success mt-3 fst-italic" style="font-size: 0.9rem;">
+                        <p class="text-success mt-2 fst-italic" style="font-size: 0.9rem;">
                             "Esta é sua última chance. Depois não há como voltar atrás."
                         </p>
                         
                         <!-- Compact Navigation Pills - Mesma posição e dimensão -->
-                        <div class="row justify-content-center mt-2">
+                        <div class="row justify-content-center mt-1">
                             <div class="col-md-3 col-sm-4 col-5 mb-1">
                                 <a href="entrar-hadoop/" class="btn btn-danger btn-compact w-100">
                                     🔴 Vermelha
@@ -443,17 +606,19 @@
                                 </a>
                             </div>
                         </div>
+                        
+
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Quick Access Section -->
-        <section class="quick-access-section py-5">
+        <section class="quick-access-section py-3">
             <div class="container">
-                <div class="row text-center mb-4">
+                <div class="row text-center mb-3">
                     <div class="col-12">
-                        <h2 class="text-success mb-3">Acesso Rápido</h2>
+                        <h2 class="text-success mb-2">Acesso Rápido</h2>
                     </div>
                 </div>
                 <div class="row g-4">
@@ -502,7 +667,7 @@
         </section>
 
         <!-- Intelligent Suggestions Section -->
-        <section class="suggestions-section py-5">
+        <section class="suggestions-section py-3">
             <div class="container">
                 <div id="main-suggestions">
                     <!-- Main suggestions will be populated by JavaScript -->
@@ -511,12 +676,12 @@
         </section>
 
         <!-- Partners Section -->
-        <section id="partners" class="partners-section py-5 bg-matrix-dark">
+        <section id="partners" class="partners-section py-3 bg-matrix-dark">
             <div class="container">
-                <div class="row text-center mb-4">
+                <div class="row text-center mb-3">
                     <div class="col-12">
-                        <h2 class="text-success mb-3">Nossos Parceiros</h2>
-                        <p class="text-light">Conheça nossos parceiros especializados em Big Data</p>
+                        <h2 class="text-success mb-2">Nossos Parceiros</h2>
+                        <p class="text-light mb-1">Conheça nossos parceiros especializados em Big Data</p>
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center g-4">
@@ -542,49 +707,26 @@
             </div>
         </section>
 
-        <!-- Newsletter Section -->
-        <section class="newsletter-section py-5">
+        <!-- Interest Registration Section -->
+        <section class="interest-simple-section py-3">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-8 col-md-10">
-                        <div class="newsletter-card">
-                            <div class="text-center mb-4">
-                                <h2 class="text-success mb-3">Mantenha-se Atualizado</h2>
-                                <p class="text-light">Receba as últimas novidades sobre Big Data, Hadoop e tecnologias modernas</p>
-                            </div>
-                            <form id="newsletterForm" class="newsletter-form">
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control matrix-input" id="firstName" placeholder="Nome" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="email" class="form-control matrix-input" id="email" placeholder="E-mail" required>
-                                    </div>
-                                    <div class="col-12">
-                                        <select class="form-select matrix-input" id="interest" required>
-                                            <option value="">Área de interesse</option>
-                                            <option value="hadoop">Hadoop e Distribuições</option>
-                                            <option value="alternatives">Alternativas Modernas</option>
-                                            <option value="courses">Cursos e Treinamentos</option>
-                                            <option value="all">Todos os tópicos</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="privacy" required>
-                                            <label class="form-check-label text-light" for="privacy">
-                                                Aceito receber comunicações e concordo com a política de privacidade
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 text-center">
-                                        <button type="submit" class="btn btn-success btn-lg">
-                                            <i class="fas fa-envelope me-2"></i>Inscrever-se
-                                        </button>
-                                    </div>
+                    <div class="col-lg-6 col-md-8">
+                        <a href="https://eventos.gubigdata.com.br/tenhointeressebigdata" 
+                           target="_blank" 
+                           class="interest-simple-box">
+                            <div class="interest-content">
+                                <div class="interest-title">
+                                    🚀 <span class="text-warning">TENHO INTERESSE</span> 🚀
                                 </div>
-                            </form>
-                        </div>
+                                <div class="interest-subtitle">
+                                    Cadastre-se para receber novidades sobre Big Data
+                                </div>
+                                <div class="interest-cta">
+                                    <span class="text-danger">>>> CLIQUE AQUI <<<</span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -624,7 +766,7 @@
         
         // Add click effects and navigation
         function addMatrixEffect() {
-            const terminals = document.querySelectorAll('.matrix-terminal-box');
+            const terminals = document.querySelectorAll('.matrix-terminal-box, .matrix-terminal-interest-box, .matrix-terminal-interest-mega-box');
             
             terminals.forEach(terminal => {
                 // Hover effect
@@ -688,10 +830,63 @@
             });
         }
         
+        // Special effects for Interest Button
+        function addInterestButtonEffects() {
+            const interestButton = document.querySelector('.matrix-interest-highlight');
+            
+            if (interestButton) {
+                // Special hover effect for interest button
+                interestButton.addEventListener('mouseenter', () => {
+                    const content = interestButton.querySelector('.terminal-content');
+                    content.innerHTML = '> Detectando interesse...<br>> Preparando conexão...<br>> Sistema: PRONTO<br>> <span class="text-warning">TENHO INTERESSE</span><br>> <span class="text-success">CLIQUE AQUI AGORA!</span><span class="terminal-cursor">_</span>';
+                });
+                
+                interestButton.addEventListener('mouseleave', () => {
+                    const content = interestButton.querySelector('.terminal-content');
+                    content.innerHTML = '> Sistema: ATIVO<br>> Conexão: ESTÁVEL<br>> Status: PRONTO<br>> <span class="text-warning">TENHO INTERESSE</span><br>> <span class="text-info">Clique aqui</span><span class="terminal-cursor">_</span>';
+                });
+                
+                // Special click effect
+                interestButton.addEventListener('click', (e) => {
+                    const content = interestButton.querySelector('.terminal-content');
+                    content.innerHTML = '> PROCESSANDO...<br>> REDIRECIONANDO...<br>> AGUARDE...<br>> <span class="text-success">SUCESSO!</span><br>> <span class="text-success">ABRINDO...</span><span class="terminal-cursor">_</span>';
+                });
+            }
+        }
+        
+        // Simple Interest Box Effects
+        function addSimpleInterestEffects() {
+            const simpleBox = document.querySelector('.interest-simple-box');
+            
+            if (simpleBox) {
+                // Hover effect
+                simpleBox.addEventListener('mouseenter', () => {
+                    const cta = simpleBox.querySelector('.interest-cta');
+                    cta.innerHTML = '<span class="text-success">🔥 CLIQUE AGORA! 🔥</span>';
+                });
+                
+                simpleBox.addEventListener('mouseleave', () => {
+                    const cta = simpleBox.querySelector('.interest-cta');
+                    cta.innerHTML = '<span class="text-danger">>>> CLIQUE AQUI <<<</span>';
+                });
+                
+                // Click effect
+                simpleBox.addEventListener('click', (e) => {
+                    const cta = simpleBox.querySelector('.interest-cta');
+                    cta.innerHTML = '<span class="text-success">✅ REDIRECIONANDO... ✅</span>';
+                    
+                    simpleBox.style.borderColor = '#00FF00';
+                    simpleBox.style.boxShadow = '0 0 50px rgba(0, 255, 0, 1)';
+                });
+            }
+        }
+        
         // Initialize matrix effects
         window.addEventListener('load', () => {
             addMatrixEffect();
             addTypingEffect();
+            addInterestButtonEffects();
+            addSimpleInterestEffects();
         });
     </script>
     
